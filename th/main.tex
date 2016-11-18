@@ -11,7 +11,7 @@
 \usepackage{dirtytalk}
 \usepackage{listings}
 \usepackage{color}
-
+\usepackage{hyperref}
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
@@ -59,9 +59,41 @@ Roma, Italia
 
 \tableofcontents
 
+\newpage
+\section{Introduzione}
+\textbf{\textit{I dati sono aperti se chiunque è libero di accederli, usarli, modificarli, e condividerli}}
+
+\subsection{La filosofia open-data}
+
+Sulla pagina \href{http://opendefinition.org/od/2.1/en}{Open Definition 2.1}\footnotemark
+\footnotetext{http://opendefinition.org/od/2.1/en}
+ - ultima definizione rilasciata - è possibile prendere nota degli aspetti più importanti che caratterizzano la filosofia open-data gli aspetti più importanti sono:
+\begin{itemize}
+\item Disponibilità e accesso.
+\item Riutilizzo e ridistribuzione: i dati devono essere forniti a condizioni tali da permetterne il riutilizzo e la ridistribuzione. Ciò comprende la possibilità di combinarli con altre basi di dati.
+\item Partecipazione universale: tutti devono essere in grado di usare, riutilizzare e ridistribuire i dati.
+\end{itemize}
+
+Il movimento open-data si diffonde notevolmente a seguito della promulgazione della Direttiva sull'Open government del 2009 negli Stati Uniti d'America:
+\textit{Fin dove possibile e sottostando alle sole restrizioni valide, le agenzie devono pubblicare le informazioni on line utilizzando un formato aperto (open) che possa cioè essere recuperato, soggetto ad azioni di download, indicizzato e ricercato attraverso le applicazioni di ricerca web più comunemente utilizzate. Per formato open si intende un formato indipendente rispetto alla piattaforma, leggibile dall'elaboratore e reso disponibile al pubblico senza che sia impedito il riuso dell'informazione veicolata.}
+
+In questo contesto è nato il portale Data.gov, creato con l'obiettivo di raccogliere in un unico portale tutte le informazioni rese disponibili dagli enti statunitensi in formato aperto.
+
+In Italia il portale che raccoglie i dati aperti della pubblica amministrazione è Dati.gov.it
+ 
+\subsection{Interoperabilità}
+Tra le ragioni più importanti della filosofia open-data abbiamo l'interoperabilità, vale a dire, la capacità di diversi sistemi e organizzazioni di lavorare insieme. Nel caso specifico degli open data - ovviamente - ci riferiamo alla capacità di combinare una grande quantità di dati da diverse fonti. L'interoperabilità è importante perché permette a componenti diverse di lavorare insieme. L'abilità di rendere ciascun dato un componente e di combinare insieme vari componenti è essenziale per la costruzione di sistemi sofisticati. In assenza di interoperabilità ciò diventa quasi impossibile - come nel mito della Torre di Babele, in cui l'impossibilità di comunicare (e quindi di Inter-operare) dà luogo a un fallimento sistemico della costruzione della torre. Una chiara definizione di "apertura" assicura che sia possibile combinare dataset aperti provenienti da fonti diverse in modo adeguato, evitando così la \say{Torre di Babele}.
+
+Il punto cruciale di un bacino di dati (o linee di codice) accessibili e utilizzabili in modo condiviso è il fatto che potenzialmente possono essere liberamente \say{mescolati} con dati provenienti da fonti anch'esse aperte. L'interoperabilità è la chiave per realizzare il principale vantaggio pratico dell'apertura: aumenta in modo esponenziale la possibilità di combinare diverse basi di dati, e quindi sviluppare nuovi e migliori prodotti e servizi.
+\footnotemark
+\footnotetext{http://opendatahandbook.org/guide/it/what-is-open-data}
+
+\subsection{EUROVOC}
+\subsection{DCAT e DCAT-AP-it}
+
 
 \newpage
-\section{Elaborazione del linguaggio naturale: lemmatizzazione e disambiguazione}
+\section{Elaborazione dei corpus}
 L'Elaborazione del linguaggio naturale, detta anche NLP (dall'inglese \textit{Natural Language Processing}), è il processo di trattamento automatico mediante un calcolatore elettronico delle informazioni scritte o parlate in una lingua naturale.
 
 Questo processo è reso particolarmente difficile e complesso a causa delle caratteristiche intrinseche di ambiguità del linguaggio umano. Per questo motivo il processo di elaborazione viene suddiviso in fasi diverse, tuttavia simili a quelle che si possono incontrare nel processo di elaborazione di un linguaggio di programmazione:
@@ -131,8 +163,13 @@ Tra i metodi \textit{Dictionary-based} abbiamo l'algoritmo di Lesk (1986) che è
 fornire informazioni sul contesto legato ai sensi delle parole (le glosse).  
 
 
+
 \newpage
-\section{Apprendimento bayesiano}
+\section{Vector space model}
+\subsection{Il classificatore JEX}
+
+\newpage
+\section{Bayesian learning}
 
 L'apprendimento bayesiano è un metodo computazionale di apprendimento automatico basato sul calcolo delle probabilità, che può fornire predizioni probabilistiche sfruttando i principi del teorema di Bayes per realizzare un apprendimento non supervisionato (mediante le Reti Bayesiane e i classificatori bayesiani).
 
@@ -306,5 +343,9 @@ def void naif_bayes_TEXT_learner(){
 nuova_classificazione(x)
 \end{lstlisting}
 
+\newpage
+\section{Aspetti software}
+\subsection{Architettura}
+\subsection{Deployment}
 
 \end{document}
