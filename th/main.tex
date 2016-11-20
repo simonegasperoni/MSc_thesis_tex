@@ -334,7 +334,7 @@ def void naif_bayes_TEXT_learner(){
 		#qui si calcolano i pesi per le parole
 		for each parola in Vocabolario do{
 			w="numero di volte che la parola occorre in text[j]"
-			p(w|v[j])=(w+1)/(n+|Vocabolario|)
+			p(parola|v[j])=(w+1)/(n+|Vocabolario|)
 		}
 	}
 }
