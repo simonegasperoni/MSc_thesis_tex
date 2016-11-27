@@ -76,10 +76,9 @@ Sulla pagina \href{http://opendefinition.org/od/2.1/en}{Open Definition 2.1}\foo
 
 Il movimento open-data si diffonde notevolmente a seguito della promulgazione della Direttiva sull'Open government del 2009 negli Stati Uniti d'America:
 \textit{Fin dove possibile e sottostando alle sole restrizioni valide, le agenzie devono pubblicare le informazioni on line utilizzando un formato aperto (open) che possa cioè essere recuperato, soggetto ad azioni di download, indicizzato e ricercato attraverso le applicazioni di ricerca web più comunemente utilizzate. Per formato open si intende un formato indipendente rispetto alla piattaforma, leggibile dall'elaboratore e reso disponibile al pubblico senza che sia impedito il riuso dell'informazione veicolata.}
-
-In questo contesto è nato il portale Data.gov, creato con l'obiettivo di raccogliere in un unico portale tutte le informazioni rese disponibili dagli enti statunitensi in formato aperto.
-
-In Italia il portale che raccoglie i dati aperti della pubblica amministrazione è Dati.gov.it
+\\
+\\
+In questo contesto è nato il portale Data.gov, creato con l'obiettivo di raccogliere in un unico portale tutte le informazioni rese disponibili dagli enti statunitensi in formato aperto. In Italia il portale che raccoglie i dati aperti della pubblica amministrazione è Dati.gov.it
  
 \subsection{Interoperabilità}
 Tra le ragioni più importanti della filosofia open-data abbiamo l'interoperabilità, vale a dire, la capacità di diversi sistemi e organizzazioni di lavorare insieme. Nel caso specifico degli open data - ovviamente - ci riferiamo alla capacità di combinare una grande quantità di dati da diverse fonti. L'interoperabilità è importante perché permette a componenti diverse di lavorare insieme. L'abilità di rendere ciascun dato un componente e di combinare insieme vari componenti è essenziale per la costruzione di sistemi sofisticati. In assenza di interoperabilità ciò diventa quasi impossibile - come nel mito della Torre di Babele, in cui l'impossibilità di comunicare (e quindi di Inter-operare) dà luogo a un fallimento sistemico della costruzione della torre. Una chiara definizione di "apertura" assicura che sia possibile combinare dataset aperti provenienti da fonti diverse in modo adeguato, evitando così la \say{Torre di Babele}.
@@ -162,7 +161,19 @@ Il problema dell'approccio appena descritto è che il modello di apprendimento s
 Tra i metodi \textit{Dictionary-based} abbiamo l'algoritmo di Lesk (1986) che è un metodo molto semplice, basato sull'intuizione secondo cui un dizionario può
 fornire informazioni sul contesto legato ai sensi delle parole (le glosse).  
 
-
+\subsection{Feature selection}
+La selezione delle feature è il processo che ci porta a selezionare un sottoinsieme di feature (termini nella text classification), solo questo sottoinsieme sarà utilizzato come training set per i nostri classificatori.
+I motivi principali per cui si procede ad una selezione delle feature sono due: innanzi tutto alcuni modelli possono essere addestrati solo con set di feature contenuti data la loro complessità computazionale in fase di addestramento. In secondo luogo dobbiamo considerare che i classificatori tendono ad essere più precisi quando il numero delle feature è ridotto, molte feature, non solo non sono determinanti nel determinare la classe di appartenenza di un documento, ma possono addirittura introdurre un rumore (noise feature). Le noise feature sono quelle feature che occorrendo accidentalmente in una sola classe si rendono responsabili di errate generalizzazioni che colpiscono l'accuratezza della classificazione (Overfitting).
+Introduction to Information Retrieval\footnotemark descrive tre procedure per la selezione di feature:
+\begin{itemize}  
+\item Mutual information
+\item Chi square
+\item Frequency based
+\end{itemize}
+\footnotetext{C.D. Manning, P. Raghavan, H. Schütze, Introduction to Information Retrieval, Cambridge University Press, 2008}
+\subsubsection{Mutual information}
+\subsubsection{Chi square}
+\subsubsection{Frequency based}
 
 \newpage
 \section{Vector space model}
