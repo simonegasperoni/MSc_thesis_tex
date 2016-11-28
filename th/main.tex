@@ -34,7 +34,7 @@
 }
 
 \author{Simone Gasperoni}
-\title{Catalogazione open data}
+\title{Appunti per la tesi}
 
 \begin{document}
 
@@ -46,7 +46,7 @@
 
 \hrulefill
 
-{ \huge \bfseries Catalogazione open data \\[0.4cm] }
+{ \huge \bfseries Appunti per la tesi \\[0.4cm] }
 \textsc{\Large Simone Gasperoni}\\[0.5cm]
 \vfill
 \LaTeX
@@ -87,7 +87,14 @@ Il punto cruciale di un bacino di dati (o linee di codice) accessibili e utilizz
 \footnotemark
 \footnotetext{http://opendatahandbook.org/guide/it/what-is-open-data}
 
-\subsection{EUROVOC}
+\subsection{EuroVoc e JRC-Acquis 3.0}
+EuroVoc è un thesaurus multilingue e pluridisciplinare che comprende la terminologia dei settori d'attività dell'Unione europea. Contiene termini in 23 lingue dell'UE. EuroVoc è curato dall'Ufficio delle pubblicazioni, che è passato ad una gestione del thesaurus basata sull'ontologia e alle tecnologie del web semantico, in linea con le raccomandazioni del W3C e con gli ultimi sviluppi negli standard di classificazione. Il thesaurus EuroVoc viene utilizzato dalle istituzioni dell'Unione europea, dall'Ufficio delle pubblicazioni dell'UE, da parlamenti nazionali e regionali in Europa, come pure da amministrazioni nazionali e utenti privati di tutto il mondo.
+\footnotemark
+\footnotetext{http://eurovoc.europa.eu}
+I descrittori del thesaurus multilingua EuroVoc sono usati da molti parlamentari europei e centri di documentazione per indicizzare manualmente le loro collezioni di documenti, i descrittori assegnati ai documenti sono utilizzati per cercare ed individuare documenti in una gerarchia semantica divisa in 21 domini, 127 sottodomini (microthesauri) e N descrittori
+
+
+
 \subsection{DCAT e DCAT-AP-it}
 
 
@@ -142,42 +149,36 @@ un dato sistema linguistico.
 \item \textbf{Lemmatizzazione morfo-sintattica:} analizza le forme di parole entro il contesto sintattico. Non è mai ambigua, ma sempre univoca, in quanto l'immersione della forma nella frase ne precisa il valore. Quindi, mentre la lemmatizzazione morfologica è indipendente dal testo, la lemmatizzazione
 sintattica è, invece, legata al contesto.
 \end{itemize}
-
 Il lessico (o vocabolario) è il complesso delle parole e delle locuzioni di una lingua (ad esempio, il lessico italiano, il lessico greco). Un lessico in genere ha una forma molto strutturata, memorizza i significati e i possibili usi di ogni parola, codifica le relazioni fra le parole e i significati. Un dizionario è una forma di lessico in cui i significati sono espressi tramite definizioni ed esempi.
-
+\\
 Un lessema è l'unità minima che viene rappresentata nel lessico, associa
 il lemma (la forma ortografica scelta per rappresentare la parole) con una forma simbolica di rappresentazione del significato (il senso).
 
 \subsection{Disambiguazione}
 Molte parole nel linguaggio naturale sono delle polisemie, vale a dire, possono avere più significati. Le tecniche finalizzate alla disambiguazione sono conosciute in letteratura come \textit{Word Sense Disambiguation} (WSD).
-
+\\
 La WSD può essere affrontata come un problema di classificazione, il senso
 corretto è la classe da predire la parola è rappresentata con un insieme (vettore) di feature in ingresso al classificatore, l'ingresso è di solito costituito da una rappresentazione della parola da disambiguare (target) e del 
 contesto in cui si trova (un certo numero di parole a sinistra e destra della
 parola target). Il classificatore può essere stimato con tecniche di apprendimento automatico a partire da un dataset etichettato. Si possono usare diversi modelli per costruire il classificatore (Naïve Bayes, reti neurali, alberi di decisione...).
-
+\\
 Il problema dell'approccio appena descritto è che il modello di apprendimento supervisionato che scegliamo di adottare potrebbe richiedere un training set troppo grande per essere sufficientemente preciso, per questo motivo esistono tecniche alternative come i metodi .
+\\
+Tra i metodi \textit{Dictionary-based} abbiamo l'algoritmo di Lesk (1986) che è un metodo molto semplice, basato sull'intuizione secondo cui un dizionario può fornire informazioni sul contesto legato ai sensi delle parole (le glosse).  
 
-Tra i metodi \textit{Dictionary-based} abbiamo l'algoritmo di Lesk (1986) che è un metodo molto semplice, basato sull'intuizione secondo cui un dizionario può
-fornire informazioni sul contesto legato ai sensi delle parole (le glosse).  
-
-\subsection{Feature selection}
-La selezione delle feature è il processo che ci porta a selezionare un sottoinsieme di feature (termini nella text classification), solo questo sottoinsieme sarà utilizzato come training set per i nostri classificatori.
-I motivi principali per cui si procede ad una selezione delle feature sono due: innanzi tutto alcuni modelli possono essere addestrati solo con set di feature contenuti data la loro complessità computazionale in fase di addestramento. In secondo luogo dobbiamo considerare che i classificatori tendono ad essere più precisi quando il numero delle feature è ridotto, molte feature, non solo non sono determinanti nel determinare la classe di appartenenza di un documento, ma possono addirittura introdurre un rumore (noise feature). Le noise feature sono quelle feature che occorrendo accidentalmente in una sola classe si rendono responsabili di errate generalizzazioni che colpiscono l'accuratezza della classificazione (Overfitting).
-Introduction to Information Retrieval\footnotemark descrive tre procedure per la selezione di feature:
-\begin{itemize}  
-\item Mutual information
-\item Chi square
-\item Frequency based
-\end{itemize}
-\footnotetext{C.D. Manning, P. Raghavan, H. Schütze, Introduction to Information Retrieval, Cambridge University Press, 2008}
-\subsubsection{Mutual information}
-\subsubsection{Chi square}
-\subsubsection{Frequency based}
+ 
+\subsection{Stemming}
 
 \newpage
 \section{Vector space model}
+\subsection{Introduzione}
 \subsection{Il classificatore JEX}
+\subsection{Implementazione per catalgazione DCAT}
+
+\newpage
+\section{Support vector machine}
+\subsection{Introduzione}
+\subsection{Implementazione per catalgazione DCAT}
 
 \newpage
 \section{Bayesian learning}
@@ -353,6 +354,38 @@ def void naif_bayes_TEXT_learner(){
 #entry da classificare: x
 nuova_classificazione(x)
 \end{lstlisting}
+
+
+
+
+\newpage
+\section{Feature selection}
+La selezione delle feature è il processo che ci porta a selezionare un sottoinsieme di feature (termini nella text classification), solo questo sottoinsieme sarà utilizzato come training set per i nostri classificatori.
+I motivi principali per cui si procede ad una selezione delle feature sono due: innanzi tutto alcuni modelli possono essere addestrati solo con set di feature contenuti data la loro complessità computazionale in fase di addestramento. In secondo luogo dobbiamo considerare che i classificatori tendono ad essere più precisi quando il numero delle feature è ridotto, molte feature, non solo non sono determinanti nel determinare la classe di appartenenza di un documento, ma possono addirittura introdurre un rumore (noise feature). Le noise feature sono quelle feature che occorrendo accidentalmente in una sola classe si rendono responsabili di errate generalizzazioni che colpiscono l'accuratezza della classificazione (Overfitting).
+Introduction to Information Retrieval\footnotemark descrive tre procedure per la selezione di feature:
+\begin{itemize}  
+\item Mutual information
+\item Chi square
+\item Frequency based
+\end{itemize}
+\footnotetext{C.D. Manning, P. Raghavan, H. Schütze, Introduction to Information Retrieval, Cambridge University Press, 2008}
+\subsection{Mutual information feature selection}
+\subsection{$\chi^2$ feature selection}
+Nella selezione delle feature $\chi^2$ si sfrutta l'intuizione statistica del test $\chi^2$ che serve a determinare il grado di indipendenza tra eventi, nel nostro caso tra feature e classe di appartenenza.
+\[\chi^2(t,c)=\sum_{t \in [0,1]} \sum_{c \in [0,1]} \frac{(N_{c,t} - E_{c,t})^2}{E_{c,t}} \]  Il calcolo delle N riguarda le frequenze osservate: $N_{1,1}$ è il numero di documenti nei quali occorre il termine t nella classe c, $N_{1,0}$ è il numero di documenti nei quali non occorre il termine t nella classe c, $N_{0,1}$ è il numero di documenti nei quali occorre il termine t in tutte le classi eccetto la classe c, $N_{0,0}$ è il numero di documenti nei quali non occorre il termine t in tutte le classi eccetto c. 
+\\
+\\
+$E_{c,t}$ sono le frequenze attese che il termine t e la classe c occorrano nello stesso documento essendo indipendenti:
+\[ E_{c,t}= N \cdot P(t) \cdot P(c) \] 
+ad esempio
+\[ E_{1,1}= N \cdot \frac{N_{1,1} + N_{1,0}}{N} \cdot \frac{N_{1,1} + N_{0,1}}{N} \]
+
+\subsection{Frequency-based feature selection}
+Tra le tre procedure è la più semplice, consiste nell'andare a selezionare solo le feature che occorrono di più nelle varie classi. La frequenza può essere considerata come \say{Document frequency} (numero di documenti della classe che contengono una determinata feature), o come \say{Collection frequency} (numero di occorrenze della feature in una classe, senza considerare i documenti).
+\say{Document frequency} è più appropriata per il modello di Bernoulli, mentre invece la \say{Collection frequency} è più appropriata per il modello multinomiale. Sebbene questo metodo sia molto meno complesso rispetto agli altri due, questo approccio introduce una limitazione, nel selezionare le feature potrebbe includere feature trasversali alle classi, queste feaure non danno un contributo informativo circa il legame tra la feature e la classe.
+
+\newpage
+\section{Evaluation}
 
 \newpage
 \section{Aspetti software}
