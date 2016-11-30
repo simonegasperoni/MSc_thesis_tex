@@ -9,6 +9,7 @@
 \newtheorem{defn}[]{Definizione} % definition numbers are dependent on theorem numbers
 \newtheorem{exmp}[thm]{Example} % same for example numbers
 \usepackage{dirtytalk}
+\usepackage{graphicx}
 \usepackage{listings}
 \usepackage{color}
 \usepackage{hyperref}
@@ -95,7 +96,17 @@ I descrittori del thesaurus multilingua EuroVoc sono usati da molti parlamentari
 
 
 
-\subsection{DCAT e DCAT-AP-it}
+\subsection{DCAT, DCAT-AP e DCAT-AP-it}
+Il DCAT Application Profile (DCAT-AP) fornisce una specifica comune per la descrizione di dati della pubblica amministrazione in Europa, questa specifica è basata sullo standard DCAT: Data Catalog Vocabulary (https://www.w3.org/TR/vocab-dcat). DCAT è un vocabolario RDF progettato per facilitare l'interoperabilità tra cataloghi di dati publicati sul web. DCAT incentiva la pubblicazione di cataloghi decentrata e facilita la ricerca di dati federata tra i siti. Usando lo standard DCAT chi pubblica insiemi di dati incrementa la propria visibilità e favorisce le applicazioni che lavorano su dati e metadati su cataloghi multipli (applicazioni cross-portali).
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.45]{img/DCAT-AP_IT_UML.png}
+\caption{Modello dati DCAT-AP-it}
+\end{center}
+\end{figure}
+
+DCAT-AP-it è la versione italiana di DCAT-AP, il profilo nazionale dei metadati utili per descrivere i dati delle pubbliche amministrazioni, conforme alla specifica di DCAT-AP serve a favorire l'interoperabilità semantica di dati e servizi. DCAT-AP-it è un modello dati pensato per rendere omogenei in tutta la pubblica amministrazione italiana i processi di accesso e scambio delle informazioni tra le istituzioni stesse e tra le istituzioni e i cittadini e le imprese, in coerenza con il relativo framework europeo. L'utilizzo di un modello dati valorizza il patrimonio informativo pubblico nazionale in linea con la Direttiva relativa al riutilizzo dell'informazione del settore pubblico.
 
 
 \newpage
