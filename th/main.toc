@@ -3,28 +3,28 @@
 \contentsline {subsection}{\numberline {1.2}Interoperabilit\IeC {\`a}}{2}{subsection.1.2}
 \contentsline {subsection}{\numberline {1.3}EuroVoc e JRC-Acquis 3.0}{3}{subsection.1.3}
 \contentsline {subsection}{\numberline {1.4}DCAT, DCAT-AP e DCAT-AP-it}{3}{subsection.1.4}
-\contentsline {section}{\numberline {2}Elaborazione dei corpus}{6}{section.2}
-\contentsline {subsection}{\numberline {2.1}Lemmatizzazione}{6}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Disambiguazione}{7}{subsection.2.2}
-\contentsline {subsection}{\numberline {2.3}Stemming}{8}{subsection.2.3}
-\contentsline {section}{\numberline {3}Vector space model}{9}{section.3}
-\contentsline {subsection}{\numberline {3.1}Introduzione}{9}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Il classificatore JEX}{9}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}Implementazione per catalgazione DCAT}{9}{subsection.3.3}
-\contentsline {section}{\numberline {4}Support vector machine}{10}{section.4}
-\contentsline {subsection}{\numberline {4.1}Introduzione}{10}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Implementazione per catalgazione DCAT}{10}{subsection.4.2}
-\contentsline {section}{\numberline {5}Bayesian learning}{11}{section.5}
-\contentsline {subsection}{\numberline {5.1}Formula di Bayes}{11}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Classificatori bayesiani na\IeC {\"\i }ve}{13}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}Stima delle probabilit\IeC {\`a} (m-estimate)}{14}{subsection.5.3}
-\contentsline {subsection}{\numberline {5.4}Classificazione bayesiana di testi }{15}{subsection.5.4}
-\contentsline {subsection}{\numberline {5.5}Rappresentazione testi e stima delle probabilit\IeC {\`a}}{15}{subsection.5.5}
-\contentsline {section}{\numberline {6}Feature selection}{17}{section.6}
-\contentsline {subsection}{\numberline {6.1}Mutual information feature selection}{17}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}$\chi ^2$ feature selection}{17}{subsection.6.2}
-\contentsline {subsection}{\numberline {6.3}Frequency-based feature selection}{18}{subsection.6.3}
-\contentsline {section}{\numberline {7}Evaluation}{19}{section.7}
-\contentsline {section}{\numberline {8}Aspetti software}{20}{section.8}
-\contentsline {subsection}{\numberline {8.1}Architettura}{20}{subsection.8.1}
-\contentsline {subsection}{\numberline {8.2}Deployment}{20}{subsection.8.2}
+\contentsline {section}{\numberline {2}Elaborazione dei corpus}{5}{section.2}
+\contentsline {subsection}{\numberline {2.1}Lemmatizzazione}{5}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Disambiguazione}{6}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}Stemming}{7}{subsection.2.3}
+\contentsline {section}{\numberline {3}Vector space model}{8}{section.3}
+\contentsline {subsection}{\numberline {3.1}Introduzione}{8}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Il classificatore JEX}{8}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Implementazione per catalgazione DCAT}{8}{subsection.3.3}
+\contentsline {section}{\numberline {4}Support vector machine}{9}{section.4}
+\contentsline {subsection}{\numberline {4.1}Introduzione}{9}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Implementazione per catalgazione DCAT}{9}{subsection.4.2}
+\contentsline {section}{\numberline {5}Bayesian learning}{10}{section.5}
+\contentsline {subsection}{\numberline {5.1}Formula di Bayes}{10}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Classificatori bayesiani na\IeC {\"\i }ve}{12}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Stima delle probabilit\IeC {\`a} (m-estimate)}{13}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}Classificazione bayesiana di testi }{14}{subsection.5.4}
+\contentsline {subsection}{\numberline {5.5}Rappresentazione testi e stima delle probabilit\IeC {\`a}}{14}{subsection.5.5}
+\contentsline {section}{\numberline {6}Feature selection}{16}{section.6}
+\contentsline {subsection}{\numberline {6.1}Mutual information feature selection}{16}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}$\chi ^2$ feature selection}{16}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}Frequency-based feature selection}{17}{subsection.6.3}
+\contentsline {section}{\numberline {7}Evaluation}{18}{section.7}
+\contentsline {section}{\numberline {8}Aspetti software}{19}{section.8}
+\contentsline {subsection}{\numberline {8.1}Architettura}{19}{subsection.8.1}
+\contentsline {subsection}{\numberline {8.2}Deployment}{19}{subsection.8.2}
