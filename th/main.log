@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.10.9)  1 DEC 2016 17:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.10.9)  2 DEC 2016 10:12
 entering extended mode
 **./main.tex
 (main.tex
@@ -353,7 +353,7 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 73.
- [2] <img/DCAT-AP_IT_UML.png, id=182, 733.99219pt x 1330.21968pt>
+ [2] <img/DCAT-AP_IT_UML.png, id=177, 733.99219pt x 1330.21968pt>
 File: img/DCAT-AP_IT_UML.png Graphic file (type png)
 
 <use img/DCAT-AP_IT_UML.png>
@@ -372,45 +372,45 @@ File: uni-34.def 2013/05/13 UCS: Unicode data U+2200..U+22FF
 ) [10] [11]
 [12] [13] [14] [15]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 387.
+(Font)              <12> on input line 373.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 387.
+(hyperref)                removing `math shift' on input line 373.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\chi' on input line 387.
+(hyperref)                removing `\chi' on input line 373.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 387.
+(hyperref)                removing `superscript' on input line 373.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 387.
+(hyperref)                removing `math shift' on input line 373.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 389--393
+Underfull \hbox (badness 10000) in paragraph at lines 375--379
 
  []
 
 [16] [17] [18]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 409.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 395.
  [19]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 409.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 395.
  (main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 409.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 409.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 395.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 395.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: E95E9200B56CA563C373B1079719ED78;2078.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 409.
+(rerunfilecheck)             Checksum: A2B21A7701EE44672844121E0F9F05D0;2012.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 395.
  ) 
 Here is how much of TeX's memory you used:
- 9122 strings out of 493334
- 127462 string characters out of 3136669
+ 9120 strings out of 493334
+ 127432 string characters out of 3136669
  249139 words of memory out of 3000000
- 12437 multiletter control sequences out of 15000+200000
+ 12436 multiletter control sequences out of 15000+200000
  9975 words of font info for 35 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  37i,8n,40p,996b,1961s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -430,9 +430,9 @@ TeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTe
 X 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files (x86)/MiKTeX 2
 .9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files (x86)/MiKTeX 2.9
 /fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on main.pdf (20 pages, 462338 bytes).
+Output written on main.pdf (20 pages, 460655 bytes).
 PDF statistics:
- 417 PDF objects out of 1000 (max. 8388607)
- 122 named destinations out of 1000 (max. 500000)
- 246 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 412 PDF objects out of 1000 (max. 8388607)
+ 121 named destinations out of 1000 (max. 500000)
+ 238 words of extra memory for PDF output out of 10000 (max. 10000000)
 

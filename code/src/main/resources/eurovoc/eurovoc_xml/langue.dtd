@@ -1,0 +1,14 @@
+<!-- DTD pour le fichier des langues  -->
+<!ELEMENT LANGUES (RECORD+)>
+<!ELEMENT RECORD (LIBELLE, COURTE, TRI)>
+<!-- ev:thesaurus ev:supportedLanguage -->
+<!ELEMENT LIBELLE (#PCDATA)>
+<!-- skos:prefLabel, n values, 1 per supported language -->
+<!ELEMENT COURTE (#PCDATA)>
+<!-- ev:Language -->
+<!ELEMENT TRI (#PCDATA)>
+<!-- config or calculated skos:prefLabel[xml:lang = ev:language] -->
+<!ATTLIST LANGUES
+	VERSION CDATA #REQUIRED
+>
+<!-- calculate version on change, initial value is config, algorithm is needed (date ?, thes version?) -->

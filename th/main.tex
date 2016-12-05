@@ -81,7 +81,7 @@ Il movimento open-data si diffuse per la prima volta a seguito della promulgazio
 In questo contesto è nato il portale Data.gov, creato con l'obiettivo di raccogliere in un unico portale tutte le informazioni rese disponibili dagli enti statunitensi in formato aperto. In Italia il portale che raccoglie i dati aperti della pubblica amministrazione è Dati.gov.it
  
 \subsection{Interoperabilità}
-Tra le ragioni più importanti della filosofia open-data abbiamo l'interoperabilità, vale a dire, la capacità di diversi sistemi e organizzazioni di lavorare insieme. Nel caso specifico degli open data - ovviamente - ci riferiamo alla capacità di combinare una grande quantità di dati da diverse fonti. L'interoperabilità è importante perché permette a componenti diverse di lavorare insieme. L'abilità di rendere ciascun dato un componente e di combinare insieme vari componenti è essenziale per la costruzione di sistemi sofisticati. In assenza di interoperabilità ciò diventa quasi impossibile - come nel mito della Torre di Babele, in cui l'impossibilità di comunicare (e quindi di Inter-operare) dà luogo a un fallimento sistemico della costruzione della torre. Una chiara definizione di \say{apertura} assicura che sia possibile combinare dataset aperti provenienti da fonti diverse in modo adeguato, evitando così la \say{Torre di Babele}.
+Tra le ragioni più importanti della filosofia open data abbiamo l'interoperabilità, vale a dire, la capacità di diversi sistemi e organizzazioni di lavorare insieme. Nel caso specifico degli open data - ovviamente - ci riferiamo alla capacità di combinare una grande quantità di dati da diverse fonti. L'interoperabilità è importante perché permette a componenti diverse di lavorare insieme. L'abilità di rendere ciascun dato un componente e di combinare insieme vari componenti è essenziale per la costruzione di sistemi sofisticati. In assenza di interoperabilità ciò diventa quasi impossibile - come nel mito della Torre di Babele, in cui l'impossibilità di comunicare (e quindi di Inter-operare) dà luogo a un fallimento sistemico della costruzione della torre. Una chiara definizione di \say{apertura} assicura che sia possibile combinare dataset aperti provenienti da fonti diverse in modo adeguato, evitando così la \say{Torre di Babele}.
 \\
 Il punto cruciale di un bacino di dati (o linee di codice) accessibili e utilizzabili in modo condiviso è il fatto che potenzialmente possono essere liberamente \say{mescolati} con dati provenienti da fonti anch'esse aperte. L'interoperabilità è la chiave per realizzare il principale vantaggio pratico dell'apertura: aumenta in modo esponenziale la possibilità di combinare diverse basi di dati, e quindi sviluppare nuovi e migliori prodotti e servizi.
 \footnotemark
@@ -109,10 +109,36 @@ DCAT-AP-it è la versione italiana di DCAT-AP, il profilo nazionale dei metadati
 
 \newpage
 \section{Elaborazione dei corpus}
+Una fase preliminare in qualsiasi ambito di classificazione è l'elaborazione dei dati, la loro formattazione, per renderli fruibili da parte di sistema di classificazione.
+\\Nel contesto di un sistema di text categorization vogliamo ottenere un sistema che utilizzi feature ben rappresentative del contenuto semantico dei documenti dai quali sono estratte.
+\\
+Le strade che si possono percorrere sono principalmente due:
 
-...
+\begin{description}
+\item [Lemmatizzazione:] \say{quel complesso di operazioni che conducono a riunire tutte le forme sotto il rispettivo lemma}, intendendo per lemma \say{ciascuna parola-titolo o parola-chiave di un dizionario} e per forma ogni possibile diversa realizzazione grafica di un lemma.\footnotemark
+\footnotetext{R. Busa, Fondamenti di informatica linguistica. Istituto Geografico De Agostini, 1987}
+\\
+Esistono delle convenzioni di lemmatizzazione proprie di ciascuna lingua: ad esempio in italiano è uso convenzionale che il lemma verbale sia la forma coniugata all'infinito presente attivo.
+\\
+La lemmatizzazione è, dunque, una pratica apparentemente facile, se non, addirittura, ovvia ed intuitiva: più, o meno tutti, infatti, esercitiamo quotidianamente la conoscenza della differenza tra lemma e forma. Tuttavia, alla prova dei fatti, la lemmatizzazione rivela una serie di problemi, il più delle volte non immaginabili prima di averne fatto esperienza diretta: queste difficoltà rendono il lemmatizzare un esercizio interessante, in quanto costringe chi lo esercita a riflettere su:
+
+\begin{itemize}  
+\item Quanti e quali automatismi l'uomo metta inconsciamente in atto ogni volta che parla, o scrive.
+\item Quanto sia difficile formalizzare questi automatismi.
+\end{itemize}
+
+Esistono due tipi di lemmatizzazione:
+
+\begin{itemize}  
+\item \textbf{Lemmatizzazione morfologica:} analizza le forme di parole in isolamento, ovvero fuori dal contesto sintattico, fornendone tutti i valori che sono possibili in un dato sistema linguistico.
+\item \textbf{Lemmatizzazione morfo-sintattica:} analizza le forme di parole entro il contesto sintattico. Non è mai ambigua, ma sempre univoca, in quanto l'immersione della forma nella frase ne precisa il valore. Quindi, mentre la lemmatizzazione morfologica è indipendente dal testo, la lemmatizzazione sintattica è, invece, legata al contesto.
+\end{itemize}
+  
+\item [Stemmerizzazione:]Lo stemming è il processo usato per ridurre parole flesse al loro tema, il tema non deve necessariamente coincidere con la radice morfologica della parola: l'importante è che parole con una semantica strettamente correlata vengano mappate sullo stesso tema. Le tecniche di stemming sono studiate in informatica da quarant'anni, sono uno dei metodi di base per ridurre la dimensionalità dei documenti di testo.
+\end{description}
 
 Questo processo è reso particolarmente difficile e complesso a causa delle caratteristiche intrinseche di ambiguità del linguaggio umano. Per questo motivo il processo di elaborazione viene suddiviso in fasi diverse, tuttavia simili a quelle che si possono incontrare nel processo di elaborazione di un linguaggio di programmazione:
+
 
 \begin{itemize}
 \item \textbf{Analisi lessicale:} scomposizione di un'espressione linguistica in token (in questo caso le parole).
@@ -128,59 +154,19 @@ La comprensione del linguaggio naturale è spesso considerata un problema IA-com
 
 
 
-\subsection{Lemmatizzazione}
-La lemmatizzazione è \say{quel complesso di operazioni che conducono a riunire
-tutte le forme sotto il rispettivo lemma}, intendendo per lemma \say{ciascuna
-parola-titolo o parola-chiave di un dizionario} e per forma ogni possibile
-diversa realizzazione grafica di un lemma.\footnotemark
-\footnotetext{R. Busa, Fondamenti di informatica linguistica. Istituto Geografico De Agostini, 1987}
 
-Sono esempi di forme \say{mangerò}, \say{mangeremmo}, \say{mangiaste}, \say{mangi}: il lemma cui ciascuna di queste forme è riducibile è \say{mangiare} (ovvero, la parola che appare come entrata sui dizionari), in quanto è convenzione italiana che il lemma verbale sia rappresentato dalla forma coniugata all'infinito presente attivo.
-
-Esistono dunque delle convenzioni di lemmatizzazione proprie di ciascuna lingua: come visto, in italiano è uso convenzionale che il lemma verbale sia la forma coniugata all'infinito presente attivo.
-
-Il lemma è anche una forma: \say{mangiare} è, quindi, sia un lemma (che, da solo, rappresenta tutte le proprie possibili forme), sia una forma. Il contrario non vale: una forma non è necessariamente lemma. Infatti, mangiasse è una forma, ma non un lemma.
-
-La lemmatizzazione è, dunque, una pratica apparentemente facile, se non, addirittura, ovvia ed intuitiva: più, o meno tutti, infatti, esercitiamo quotidianamente la conoscenza della differenza tra lemma e forma. Tuttavia,
-alla prova dei fatti, la lemmatizzazione rivela una serie di problemi, il più delle volte non immaginabili prima di averne fatto esperienza diretta: queste difficoltà rendono il lemmatizzare un esercizio interessante, in quanto costringe chi lo esercita a riflettere su:
-
-\begin{itemize}  
-\item Quanti e quali automatismi l'uomo metta inconsciamente in atto ogni
-volta che parla, o scrive.
-\item Quanto sia difficile formalizzare questi automatismi.
-\end{itemize}
-
-Esistono due tipi di lemmatizzazione:
-
-\begin{itemize}  
-\item \textbf{Lemmatizzazione morfologica:} analizza le forme di parole in isolamento, ovvero fuori
-dal contesto sintattico, fornendone tutti i valori che sono possibili in
-un dato sistema linguistico.
-\item \textbf{Lemmatizzazione morfo-sintattica:} analizza le forme di parole entro il contesto sintattico. Non è mai ambigua, ma sempre univoca, in quanto l'immersione della forma nella frase ne precisa il valore. Quindi, mentre la lemmatizzazione morfologica è indipendente dal testo, la lemmatizzazione
-sintattica è, invece, legata al contesto.
-\end{itemize}
-Il lessico (o vocabolario) è il complesso delle parole e delle locuzioni di una lingua (ad esempio, il lessico italiano, il lessico greco). Un lessico in genere ha una forma molto strutturata, memorizza i significati e i possibili usi di ogni parola, codifica le relazioni fra le parole e i significati. Un dizionario è una forma di lessico in cui i significati sono espressi tramite definizioni ed esempi.
-\\
-Un lessema è l'unità minima che viene rappresentata nel lessico, associa
-il lemma (la forma ortografica scelta per rappresentare la parole) con una forma simbolica di rappresentazione del significato (il senso).
 
 \subsection{Disambiguazione}
 Molte parole nel linguaggio naturale sono delle polisemie, vale a dire, possono avere più significati. Le tecniche finalizzate alla disambiguazione sono conosciute in letteratura come \textit{Word Sense Disambiguation} (WSD).
 \\
-La WSD può essere affrontata come un problema di classificazione, il senso
-corretto è la classe da predire la parola è rappresentata con un insieme (vettore) di feature in ingresso al classificatore, l'ingresso è di solito costituito da una rappresentazione della parola da disambiguare (target) e del 
-contesto in cui si trova (un certo numero di parole a sinistra e destra della
-parola target). Il classificatore può essere stimato con tecniche di apprendimento automatico a partire da un dataset etichettato. Si possono usare diversi modelli per costruire il classificatore (Naïve Bayes, reti neurali, alberi di decisione...).
+La WSD può essere affrontata come un problema di classificazione, il senso corretto è la classe da predire la parola è rappresentata con un insieme (vettore) di feature in ingresso al classificatore, l'ingresso è di solito costituito da una rappresentazione della parola da disambiguare (target) e del contesto in cui si trova (un certo numero di parole a sinistra e destra della parola target). Il classificatore può essere stimato con tecniche di apprendimento automatico a partire da un dataset etichettato. Si possono usare diversi modelli per costruire il classificatore (Naïve Bayes, reti neurali, alberi di decisione...).
+Il problema dell'approccio appena descritto è che il modello di apprendimento supervisionato che scegliamo di adottare potrebbe richiedere un training set troppo grande per essere sufficientemente preciso, per questo motivo esistono tecniche alternative come i metodi Dictionary-based.
 \\
-Il problema dell'approccio appena descritto è che il modello di apprendimento supervisionato che scegliamo di adottare potrebbe richiedere un training set troppo grande per essere sufficientemente preciso, per questo motivo esistono tecniche alternative come i metodi .
-\\
-Tra i metodi \textit{Dictionary-based} abbiamo l'algoritmo di Lesk (1986) che è un metodo molto semplice, basato sull'intuizione secondo cui un dizionario può fornire informazioni sul contesto legato ai sensi delle parole (le glosse).  
+Tra i metodi Dictionary-based abbiamo l'algoritmo di Lesk (1986) che è un metodo molto semplice, basato sull'intuizione secondo cui un dizionario può fornire informazioni sul contesto legato ai sensi delle parole (le glosse).  
 
  
 \subsection{Stemming}
-Lo stemming è il processo usato per ridurre parole flesse al
-loro tema; il tema non deve necessariamente coincidere con la radice
-morfologica della parola: l'importante è che parole con una semantica strettamente correlata vengano mappate sullo stesso tema. Le tecniche di stemming sono studiate in informatica da quarant'anni, sono uno dei metodi di base per ridurre la dimensionalità dei documenti di testo.
+
 
 
 \newpage

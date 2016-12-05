@@ -1,0 +1,16 @@
+
+<!-- DTD pour le fichier des thesaurus  -->
+
+<!ELEMENT THESAURUS (RECORD+)>
+
+<!ELEMENT RECORD (THESAURUS_ID, LIBELLE)><!-- ev:MicroThesaurus -->
+
+<!ELEMENT THESAURUS_ID	(#PCDATA)><!-- dc:identifer -->
+
+<!ELEMENT LIBELLE			(#PCDATA)> <!-- skos:prefLabel[@xml:lang = /THESAURUS/@LNG] -->
+
+<!ATTLIST THESAURUS
+
+			LNG				CDATA		#REQUIRED
+			VERSION			CDATA		#REQUIRED >
+<!-- calculate version on change, initial value is config, algorithm is needed (date ?, thes version?) -->

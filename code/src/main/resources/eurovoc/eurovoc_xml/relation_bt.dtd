@@ -1,0 +1,15 @@
+
+<!-- DTD pour le fichier des relations BT  -->
+
+<!ELEMENT RELATIONS_BT (RECORD+)>
+
+<!ELEMENT RECORD (SOURCE_ID, CIBLE_ID)><!-- ev:ThesaurusConcept[skos:broader] -->
+
+<!ELEMENT SOURCE_ID	(#PCDATA)><!-- ev:ThesaurusConcept[skos:broader/dc:identifer]/dc:identifer -->
+
+<!ELEMENT CIBLE_ID	(#PCDATA)> <!--ev:ThesaurusConcept[dc:identifier = SOURCE_ID]skos:broader/dc:identifer -->
+
+<!ATTLIST RELATIONS_BT
+
+			VERSION		CDATA		#REQUIRED >
+<!-- calculate version on change, initial value is config, algorithm is needed (date ?, thes version?) -->

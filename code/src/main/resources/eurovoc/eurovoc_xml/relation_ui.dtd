@@ -1,0 +1,20 @@
+<!-- DTD for use instead relations -->
+<!ELEMENT RELATIONS_UI (RECORD+)>
+<!ATTLIST RELATIONS_UI
+			VERSION		CDATA		#REQUIRED >
+<!-- The EUROVOC release number -->
+
+<!ELEMENT RECORD (SOURCE_ID, CIBLE_ID)>
+<!-- The relation between an obsolete concept and its replacement
+Multiple record may exist for the same obsolete concept (because there may be more than one replacement
+Replacements must be listead under the PT of the obsolete concept using UI: <value of replacing PT>
+
+ev:ThesaurusConcept[ev:useInstead] -->
+
+<!ELEMENT SOURCE_ID	(#PCDATA)>
+<!-- The concept identifier of the obsolete term
+ev:ThesaurusConcept[skos:broader/dc:identifer]/dc:identifer -->
+
+<!ELEMENT CIBLE_ID	(#PCDATA)> 
+<!-- The concept id of the replacing concept
+ev:ThesaurusConcept[dc:identifier = SOURCE_ID]skos:broader/dc:identifer -->
