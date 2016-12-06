@@ -30,7 +30,7 @@ public class Initdb {
 	private Psql db;
 	private FeaturesExtr fe;
 	private static final int batchSize=200;
-	//private static final String[] dcats={"AGRI", "ENER", "GOVE", "INTR", "JUST", "ECON", "SOCI", "EDUC", "TECH", "TRAN", "ENVI", "REGI", "HEAL"};
+	private static final String[] dcats={"agri", "ener", "gove", "intr", "just", "econ", "soci", "educ", "tech", "tran", "envi", "regi", "heal"};
 	
 	//private static final int batchSize=150;
 	public Initdb(String inputdir, Psql db, EurovocThesaurus thesaurusInfo) throws InvalidFormatException, IOException {
@@ -261,11 +261,44 @@ public class Initdb {
 	}
 	
 	
-	public HashMap<String,Integer> sumsDCATS() throws SQLException{
+	// true if vocabulary contains voc - BAYES classifier
+		public boolean contains(String voc) throws SQLException{
+			Connection conn=this.db.getC();
+			Statement stmt = conn.createStatement();
+			ResultSet rs = stmt.executeQuery("SELECT * FROM dcatscounter WHERE voc='"+voc+"';");
+			if(rs.next()) return true;
+			return false;
+				
+		}
+	
+	// P(c) calculus - BAYES classifier
+	public HashMap<String, Double> P_c() throws SQLException{
+		Connection conn=this.db.getC();
+		HashMap<String, Double> map=new HashMap<String, Double>();
+		Statement stmt = conn.createStatement();
+		
+		double sum=0;
+		for(String d:dcats){
+			ResultSet rs = stmt.executeQuery("SELECT * FROM doccounter WHERE name='"+d.toUpperCase()+"';");
+			rs.next();
+			double aux=rs.getInt("count");
+			map.put(d,aux);
+			sum=sum+aux;
+		}
+		
+		for(String d:dcats){
+			map.put(d,map.get(d)/sum);
+		}
+		
+		return map;
+	}
+	
+	// terms counter per category DCAT - BAYES classifier
+	public HashMap<String, Integer> sums() throws SQLException, InvalidFormatException, IOException{
 		//String corpus="";
 		//AGRI, ENER, GOVE, INTR, JUST, ECON, SOCI, EDUC, TECH, TRAN, ENVI, REGI, HEAL
 		Connection conn=this.db.getC();
-		HashMap<String, Integer> map=new HashMap<String, Integer>();
+		HashMap<String, Integer>sums=new HashMap<String, Integer>();
 		Statement stmt = conn.createStatement();
 		ResultSet rs = stmt.executeQuery("SELECT "
 										+ "sum(agri) as agri, "
@@ -283,42 +316,78 @@ public class Initdb {
 										+ "sum(heal) as heal "
 										+ "FROM dcatscounter");
 		rs.next();
-		map.put("agri",rs.getInt("agri"));
-		map.put("ener",rs.getInt("ener"));
-		map.put("gove",rs.getInt("gove"));
-		map.put("intr",rs.getInt("intr"));
-		map.put("just",rs.getInt("just"));
-		map.put("econ",rs.getInt("econ"));
-		map.put("soci",rs.getInt("soci"));
-		map.put("educ",rs.getInt("educ"));
-		map.put("tech",rs.getInt("tech"));
-		map.put("tran",rs.getInt("tran"));
-		map.put("envi",rs.getInt("envi"));
-		map.put("regi",rs.getInt("regi"));
-		map.put("heal",rs.getInt("heal"));
-		
-		/*
-		System.out.println("1  agri " + map.get("agri"));
-		System.out.println("2  ener " + map.get("ener"));
-		System.out.println("3  gove " + map.get("gove"));
-		System.out.println("4  intr " + map.get("intr"));
-		System.out.println("5  just " + map.get("just"));
-		System.out.println("6  econ " + map.get("econ"));
-		System.out.println("7  soci " + map.get("soci"));
-		System.out.println("8  educ " + map.get("educ"));
-		System.out.println("9  tech " + map.get("tech"));
-		System.out.println("10 tran " + map.get("tran"));
-		System.out.println("11 envi " + map.get("envi"));
-		System.out.println("12 regi " + map.get("regi"));
-		System.out.println("13 heal " + map.get("heal"));
-		*/
-		
-		return map;
+		sums.put("agri",rs.getInt("agri"));
+		sums.put("ener",rs.getInt("ener"));
+		sums.put("gove",rs.getInt("gove"));
+		sums.put("intr",rs.getInt("intr"));
+		sums.put("just",rs.getInt("just"));
+		sums.put("econ",rs.getInt("econ"));
+		sums.put("soci",rs.getInt("soci"));
+		sums.put("educ",rs.getInt("educ"));
+		sums.put("tech",rs.getInt("tech"));
+		sums.put("tran",rs.getInt("tran"));
+		sums.put("envi",rs.getInt("envi"));
+		sums.put("regi",rs.getInt("regi"));
+		sums.put("heal",rs.getInt("heal"));
+		return sums;
 	}
+	
+	// term frequency per category - BAYES classifier
+	public HashMap<String, Integer> tf(String voc) throws SQLException, InvalidFormatException, IOException{
+		//String corpus="";
+		//AGRI, ENER, GOVE, INTR, JUST, ECON, SOCI, EDUC, TECH, TRAN, ENVI, REGI, HEAL
+		Connection conn=this.db.getC();
+		HashMap<String, Integer>tf=new HashMap<String, Integer>();
+		Statement stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery("SELECT * from dcatscounter where voc='"+voc+"';");
+							
+		rs.next();
+		tf.put("agri",rs.getInt("agri"));
+		tf.put("ener",rs.getInt("ener"));
+		tf.put("gove",rs.getInt("gove"));
+		tf.put("intr",rs.getInt("intr"));
+		tf.put("just",rs.getInt("just"));
+		tf.put("econ",rs.getInt("econ"));
+		tf.put("soci",rs.getInt("soci"));
+		tf.put("educ",rs.getInt("educ"));
+		tf.put("tech",rs.getInt("tech"));
+		tf.put("tran",rs.getInt("tran"));
+		tf.put("envi",rs.getInt("envi"));
+		tf.put("regi",rs.getInt("regi"));
+		tf.put("heal",rs.getInt("heal"));
+		
+		return tf;
+	}
+	
+	public HashMap<String, Double> bayesPrediction(String corpus) throws InvalidFormatException, IOException, SQLException{
+		ArrayList<String> features=new ArrayList<String>();
+		ArrayList<String> features2=fe.execute(corpus);
+		for(String f:features2){
+			if(contains(f)) features.add(f);
+		}
+		
+		
+		HashMap<String, Integer> sums=sums();
+		
+		
+		HashMap<String, Double> pc=P_c();
+		
+		for(String f:features){
+			System.out.println(f);
+			HashMap<String, Integer> tf=tf(f);
+			for(String d:dcats){
+				pc.put(d,pc.get(d)*(tf.get(d))/(sums.get(d)));
+			}
+			
+		}
+		return pc;
+	}
+	
 	
 	public static void main (String[] args) 
 			throws InvalidFormatException, IOException, SQLException, XQException, FileWithoutEurovocTagException{
 	
+		
 		System.out.print("Loading thesaurus information... ");
 		File f=new File("src/main/resources/eurovoc/eurovoc_xml");
 		EurovocThesaurus thesaurusInfo = new EurovocThesaurus.Builder(f, "it").build();
@@ -326,12 +395,23 @@ public class Initdb {
 		System.out.println("domainMap: "+thesaurusInfo.domainMap.size());
 		System.out.println("microThesaurusMap: "+thesaurusInfo.microThesaurusMap.size());
 		System.out.println("conceptMap: "+thesaurusInfo.conceptMap.size());
+	
 		
 		Psql db=new Psql("indexdb","postgres","postgres");
 		Initdb initdb=new Initdb("C:/Users/simone/Desktop/it-acquis3", db, thesaurusInfo);
 		//initdb2.concurrentInitIndexDOCFEATURES(8);
-		initdb.sumsDCATS();
 		
+	
+		HashMap<String, Double> res=initdb.bayesPrediction(" Degenza per disciplina osp. Regina Apostolorum 2007 "
+				+ "Giornate di degenza per disciplina nell'Ospedale Regina Apostolorum di Albano Laziale - 2007. "
+				+ "Questo documento parla di sanità e degenza");
+		double max=0.0;
+		for(String d:dcats){
+			double current=res.get(d);
+			if (current>max) max=current;  
+		}
+		System.out.println(max);
+	
 	}
 }
 

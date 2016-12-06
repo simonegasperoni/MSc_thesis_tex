@@ -1,4 +1,4 @@
-create table dcatscounter AS
+create table doccounter AS
 	SELECT 'ECON' as name, COUNT(*) FROM docdcats where array_length(dcats, 1)<=3 and dcats && '{ECON}'::text[]
 	UNION
 	SELECT 'REGI' as name, COUNT(*) FROM docdcats WHERE array_length(dcats, 1)<=3 and dcats && '{REGI}'::text[]

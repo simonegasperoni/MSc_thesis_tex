@@ -1,13 +1,7 @@
 # cata
-MSc Computer engineering thesis about open-data categorization
+MSc Computer engineering thesis about open-data categorization and text mining.
 
-
-
-* https://opennlp.apache.org
-
-* opennlp models for italian pos tagging and tokenizer by https://github.com/aciapetti/opennlp-italian-models
-
-* dataset JRC-ACQUIS Multilingual Parallel Corpus, Version 2.2, http://optima.jrc.it/Acquis/index_2.2.html
-
-* stemming by https://github.com/snowballstem
+* italians open-data hub, http://www.sciamlab.com/opendatahub
+* JRC-ACQUIS Multilingual Parallel Corpus, Version 3.0, http://optima.jrc.it/Acquis/JRC-Acquis.3.0/corpus
+* stemming by Snowball, https://github.com/snowballstem
 
