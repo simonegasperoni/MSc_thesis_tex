@@ -35,7 +35,7 @@
 }
 
 \author{Simone Gasperoni}
-\title{Appunti per la tesi}
+\title{Catalogazione DCAT di open data amministrativi e governativi con tecniche di text mining}
 
 \begin{document}
 
@@ -47,7 +47,7 @@
 
 \hrulefill
 
-{ \huge \bfseries Appunti per la tesi \\[0.4cm] }
+{ \huge \bfseries Catalogazione DCAT di open data amministrativi e governativi con tecniche di text mining \\[0.4cm] }
 \textsc{\Large Simone Gasperoni}\\[0.5cm]
 \vfill
 \LaTeX
@@ -361,15 +361,20 @@ nuova_classificazione(x)
 \newpage
 \section{Feature selection}
 La selezione delle feature è il processo che ci porta a selezionare un sottoinsieme di feature (termini nella text classification), solo questo sottoinsieme sarà utilizzato come training set per i nostri classificatori.
-I motivi principali per cui si procede ad una selezione delle feature sono due: innanzi tutto alcuni modelli possono essere addestrati solo con set di feature contenuti data la loro complessità computazionale in fase di addestramento. In secondo luogo dobbiamo considerare che i classificatori tendono ad essere più precisi quando il numero delle feature è ridotto, molte feature, non solo non sono determinanti nel determinare la classe di appartenenza di un documento, ma possono addirittura introdurre un rumore (noise feature). Le noise feature sono quelle feature che occorrendo accidentalmente in una sola classe si rendono responsabili di errate generalizzazioni che colpiscono l'accuratezza della classificazione (Overfitting).
+I motivi principali per cui si procede ad una selezione delle feature sono due: innanzi tutto alcuni modelli possono essere addestrati solo con un insieme di feature  contenuto, data la loro complessità computazionale in fase di addestramento o predizione. In secondo luogo dobbiamo considerare che i classificatori tendono ad essere più precisi quando il numero delle feature è ridotto, molte feature, non solo non sono determinanti nell'individuazione della classe di appartenenza di un documento, ma possono addirittura introdurre un rumore (noise feature). Le noise feature sono quelle feature che occorrendo accidentalmente in una sola classe si rendono responsabili di errate generalizzazioni che colpiscono l'accuratezza della classificazione (Overfitting).
 Introduction to Information Retrieval\footnotemark descrive tre procedure per la selezione di feature:
 \begin{itemize}  
 \item Mutual information
 \item Chi square
 \item Frequency based
 \end{itemize}
+Queste tre procedure ci permettono di ottenere una misura di utilità di ciascuna feature.
+
 \footnotetext{C.D. Manning, P. Raghavan, H. Schütze, Introduction to Information Retrieval, Cambridge University Press, 2008}
+
 \subsection{Mutual information feature selection}
+Mutual information di un termine t e una classe c è la misura di quanto la feature contribuisce a determinare la corretta classificazione
+
 \subsection{$\chi^2$ feature selection}
 Nella selezione delle feature $\chi^2$ si sfrutta l'intuizione statistica del test $\chi^2$ che serve a determinare il grado di indipendenza tra eventi, nel nostro caso tra feature e classe di appartenenza.
 \[\chi^2(t,c)=\sum_{t \in [0,1]} \sum_{c \in [0,1]} \frac{(N_{c,t} - E_{c,t})^2}{E_{c,t}} \]  Il calcolo delle N riguarda le frequenze osservate: $N_{1,1}$ è il numero di documenti nei quali occorre il termine t nella classe c, $N_{1,0}$ è il numero di documenti nei quali non occorre il termine t nella classe c, $N_{0,1}$ è il numero di documenti nei quali occorre il termine t in tutte le classi eccetto la classe c, $N_{0,0}$ è il numero di documenti nei quali non occorre il termine t in tutte le classi eccetto c. 
@@ -386,6 +391,78 @@ Tra le tre procedure è la più semplice, consiste nell'andare a selezionare sol
 
 \newpage
 \section{Evaluation}
+La validazione di un sistema di text categorization è basata sulla classificazione di un campione di esempi che sono stati categorizzati manualmente da esperti del dominio. Quando si vuole valutare un sistema di text categorization si devono confrontare le categorie assegnate manualmente con le categorie assegnate dal sistema di text categorization.
+\\
+\\
+Consideriamo la seguente casistica, nella quale diamo una rappresentazione binaria alle varie possibilità di assegnazione di una determinata categoria ad un determinato documento, distinguendo l'assegnazione del sistema da quella dell'esperto del dominio.
+\\
+\\
+\begin{tabular}{l*{6}{c}r}
+classe assegnata dall'esperto del dominio:  & SI & NO \\
+\hline
+classe assegnata dal classificatore: SI & TP & FP \\
+classe assegnata dal classificatore: NO & FN & TN \\
+\end{tabular}
+\\
+\\
+Abbiamo TP: true positive, FP: false positive, FN: false negative e TN: true negative; questi valori vanno interpretati nel seguente modo:
+\begin{itemize}
+\item \textbf{true positive:} il sistema e l'esperto del dominio sono coerenti nell'assegnazione della categoria.
+\item \textbf{false positive:} la categoria è assegnata dal sistema ma non dall'esperto del dominio.
+\item  \textbf{true negative:} la categoria non è assegnata né dal sistema né dall'esperto del dominio.
+\item \textbf{false negative:} la categoria è assegnata dall'esperto ma non dal sistema.
+\end{itemize}
+
+
+\subsection{Metriche per l'evaluation}
+Piuttosto che avere tutti questi valori binari per ciascuna coppia documento-categoria siamo interessati ad avere una somma che rappresenti tutti i valori per ciascuna delle quattro tipologie (true positive, false positive, true negative, false negative) per tutti i documenti e categorie. Questi quattro valori sono le grandezze che stanno alla base di varie metriche utili per l'evaluation del sistema di classificazione.
+
+\[ Precision: \quad P= \frac{TP}{TP+FP} \]
+\\
+La Precision è una misura utile per quantificare la precisione del sistema sul campione di categorie selezionate a valle della classificazione, è il rapporto tra le categorie correttamente assegnate e tutte quelle assegnate.
+\[ Recall: \quad R= \frac{TP}{TP+FN} \]
+La Recall (in italiano \say{recupero}) è utile per misurare la frazione di categorie assegnate dall'esperto a valle della classificazione del sistema. La recall è il rapporto tra categorie assegnate e tutte le categorie di appartenenza di un documento. 
+\\
+Recall e Precision sono due metriche basilari nei sistemi di information retrieval, trovare un equilibrio tra queste due grandezze non è facile, è necessario un compromesso, in quanto, incrementando la precision abbiamo il declino della recall e viceversa. In una categorizzazione multi-label nella quale restituiamo poche categorie per documento è verosimile avere precision alta e recall bassa, mentre invece, se assegniamo molte categorie sarà più probabile avere recall alta a scapito di precision.
+
+
+\[ Fallout: \quad F= \frac{FP}{FP+TN} \]
+
+\[ Accuracy: \quad F= \frac{TP+TN}{TP+FP+FN+TN} \]
+Utile per quantificare l'accuratezza generale del sistema.
+\[ Error: \quad F= \frac{FP+FN}{TP+FP+FN+TN} \]
+F-measure e Interpolated-break-even sono due grandezze che sintetizzano in un solo valore la precision e la recall di un sistema di classificazione:
+\\
+La F-measure (anche nota come F1-score) è la media armonica 
+\[ F-measure: \quad F1= \frac{2PR}{P+R} \]
+\[ Interpolated-break-even: \quad IB= \frac{P+R}{2} \]
+
+Tra le due metriche è preferibile usare l'F1, in quanto più sensibile a valori di precision o recall molto bassi.
+
+
+
+\subsection{K-fold-cross-validation}
+
+
+Training set: a set of examples used for learning: to fit the parameters of the classifier In the MLP case, we would use the training set to find the “optimal” weights with the back-prop rule
+
+Validation set: a set of examples used to tune the parameters of a classifier In the MLP case, we would use the validation set to find the “optimal” number of hidden units or determine a stopping point for the back-propagation algorithm
+
+Test set: a set of examples used only to assess the performance of a fully-trained classifier In the MLP case, we would use the test to estimate the error rate after we have chosen the final model (MLP size and actual weights) After assessing the final model on the test set, YOU MUST NOT tune the model any further!
+
+Why separate test and validation sets? The error rate estimate of the final model on validation data will be biased (smaller than the true error rate) since the validation set is used to select the final model After assessing the final model on the test set, YOU MUST NOT tune the model any further!
+
+
+
+Introduction to Pattern Analysis, Ricardo Gutierrez-Osuna Texas A\&M University, Texas A\&M University
+
+
+Gli algoritmi di apprendimento supervisionato per la text categorization (Bayes-multinomiale, Bayes-Bernoulli, VSM-Rocchio, VSM-Knn, SVM, sono tutti supervisionati) hanno bisogno di un test dataset ed un training dataset per poter essere valutati. Questi due insiemi devono essere disgiunti per avere delle buone stime delle performance del sistema di classificazione.
+
+
+La k-fold-cross-validation (in italiano validazione incrociata) è una tecnica utilizzabile in presenza di un training set abbastanza grande. In particolare la k-fold cross-validation consiste nella suddivisione del dataset totale in k parti di uguale numerosità e, ad ogni passo, la k-esima parte del dataset viene ad essere il test dataset, mentre la restante parte costituisce il training dataset. Così, per ognuna delle k parti (di solito k=10, k=5) si allena il modello, evitando quindi problemi di overfitting, ma anche di campionamento asimmetrico (e quindi affetto da bias) del training dataset, tipico della suddivisione del dataset in due sole parti (ovvero training e test dataset). In altre parole, si suddivide il campione osservato in gruppi di egual numerosità, si esclude iterativamente un gruppo alla volta e lo si cerca di predire con i gruppi non esclusi. Ciò al fine di verificare la bontà del modello di predizione utilizzato.
+\\
+
 
 \newpage
 \section{Aspetti software}
