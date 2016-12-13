@@ -147,13 +147,9 @@ Questo processo è reso particolarmente difficile e complesso a causa delle cara
 \item  \textbf{Analisi semantica:} assegnazione di un significato (semantica) alla struttura sintattica e, di conseguenza, all'espressione linguistica.
 \end{itemize}
 
-
 Nell'analisi semantica la procedura automatica che attribuisce all'espressione linguistica un significato tra i diversi possibili è detta disambiguazione.
 La comprensione del linguaggio naturale è spesso considerata un problema IA-completo, poiché si pensa che il riconoscimento del linguaggio richieda una conoscenza estesa del mondo e una grande capacità di manipolarlo. Per questa ragione, la definizione di \say{comprensione} è uno dei maggiori problemi dell'elaborazione del linguaggio naturale.\footnotemark
 \footnotetext{I. Chiari, Introduzione alla linguistica computazionale. Laterza, 2007}
-
-
-
 
 
 \subsection{Disambiguazione}
@@ -184,10 +180,9 @@ Tra i metodi Dictionary-based abbiamo l'algoritmo di Lesk (1986) che è un metod
 \section{Bayesian learning}
 
 L'apprendimento bayesiano è un metodo computazionale di apprendimento automatico basato sul calcolo delle probabilità, che può fornire predizioni probabilistiche sfruttando i principi del teorema di Bayes per realizzare un apprendimento non supervisionato (mediante le Reti Bayesiane e i classificatori bayesiani).
-
- I classificatori bayesani sono metodi statistici di classificazione, predicono la probabilità che una data istanza appartenga ad una certa classe.
-
-
+\\
+I classificatori bayesani sono metodi statistici di classificazione, predicono la probabilità che una data istanza appartenga ad una certa classe.
+\\
 I classificatori bayesiani sono metodi incrementali: ogni istanza dell’insieme di addestramento modifica in maniera incrementale la probabilità che una ipotesi sia corretta.
 La conoscenza già acquisita può essere combinata facilmente con le nuove osservazioni basta aggiornare i conteggi. Questi metodi sono utilizzati ad esmpio in Mozilla o SpamAssassin per riconoscere le mail spam dalle mail ham.\footnotemark
 
@@ -200,7 +195,7 @@ $$\sum_{n=1}^{n} P(E=e_i)=1$$
 $$P(E=e_1\cup E=e_2)=P(E=e_1)+P(E=e_2)\footnotemark$$
 \footnotetext{gli eventi e1 ed e2 sono disgiunti}
 Un modello probabilistico consiste in uno spazio di possibili esiti mutualmente esclusivi insieme alla misura di probabilità associata ad ogni esito.
-Che tempo fa domani? esiti: \{SOLE, NUVOLE, PIOGGIA, NEVE\}, l’evento corrispondente ad una precipitazione è il sottoinsieme \{PIOGGIA, NEVE\}.
+Che tempo fa domani? esiti: \{SOLE, NUVOLE, PIOGGIA, NEVE\}, l'evento corrispondente ad una precipitazione è il sottoinsieme \{PIOGGIA, NEVE\}.
 \begin{defn}
 	La probabilità condizionale è definita come: $$P(B|A)=\frac{P(B \cap A)}{P(A)}$$
 \end{defn}
@@ -209,14 +204,12 @@ Che tempo fa domani? esiti: \{SOLE, NUVOLE, PIOGGIA, NEVE\}, l’evento corrispo
 \end{defn}
 
 \subsection{Formula di Bayes}
-Il teorema di Bayes (conosciuto anche come formula di Bayes o teorema della probabilità delle cause), proposto da Thomas Bayes, deriva da due teoremi fondamentali delle probabilità: il teorema della probabilità composta e il teorema della probabilità assoluta. Viene impiegato per calcolare la probabilità di una causa che ha scatenato l'evento verificato.\footnotemark
-\footnotetext{wikipedia.it}
+Il teorema di Bayes (formula di Bayes o teorema della probabilità delle cause), proposto da Thomas Bayes, deriva da due teoremi fondamentali delle probabilità: il teorema della probabilità composta e il teorema della probabilità assoluta. Viene impiegato per calcolare la probabilità di una causa che ha scatenato l'evento verificato.
 \begin{thm}
-	gli eventi A (per ogni i) sono stocasticamente indipendenti e sono spesso chiamati cause di E, vale a dire:
-	$$E \subset \bigcup\limits_{j=1}^{n} A_j $$
-	abbiamo
-	$$P(A_{i}|E)={\frac  {P(E|A_{i})P(A_{i})}{P(E)}}={\frac  {P(E|A_{i})P(A_{i})}
-		{\sum {n \atop j=1}P(E|A_{j})P(A_{j})}}$$
+gli eventi A (per ogni i) sono stocasticamente indipendenti e sono spesso chiamati cause di E, vale a dire:
+$$E \subset \bigcup\limits_{j=1}^{n} A_j $$
+abbiamo
+$$P(A_{i}|E)={\frac  {P(E|A_{i})P(A_{i})}{P(E)}}={\frac  {P(E|A_{i})P(A_{i})}{\sum {n \atop j=1}P(E|A_{j})P(A_{j})}}$$
 Segue la dimostrazione.\footnotemark
 Dalla teoria delle probabilità condizionali abbiamo:
 $$(1)\,\,\, P(A_i|E)=\frac{P(A_i\cap E)}{P(E)}$$
@@ -252,7 +245,7 @@ Se X è composta dagli attributi 'a' con indice da 1 a m, otteniamo
 $$P(X|C_i)=\prod_{j=1}^m P(A_j=a_j|C_i)$$
 per il calcolo di 
 $$P(A_j=a_j|C_i)$$
-La formula che verrà utilizzata nella fase di predizione dal classificatore sarà pertato:
+La formula che verrà utilizzata nella fase di predizione dal classificatore sarà pertanto:
 $$v=Max_i [P(C_i)\prod_{j=1}^m P(A_j=a_j|C_i)]$$
 dove $v$ è la categoria predetta.
 
@@ -355,9 +348,6 @@ def void naif_bayes_TEXT_learner(){
 nuova_classificazione(x)
 \end{lstlisting}
 
-
-
-
 \newpage
 \section{Feature selection}
 La selezione delle feature è il processo che ci porta a selezionare un sottoinsieme di feature (termini nella text classification), solo questo sottoinsieme sarà utilizzato come training set per i nostri classificatori.
@@ -415,7 +405,7 @@ Abbiamo TP: true positive, FP: false positive, FN: false negative e TN: true neg
 
 
 \subsection{Metriche per l'evaluation}
-Piuttosto che avere tutti questi valori binari per ciascuna coppia documento-categoria siamo interessati ad avere una somma che rappresenti tutti i valori per ciascuna delle quattro tipologie (true positive, false positive, true negative, false negative) per tutti i documenti e categorie. Questi quattro valori sono le grandezze che stanno alla base di varie metriche utili per l'evaluation del sistema di classificazione.
+Piuttosto che avere tutti questi valori binari per ciascuna coppia documento-categoria siamo interessati ad avere quattro valori che rappresentino ciascuna delle quattro tipologie (true positive, false positive, true negative, false negative), pertanto è necessario sommare questi quattro valori per tutte le coppie documento-categoria. Questi quattro valori sono le grandezze che stanno alla base di varie metriche utili per l'evaluation del sistema di classificazione.
 
 \[ Precision: \quad P= \frac{TP}{TP+FP} \]
 \\
@@ -442,27 +432,18 @@ Tra le due metriche è preferibile usare l'F1, in quanto più sensibile a valori
 
 
 \subsection{K-fold-cross-validation}
-
-
-Training set: a set of examples used for learning: to fit the parameters of the classifier In the MLP case, we would use the training set to find the “optimal” weights with the back-prop rule
-
-Validation set: a set of examples used to tune the parameters of a classifier In the MLP case, we would use the validation set to find the “optimal” number of hidden units or determine a stopping point for the back-propagation algorithm
-
-Test set: a set of examples used only to assess the performance of a fully-trained classifier In the MLP case, we would use the test to estimate the error rate after we have chosen the final model (MLP size and actual weights) After assessing the final model on the test set, YOU MUST NOT tune the model any further!
-
-Why separate test and validation sets? The error rate estimate of the final model on validation data will be biased (smaller than the true error rate) since the validation set is used to select the final model After assessing the final model on the test set, YOU MUST NOT tune the model any further!
-
-
-
-Introduction to Pattern Analysis, Ricardo Gutierrez-Osuna Texas A\&M University, Texas A\&M University
-
-
 Gli algoritmi di apprendimento supervisionato per la text categorization (Bayes-multinomiale, Bayes-Bernoulli, VSM-Rocchio, VSM-Knn, SVM, sono tutti supervisionati) hanno bisogno di un test dataset ed un training dataset per poter essere valutati. Questi due insiemi devono essere disgiunti per avere delle buone stime delle performance del sistema di classificazione.
-
-
-La k-fold-cross-validation (in italiano validazione incrociata) è una tecnica utilizzabile in presenza di un training set abbastanza grande. In particolare la k-fold cross-validation consiste nella suddivisione del dataset totale in k parti di uguale numerosità e, ad ogni passo, la k-esima parte del dataset viene ad essere il test dataset, mentre la restante parte costituisce il training dataset. Così, per ognuna delle k parti (di solito k=10, k=5) si allena il modello, evitando quindi problemi di overfitting, ma anche di campionamento asimmetrico (e quindi affetto da bias) del training dataset, tipico della suddivisione del dataset in due sole parti (ovvero training e test dataset). In altre parole, si suddivide il campione osservato in gruppi di egual numerosità, si esclude iterativamente un gruppo alla volta e lo si cerca di predire con i gruppi non esclusi. Ciò al fine di verificare la bontà del modello di predizione utilizzato.
 \\
-
+Training set: è un insieme di esempi usato per l'addestramento (apprendimento) del classificatore.
+\\
+Validation set: è un insieme di esempi usato per regolare i parametri del classificatore.
+\\
+Test set: è uni insieme di esempi usato per assegnare le performance di un classificatore addestrato.
+\\
+Se non separassimo gli insiemi di test e di validation la stima di errore di un modello sulla validazione sarà parziale (inferiore) in quanto il validation set è utilizzato per selezionare il modello finale, infine si può procedere alla valutazione del modello finale sul test set.
+\footnotetext{Ricardo Gutierrez-Osuna, Introduction to Pattern Analysis, Texas A\&M University}
+\\
+La k-fold-cross-validation (in italiano validazione incrociata) è una tecnica utilizzabile in presenza di un training set abbastanza grande. In particolare la k-fold cross-validation consiste nella suddivisione del dataset totale in k parti di uguale numerosità e, ad ogni passo, la k-esima parte del dataset viene ad essere il test dataset, mentre la restante parte costituisce il training dataset. Così, per ognuna delle k parti (di solito k=10, k=5) si allena il modello, evitando quindi problemi di overfitting, ma anche di campionamento asimmetrico (e quindi affetto da bias) del training dataset, tipico della suddivisione del dataset in due sole parti (ovvero training e test dataset). In altre parole, si suddivide il campione osservato in gruppi di egual numerosità, si esclude iterativamente un gruppo alla volta e lo si cerca di predire con i gruppi non esclusi. Ciò al fine di verificare la bontà del modello di predizione utilizzato.
 
 \newpage
 \section{Aspetti software}

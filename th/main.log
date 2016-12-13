@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.10.9)  12 DEC 2016 17:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.10.9)  13 DEC 2016 13:16
 entering extended mode
 **./main.tex
 (main.tex
@@ -372,65 +372,65 @@ File: uni-34.def 2013/05/13 UCS: Unicode data U+2200..U+22FF
 ) [10] [11]
 [12] [13] [14] [15]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 378.
+(Font)              <12> on input line 370.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 378.
+(hyperref)                removing `math shift' on input line 370.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\chi' on input line 378.
+(hyperref)                removing `\chi' on input line 370.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 378.
+(hyperref)                removing `superscript' on input line 370.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 378.
+(hyperref)                removing `math shift' on input line 370.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 380--384
+Underfull \hbox (badness 10000) in paragraph at lines 372--376
 
  []
 
 [16] [17]
-Underfull \hbox (badness 10000) in paragraph at lines 394--409
+Underfull \hbox (badness 10000) in paragraph at lines 386--401
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 394--409
+Underfull \hbox (badness 10000) in paragraph at lines 386--401
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 394--409
+Underfull \hbox (badness 10000) in paragraph at lines 386--401
 
  []
 
 
-Overfull \hbox (21.7168pt too wide) in paragraph at lines 410--411
+Overfull \hbox (21.7168pt too wide) in paragraph at lines 402--403
 []\OT1/cmr/bx/n/10 true pos-i-tive: \OT1/cmr/m/n/10 il sis-tema e l'esperto del
  do-minio sono co-er-enti nell'assegnazione
  []
 
-[18] [19]
-Underfull \hbox (badness 10000) in paragraph at lines 461--463
-
- []
-
-[20]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 470.
+[18]pdfTeX warning (ext4): destination with the same identifier (name{Hfootnote
+.12}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.446 ... Pattern Analysis, Texas A\&M University}
+                                                   [19] [20]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 455.
  [21]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 470.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 455.
  (main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 470.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 470.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 455.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 455.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 388E998BE84447DBBCBD3C9591FFAC2F;2162.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 470.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 455.
  ) 
 Here is how much of TeX's memory you used:
  9126 strings out of 493334
@@ -456,7 +456,7 @@ TeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTe
 X 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files (x86)/MiKTeX 2
 .9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files (x86)/MiKTeX 2.9
 /fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on main.pdf (22 pages, 471886 bytes).
+Output written on main.pdf (22 pages, 471671 bytes).
 PDF statistics:
  430 PDF objects out of 1000 (max. 8388607)
  125 named destinations out of 1000 (max. 500000)
