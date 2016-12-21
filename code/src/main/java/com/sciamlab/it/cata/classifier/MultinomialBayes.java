@@ -1,4 +1,7 @@
 package com.sciamlab.it.cata.classifier;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -61,16 +64,34 @@ public class MultinomialBayes implements Classifier{
 		}
 		return tp;
 	}
-		
-	public ClassifiedEntry predict(PredictionEntry entry) throws Exception {
-		
+	
+	//thresholding
+	private static Map<Theme,Double> normalize(Map<Theme,Double> results, double threshold){
+		Map<Theme,Double> normres=new HashMap<Theme,Double>();
+		double maxValueInMap=(Collections.max(results.values()));
+		//System.out.println(maxValueInMap);
+		for(Theme t:results.keySet()){
+			double score=round(results.get(t)/maxValueInMap,2);
+			if(score>threshold)
+				normres.put(t,score);
+		}
+		return normres;
+	}
+	
+	private static double round(double value, int places) {
+	    if (places < 0) throw new IllegalArgumentException();
+	    BigDecimal bd = new BigDecimal(value);
+	    bd = bd.setScale(places, RoundingMode.HALF_UP);
+	    return bd.doubleValue();
+	}
+	
+	public ClassifiedEntry predict(PredictionEntry entry, double score) throws Exception {
 		List<String> featuresToPredict=fe.extract(entry);
-		
 		Map<Theme,Double> tp=termsProd(featuresToPredict);
 		Map<Theme,Double> pc=P_c();
 		Map<Theme,Double> results=new HashMap<Theme,Double>();
-		
-		for(Theme t:tp.keySet()) results.put(t, pc.get(t)*tp.get(t));
-		return new ClassifiedEntry(featuresToPredict, results);
+		for(Theme t:tp.keySet()) 
+			results.put(t, pc.get(t)*tp.get(t));
+		return new ClassifiedEntry(featuresToPredict, normalize(results, score));
 	}
 }

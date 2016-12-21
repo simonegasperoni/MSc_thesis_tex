@@ -5,7 +5,6 @@ import com.sciamlab.common.util.SciamlabStreamUtils;
 import com.sciamlab.it.cata.classifier.ClassifiedEntry;
 import com.sciamlab.it.cata.classifier.Classifier;
 import com.sciamlab.it.cata.classifier.MultinomialBayes;
-import com.sciamlab.it.cata.classifier.MultivariateBayes;
 import com.sciamlab.it.cata.classifier.PredictionEntry;
 import com.sciamlab.it.cata.feature.FeatureExtractor;
 import com.sciamlab.it.cata.feature.OpenNlpExtractor;
@@ -44,13 +43,13 @@ public class Cata{
 		AcquisTrainingSource acquisTrainingSource = new AcquisTrainingSource();
 		TrainingSet ts=acquisTrainingSource.getTrainingSet();
 	    
-		MultivariateBayes bayes=new MultivariateBayes(ts,fe);
+		Classifier bayes=new MultinomialBayes(ts,fe);
 	    
 		PredictionEntry pe=new PredictionEntry(null, "Depositi e impieghi bancari per abitante in alcuni Comuni della "
 				+ "Provincia di Roma 2010. Depositi e impieghi bancari per abitante nei Comuni delle colline litoranee "
 				+ "dei Colli Albani e nella pianura di Anzio e Nettuno - 31 dicembre 2010.", null);
 		
-		ClassifiedEntry ce=bayes.predict(pe);
+		ClassifiedEntry ce=bayes.predict(pe, 0.5);
 		System.out.println(ce);
 	}
 

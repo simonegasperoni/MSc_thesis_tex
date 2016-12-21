@@ -3,7 +3,7 @@ import com.sciamlab.it.cata.feature.FeatureExtractor;
 import com.sciamlab.it.cata.training.TrainingSet;
 
 public interface Classifier {
-	public ClassifiedEntry predict(PredictionEntry entry) throws Exception;
+	public ClassifiedEntry predict(PredictionEntry entry, double score) throws Exception;
 
 	public static class Factory{
 		public static  Classifier build(

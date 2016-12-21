@@ -62,7 +62,7 @@ public class MultivariateBayes implements Classifier{
 		return tp;
 	}
 		
-	public ClassifiedEntry predict(PredictionEntry entry) throws Exception {
+	public ClassifiedEntry predict(PredictionEntry entry, double score) throws Exception {
 		
 		List<String> featuresToPredict=fe.extract(entry);
 		

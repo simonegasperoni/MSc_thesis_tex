@@ -83,11 +83,11 @@ public class OpenNlpExtractor implements FeatureExtractor {
 		stopwords.add(this.stems("ottobre"));
 		stopwords.add(this.stems("novembre"));
 		stopwords.add(this.stems("dicembre"));
-		stopwords.add(this.stems("lunedì"));
-		stopwords.add(this.stems("martedì"));
-		stopwords.add(this.stems("mercoledì"));
-		stopwords.add(this.stems("giovedì"));
-		stopwords.add(this.stems("venerdì"));
+		stopwords.add(this.stems("lunedï¿½"));
+		stopwords.add(this.stems("martedï¿½"));
+		stopwords.add(this.stems("mercoledï¿½"));
+		stopwords.add(this.stems("giovedï¿½"));
+		stopwords.add(this.stems("venerdï¿½"));
 		stopwords.add(this.stems("sabato"));
 		stopwords.add(this.stems("domenica"));
 		stopwords.add(this.stems("pagina"));
@@ -232,7 +232,7 @@ public class OpenNlpExtractor implements FeatureExtractor {
 		tags.add("tag1");
 		tags.add("medicina");
 		tags.add("urbanistica");
-		PredictionEntry pe=new PredictionEntry("questo è un dataset di prova", "questo è il corpo di un dataset di prova", tags);
+		PredictionEntry pe=new PredictionEntry("questo Ã¨ un dataset di prova", "questo Ã¨ il corpo di un dataset di prova", tags);
 		List<String> l=fe.extract(pe);
 		for(String li:l) System.out.println(li);
 	}
