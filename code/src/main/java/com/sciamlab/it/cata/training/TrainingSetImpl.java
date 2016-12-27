@@ -20,6 +20,11 @@ public class TrainingSetImpl implements TrainingSet {
 		this.docMap=docMap;
 	}
 
+	public TrainingSet clone(){
+		TrainingSet t=new TrainingSetImpl(new HashMap<String, ClassifiedEntry>(this.docMap));
+		return t;
+	}
+	
 	public Map<String, Map<Theme, Integer>> createTF(){
 		tf=new HashMap<String, Map<Theme, Integer>>();
 		for(ClassifiedEntry c:docMap.values()){

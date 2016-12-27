@@ -22,6 +22,7 @@ public interface TrainingSet {
 	public Map<Theme, Integer> getDoccounter();
 	public Map<Theme, Integer> getSumDF();
 	public Map<Theme, Integer> getSumTF();
+	public TrainingSet clone();
 	
 
 }

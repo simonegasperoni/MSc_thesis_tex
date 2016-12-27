@@ -9,13 +9,18 @@ work in progress
 ```
 packages:
 com.sciamlab.it.acquis:
-contains utilities to handle from xml data to database: xquery, filesystem, ...
+contains utilities to handle from xml data to database: 
+xquery, 
+filesystem, 
+...
 
 com.sciamlab.it.cata
 contains the implementation of text mining algorithms:
-classifiers, feature selection, feature extraction, 
-evaluators and the training set model.
-
+classifiers,
+feature selection,
+feature extraction, 
+evaluators and the training set model,
+...
 ```
 
 ##resources

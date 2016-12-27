@@ -10,6 +10,14 @@ public class ClassifiedEntry {
 	public final List<String> featureSet;
 	public final Map<Theme, Double> categories;
 	
+	public List<String> getFeatureSet() {
+		return featureSet;
+	}
+	
+	public Map<Theme, Double> getCategories() {
+		return categories;
+	}
+	
 	public ClassifiedEntry(List<String> featureSet, Map<Theme, Double> categories) {
 		super();
 		this.featureSet = featureSet;

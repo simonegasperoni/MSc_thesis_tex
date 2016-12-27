@@ -1,14 +1,16 @@
 package com.sciamlab.it.cata;
 import java.util.Properties;
 import org.apache.log4j.Logger;
+
+import com.sciamlab.common.model.mdr.vocabulary.EUNamedAuthorityDataTheme.Theme;
 import com.sciamlab.common.util.SciamlabStreamUtils;
-import com.sciamlab.it.cata.classifier.ClassifiedEntry;
 import com.sciamlab.it.cata.classifier.Classifier;
-import com.sciamlab.it.cata.classifier.MultinomialBayes;
 import com.sciamlab.it.cata.classifier.PredictionEntry;
-import com.sciamlab.it.cata.feature.FeatureExtractor;
+import com.sciamlab.it.cata.classifier.BayesMultinomial;
+import com.sciamlab.it.cata.classifier.ClassifiedEntry;
+import com.sciamlab.it.cata.evaluation.Evaluator;
+import com.sciamlab.it.cata.evaluation.KfoldEvaluator;
 import com.sciamlab.it.cata.feature.OpenNlpExtractor;
-import com.sciamlab.it.cata.feature.BasicFeatureExtractor;
 import com.sciamlab.it.cata.training.AcquisTrainingSource;
 import com.sciamlab.it.cata.training.FeatureSelector;
 import com.sciamlab.it.cata.training.FeatureSelectorImpl;
@@ -39,27 +41,32 @@ public class Cata{
 		PROPS.load(SciamlabStreamUtils.getInputStream("cata.properties"));
 		logger.info("ok properties");
 		
-		FeatureExtractor fe=new OpenNlpExtractor();
 		AcquisTrainingSource acquisTrainingSource = new AcquisTrainingSource();
 		TrainingSet ts=acquisTrainingSource.getTrainingSet();
 	    
-		Classifier bayes=new MultinomialBayes(ts,fe);
+		Classifier bayes=new BayesMultinomial(ts);
 	    
-		PredictionEntry pe=new PredictionEntry(null, "Depositi e impieghi bancari per abitante in alcuni Comuni della "
-				+ "Provincia di Roma 2010. Depositi e impieghi bancari per abitante nei Comuni delle colline litoranee "
-				+ "dei Colli Albani e nella pianura di Anzio e Nettuno - 31 dicembre 2010.", null);
+//		PredictionEntry pe=new PredictionEntry(null, "Depositi e impieghi bancari per abitante in alcuni Comuni della "
+//				+ "Provincia di Roma 2010. Depositi e impieghi bancari per abitante nei Comuni delle colline litoranee "
+//				+ "dei Colli Albani e nella pianura di Anzio e Nettuno - 31 dicembre 2010.", null);
+//		
+//		ClassifiedEntry ce=bayes.predict(pe, 0.94, new OpenNlpExtractor());
+//		System.out.println(ce);
+
+		Evaluator k=new KfoldEvaluator(ts, 10);
+		k.evaluate(BayesMultinomial.class);
 		
-		ClassifiedEntry ce=bayes.predict(pe, 0.5);
-		System.out.println(ce);
+		
+		
+		
 	}
 
 	public Cata() throws Exception{
 		FeatureSelector featureSelector = new FeatureSelectorImpl();
-		FeatureExtractor featureExtractor = new BasicFeatureExtractor();
 		try (TrainingSource acquisTrainingSource = new AcquisTrainingSource()){
 			TrainingSet trainingSet = acquisTrainingSource.getTrainingSet();			
 			trainingSet = featureSelector.clean(trainingSet);
-			classifier = Classifier.Factory.build(MultinomialBayes.class, trainingSet, featureExtractor);
+			classifier = Classifier.Factory.build(BayesMultinomial.class, trainingSet);
 		}
 	}
 }
