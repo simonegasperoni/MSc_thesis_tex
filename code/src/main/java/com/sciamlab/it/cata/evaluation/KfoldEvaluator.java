@@ -59,13 +59,13 @@ public class KfoldEvaluator implements Evaluator {
 		List<TrainingSet> testsetlist=this.splitTrainingSet();
 		List<TrainingSet> trainsetlist=this.createNtrainingset(testsetlist);
 		
-		double tp=0; //true positive
-		double tpfp=0; //true positive + false positive
+		
 		
 		for(int c=0; c<n; c++){
 			System.out.println("kfold-cross validation: #"+c);
 			Classifier classifier=Classifier.Factory.build(clazz, trainsetlist.get(c));
-			
+			double tp=0; //true positive
+			double tpfp=0; //true positive + false positive
 
 			TrainingSet test=testsetlist.get(c);
 			Map<String,ClassifiedEntry> docmap=test.getDocMap();
@@ -73,18 +73,21 @@ public class KfoldEvaluator implements Evaluator {
 				ClassifiedEntry ce=docmap.get(id);
 				List<String> list=ce.getFeatureSet();
 				//System.out.println(list);
-				ClassifiedEntry classified=classifier.predict(list, 0.95);
+				ClassifiedEntry classified=classifier.predict(list, 1.0);
+				//System.out.println(classified.getCategories().size());;
 				tpfp=tpfp+classified.getCategories().size();
 				
 				Set<Theme> intersection = new HashSet<Theme>(ce.getCategories().keySet());
 				intersection.retainAll(classified.getCategories().keySet());
 				
 				tp=tp+(intersection.size());
-				System.out.println("tp:" +tp+ "tpfp"+tpfp);
+				
 			} 
+			System.out.println("tp:"+tp+", tp+fp:"+tpfp);
+			System.out.println(new Double(tp/tpfp));
 		}
 		
-		System.out.println(new Double(tp/tpfp));
+		
 		
 	}
 	

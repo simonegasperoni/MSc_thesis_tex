@@ -7,6 +7,7 @@ import com.sciamlab.common.util.SciamlabStreamUtils;
 import com.sciamlab.it.cata.classifier.Classifier;
 import com.sciamlab.it.cata.classifier.PredictionEntry;
 import com.sciamlab.it.cata.classifier.BayesMultinomial;
+import com.sciamlab.it.cata.classifier.BayesMultivariate;
 import com.sciamlab.it.cata.classifier.ClassifiedEntry;
 import com.sciamlab.it.cata.evaluation.Evaluator;
 import com.sciamlab.it.cata.evaluation.KfoldEvaluator;
@@ -44,7 +45,7 @@ public class Cata{
 		AcquisTrainingSource acquisTrainingSource = new AcquisTrainingSource();
 		TrainingSet ts=acquisTrainingSource.getTrainingSet();
 	    
-		Classifier bayes=new BayesMultinomial(ts);
+		//Classifier bayes=new BayesMultinomial(ts);
 	    
 //		PredictionEntry pe=new PredictionEntry(null, "Depositi e impieghi bancari per abitante in alcuni Comuni della "
 //				+ "Provincia di Roma 2010. Depositi e impieghi bancari per abitante nei Comuni delle colline litoranee "
@@ -54,7 +55,7 @@ public class Cata{
 //		System.out.println(ce);
 
 		Evaluator k=new KfoldEvaluator(ts, 10);
-		k.evaluate(BayesMultinomial.class);
+		k.evaluate(BayesMultivariate.class);
 		
 		
 		

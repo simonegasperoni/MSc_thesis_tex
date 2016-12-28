@@ -27,7 +27,6 @@ public class FScrawling {
 	private ArrayList<String> crawl(File f, String current) {
 		if (!f.isDirectory()){
 			String dir=current+f.getName();
-			//System.out.println("file: "+dir);
 			files.add(dir);
 		}
 		else {
@@ -38,12 +37,6 @@ public class FScrawling {
 			}
 		}
 		return files;
-	}
-	
-	public static void main(String[] args) { 
-		FScrawling fsc=new FScrawling("C:/Users/simone/Desktop/it-acquis3");
-		fsc.crawl();
-		System.out.println(fsc.getFiles().size());
 	}
 	
 }

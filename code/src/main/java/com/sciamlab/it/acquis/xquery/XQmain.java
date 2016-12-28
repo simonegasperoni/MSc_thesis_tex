@@ -1,14 +1,11 @@
 package com.sciamlab.it.acquis.xquery;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.HashSet;
 import javax.xml.xquery.XQConnection;
 import javax.xml.xquery.XQDataSource;
 import javax.xml.xquery.XQException;
 import javax.xml.xquery.XQPreparedExpression;
 import javax.xml.xquery.XQResultSequence;
-import org.apache.commons.io.FileUtils;
 import com.sciamlab.common.nlp.EurovocThesaurus;
 import com.sciamlab.it.eurovoc.EVoc;
 import net.sf.saxon.xqj.SaxonXQDataSource;
@@ -59,23 +56,5 @@ public class XQmain {
 		//System.out.println(list);
 		return EVoc.returnsDCATCAT(list, thesaurusInfo);
 	}
-	
-	//test /home/simone/Scaricati/it-acquis3/2004/jrc22004A1228_02-it.xml
-	public static void main(String[] args) throws XQException, FileWithoutEurovocTagException, IOException{
-		
-		System.out.print("Loading thesaurus information... ");
-		File f=new File("src/main/resources/eurovoc/eurovoc_xml");
-		EurovocThesaurus thesaurusInfo = new EurovocThesaurus.Builder(f, "it").build();
-		System.out.println("done");
-		System.out.println("domainMap: "+thesaurusInfo.domainMap.size());
-		System.out.println("microThesaurusMap: "+thesaurusInfo.microThesaurusMap.size());
-		System.out.println("conceptMap: "+thesaurusInfo.conceptMap.size());
-		
-		String out=XQmain.corpusFile("jrc22004A1228_02-it.xml","C:/Users/simone/Desktop/it-acquis3/2004");
-		
-		final File file = new File("C:/Users/simone/Desktop/out2.log");
-		FileUtils.writeStringToFile(file, out, "UTF-8");
-	}
-	
 
 }

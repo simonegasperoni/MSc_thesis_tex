@@ -67,7 +67,7 @@ public abstract class Bayes implements Classifier{
 		for(Theme t:results.keySet()){
 			
 			double score=round((results.get(t)-min)/(max-min),2);
-			if(score>threshold)
+			if(score>=threshold)
 				normres.put(t,score);
 		}
 		return normres;
@@ -91,8 +91,8 @@ public abstract class Bayes implements Classifier{
 		Map<Theme,Double> tp=termsProd(featuresToPredict);
 		Map<Theme,Double> pc=P_c();
 		Map<Theme,Double> results=new HashMap<Theme,Double>();
-//		System.out.println("p(c) calculus: "+pc);
-//		System.out.println("terms product: "+tp);
+		//System.out.println("p(c) calculus: "+pc);
+		//System.out.println("terms product: "+tp);
 		for(Theme t:tp.keySet()) 
 			results.put(t, Math.log(pc.get(t))+tp.get(t));
 		//return new ClassifiedEntry(featuresToPredict, results);

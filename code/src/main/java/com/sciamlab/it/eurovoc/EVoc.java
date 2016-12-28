@@ -174,7 +174,7 @@ public class EVoc {
 		//take an eurovoc concept, returns dcat categories
 		public static HashSet<String> returnsDCATCAT(HashSet<String> eurovocs, EurovocThesaurus thesaurusInfo){
 
-			System.out.println(eurovocs);
+			//System.out.println(eurovocs);
 			HashSet<String> dcatset=new HashSet<String>();
 			HashSet<String> microthesauri=new HashSet<String>();
 
