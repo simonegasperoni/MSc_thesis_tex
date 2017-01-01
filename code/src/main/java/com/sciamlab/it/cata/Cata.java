@@ -12,6 +12,8 @@ import com.sciamlab.it.cata.classifier.ClassifiedEntry;
 import com.sciamlab.it.cata.evaluation.Evaluator;
 import com.sciamlab.it.cata.evaluation.KfoldEvaluator;
 import com.sciamlab.it.cata.feature.OpenNlpExtractor;
+import com.sciamlab.it.cata.selector.ChiSquareSelector;
+import com.sciamlab.it.cata.selector.GenericFeatureSelector;
 import com.sciamlab.it.cata.training.AcquisTrainingSource;
 import com.sciamlab.it.cata.training.FeatureSelector;
 import com.sciamlab.it.cata.training.FeatureSelectorImpl;
@@ -54,9 +56,12 @@ public class Cata{
 //		ClassifiedEntry ce=bayes.predict(pe, 0.94, new OpenNlpExtractor());
 //		System.out.println(ce);
 
-		Evaluator k=new KfoldEvaluator(ts, 10);
-		k.evaluate(BayesMultivariate.class);
+//		Evaluator k=new KfoldEvaluator(ts, 10);
+//		k.evaluate(BayesMultivariate.class);
 		
+		GenericFeatureSelector gfs=new ChiSquareSelector();
+		gfs.filter(ts);
+
 		
 		
 		

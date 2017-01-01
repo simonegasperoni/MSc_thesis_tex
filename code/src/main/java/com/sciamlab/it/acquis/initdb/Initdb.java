@@ -75,10 +75,6 @@ public class Initdb {
 		}
 	}
 
-
-
-
-
 	public static void main (String[] args) throws Exception{
 
 

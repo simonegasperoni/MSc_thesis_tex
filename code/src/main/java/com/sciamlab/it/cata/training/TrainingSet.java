@@ -14,6 +14,8 @@ public interface TrainingSet {
 	public Map<Theme, Integer> createSumDF();
 	//category-documents
 	public Map<Theme, Integer> createDoccounter();
+	//document frequency per term
+	public void createTermOccurences();
 	
 	//getters
 	public Map<String, ClassifiedEntry> getDocMap();
@@ -22,6 +24,7 @@ public interface TrainingSet {
 	public Map<Theme, Integer> getDoccounter();
 	public Map<Theme, Integer> getSumDF();
 	public Map<Theme, Integer> getSumTF();
+	public Map<String, Integer> getTermOccurences();
 	public TrainingSet clone();
 	
 

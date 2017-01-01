@@ -10,6 +10,8 @@ import com.sciamlab.it.cata.classifier.ClassifiedEntry;
 
 public class TrainingSetImpl implements TrainingSet {
 	private Map<String, Map<Theme, Integer>> tf;
+	private Map<String, Integer> countTerm;
+	
 	private Map<String, Map<Theme, Integer>> df;
 	private Map<Theme, Integer> doccounter;
 	private Map<String, ClassifiedEntry> docMap;
@@ -26,6 +28,7 @@ public class TrainingSetImpl implements TrainingSet {
 	}
 	
 	public Map<String, Map<Theme, Integer>> createTF(){
+		System.out.println(this.getClass().toString()+": creating tf map");
 		tf=new HashMap<String, Map<Theme, Integer>>();
 		for(ClassifiedEntry c:docMap.values()){
 			for(String f:c.featureSet){
@@ -52,10 +55,12 @@ public class TrainingSetImpl implements TrainingSet {
 				}
 			}
 		}
+		System.out.println(this.getClass().toString()+": done");
 		return tf;
 	}
 
 	public Map<String, Map<Theme, Integer>> createDF(){
+		System.out.println(this.getClass().toString()+": creating df map");
 		df=new HashMap<String, Map<Theme, Integer>>();
 		for(ClassifiedEntry c:docMap.values()){
 			List<String> fs =new ArrayList<>(new LinkedHashSet<>(c.featureSet));
@@ -83,10 +88,12 @@ public class TrainingSetImpl implements TrainingSet {
 				}
 			}
 		}
+		System.out.println(this.getClass().toString()+": done");
 		return df;
 	}
 	
 	public Map<Theme, Integer> createDoccounter(){
+		System.out.println(this.getClass().toString()+": creating doccounter");
 		doccounter=new HashMap<Theme, Integer>(); 
 		doccounter.put(Theme.AGRI, 0);
 		doccounter.put(Theme.ENER, 0);
@@ -106,6 +113,7 @@ public class TrainingSetImpl implements TrainingSet {
 				doccounter.put(cat, doccounter.get(cat)+1);
 			}
 		}
+		System.out.println(this.getClass().toString()+": done");
 		return doccounter;
 	}
 	
@@ -177,6 +185,30 @@ public class TrainingSetImpl implements TrainingSet {
 	
 	public Map<Theme, Integer> getSumTF() {
 		return sumTF;
+	}
+
+	public void createTermOccurences() {
+		//Map<String, ClassifiedEntry>
+		System.out.println(this.getClass().toString()+": creating term occurences map");
+		
+		countTerm=new HashMap<String, Integer>();
+		for(ClassifiedEntry c:docMap.values()){
+			List<String> fs =new ArrayList<>(new LinkedHashSet<>(c.featureSet));
+			for(String f:fs){
+				if(countTerm.get(f)==null){
+					countTerm.put(f, 1);
+				}
+				else{
+					countTerm.put(f, countTerm.get(f)+1) ;
+				}
+			}
+		}
+		System.out.println(this.getClass().toString()+": done");
+	}
+
+	@Override
+	public Map<String, Integer> getTermOccurences() {
+		return this.countTerm;
 	}
 	
 }
