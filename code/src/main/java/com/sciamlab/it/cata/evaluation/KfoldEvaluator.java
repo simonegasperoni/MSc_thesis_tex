@@ -1,5 +1,6 @@
 package com.sciamlab.it.cata.evaluation;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -66,6 +67,8 @@ public class KfoldEvaluator implements Evaluator {
 			Classifier classifier=Classifier.Factory.build(clazz, trainsetlist.get(c));
 			double tp=0; //true positive
 			double tpfp=0; //true positive + false positive
+			double tpfn=0; //true positive + false negative
+			
 
 			TrainingSet test=testsetlist.get(c);
 			Map<String,ClassifiedEntry> docmap=test.getDocMap();
@@ -75,19 +78,26 @@ public class KfoldEvaluator implements Evaluator {
 				//System.out.println(list);
 				ClassifiedEntry classified=classifier.predict(list, 1.0);
 				//System.out.println(classified.getCategories().size());;
+
+				for(Theme t:classified.getCategories().keySet()){
+					if(ce.getCategories().containsKey(t)) tp++;
+				}	
 				tpfp=tpfp+classified.getCategories().size();
-				
-				Set<Theme> intersection = new HashSet<Theme>(ce.getCategories().keySet());
-				intersection.retainAll(classified.getCategories().keySet());
-				
-				tp=tp+(intersection.size());
+				tpfn=tpfn+ce.getCategories().size();
 				
 			} 
-			System.out.println("tp:"+tp+", tp+fp:"+tpfp);
-			System.out.println(new Double(tp/tpfp));
+			double precision=new Double(tp/tpfp);
+			double recall=new Double(tp/tpfn);
+			System.out.println("-----------------------------------------");
+			System.out.println("current evaluation");
+			System.out.println("-----------------------------------------");
+			System.out.println("precision   ---->  "+new Double(tp/tpfp));
+			System.out.println("recall      ---->  "+new Double(tp/tpfn));
+			System.out.println("f1-measure  ---->  "+new Double((2*precision*recall)/(precision+recall)));
+			System.out.println("-----------------------------------------");
+			
 		}
-		
-		
+
 		
 	}
 	

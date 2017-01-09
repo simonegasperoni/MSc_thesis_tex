@@ -1,15 +1,12 @@
 package com.sciamlab.it.cata.selector;
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
-
 import com.sciamlab.common.model.mdr.vocabulary.EUNamedAuthorityDataTheme.Theme;
 import com.sciamlab.it.cata.training.TrainingSet;
 
 public class ChiSquareSelector extends GenericFeatureSelector {
 
-	public void filter(TrainingSet ts) {
+	private Map<String, Map<Theme, Double>> getScores(TrainingSet ts){
 		System.out.println(this.getClass().toString()+": chi square calculus");
 		this.buildData(ts);	
 		//data: Map<String, Map<Theme, Map<String, Integer>>>
@@ -30,24 +27,35 @@ public class ChiSquareSelector extends GenericFeatureSelector {
 				chiscore.get(feature).put(theme, score);
 			}
 		}
-		this.test("statist", chiscore);
-		this.test("decision", chiscore);
-		this.test("pesc", chiscore);
-		this.test("banc", chiscore);
-		this.test("finalizz", chiscore);
-		this.test("font", chiscore);
-		
-		
-		
+		return chiscore;
 	}
 	
-	public void test(String feature, Map<String, Map<Theme, Double>> chiscore){
-		System.out.println(this.getClass().toString()+": chi square calculus");
-		double sum=0.0; 
-		System.out.println(chiscore.get(feature));
-		Collection<Double> set=chiscore.get(feature).values();
-		for(double d:set) sum=sum+d;
-		System.out.println("average for "+feature+": "+sum/set.size());
+	public void filter(TrainingSet ts) {
+		System.out.println(this.getClass().toString()+": chi square filtering");
+		double value=190.0;
+		
+		 Map<String, Map<Theme, Double>> scores=this.getScores(ts);
+		 for(String feature:scores.keySet()){
+			 Map<Theme, Double> map=scores.get(feature);
+			 if(map.get(Theme.AGRI)>=value) continue;
+			 if(map.get(Theme.ENER)>=value) continue;
+			 if(map.get(Theme.GOVE)>=value) continue;
+			 if(map.get(Theme.INTR)>=value) continue;
+			 if(map.get(Theme.JUST)>=value) continue;
+			 if(map.get(Theme.ECON)>=value) continue;
+			 if(map.get(Theme.SOCI)>=value) continue;
+			 if(map.get(Theme.EDUC)>=value) continue;
+			 if(map.get(Theme.TECH)>=value) continue;
+			 if(map.get(Theme.TRAN)>=value) continue;
+			 if(map.get(Theme.ENVI)>=value) continue;
+			 if(map.get(Theme.REGI)>=value) continue;
+			 if(map.get(Theme.HEAL)>=value) continue;
+			 
+			 ts.getDf().remove(feature);
+		 }
+		
+
 	}
+	
 
 }

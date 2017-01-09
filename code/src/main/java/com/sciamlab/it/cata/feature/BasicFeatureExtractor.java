@@ -355,7 +355,7 @@ public class BasicFeatureExtractor implements FeatureExtractor {
 			res.addAll(this.execute(entry.getDescription()));
 		}
 		if(entry.getTags()!=null){
-			for(String s:entry.getTags()) res.add(this.stems(s));
+			for(String s:entry.getTags()) res.addAll(this.execute(s));
 		}
 		
 		return res;

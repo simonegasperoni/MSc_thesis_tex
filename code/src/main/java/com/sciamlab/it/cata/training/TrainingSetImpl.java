@@ -32,63 +32,65 @@ public class TrainingSetImpl implements TrainingSet {
 		tf=new HashMap<String, Map<Theme, Integer>>();
 		for(ClassifiedEntry c:docMap.values()){
 			for(String f:c.featureSet){
-				Map<Theme, Integer> m = tf.get(f);
-				if(m==null){
-					m = new HashMap<Theme, Integer>();
-					m.put(EUNamedAuthorityDataTheme.Theme.AGRI, 1);
-					m.put(EUNamedAuthorityDataTheme.Theme.ENER, 1);
-					m.put(EUNamedAuthorityDataTheme.Theme.GOVE, 1);
-					m.put(EUNamedAuthorityDataTheme.Theme.INTR, 1);
-					m.put(EUNamedAuthorityDataTheme.Theme.JUST, 1);
-					m.put(EUNamedAuthorityDataTheme.Theme.ECON, 1);
-					m.put(EUNamedAuthorityDataTheme.Theme.SOCI, 1);
-					m.put(EUNamedAuthorityDataTheme.Theme.EDUC, 1);
-					m.put(EUNamedAuthorityDataTheme.Theme.TECH, 1);
-					m.put(EUNamedAuthorityDataTheme.Theme.TRAN, 1);
-					m.put(EUNamedAuthorityDataTheme.Theme.ENVI, 1);
-					m.put(EUNamedAuthorityDataTheme.Theme.REGI, 1);
-					m.put(EUNamedAuthorityDataTheme.Theme.HEAL, 1);
-					tf.put(f, m);
-				}
-				for(Theme cat:c.categories.keySet()){
-					m.put(cat, m.get(cat)+1) ;
+				if(df.get(f)!=null){
+					Map<Theme, Integer> m = tf.get(f);
+					if(m==null){
+						m = new HashMap<Theme, Integer>();
+						m.put(EUNamedAuthorityDataTheme.Theme.AGRI, 1);
+						m.put(EUNamedAuthorityDataTheme.Theme.ENER, 1);
+						m.put(EUNamedAuthorityDataTheme.Theme.GOVE, 1);
+						m.put(EUNamedAuthorityDataTheme.Theme.INTR, 1);
+						m.put(EUNamedAuthorityDataTheme.Theme.JUST, 1);
+						m.put(EUNamedAuthorityDataTheme.Theme.ECON, 1);
+						m.put(EUNamedAuthorityDataTheme.Theme.SOCI, 1);
+						m.put(EUNamedAuthorityDataTheme.Theme.EDUC, 1);
+						m.put(EUNamedAuthorityDataTheme.Theme.TECH, 1);
+						m.put(EUNamedAuthorityDataTheme.Theme.TRAN, 1);
+						m.put(EUNamedAuthorityDataTheme.Theme.ENVI, 1);
+						m.put(EUNamedAuthorityDataTheme.Theme.REGI, 1);
+						m.put(EUNamedAuthorityDataTheme.Theme.HEAL, 1);
+						tf.put(f, m);
+					}
+					for(Theme cat:c.categories.keySet()){
+						m.put(cat, m.get(cat)+1) ;
+					}
 				}
 			}
 		}
-		System.out.println(this.getClass().toString()+": done");
 		return tf;
 	}
 
 	public Map<String, Map<Theme, Integer>> createDF(){
-		System.out.println(this.getClass().toString()+": creating df map");
-		df=new HashMap<String, Map<Theme, Integer>>();
-		for(ClassifiedEntry c:docMap.values()){
-			List<String> fs =new ArrayList<>(new LinkedHashSet<>(c.featureSet));
-			for(String f:fs){
-				Map<Theme, Integer> m = df.get(f);
-				if(m==null){
-					m = new HashMap<Theme, Integer>();
-					m.put(Theme.AGRI, 1);
-					m.put(Theme.ENER, 1);
-					m.put(Theme.GOVE, 1);
-					m.put(Theme.INTR, 1);
-					m.put(Theme.JUST, 1);
-					m.put(Theme.ECON, 1);
-					m.put(Theme.SOCI, 1);
-					m.put(Theme.EDUC, 1);
-					m.put(Theme.TECH, 1);
-					m.put(Theme.TRAN, 1);
-					m.put(Theme.ENVI, 1);
-					m.put(Theme.REGI, 1);
-					m.put(Theme.HEAL, 1);
-					df.put(f, m);
-				}
-				for(Theme cat:c.categories.keySet()){
-					m.put(cat, m.get(cat)+1) ;
+		if(df==null){
+			System.out.println(this.getClass().toString()+": creating df map");
+			df=new HashMap<String, Map<Theme, Integer>>();
+			for(ClassifiedEntry c:docMap.values()){
+				List<String> fs =new ArrayList<>(new LinkedHashSet<>(c.featureSet));
+				for(String f:fs){
+					Map<Theme, Integer> m = df.get(f);
+					if(m==null){
+						m = new HashMap<Theme, Integer>();
+						m.put(Theme.AGRI, 1);
+						m.put(Theme.ENER, 1);
+						m.put(Theme.GOVE, 1);
+						m.put(Theme.INTR, 1);
+						m.put(Theme.JUST, 1);
+						m.put(Theme.ECON, 1);
+						m.put(Theme.SOCI, 1);
+						m.put(Theme.EDUC, 1);
+						m.put(Theme.TECH, 1);
+						m.put(Theme.TRAN, 1);
+						m.put(Theme.ENVI, 1);
+						m.put(Theme.REGI, 1);
+						m.put(Theme.HEAL, 1);
+						df.put(f, m);
+					}
+					for(Theme cat:c.categories.keySet()){
+						m.put(cat, m.get(cat)+1) ;
+					}
 				}
 			}
 		}
-		System.out.println(this.getClass().toString()+": done");
 		return df;
 	}
 	
@@ -113,7 +115,6 @@ public class TrainingSetImpl implements TrainingSet {
 				doccounter.put(cat, doccounter.get(cat)+1);
 			}
 		}
-		System.out.println(this.getClass().toString()+": done");
 		return doccounter;
 	}
 	
@@ -203,7 +204,6 @@ public class TrainingSetImpl implements TrainingSet {
 				}
 			}
 		}
-		System.out.println(this.getClass().toString()+": done");
 	}
 
 	@Override

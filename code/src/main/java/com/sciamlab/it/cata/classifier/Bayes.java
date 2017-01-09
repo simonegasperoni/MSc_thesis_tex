@@ -1,6 +1,4 @@
 package com.sciamlab.it.cata.classifier;
-import java.math.BigDecimal;
-import java.math.RoundingMode;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -57,29 +55,29 @@ public abstract class Bayes implements Classifier{
 		return tp;
 	}
 	
-	//thresholding and normalizing (unity-based normalization)
-	private static Map<Theme,Double> normalize(Map<Theme,Double> results, double threshold){
-		//System.out.println(results);
-		Map<Theme,Double> normres=new HashMap<Theme,Double>();
-		double max=(Collections.max(results.values()));
-		double min=(Collections.min(results.values()));
-		
-		for(Theme t:results.keySet()){
-			
-			double score=round((results.get(t)-min)/(max-min),2);
-			if(score>=threshold)
-				normres.put(t,score);
-		}
-		return normres;
-	}
-	
-	private static double round(double value, int places) {
-	    if (places < 0) throw new IllegalArgumentException();
-	    //System.out.println(value);
-	    BigDecimal bd = new BigDecimal(value);
-	    bd = bd.setScale(places, RoundingMode.HALF_UP);
-	    return bd.doubleValue();
-	}
+//	//thresholding and normalizing (unity-based normalization)
+//	private static Map<Theme,Double> normalize(Map<Theme,Double> results, double threshold){
+//		//System.out.println(results);
+//		Map<Theme,Double> normres=new HashMap<Theme,Double>();
+//		double max=(Collections.max(results.values()));
+//		double min=(Collections.min(results.values()));
+//		
+//		for(Theme t:results.keySet()){
+//			
+//			double score=round((results.get(t)-min)/(max-min),2);
+//			if(score>=threshold)
+//				normres.put(t,score);
+//		}
+//		return normres;
+//	}
+//	
+//	private static double round(double value, int places) {
+//	    if (places < 0) throw new IllegalArgumentException();
+//	    //System.out.println(value);
+//	    BigDecimal bd = new BigDecimal(value);
+//	    bd = bd.setScale(places, RoundingMode.HALF_UP);
+//	    return bd.doubleValue();
+//	}
 	
 	
 	public ClassifiedEntry predict(PredictionEntry entry, double threshold, FeatureExtractor fe) throws Exception {
@@ -91,11 +89,19 @@ public abstract class Bayes implements Classifier{
 		Map<Theme,Double> tp=termsProd(featuresToPredict);
 		Map<Theme,Double> pc=P_c();
 		Map<Theme,Double> results=new HashMap<Theme,Double>();
-		//System.out.println("p(c) calculus: "+pc);
-		//System.out.println("terms product: "+tp);
 		for(Theme t:tp.keySet()) 
 			results.put(t, Math.log(pc.get(t))+tp.get(t));
-		//return new ClassifiedEntry(featuresToPredict, results);
-		return new ClassifiedEntry(featuresToPredict, normalize(results, threshold));
+		
+		Double max=Collections.max(results.values());
+		//System.out.println(max);
+		Double min=Collections.min(results.values());
+		//System.out.println(min);
+		Double thr=max-((max-min)*(1.0/9.0));
+		//System.out.println(thr);
+		
+		for(Theme t:Theme.values()) 
+			if(results.get(t)<thr) results.remove(t);
+		
+		return new ClassifiedEntry(featuresToPredict, results);
 	}
 }

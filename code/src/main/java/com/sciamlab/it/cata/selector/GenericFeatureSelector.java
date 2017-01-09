@@ -9,7 +9,7 @@ public abstract class GenericFeatureSelector implements FeatureSelector{
 	private Map<String, Map<Theme, Integer>> df;
 	private Map<Theme, Integer> doccounter;
 	private Map<String, Integer> countTerms;
-	private int sizeTS;
+	protected int sizeTS;
 	
 //MAP: 
 //<feature1, 
@@ -23,7 +23,7 @@ public abstract class GenericFeatureSelector implements FeatureSelector{
 	
 	protected Map<String, Map<Theme, Map<String, Integer>>> data;
 	
-	protected void buildData(TrainingSet ts){
+	public void buildData(TrainingSet ts){
 		System.out.println(this.getClass().toString()+": building data struct");
 		ts.createDF();
 		this.df=ts.getDf();
@@ -44,22 +44,21 @@ public abstract class GenericFeatureSelector implements FeatureSelector{
 			for(Theme t:df.get(f).keySet()){
 				Map<String,Integer> n=new HashMap<String,Integer>();
 				int n11=df.get(f).get(t);
-				n.put("n11", df.get(f).get(t));
-				int n01=doccounter.get(t)-df.get(f).get(t);
+				n.put("n11", df.get(f).get(t)-1);
+				int n01=doccounter.get(t)-(df.get(f).get(t)-1);
 				n.put("n01", n01);
-				int n10=termsOcc-df.get(f).get(t);
+				int n10=termsOcc-(df.get(f).get(t)-1);
 				n.put("n10", n10);
-				n.put("n00", sizeTS-n11-n01-n10);
+				n.put("n00", sizeTS-n11-n01-n10+1);
 				aux.put(t, n);
 			}
 			data.put(f, aux);
 		}
-		System.out.println(this.getClass().toString()+": done");
 	}
 	
 	public Map<String, Map<Theme, Map<String, Integer>>> getData() {
 		return data;
 	}
 	
-	abstract public void filter(TrainingSet ts);
+	abstract public void filter(TrainingSet ts, int k);
 }
