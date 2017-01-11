@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.10.9)  9 JAN 2017 12:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.10.9)  11 JAN 2017 16:29
 entering extended mode
 **./main.tex
 (main.tex
@@ -353,91 +353,115 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 73.
- [2] <img/DCAT-AP_IT_UML.png, id=187, 733.99219pt x 1330.21968pt>
+ [2] [3] [4] <img/DCAT-AP_IT_UML.png, id=231, 733.99219pt x 1330.21968pt>
 File: img/DCAT-AP_IT_UML.png Graphic file (type png)
 
 <use img/DCAT-AP_IT_UML.png>
-Package pdftex.def Info: img/DCAT-AP_IT_UML.png used on input line 105.
+Package pdftex.def Info: img/DCAT-AP_IT_UML.png used on input line 120.
 (pdftex.def)             Requested size: 330.29343pt x 598.59334pt.
 
 
-LaTeX Warning: Float too large for page by 82.53778pt on input line 108.
+LaTeX Warning: Float too large for page by 82.53778pt on input line 123.
 
-[3] [4 <./img/DCAT-AP_IT_UML.png>] [5] [6] [7] [8] [9]
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ucs\uni-32.def"
+
+Underfull \hbox (badness 10000) in paragraph at lines 142--147
+
+ []
+
+
+Overfull \hbox (11.99689pt too wide) in paragraph at lines 155--155
+[]   \OT1/cmtt/m/n/10 Decisione n. 2046/2002/CE del Parlamento europeo e del Co
+nsiglio,[] 
+ []
+
+
+Overfull \hbox (6.74693pt too wide) in paragraph at lines 155--155
+[]   \OT1/cmtt/m/n/10 relativa ad una serie di orientamenti, compresa l'individ
+uazione[] 
+ []
+
+[5] [6 <./img/DCAT-AP_IT_UML.png>] [7]
+<img/eurovocdcat.png, id=255, 957.5775pt x 1005.7575pt>
+File: img/eurovocdcat.png Graphic file (type png)
+
+<use img/eurovocdcat.png>
+Package pdftex.def Info: img/eurovocdcat.png used on input line 206.
+(pdftex.def)             Requested size: 287.27547pt x 301.72958pt.
+ [8 <./img/eurovocdcat.png>] [9] [10] [11] [12]
+[13] ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ucs\uni-32.def"
 File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
 )
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ucs\uni-34.def"
 File: uni-34.def 2013/05/13 UCS: Unicode data U+2200..U+22FF
-) [10] [11]
-[12] [13] [14] [15]
+) [14] [15]
+[16] [17] [18] [19]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 367.
+(Font)              <12> on input line 473.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 367.
+(hyperref)                removing `math shift' on input line 473.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\chi' on input line 367.
+(hyperref)                removing `\chi' on input line 473.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 367.
+(hyperref)                removing `superscript' on input line 473.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 367.
+(hyperref)                removing `math shift' on input line 473.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 369--373
+Underfull \hbox (badness 10000) in paragraph at lines 475--479
 
  []
 
-[16] [17]
-Underfull \hbox (badness 10000) in paragraph at lines 383--398
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 383--398
+[20] [21]
+Underfull \hbox (badness 10000) in paragraph at lines 489--504
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 383--398
+Underfull \hbox (badness 10000) in paragraph at lines 489--504
 
  []
 
 
-Overfull \hbox (21.7168pt too wide) in paragraph at lines 399--400
+Underfull \hbox (badness 10000) in paragraph at lines 489--504
+
+ []
+
+
+Overfull \hbox (21.7168pt too wide) in paragraph at lines 505--506
 []\OT1/cmr/bx/n/10 true pos-i-tive: \OT1/cmr/m/n/10 il sis-tema e l'esperto del
  do-minio sono co-er-enti nell'assegnazione
  []
 
-[18]pdfTeX warning (ext4): destination with the same identifier (name{Hfootnote
-.11}) has been already used, duplicate ignored
+[22]pdfTeX warning (ext4): destination with the same identifier (name{Hfootnote
+.12}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.443 ... Pattern Analysis, Texas A\&M University}
-                                                   [19] [20]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 452.
- [21]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 452.
+l.549 ... Pattern Analysis, Texas A\&M University}
+                                                   [23] [24]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 558.
+ [25]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 558.
  (main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 452.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 452.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 558.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 558.
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 388E998BE84447DBBCBD3C9591FFAC2F;2162.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 452.
+(rerunfilecheck)             Checksum: A918FDD947A530CB8154821AC183BA79;2517.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 558.
  ) 
 Here is how much of TeX's memory you used:
- 9125 strings out of 493334
- 127494 string characters out of 3136669
+ 9163 strings out of 493334
+ 127943 string characters out of 3136669
  249139 words of memory out of 3000000
- 12438 multiletter control sequences out of 15000+200000
- 9975 words of font info for 35 fonts, out of 3000000 for 9000
+ 12447 multiletter control sequences out of 15000+200000
+ 10143 words of font info for 36 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  37i,8n,40p,996b,1961s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
@@ -455,10 +479,11 @@ x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files (x86)
 TeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTe
 X 2.9/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files (x86)/MiKTeX 2
 .9/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files (x86)/MiKTeX 2.9
-/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on main.pdf (22 pages, 471300 bytes).
+/fonts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
+onts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on main.pdf (26 pages, 550892 bytes).
 PDF statistics:
- 428 PDF objects out of 1000 (max. 8388607)
- 124 named destinations out of 1000 (max. 500000)
- 254 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 497 PDF objects out of 1000 (max. 8388607)
+ 151 named destinations out of 1000 (max. 500000)
+ 291 words of extra memory for PDF output out of 10000 (max. 10000000)
 

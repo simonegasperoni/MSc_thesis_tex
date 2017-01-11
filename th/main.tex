@@ -35,7 +35,7 @@
 }
 
 \author{Simone Gasperoni}
-\title{Catalogazione DCAT di open data amministrativi e governativi con tecniche di text mining}
+\title{title}
 
 \begin{document}
 
@@ -47,7 +47,7 @@
 
 \hrulefill
 
-{ \huge \bfseries Catalogazione DCAT di open data amministrativi e governativi con tecniche di text mining \\[0.4cm] }
+{ \huge \bfseries title \\[0.4cm] }
 \textsc{\Large Simone Gasperoni}\\[0.5cm]
 \vfill
 \LaTeX
@@ -87,25 +87,131 @@ Il punto cruciale di un bacino di dati (o linee di codice) accessibili e utilizz
 \footnotemark
 \footnotetext{http://opendatahandbook.org/guide/it/what-is-open-data}
 
-\subsection{EuroVoc e JRC-Acquis 3.0}
-EuroVoc è un thesaurus multilingue e pluridisciplinare che comprende la terminologia dei settori d'attività dell'Unione europea. Contiene termini in 23 lingue dell'UE. EuroVoc è in linea con le raccomandazioni del W3C e con gli ultimi sviluppi negli standard di classificazione. Il thesaurus EuroVoc viene utilizzato dalle istituzioni dell'Unione europea, dall'Ufficio delle pubblicazioni dell'UE, da parlamenti nazionali e regionali in Europa, come pure da amministrazioni nazionali e utenti privati di tutto il mondo.
-\footnotemark
-\footnotetext{http://eurovoc.europa.eu}
-I descrittori del thesaurus multilingua EuroVoc sono usati da molti parlamentari europei e centri di documentazione per indicizzare manualmente le loro collezioni di documenti, i descrittori assegnati ai documenti sono utilizzati per cercare ed individuare documenti in una gerarchia semantica divisa in 21 domini, 127 sottodomini (microthesauri) e N descrittori.
-
+\newpage
 \subsection{DCAT, DCAT-AP e DCAT-AP-it}
-Il DCAT Application Profile (DCAT-AP) fornisce una specifica comune per la descrizione di dati della pubblica amministrazione in Europa, questa specifica è basata sullo standard DCAT: Data Catalog Vocabulary. \footnotemark
-\footnotetext{https://www.w3.org/TR/vocab-dcat} 
-\\
 DCAT è un vocabolario RDF progettato per facilitare l'interoperabilità tra cataloghi di dati pubblicati sul web. DCAT incentiva la pubblicazione decentrata di cataloghi e facilita la ricerca federata di dati tra i siti. Usando lo standard DCAT chi pubblica insiemi di dati incrementa la propria visibilità e favorisce le applicazioni che lavorano su dati e metadati in cataloghi multipli (applicazioni cross-portali).
 \\
+Il DCAT Application Profile (DCAT-AP) fornisce una specifica comune per la descrizione di dati della pubblica amministrazione in Europa, questa specifica è basata sullo standard DCAT: Data Catalog Vocabulary. \footnotemark
+\footnotetext{https://www.w3.org/TR/vocab-dcat}
+\\
 DCAT-AP-it è la versione italiana di DCAT-AP, il profilo nazionale dei metadati utili per descrivere i dati delle pubbliche amministrazioni, conforme alla specifica di DCAT-AP serve a favorire l'interoperabilità semantica di dati e servizi. DCAT-AP-it è un modello dati pensato per rendere omogenei in tutta la pubblica amministrazione italiana i processi di accesso e scambio delle informazioni tra le istituzioni stesse e tra le istituzioni e i cittadini e le imprese, in coerenza con il relativo framework europeo. L'utilizzo di un modello dati valorizza il patrimonio informativo pubblico nazionale in linea con la Direttiva relativa al riutilizzo dell'informazione del settore pubblico.
+Le categorie - definite dal portale europeo European Data Portal - sono le seguenti:
+\footnotemark
+\footnotetext{DCAT-AP-it, Profilo italiano di DCAT-AP, Versione 1.0, Agenzia per l'italia digitale}
+\begin{enumerate}
+\item Agriculture, Fisheries, Forestry \& Foods
+\item Energy
+\item Regions \& Cities
+\item Transport
+\item Economy \& Finance
+\item International Issues
+\item Government \& Public Sector
+\item Justice, Legal System \& Public Safety
+\item Education, Culture \& Sport
+\item Environment
+\item Health
+\item Population \& Society
+\item Science \& Technology
+\end{enumerate}
+
+\newpage
 \begin{figure}[htbp]
 \begin{center}
 \includegraphics[scale=0.45]{img/DCAT-AP_IT_UML.png}
 \caption{Modello dati DCAT-AP-it}
 \end{center}
 \end{figure}
+
+\newpage
+\subsection{EuroVoc e JRC-Acquis}
+EuroVoc è un thesaurus multilingue e pluridisciplinare che comprende la terminologia dei settori d'attività dell'Unione europea. Contiene termini in 23 lingue dell'UE. EuroVoc è in linea con le raccomandazioni del W3C e con gli ultimi sviluppi negli standard di classificazione. Il thesaurus EuroVoc viene utilizzato dalle istituzioni dell'Unione europea, dall'Ufficio delle pubblicazioni dell'UE, da parlamenti nazionali e regionali in Europa, come pure da amministrazioni nazionali e utenti privati di tutto il mondo.
+\footnotemark
+\footnotetext{http://eurovoc.europa.eu}
+I descrittori del thesaurus multilingua EuroVoc sono usati da molti parlamentari europei e centri di documentazione per indicizzare manualmente le loro collezioni di documenti, i descrittori assegnati ai documenti sono utilizzati per cercare ed individuare documenti in una gerarchia semantica divisa in 21 domini, 127 sottodomini (microtesauri) e circa 7000 descrittori (concetti).
+
+La versione corrente di JRC-Acquis è la 3.0, i vantaggi che possiamo trarre utilizzando JRC-Acquis per la catalogazione di open data sono molteplici. Acquis rilascia periodicamente nuove versioni di corpus indicizzati con i descrittori di EuroVoc.
+
+\begin{enumerate}
+\item Standard TEI
+\item Corpus aggiornato e manutenuto
+\item Corpus multilingua
+\item Bridge dinamico tra i concetti e le categorie
+\end{enumerate}
+
+\subsubsection{Standard TEI}
+JRC-Acquis ha un formato che rispetta lo standard TEI.
+Text Encoding Initiative (TEI) è un consorzio che sviluppa e mantiene uno standard per la rappresentazione di testi in formato digitale. La codifica TEI garantisce che il corpus sia machine-readable,  le modalità di interazione dei sistemi che utilizzano JRC-Acquis (ad esempio un modulo XQuery) non variano al variare delle versioni di JRC-Acquis.
+\\
+\\
+Il titolo del documento è contenuto nel tag head:
+\begin{verbatim}
+<head n="1"> 
+   Decisione n. 2046/2002/CE del Parlamento europeo e del Consiglio,
+   del 21 ottobre 2002, che modifica la decisione n. 1719/1999/CE
+   relativa ad una serie di orientamenti, compresa l'individuazione 
+   di progetti di interesse comune, per reti transeuropee per lo 
+   scambio elettronico di dati fra amministrazioni (IDA)
+</head>
+\end{verbatim}
+Il corpo testuale del documento è contenuto nel tag div di tipo body
+\begin{verbatim}
+<div type="body">
+   ...
+</div>
+\end{verbatim}
+Segue la parte relativa alla classificazione EUROVOC:
+\begin{verbatim}
+<profileDesc>
+   <textClass>
+      <classCode scheme="eurovoc">206</classCode>
+      <classCode scheme="eurovoc">3010</classCode>
+      <classCode scheme="eurovoc">453</classCode>
+      <classCode scheme="eurovoc">616</classCode>
+      <classCode scheme="eurovoc">4424</classCode>
+      <classCode scheme="eurovoc">5864</classCode>
+   </textClass>
+</profileDesc>
+\end{verbatim}
+Ogni documento contiene anche metadati che potrebbero essere utili come la data di emissione dei documenti:
+\begin{verbatim}
+<date>
+   2007-03-29
+</date>
+\end{verbatim}
+e la sorgente:
+\begin{verbatim}
+<div type="signature">
+   <p n="77">Fatto a Lussemburgo, addì 21 ottobre 2002.</p>
+   <p n="78">Per il Parlamento europeo</p>
+   <p n="79">Il Presidente</p>
+   <p n="80">P. Cox</p>
+   <p n="81">Per il Consiglio</p>
+   <p n="82">Il Presidente</p>
+   <p n="83">P. S. Møller</p>
+   <p n="84">(1) GU C 332 E del 27.11.2001, pag. 287.</p>
+   <p n="85">(2) GU C 80 del 3.4.2002, pag. 21.</p>
+   ... 
+</div>
+\end{verbatim}
+
+\subsubsection{Corpus aggiornato e manutenuto}
+JRC-Acquis è un corpus manutenuto e aggiornato manualmente, decine di migliaia di documenti riguardanti politiche europee su tematiche trasversali sono arricchiti da descrittori EuroVoc da specialisti del dominio. JRC-Acquis viene manutenuto perché utilizzato da diversi sistemi basati su tecnologie semantiche, nell'ambito della classificazione è utilizzato come corpo di addestramento del classificatore JRC-JEX, sistema ufficiale di classificazione dei documenti utilizzato dal parlamento europeo.
+
+\subsubsection{Corpus parallelo multilingua}
+JRC-Acquis è un corpus multilingua, questo vuol dire che è disponibile una versione per ciascuna lingua dell'Unione Europea. Il parallelismo è dato dal fatto che molti documenti sono disponibili in più lingue. Utilizzare corpus multilingua facilita il compito di sviluppare sistemi basati su tecnologie semantiche multilingua.
+
+\subsubsection{Bridge dinamico tra i concetti e le categorie}
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.30]{img/eurovocdcat.png}
+\caption{Bridge tra le categorie DCAT-AP ed EUROVOC}
+\end{center}
+\end{figure}
+
+Nella tabella che segue sono riportate le corrispondenze tra i 13 temi definiti nell'ambito di DCAT-AP (utili per documentare la proprietà  tema della classe Dataset) e i concetti disponibili nel vocabolario EUROVOC.
+
+
+
 
 \newpage
 \section{Elaborazione dei corpus}
