@@ -80,12 +80,12 @@ public abstract class Bayes implements Classifier{
 //	}
 	
 	
-	public ClassifiedEntry predict(PredictionEntry entry, double threshold, FeatureExtractor fe) throws Exception {
+	public ClassifiedEntry predict(PredictionEntry entry, FeatureExtractor fe) throws Exception {
 		List<String> featuresToPredict=fe.extract(entry);
-		return this.predict(featuresToPredict, threshold);
+		return this.predict(featuresToPredict);
 	}
 	
-	public ClassifiedEntry predict(List<String> featuresToPredict, double threshold) throws Exception {
+	public ClassifiedEntry predict(List<String> featuresToPredict) throws Exception {
 		Map<Theme,Double> tp=termsProd(featuresToPredict);
 		Map<Theme,Double> pc=P_c();
 		Map<Theme,Double> results=new HashMap<Theme,Double>();

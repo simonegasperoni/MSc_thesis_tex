@@ -89,7 +89,7 @@ public class OpenDataHubTest implements Evaluator {
 			System.out.println(odhe.getDescription());
 			System.out.println(odhe.getTags());
 			
-			ClassifiedEntry ce=classifier.predict(new PredictionEntry(odhe.getTitle(), odhe.getDescription(), odhe.getTags()), 0.0, new BasicFeatureExtractor());
+			ClassifiedEntry ce=classifier.predict(new PredictionEntry(odhe.getTitle(), odhe.getDescription(), odhe.getTags()), new BasicFeatureExtractor());
 			
 			System.out.println(ce.getCategories());
 			System.out.println(odhe.getCategory());

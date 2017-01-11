@@ -7,7 +7,7 @@ public class BayesMultinomial extends Bayes{
 
 	public BayesMultinomial(TrainingSet trainingSet){
 		GenericFeatureSelector gfs=new MutualInformationSelector();
-		gfs.filter(trainingSet, 100000);
+		gfs.filter(trainingSet, 3000);
 		
 		this.featureToCategoryCountMap=trainingSet.getDf();
 		System.out.println("df map size: "+featureToCategoryCountMap.size());

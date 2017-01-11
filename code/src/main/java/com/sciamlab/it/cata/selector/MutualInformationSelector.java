@@ -1,8 +1,5 @@
 package com.sciamlab.it.cata.selector;
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import com.sciamlab.common.model.mdr.vocabulary.EUNamedAuthorityDataTheme.Theme;
 import com.sciamlab.it.cata.training.TrainingSet;
@@ -45,71 +42,6 @@ public class MutualInformationSelector extends GenericFeatureSelector {
 		return mi;
 	}
 	
-	private Map<Theme, Double> getThresholds(Map<String, Map<Theme, Double>> mi, int k){
-		Map<Theme, Double> thresholds=new HashMap<Theme, Double>();
-		Map<Theme, List<Double>> values=new HashMap<Theme, List<Double>>();
-		
-		values.put(Theme.AGRI,new ArrayList<Double>());
-		values.put(Theme.ENER,new ArrayList<Double>());
-		values.put(Theme.GOVE,new ArrayList<Double>());
-		values.put(Theme.INTR,new ArrayList<Double>());
-		values.put(Theme.JUST,new ArrayList<Double>());
-		values.put(Theme.ECON,new ArrayList<Double>());
-		values.put(Theme.SOCI,new ArrayList<Double>());
-		values.put(Theme.EDUC,new ArrayList<Double>());
-		values.put(Theme.TECH,new ArrayList<Double>());
-		values.put(Theme.TRAN,new ArrayList<Double>());
-		values.put(Theme.ENVI,new ArrayList<Double>());
-		values.put(Theme.REGI,new ArrayList<Double>());
-		values.put(Theme.HEAL,new ArrayList<Double>());
-		
 
-		for(Theme t:Theme.values()){
-			for(String feature:mi.keySet()){
-				List<Double> list=values.get(t);
-				list.add(mi.get(feature).get(t));
-			}
-			Collections.sort(values.get(t));
-			Collections.reverse(values.get(t));
-		}
-				
-		for(Theme t:Theme.values()){
-			List<Double> list=values.get(t);
-			thresholds.put(t, list.get(k));
-		}
-		
-		return thresholds;
-	}
-	
-	public void filter(TrainingSet ts, int k) {
-		System.out.println(this.getClass().toString()+": mutual information filtering");
-
-		
-		Map<String, Map<Theme, Double>> score=this.getScores(ts);
-		Map<Theme, Double> thresholds=this.getThresholds(score, k);
-		
-		//System.out.println(thresholds);
-		Map<String,Map<Theme,Integer>> df=ts.getDf();
-		
-		for(String feature:score.keySet()){
-			
-			 Map<Theme,Double>map =score.get(feature);
-			 if(map.get(Theme.AGRI)>thresholds.get(Theme.AGRI)) continue;
-			 if(map.get(Theme.ENER)>thresholds.get(Theme.ENER)) continue;
-			 if(map.get(Theme.GOVE)>thresholds.get(Theme.GOVE)) continue;
-			 if(map.get(Theme.INTR)>thresholds.get(Theme.INTR)) continue;
-			 if(map.get(Theme.JUST)>thresholds.get(Theme.JUST)) continue;
-			 if(map.get(Theme.ECON)>thresholds.get(Theme.ECON)) continue;
-			 if(map.get(Theme.SOCI)>thresholds.get(Theme.SOCI)) continue;
-			 if(map.get(Theme.EDUC)>thresholds.get(Theme.EDUC)) continue;
-			 if(map.get(Theme.TECH)>thresholds.get(Theme.TECH)) continue;
-			 if(map.get(Theme.TRAN)>thresholds.get(Theme.TRAN)) continue;
-			 if(map.get(Theme.ENVI)>thresholds.get(Theme.ENVI)) continue;
-			 if(map.get(Theme.REGI)>thresholds.get(Theme.REGI)) continue;
-			 if(map.get(Theme.HEAL)>thresholds.get(Theme.HEAL)) continue;
-			 //System.out.println("!!");
-			 df.remove(feature);
-		 }
-	}
 
 }

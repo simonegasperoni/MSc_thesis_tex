@@ -4,8 +4,6 @@ import java.util.Properties;
 import java.util.Set;
 
 import org.apache.log4j.Logger;
-
-import com.sciamlab.common.model.mdr.vocabulary.EUNamedAuthorityDataTheme.Theme;
 import com.sciamlab.common.util.SciamlabStreamUtils;
 import com.sciamlab.it.cata.classifier.Classifier;
 import com.sciamlab.it.cata.classifier.PredictionEntry;
@@ -13,20 +11,10 @@ import com.sciamlab.it.cata.classifier.Bayes;
 import com.sciamlab.it.cata.classifier.BayesMultinomial;
 import com.sciamlab.it.cata.classifier.BayesMultivariate;
 import com.sciamlab.it.cata.classifier.ClassifiedEntry;
-import com.sciamlab.it.cata.evaluation.Evaluator;
-import com.sciamlab.it.cata.evaluation.KfoldEvaluator;
 import com.sciamlab.it.cata.evaluation.OpenDataHubTest;
 import com.sciamlab.it.cata.feature.BasicFeatureExtractor;
-import com.sciamlab.it.cata.feature.OpenNlpExtractor;
-import com.sciamlab.it.cata.selector.ChiSquareSelector;
-import com.sciamlab.it.cata.selector.GenericFeatureSelector;
-import com.sciamlab.it.cata.selector.MutualInformationSelector;
 import com.sciamlab.it.cata.training.AcquisTrainingSource;
-import com.sciamlab.it.cata.training.FeatureSelector;
-import com.sciamlab.it.cata.training.FeatureSelectorImpl;
 import com.sciamlab.it.cata.training.TrainingSet;
-import com.sciamlab.it.cata.training.TrainingSetImpl;
-import com.sciamlab.it.cata.training.TrainingSource;
 
 public class Cata{
 
@@ -66,21 +54,24 @@ public class Cata{
 //		ts2.createDF();
 //		System.out.println("df pre: "+ts2.getDf().size());
 		
-//		Set<String> set=new HashSet<String>(); 
-//		set.add("agevolazioni");
-//		set.add("servizi sociali");
-//		set.add("trasporto");
-//		
-//	    //co.tr.al mobilita trasporti trasporto pubblico 
-//		
-//		Bayes bayes=new BayesMultivariate(ts);
-//				PredictionEntry pe=new PredictionEntry(
-//						" Agevolazioni trasporto",
-//						" Numero domande presentate ed accolte"
-//						+ " per agevolazioni trasporto (CO.TRA.L), dal 2011 al 2013", set);
-//		
-//		ClassifiedEntry ce=bayes.predict(pe, 0.94, new BasicFeatureExtractor());
-//		System.out.println(ce);
+		Set<String> set=new HashSet<String>(); 
+		set.add("lavoro");
+		set.add("cessazioni");
+		
+		Bayes bayes=new BayesMultivariate(ts);
+				PredictionEntry pe=new PredictionEntry(
+						null,
+						"Comunicazioni Obbligatorie - Cessazioni Le Comunicazioni Obbligatorie (CO) sono quelle che tutti "
+						+ "i datori di lavoro, pubblici e privati, devono trasmettere in caso di assunzione, proroga, "
+						+ "trasformazione e cessazione dei rapporti di lavoro e variazione della ragione sociale delle aziende. "
+						+ "Il Sistema CO dall'11 gennaio 2008 connette tutti i Centri per l'impiego, le Province le Regioni "
+						+ "d'Italia ed il Ministero del lavoro, oltre ad altri enti - come INPS ed INAIL. "
+						+ "Le nuove disposizioni sono state introdotte dalla L. n. 296 2007 (legge finanziaria per il 2007)."
+						+ "Successivamente, con il Decreto Ministeriale 30 ottobre 2007 sono stati approvati i nuovi modelli "
+						+ "per le comunicazioni datoriali ed avviata la modalita telematica di invio delle stesse.", set);
+		
+		ClassifiedEntry ce=bayes.predict(pe, new BasicFeatureExtractor());
+		System.out.println(ce);
 
 //		GenericFeatureSelector gfs=new MutualInformationSelector();
 //		
@@ -90,19 +81,19 @@ public class Cata{
 //		Evaluator k=new KfoldEvaluator(ts, 10);
 //		k.evaluate(BayesMultivariate.class);
 		
-		OpenDataHubTest o=new OpenDataHubTest(ts);
-		o.loadData();
-		o.evaluate(BayesMultivariate.class);
+//		OpenDataHubTest o=new OpenDataHubTest(ts);
+//		o.loadData();
+//		o.evaluate(BayesMultivariate.class);
 		
 		
 	}
 
-	public Cata() throws Exception{
-		FeatureSelector featureSelector = new FeatureSelectorImpl();
-		try (TrainingSource acquisTrainingSource = new AcquisTrainingSource()){
-			TrainingSet trainingSet = acquisTrainingSource.getTrainingSet();			
-			trainingSet = featureSelector.clean(trainingSet);
-			classifier = Classifier.Factory.build(BayesMultinomial.class, trainingSet);
-		}
-	}
+//	public Cata() throws Exception{
+//		FeatureSelector featureSelector = new FeatureSelectorImpl();
+//		try (TrainingSource acquisTrainingSource = new AcquisTrainingSource()){
+//			TrainingSet trainingSet = acquisTrainingSource.getTrainingSet();			
+//			trainingSet = featureSelector.clean(trainingSet);
+//			classifier = Classifier.Factory.build(BayesMultinomial.class, trainingSet);
+//		}
+//	}
 }
