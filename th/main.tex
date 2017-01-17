@@ -89,8 +89,7 @@ Il punto cruciale di un bacino di dati (o linee di codice) accessibili e utilizz
 \\
 \\
 DCAT è un vocabolario RDF progettato per facilitare l'interoperabilità tra cataloghi di dati pubblicati sul web. DCAT incentiva la pubblicazione decentrata di cataloghi e facilita la ricerca federata di dati tra i siti. Usando lo standard DCAT chi pubblica insiemi di dati incrementa la propria visibilità e favorisce le applicazioni che lavorano su dati e metadati in cataloghi multipli (applicazioni cross-portali).
-\\
-\\
+
 \subsection{CKAN}
 CKAN acronimo di Comprehensive Knowledge Archive Network è una sistema open source (https://github.com/ckan/ckan) pensato per l'immagazzinamento la, la catalogazione e la distribuzione dei dati in diversi formati; quali ad esempio fogli di calcolo, csv, pdf, xml, rfd, ... CKAN è scritto in Python ed è  è ispirato dal sistema di gestione dei pacchetti comune a sistemi operativi open source come quelli della famiglia Linux.
 \\
@@ -149,7 +148,7 @@ Tra i vantaggi principali abbiamo:
 \item Standard TEI
 \item Corpus aggiornato e manutenuto
 \item Corpus multilingua
-\item Bridge dinamico tra i concetti e le categorie
+\item Bridge dinamico tra i concetti e le categorie DCAT-AP
 \end{enumerate}
 
 \subsubsection{Standard TEI}
@@ -214,7 +213,7 @@ JRC-Acquis è un corpus manutenuto e aggiornato manualmente, decine di migliaia 
 \subsubsection{Corpus parallelo multilingua}
 JRC-Acquis è un corpus multilingua, questo vuol dire che è disponibile una versione per ciascuna lingua dell'Unione Europea. Il parallelismo è dato dal fatto che molti documenti sono disponibili in più lingue. Utilizzare corpus multilingua facilita il compito di sviluppare sistemi basati su tecnologie semantiche multilingua.
 
-\subsubsection{Bridge dinamico tra i concetti e le categorie}
+\subsubsection{Bridge dinamico tra EuroVoc e le categorie DCAT-AP}
 \begin{figure}[htbp]
 \begin{center}
 \includegraphics[scale=0.30]{img/eurovocdcat.png}
@@ -222,9 +221,35 @@ JRC-Acquis è un corpus multilingua, questo vuol dire che è disponibile una ver
 \end{center}
 \end{figure}
 
-In appendice (\say{Associazione dei Temi DCAT-Microtesauri EuroVoc}) è possibile prendere nota delle corrispondenze tra i 13 temi definiti nell'ambito di DCAT-AP e i concetti (microtesauri) disponibili nel vocabolario EuroVoc.
-\footnotetext{Profilo italiano di DCAT-AP (DCAT Application Profile for data portals in Europe), Versione 1.0, Agenzia per l'Italia digitale}
+In appendice (\say{Associazione dei Temi DCAT-Microtesauri EuroVoc}) è possibile prendere nota delle corrispondenze tra i 13 temi definiti nell'ambito di DCAT-AP e i concetti (microtesauri) disponibili nel vocabolario EuroVoc (come indicato dal portale europeo https://www.europeandataportal.eu).
+\footnotetext{Profilo italiano di DCAT-AP (DCAT Application Profile for data portals in Europe), Versione 1.0, Agenzia per l'Italia digitale, 2006}
+\\
+\\
+JRC-Acquis è indicizzato con i concetti del vocabolario EuroVoc, pertanto è stato necessario sviluppare un modulo specializzato per la navigazione del tesauro al fine di ottenere i descrittori dei microtsauri associati ai descrittori dei concetti, per poi permutarli a loro volta nei rispettivi temi DCAT-AP.
+\\
+Il seguente modulo java:
+\url{https://github.com/simonegasperoni/cata/blob/master/code/src/main/java/com/sciamlab/it/eurovoc/EVoc.java}
+\\
+è dedicato alla gestione di EuroVoc, fornisce funzionalità di base per interrogare il tesauro:
+\begin{enumerate}
+\item Dato un concetto si ottengono i microtesauri associati
+\item Dato un microtesauro si ottiene il relativo tema DCAT-AP (EU Data Theme) 
+\end{enumerate}
 
+Un corpus etichettato con le voci di un tesauro come EuroVoc permette la realizzazione di associazioni tra concetti a vario livello di astrazione in modo dinamico, ad esempio qualora il microtesauro EuroVoc \say{2831 culture and religion} originariamente associato al tema Population \& Society (Popolazione e Società) dovesse passare in Education, culture and sport (Educazione, cultura e sport), basterebbe modificare il mapping tra i microtesauri e i temi all'interno del modulo specializzato.
+\begin{lstlisting}
+Map<String, EUNamedAuthorityDataTheme.Theme> EUROVOC_TO_DCAT_CATEGORIES = new HashMap<String, EUNamedAuthorityDataTheme.Theme>(){
+		{
+			put("0406",EUNamedAuthorityDataTheme.Theme.GOVE); 		
+			...
+			...
+			...
+			put("7626",EUNamedAuthorityDataTheme.Theme.INTR); 	
+		}
+};
+\end{lstlisting}
+
+Utilizzare Acquis garantisce anche un'altra forma di flessibilità, quella relativa al tesauro, infatti possiamo pensare al mapping tra i microtesauri e i temi in modo del tutto indipendente dalla versione di EuroVoc utilizzata. In realtà l'aggiornamento di EuroVoc non dovrebbe cambiare molto le cose dal punto di vista della classificazione se non si aggiorna anche il corpus (Acquis).
 
 \newpage
 \section{Elaborazione dei corpus}
