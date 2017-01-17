@@ -86,11 +86,21 @@ Tra le ragioni più importanti della filosofia open data abbiamo l'interoperabil
 Il punto cruciale di un bacino di dati (o linee di codice) accessibili e utilizzabili in modo condiviso è il fatto che potenzialmente possono essere liberamente \say{mescolati} con dati provenienti da fonti anch'esse aperte. L'interoperabilità è la chiave per realizzare il principale vantaggio pratico dell'apertura: aumenta in modo esponenziale la possibilità di combinare diverse basi di dati, e quindi sviluppare nuovi e migliori prodotti e servizi.
 \footnotemark
 \footnotetext{http://opendatahandbook.org/guide/it/what-is-open-data}
-
-\newpage
-\subsection{DCAT, DCAT-AP e DCAT-AP-it}
+\\
+\\
 DCAT è un vocabolario RDF progettato per facilitare l'interoperabilità tra cataloghi di dati pubblicati sul web. DCAT incentiva la pubblicazione decentrata di cataloghi e facilita la ricerca federata di dati tra i siti. Usando lo standard DCAT chi pubblica insiemi di dati incrementa la propria visibilità e favorisce le applicazioni che lavorano su dati e metadati in cataloghi multipli (applicazioni cross-portali).
 \\
+\\
+\subsection{CKAN}
+CKAN acronimo di Comprehensive Knowledge Archive Network è una sistema open source (https://github.com/ckan/ckan) pensato per l'immagazzinamento la, la catalogazione e la distribuzione dei dati in diversi formati; quali ad esempio fogli di calcolo, csv, pdf, xml, rfd, ... CKAN è scritto in Python ed è  è ispirato dal sistema di gestione dei pacchetti comune a sistemi operativi open source come quelli della famiglia Linux.
+\\
+Il codice base di CKAN viene mantenuto dalla Open Knowledge Foundation. Il sistema è usato sia come piattaforma pubblica su Datahub (https://datahub.io), sia da varie pubbliche amministrazioni nell'ambito della loro strategia di pubblicazione di dati aperti, ogni portale web basato su CKAN espone delle Application programming interface API mediante le quali è possibile interrogare i dataset e fruire dei dati di ciascun portale. 
+\\
+\\
+Utilizzare 
+
+\subsection{DCAT, DCAT-AP e DCAT-AP-it}
+
 Il DCAT Application Profile (DCAT-AP) fornisce una specifica comune per la descrizione di dati della pubblica amministrazione in Europa, questa specifica è basata sullo standard DCAT: Data Catalog Vocabulary. \footnotemark
 \footnotetext{https://www.w3.org/TR/vocab-dcat}
 \\
@@ -114,10 +124,10 @@ Le categorie - definite dal portale europeo European Data Portal - sono le segue
 \item Science \& Technology
 \end{enumerate}
 
-\newpage
+
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[scale=0.45]{img/DCAT-AP_IT_UML.png}
+\includegraphics[scale=0.40]{img/DCAT-AP_IT_UML.png}
 \caption{Modello dati DCAT-AP-it}
 \end{center}
 \end{figure}
@@ -128,8 +138,12 @@ EuroVoc è un thesaurus multilingue e pluridisciplinare che comprende la termino
 \footnotemark
 \footnotetext{http://eurovoc.europa.eu}
 I descrittori del thesaurus multilingua EuroVoc sono usati da molti parlamentari europei e centri di documentazione per indicizzare manualmente le loro collezioni di documenti, i descrittori assegnati ai documenti sono utilizzati per cercare ed individuare documenti in una gerarchia semantica divisa in 21 domini, 127 sottodomini (microtesauri) e circa 7000 descrittori (concetti).
-
-La versione corrente di JRC-Acquis è la 3.0, i vantaggi che possiamo trarre utilizzando JRC-Acquis per la catalogazione di open data sono molteplici. Acquis rilascia periodicamente nuove versioni di corpus indicizzati con i descrittori di EuroVoc.
+\\
+\\
+La versione corrente di JRC-Acquis è la 3.0, i vantaggi che possiamo trarre utilizzando JRC-Acquis come corpus di addestramento per la catalogazione di open data sono molteplici. Acquis rilascia periodicamente nuove versioni di corpus indicizzati con i descrittori di EuroVoc.
+\\
+\\
+Tra i vantaggi principali abbiamo: 
 
 \begin{enumerate}
 \item Standard TEI
@@ -208,9 +222,8 @@ JRC-Acquis è un corpus multilingua, questo vuol dire che è disponibile una ver
 \end{center}
 \end{figure}
 
-Nella tabella che segue sono riportate le corrispondenze tra i 13 temi definiti nell'ambito di DCAT-AP (utili per documentare la proprietà  tema della classe Dataset) e i concetti disponibili nel vocabolario EUROVOC.
-
-
+In appendice (\say{Associazione dei Temi DCAT-Microtesauri EuroVoc}) è possibile prendere nota delle corrispondenze tra i 13 temi definiti nell'ambito di DCAT-AP e i concetti (microtesauri) disponibili nel vocabolario EuroVoc.
+\footnotetext{Profilo italiano di DCAT-AP (DCAT Application Profile for data portals in Europe), Versione 1.0, Agenzia per l'Italia digitale}
 
 
 \newpage
@@ -271,16 +284,7 @@ Tra i metodi Dictionary-based abbiamo l'algoritmo di Lesk (1986) che è un metod
 
 
 
-\newpage
-\section{Vector space model}
-\subsection{Introduzione}
-\subsection{Il classificatore JEX}
-\subsection{Implementazione per catalgazione DCAT}
 
-\newpage
-\section{Support vector machine}
-\subsection{Introduzione}
-\subsection{Implementazione per catalgazione DCAT}
 
 \newpage
 \section{Bayesian learning}
@@ -554,5 +558,172 @@ La k-fold-cross-validation (in italiano validazione incrociata) è una tecnica u
 \section{Aspetti software}
 \subsection{Architettura}
 \subsection{Deployment}
+
+\newpage
+\section{Bibliografia}
+
+
+\newpage
+\section{Appendice}
+\subsection{Associazione Temi DCAT-Microtesauri EuroVoc}
+Microtesauri EuroVoc associati al tema DCAT-AP (EU Data Themes): AGRI (Agriculture, Fisheries, Forestry \& Foods) 
+\begin{verbatim}
+	5606 agricultural policy
+	5611 agricultural structures and production 
+	5616 farming systems 
+	5621 cultivation of agricultural land 
+	5626 means of agricultural production 
+	5631 agricultural activity
+	5636 forestry 
+	5641 fisheries
+	6006 plant product
+	6011 animal product 
+	6021 beverages and sugar beverage sugar 
+	6026 foodstuff 
+	6031 agri-foodstuffs
+	6036 food technology
+\end{verbatim}
+Microtesauri EuroVoc associati al tema DCAT-AP (EU Data Themes): ENER (Energy) 
+\begin{verbatim}
+	6606 energy policy 
+	6616 oil industry 
+	6621 electrical and nuclear industries 
+	6626 soft energy
+	6611 coal and mining industries
+\end{verbatim}
+Microtesauri EuroVoc associati al tema DCAT-AP (EU Data Themes): REGI (Regions \& Cities) 
+\begin{verbatim}
+	7206 Europe
+	7211 regions of EU Member States 
+	7216 America 
+	7221 Africa
+	7226 Asia and Oceania
+	7231 economic geography 
+	7236 political geography
+	7241 overseas countries and territories
+\end{verbatim}
+Microtesauri EuroVoc associati al tema DCAT-AP (EU Data Themes): TRAN (Transport)
+\begin{verbatim}
+	4806 transport policy
+	4811 organisation of transport 
+	4816 land transport land transport 
+	4821 maritime and inland waterway transport 
+	4826 air and space transport
+\end{verbatim}
+Microtesauri EuroVoc associati al tema DCAT-AP (EU Data Themes): ECON (Economy \& Finance) 
+\begin{verbatim}
+	1606 economic policy 
+	1611 economic growth 
+	1616 regions and regional policy 
+	1621 economic structure 
+	1626 national accounts 
+	1631 economic analysis 
+	2406 monetary relations
+	2411 monetary economics
+	2416 financial institutions and credit
+	2421 free movement of capital
+	2426 financing and investment 
+	2431 insurance
+	2436 public finance and budget policy 
+	2441 budget 
+	2446 taxation
+	2451 prices
+	2006 trade policy
+	2011 tariff policy 
+	2016 trade supply
+	2021 international trade 
+	2026 consumption 
+	2031 marketing
+	4006 business organisation
+	4011 business classification
+	4016 legal form of organisations
+	4021 management
+	4026 accounting
+	4031 competition 
+	6806 industrial structures
+	6811 chemistry 
+	6816 iron
+	6821 mechanical engineering
+	6826 electronics and electrical engineering
+	6831 building and public works
+	6841 leather and textile industries 
+	6846 miscellaneous industries 
+\end{verbatim}
+Microtesauri EuroVoc associati al tema DCAT-AP (EU Data Themes): INTR (International Issues) 
+\begin{verbatim}
+	7606 United Nations
+	7611 European organisations 
+	7616 extra-European organisations 
+	7621 world organisations
+	7626 non-governmental organisations
+	0811 cooperation policy
+	0816 international balance 
+	0821 defence 
+\end{verbatim}
+Microtesauri EuroVoc associati al tema DCAT-AP (EU Data Themes): GOVE (Government \& Public Sector) 
+\begin{verbatim}
+	0406 political framework
+	0411 political party 
+	0416 electoral procedure and voting election
+	0421 parliament 
+	0426 parliamentary proceedings
+	0431 politics and public safety 
+	0436 executive power and public service 
+	1006 Community institutions and European civil service 
+	1011 European Union law 
+	1016 European construction
+\end{verbatim}
+Microtesauri EuroVoc associati al tema DCAT-AP (EU Data Themes): JUST (Justice, Legal System \& Public Safety) 
+\begin{verbatim}
+	1206 sources and branches of the law 
+	1211 civil law 
+	1216 criminal law 
+	1221 justice access to the courts 
+	1226 organisation of the legal system 
+	1236 rights and freedoms
+\end{verbatim}
+Microtesauri EuroVoc associati al tema DCAT-AP (EU Data Themes): ENVI (Environment) 
+\begin{verbatim}
+	5206 environmental policy
+	5211 natural environment
+	5216 deterioration of the environment 
+\end{verbatim}
+Microtesauri EuroVoc associati al tema DCAT-AP (EU Data Themes): EDUC (Education, Culture \& Sport) 
+\begin{verbatim}
+	3206 education
+	3211 teaching 
+	3216 organisation of teaching 
+	3221 documentation 
+	3226 communications
+	3231 information and information processing
+	3236 information technology and data processing 
+	2831 culture and religion arts cultural policy culture
+\end{verbatim}
+Microtesauri EuroVoc associati al tema DCAT-AP (EU Data Themes): HEAL (Health) 
+\begin{verbatim}
+	2841 health
+\end{verbatim}
+Microtesauri EuroVoc associati al tema DCAT-AP (EU Data Themes): SOCI (Population \& Society) 
+\begin{verbatim}
+	2806 family 
+	2811 migration internal 
+	2816 demography and population composition 
+	2821 social framework
+	2826 social affairs
+	2836 social protection
+	2846 construction and town planning 
+	4406 employment
+	4411 labour market 
+	4416 organisation of work and working conditions 
+	4421 personnel management and staff remuneration
+	4426 labour law and labour relations
+\end{verbatim}
+Microtesauri EuroVoc associati al tema DCAT-AP (EU Data Themes): TECH (Science \& Technology)
+\begin{verbatim}
+	3606 natural and applied sciences 
+	3611 humanities behavioural 
+	6406 production 
+	6411 technology and technical regulations
+\end{verbatim}
 
 \end{document}
