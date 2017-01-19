@@ -1,32 +1,34 @@
 \BOOKMARK [1][-]{section.1}{Introduzione}{}% 1
-\BOOKMARK [2][-]{subsection.1.1}{La filosofia open-data}{section.1}% 2
-\BOOKMARK [2][-]{subsection.1.2}{Interoperabilit\340}{section.1}% 3
-\BOOKMARK [2][-]{subsection.1.3}{CKAN}{section.1}% 4
-\BOOKMARK [2][-]{subsection.1.4}{DCAT, DCAT-AP e DCAT-AP-it}{section.1}% 5
-\BOOKMARK [2][-]{subsection.1.5}{EuroVoc e JRC-Acquis}{section.1}% 6
-\BOOKMARK [3][-]{subsubsection.1.5.1}{Standard TEI}{subsection.1.5}% 7
-\BOOKMARK [3][-]{subsubsection.1.5.2}{Corpus aggiornato e manutenuto}{subsection.1.5}% 8
-\BOOKMARK [3][-]{subsubsection.1.5.3}{Corpus parallelo multilingua}{subsection.1.5}% 9
-\BOOKMARK [3][-]{subsubsection.1.5.4}{Bridge dinamico tra EuroVoc e le categorie DCAT-AP}{subsection.1.5}% 10
-\BOOKMARK [1][-]{section.2}{Elaborazione dei corpus}{}% 11
-\BOOKMARK [2][-]{subsection.2.1}{Disambiguazione}{section.2}% 12
-\BOOKMARK [2][-]{subsection.2.2}{Stemming}{section.2}% 13
-\BOOKMARK [1][-]{section.3}{Bayesian learning}{}% 14
-\BOOKMARK [2][-]{subsection.3.1}{Formula di Bayes}{section.3}% 15
-\BOOKMARK [2][-]{subsection.3.2}{Classificatori bayesiani na\357ve}{section.3}% 16
-\BOOKMARK [2][-]{subsection.3.3}{Stima delle probabilit\340 \(m-estimate\)}{section.3}% 17
-\BOOKMARK [2][-]{subsection.3.4}{Classificazione bayesiana di testi }{section.3}% 18
-\BOOKMARK [2][-]{subsection.3.5}{Rappresentazione testi e stima delle probabilit\340}{section.3}% 19
-\BOOKMARK [1][-]{section.4}{Feature selection}{}% 20
-\BOOKMARK [2][-]{subsection.4.1}{Mutual information feature selection}{section.4}% 21
-\BOOKMARK [2][-]{subsection.4.2}{2 feature selection}{section.4}% 22
-\BOOKMARK [2][-]{subsection.4.3}{Frequency-based feature selection}{section.4}% 23
-\BOOKMARK [1][-]{section.5}{Evaluation}{}% 24
-\BOOKMARK [2][-]{subsection.5.1}{Metriche per l'evaluation}{section.5}% 25
-\BOOKMARK [2][-]{subsection.5.2}{K-fold-cross-validation}{section.5}% 26
-\BOOKMARK [1][-]{section.6}{Aspetti software}{}% 27
-\BOOKMARK [2][-]{subsection.6.1}{Architettura}{section.6}% 28
-\BOOKMARK [2][-]{subsection.6.2}{Deployment}{section.6}% 29
-\BOOKMARK [1][-]{section.7}{Bibliografia}{}% 30
-\BOOKMARK [1][-]{section.8}{Appendice}{}% 31
-\BOOKMARK [2][-]{subsection.8.1}{Associazione Temi DCAT-Microtesauri EuroVoc}{section.8}% 32
+\BOOKMARK [1][-]{section.2}{Contesto}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{La filosofia open-data}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Interoperabilit\340}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.3}{DCAT-AP e DCAT-AP-it}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.4}{CKAN}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.5}{EuroVoc}{section.2}% 7
+\BOOKMARK [2][-]{subsection.2.6}{JRC-Acquis}{section.2}% 8
+\BOOKMARK [3][-]{subsubsection.2.6.1}{Standard TEI}{subsection.2.6}% 9
+\BOOKMARK [3][-]{subsubsection.2.6.2}{Corpus aggiornato e manutenuto}{subsection.2.6}% 10
+\BOOKMARK [3][-]{subsubsection.2.6.3}{Corpus parallelo multilingua}{subsection.2.6}% 11
+\BOOKMARK [3][-]{subsubsection.2.6.4}{Bridge dinamico tra EuroVoc e le categorie DCAT-AP}{subsection.2.6}% 12
+\BOOKMARK [1][-]{section.3}{Elaborazione dei corpus}{}% 13
+\BOOKMARK [2][-]{subsection.3.1}{Disambiguazione}{section.3}% 14
+\BOOKMARK [2][-]{subsection.3.2}{Stemming}{section.3}% 15
+\BOOKMARK [1][-]{section.4}{Bayesian learning}{}% 16
+\BOOKMARK [2][-]{subsection.4.1}{Formula di Bayes}{section.4}% 17
+\BOOKMARK [2][-]{subsection.4.2}{Classificatori bayesiani na\357ve}{section.4}% 18
+\BOOKMARK [2][-]{subsection.4.3}{Stima delle probabilit\340 \(m-estimate\)}{section.4}% 19
+\BOOKMARK [2][-]{subsection.4.4}{Classificazione bayesiana di testi }{section.4}% 20
+\BOOKMARK [2][-]{subsection.4.5}{Rappresentazione testi e stima delle probabilit\340}{section.4}% 21
+\BOOKMARK [1][-]{section.5}{Feature selection}{}% 22
+\BOOKMARK [2][-]{subsection.5.1}{Mutual information feature selection}{section.5}% 23
+\BOOKMARK [2][-]{subsection.5.2}{2 feature selection}{section.5}% 24
+\BOOKMARK [2][-]{subsection.5.3}{Frequency-based feature selection}{section.5}% 25
+\BOOKMARK [1][-]{section.6}{Evaluation}{}% 26
+\BOOKMARK [2][-]{subsection.6.1}{Metriche per l'evaluation}{section.6}% 27
+\BOOKMARK [2][-]{subsection.6.2}{K-fold-cross-validation}{section.6}% 28
+\BOOKMARK [1][-]{section.7}{Aspetti software}{}% 29
+\BOOKMARK [2][-]{subsection.7.1}{Architettura}{section.7}% 30
+\BOOKMARK [2][-]{subsection.7.2}{Deployment}{section.7}% 31
+\BOOKMARK [1][-]{section.8}{Bibliografia}{}% 32
+\BOOKMARK [1][-]{section.9}{Appendice}{}% 33
+\BOOKMARK [2][-]{subsection.9.1}{Associazione Temi DCAT-Microtesauri EuroVoc}{section.9}% 34

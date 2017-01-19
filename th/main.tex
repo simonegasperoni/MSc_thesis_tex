@@ -62,6 +62,9 @@ Roma, Italia
 
 \newpage
 \section{Introduzione}
+
+\newpage
+\section{Contesto}
 \textbf{\textit{I dati sono aperti se chiunque è libero di accederli, usarli, modificarli, e condividerli.}}
 \footnotemark
 \footnotetext{http://opendefinition.org/od/2.1/en}
@@ -90,23 +93,15 @@ Il punto cruciale di un bacino di dati (o linee di codice) accessibili e utilizz
 \\
 DCAT è un vocabolario RDF progettato per facilitare l'interoperabilità tra cataloghi di dati pubblicati sul web. DCAT incentiva la pubblicazione decentrata di cataloghi e facilita la ricerca federata di dati tra i siti. Usando lo standard DCAT chi pubblica insiemi di dati incrementa la propria visibilità e favorisce le applicazioni che lavorano su dati e metadati in cataloghi multipli (applicazioni cross-portali).
 
-\subsection{CKAN}
-CKAN acronimo di Comprehensive Knowledge Archive Network è una sistema open source (https://github.com/ckan/ckan) pensato per l'immagazzinamento la, la catalogazione e la distribuzione dei dati in diversi formati; quali ad esempio fogli di calcolo, csv, pdf, xml, rfd, ... CKAN è scritto in Python ed è  è ispirato dal sistema di gestione dei pacchetti comune a sistemi operativi open source come quelli della famiglia Linux.
-\\
-Il codice base di CKAN viene mantenuto dalla Open Knowledge Foundation. Il sistema è usato sia come piattaforma pubblica su Datahub (https://datahub.io), sia da varie pubbliche amministrazioni nell'ambito della loro strategia di pubblicazione di dati aperti, ogni portale web basato su CKAN espone delle Application programming interface API mediante le quali è possibile interrogare i dataset e fruire dei dati di ciascun portale. 
-\\
-\\
-Utilizzare 
-
-\subsection{DCAT, DCAT-AP e DCAT-AP-it}
+\newpage
+\subsection{DCAT-AP e DCAT-AP-it}
 
 Il DCAT Application Profile (DCAT-AP) fornisce una specifica comune per la descrizione di dati della pubblica amministrazione in Europa, questa specifica è basata sullo standard DCAT: Data Catalog Vocabulary. \footnotemark
 \footnotetext{https://www.w3.org/TR/vocab-dcat}
 \\
 DCAT-AP-it è la versione italiana di DCAT-AP, il profilo nazionale dei metadati utili per descrivere i dati delle pubbliche amministrazioni, conforme alla specifica di DCAT-AP serve a favorire l'interoperabilità semantica di dati e servizi. DCAT-AP-it è un modello dati pensato per rendere omogenei in tutta la pubblica amministrazione italiana i processi di accesso e scambio delle informazioni tra le istituzioni stesse e tra le istituzioni e i cittadini e le imprese, in coerenza con il relativo framework europeo. L'utilizzo di un modello dati valorizza il patrimonio informativo pubblico nazionale in linea con la Direttiva relativa al riutilizzo dell'informazione del settore pubblico.
 Le categorie - definite dal portale europeo European Data Portal - sono le seguenti:
-\footnotemark
-\footnotetext{DCAT-AP-it, Profilo italiano di DCAT-AP, Versione 1.0, Agenzia per l'italia digitale}
+
 \begin{enumerate}
 \item Agriculture, Fisheries, Forestry \& Foods
 \item Energy
@@ -131,18 +126,40 @@ Le categorie - definite dal portale europeo European Data Portal - sono le segue
 \end{center}
 \end{figure}
 
-\newpage
-\subsection{EuroVoc e JRC-Acquis}
+\subsection{CKAN}
+CKAN (Comprehensive Knowledge Archive Network) è una sistema open source (https://github.com/ckan/ckan) pensato per l'immagazzinamento, la catalogazione e la distribuzione dei dati in diversi formati; quali ad esempio fogli di calcolo, csv, pdf, xml, rfd, ... CKAN è scritto in Python ed è ispirato dal sistema di gestione dei pacchetti comune a sistemi operativi open source come quelli della famiglia Linux.
+\\
+Il codice base di CKAN viene mantenuto dalla Open Knowledge Foundation. Il sistema è usato sia come piattaforma pubblica su Datahub (https://datahub.io), sia da varie pubbliche amministrazioni nell'ambito della loro strategia di pubblicazione di dati aperti, ogni portale web basato su CKAN espone delle Application programming interface API mediante le quali è possibile interrogare i dataset e fruire dei dati di ciascun portale. 
+\\
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.50]{img/ckanedp.png}
+\caption{European Data Portal, basato su CKAN}
+\end{center}
+\end{figure}
+\\
+L'uso congiunto della rappresentazione dei dati DCAT-AP-it ed un portale web accessibile mediante API \say{standard} è una strategia di base per garantire l'interoperabilità dei dataset. Le pubbliche amministrazioni europee utilizzano CKAN (standard de facto) per la gestione dei propri dataset.
+\\
+CKAN mette a disposizione una estensione (plugin) \url{https://github.com/ckan/ckanext-dcat} per abilitare l'esportazione dei metadati in formato DCAT in aggiunta alle API JSON. La corrispondenza tra i campi che descrivono i dati in CKAN ed i campi in DCAT è realizzata mediante un mapping \url{https://github.com/ckan/ckanext-dcat#rdf-dcat-to-ckan-dataset-mapping}, il quale prende i valori dai campi CKAN e li mappa in quelli DCAT.
+
+
+\subsection{EuroVoc}
 EuroVoc è un thesaurus multilingue e pluridisciplinare che comprende la terminologia dei settori d'attività dell'Unione europea. Contiene termini in 23 lingue dell'UE. EuroVoc è in linea con le raccomandazioni del W3C e con gli ultimi sviluppi negli standard di classificazione. Il thesaurus EuroVoc viene utilizzato dalle istituzioni dell'Unione europea, dall'Ufficio delle pubblicazioni dell'UE, da parlamenti nazionali e regionali in Europa, come pure da amministrazioni nazionali e utenti privati di tutto il mondo.
 \footnotemark
 \footnotetext{http://eurovoc.europa.eu}
 I descrittori del thesaurus multilingua EuroVoc sono usati da molti parlamentari europei e centri di documentazione per indicizzare manualmente le loro collezioni di documenti, i descrittori assegnati ai documenti sono utilizzati per cercare ed individuare documenti in una gerarchia semantica divisa in 21 domini, 127 sottodomini (microtesauri) e circa 7000 descrittori (concetti).
+
+\subsection{JRC-Acquis}
+JRC-Acquis è un corpus parallelo multilingua che contiene documenti di natura governativa (riguardanti varie tematiche) utilizzati/prodotti dalle istituzioni europee.  
+La versione corrente di JRC-Acquis (3.0) contiene più di 23'000 documenti annotati manualmente con i descrittori dei concetti del tesauro EuroVoc. 
 \\
+\url{https://ec.europa.eu/jrc/en/language-technologies/jrc-acquis}
 \\
-La versione corrente di JRC-Acquis è la 3.0, i vantaggi che possiamo trarre utilizzando JRC-Acquis come corpus di addestramento per la catalogazione di open data sono molteplici. Acquis rilascia periodicamente nuove versioni di corpus indicizzati con i descrittori di EuroVoc.
+JRC-Acquis può essere usato per addestrare e/o testare sistemi di classificazione basati su algoritmi di text mining o software per la keyword-assignment basati su varie tecnologie semantiche. Il corpus è codificato in XML, in accordo con lo standard TEI per la descrizione dei campi.
+\footnotemark
+\footnotetext{Steinberger Ralf, Mohamed Ebrahim, Alexandros Poulis, Manuel Carrasco-Benitez, Patrick Schlüter, Marek Przybyszewski \& Signe Gilbro. An overview of the European Union's highly multilingual parallel corpora. Language Resources and Evaluation Journal, 2014}
 \\
-\\
-Tra i vantaggi principali abbiamo: 
+I vantaggi che possiamo trarre utilizzando JRC-Acquis come corpus di addestramento per la catalogazione di open data sono molteplici, tra i vantaggi principali abbiamo: 
 
 \begin{enumerate}
 \item Standard TEI
@@ -213,6 +230,7 @@ JRC-Acquis è un corpus manutenuto e aggiornato manualmente, decine di migliaia 
 \subsubsection{Corpus parallelo multilingua}
 JRC-Acquis è un corpus multilingua, questo vuol dire che è disponibile una versione per ciascuna lingua dell'Unione Europea. Il parallelismo è dato dal fatto che molti documenti sono disponibili in più lingue. Utilizzare corpus multilingua facilita il compito di sviluppare sistemi basati su tecnologie semantiche multilingua.
 
+\newpage
 \subsubsection{Bridge dinamico tra EuroVoc e le categorie DCAT-AP}
 \begin{figure}[htbp]
 \begin{center}
@@ -249,7 +267,7 @@ Map<String, EUNamedAuthorityDataTheme.Theme> EUROVOC_TO_DCAT_CATEGORIES = new Ha
 };
 \end{lstlisting}
 
-Utilizzare Acquis garantisce anche un'altra forma di flessibilità, quella relativa al tesauro, infatti possiamo pensare al mapping tra i microtesauri e i temi in modo del tutto indipendente dalla versione di EuroVoc utilizzata. In realtà l'aggiornamento di EuroVoc non dovrebbe cambiare molto le cose dal punto di vista della classificazione se non si aggiorna anche il corpus (Acquis).
+Il tesauro (EuroVoc) e il corpus (JRC-Acquis) sono i due componenti fondamentali per la costruzione dei dati di addestramento del classificatore, essendo questi due componenti disaccoppiati è possibile pensare di aggiornare uno e mantenere immutato l'altro qualora siano disponibili versioni più aggiornate del corpus o del tesauro. Anche questa è una forma di flessibilità, anche se in realtà dall'aggiornamento del tesauro non si traggono benefici se i descrittori dei concetti aggiunti non compaiono anche nel corpus. 
 
 \newpage
 \section{Elaborazione dei corpus}
