@@ -1,5 +1,4 @@
 package com.sciamlab.it.eurovoc;
-import java.io.File;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -40,8 +39,11 @@ public class EVoc {
 
 		//mapping EUROVOC-DCAT
 		//AGRI, ENER, GOVE, INTR, JUST, ECON, SOCI, EDUC, TECH, TRAN, ENVI, REGI
-		@SuppressWarnings("serial")
-		public static final Map<String, EUNamedAuthorityDataTheme.Theme> EUROVOC_TO_DCAT_CATEGORIES = new HashMap<String, EUNamedAuthorityDataTheme.Theme>(){{
+
+		public static final Map<String, EUNamedAuthorityDataTheme.Theme> EUROVOC_TO_DCAT_CATEGORIES 
+		= new HashMap<String, EUNamedAuthorityDataTheme.Theme>(){
+			private static final long serialVersionUID = 1L;
+		{
 			put("0406",EUNamedAuthorityDataTheme.Theme.GOVE); 		
 			put("0411",EUNamedAuthorityDataTheme.Theme.GOVE); 		
 			put("0416",EUNamedAuthorityDataTheme.Theme.GOVE); 		
@@ -184,29 +186,6 @@ public class EVoc {
 				dcatset.add((EUROVOC_TO_DCAT_CATEGORIES.get(mt).toString()));
 			}
 			return dcatset;
-
-		}
-
-		public static void main(String[] args) {
-			System.out.print("Loading thesaurus information... ");
-			File f=new File("src/main/resources/eurovoc/eurovoc_xml");
-
-			EurovocThesaurus thesaurusInfo = new EurovocThesaurus.Builder(f, "it").build();
-			System.out.println("done");
-			System.out.println("domainMap: "+thesaurusInfo.domainMap.size());
-			System.out.println("microThesaurusMap: "+thesaurusInfo.microThesaurusMap.size());
-			System.out.println("conceptMap: "+thesaurusInfo.conceptMap.size());		
-
-			HashSet<String> hs=new HashSet<String>();
-			hs.add("5158");
-			hs.add("3560");
-			hs.add("843");
-			hs.add("3558");
-			hs.add("5059");
-			hs.add("394");
-			hs.add("933");
-
-			System.out.println(EVoc.returnsDCATCAT(hs, thesaurusInfo));
 
 		}
 }

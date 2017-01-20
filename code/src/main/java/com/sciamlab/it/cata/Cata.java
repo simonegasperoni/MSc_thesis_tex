@@ -8,8 +8,9 @@ import com.sciamlab.common.util.SciamlabStreamUtils;
 import com.sciamlab.it.cata.classifier.Classifier;
 import com.sciamlab.it.cata.classifier.PredictionEntry;
 import com.sciamlab.it.cata.classifier.Bayes;
-import com.sciamlab.it.cata.classifier.BayesMultinomial;
-import com.sciamlab.it.cata.classifier.BayesMultivariate;
+import com.sciamlab.it.cata.classifier.BayesKullbackLeibler;
+import com.sciamlab.it.cata.classifier.BayesMultinomialWF;
+import com.sciamlab.it.cata.classifier.BayesMultinomialWO;
 import com.sciamlab.it.cata.classifier.ClassifiedEntry;
 import com.sciamlab.it.cata.evaluation.OpenDataHubTest;
 import com.sciamlab.it.cata.feature.BasicFeatureExtractor;
@@ -54,25 +55,47 @@ public class Cata{
 //		ts2.createDF();
 //		System.out.println("df pre: "+ts2.getDf().size());
 		
+//		Set<String> set=new HashSet<String>(); 
+//		set.add("lavoro");
+//		set.add("cessazioni");
+//		
+//		Bayes bayes=new BayesMultivariate(ts);
+//				PredictionEntry pe=new PredictionEntry(
+//						null,
+//						"Comunicazioni Obbligatorie - Cessazioni Le Comunicazioni Obbligatorie (CO) sono quelle che tutti "
+//						+ "i datori di lavoro, pubblici e privati, devono trasmettere in caso di assunzione, proroga, "
+//						+ "trasformazione e cessazione dei rapporti di lavoro e variazione della ragione sociale delle aziende. "
+//						+ "Il Sistema CO dall'11 gennaio 2008 connette tutti i Centri per l'impiego, le Province le Regioni "
+//						+ "d'Italia ed il Ministero del lavoro, oltre ad altri enti - come INPS ed INAIL. "
+//						+ "Le nuove disposizioni sono state introdotte dalla L. n. 296 2007 (legge finanziaria per il 2007)."
+//						+ "Successivamente, con il Decreto Ministeriale 30 ottobre 2007 sono stati approvati i nuovi modelli "
+//						+ "per le comunicazioni datoriali ed avviata la modalita telematica di invio delle stesse.", set);
+//		
+//		ClassifiedEntry ce=bayes.predict(pe, new BasicFeatureExtractor());
+//		System.out.println(ce);
+
 		Set<String> set=new HashSet<String>(); 
-		set.add("lavoro");
-		set.add("cessazioni");
+		set.add("nazionalità");
+		set.add("imprese straniere");
 		
-		Bayes bayes=new BayesMultivariate(ts);
+		
+		Bayes bayes=new BayesKullbackLeibler(ts);
 				PredictionEntry pe=new PredictionEntry(
-						null,
-						"Comunicazioni Obbligatorie - Cessazioni Le Comunicazioni Obbligatorie (CO) sono quelle che tutti "
-						+ "i datori di lavoro, pubblici e privati, devono trasmettere in caso di assunzione, proroga, "
-						+ "trasformazione e cessazione dei rapporti di lavoro e variazione della ragione sociale delle aziende. "
-						+ "Il Sistema CO dall'11 gennaio 2008 connette tutti i Centri per l'impiego, le Province le Regioni "
-						+ "d'Italia ed il Ministero del lavoro, oltre ad altri enti - come INPS ed INAIL. "
-						+ "Le nuove disposizioni sono state introdotte dalla L. n. 296 2007 (legge finanziaria per il 2007)."
-						+ "Successivamente, con il Decreto Ministeriale 30 ottobre 2007 sono stati approvati i nuovi modelli "
-						+ "per le comunicazioni datoriali ed avviata la modalita telematica di invio delle stesse.", set);
+						"Imprese Individuali gestite da imprenditori extracomunitari della Provincia di Lecce - II Trimestre 2016",
+						"Il file contiene i dati provinciali relativi alle imprese straniere"
+						+ " registrate e distinti per attivita economica, classe di addetti, "
+						+ "sesso, eta, nazionalita e anno di costituzione. Si fa presente che, "
+						+ "dal computo sono stati esclusi gli imprenditori extracomunitari nati "
+						+ "in Svizzera, poiche verosimilmente si tratta di cittadini italiani figli "
+						+ "di salentini emigrati negli anni '60 in tale paese, e non di cittadini "
+						+ "svizzeri stabilitisi nei comuni della provincia di Lecce. ", set);
 		
 		ClassifiedEntry ce=bayes.predict(pe, new BasicFeatureExtractor());
 		System.out.println(ce);
-
+		
+		
+		
+		
 //		GenericFeatureSelector gfs=new MutualInformationSelector();
 //		
 //		gfs.filter(ts, 2800);
