@@ -7,6 +7,7 @@ import com.sciamlab.common.model.mdr.vocabulary.EUNamedAuthorityDataTheme.Theme;
 import com.sciamlab.it.cata.feature.FeatureExtractor;
 import com.sciamlab.it.cata.selector.ChiSquareSelector;
 import com.sciamlab.it.cata.selector.GenericFeatureSelector;
+import com.sciamlab.it.cata.selector.MutualInformationSelector;
 import com.sciamlab.it.cata.training.TrainingSet;
 
 public class BayesKullbackLeibler extends Bayes{
@@ -15,7 +16,7 @@ public class BayesKullbackLeibler extends Bayes{
 		
 		//feature selecting
 		GenericFeatureSelector gfs=new ChiSquareSelector();
-		gfs.filter(trainingSet, 1000);
+		gfs.filter(trainingSet, 1300);
 
 		this.featureToCategoryCountMap=trainingSet.getDf();
 		System.out.println("df map size: "+featureToCategoryCountMap.size());
@@ -61,11 +62,10 @@ public class BayesKullbackLeibler extends Bayes{
 		for(Theme t:tp.keySet()){
 			int categoryWholeCount = categoryWholeCountMap.get(t);
 
-			for(String feature:dcount.keySet()){
+			for(String feature:corpus){
+				if(!dcount.keySet().contains(feature)) continue;
 				Map<Theme,Integer> categoryCount = featureToCategoryCountMap.get(feature);
-				
 				double pwd=(new Double(dcount.get(feature)))/(new Double(d));
-				
 				tp.put(t, tp.get(t)- pwd*(Math.log(pwd/(new Double(categoryCount.get(t))/categoryWholeCount))));
 			}
 		}

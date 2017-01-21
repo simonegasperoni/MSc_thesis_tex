@@ -82,13 +82,7 @@ public class Cata{
 		Bayes bayes=new BayesKullbackLeibler(ts);
 				PredictionEntry pe=new PredictionEntry(
 						"Imprese Individuali gestite da imprenditori extracomunitari della Provincia di Lecce - II Trimestre 2016",
-						"Il file contiene i dati provinciali relativi alle imprese straniere"
-						+ " registrate e distinti per attivita economica, classe di addetti, "
-						+ "sesso, eta, nazionalita e anno di costituzione. Si fa presente che, "
-						+ "dal computo sono stati esclusi gli imprenditori extracomunitari nati "
-						+ "in Svizzera, poiche verosimilmente si tratta di cittadini italiani figli "
-						+ "di salentini emigrati negli anni '60 in tale paese, e non di cittadini "
-						+ "svizzeri stabilitisi nei comuni della provincia di Lecce. ", set);
+						"a o", set);
 		
 		ClassifiedEntry ce=bayes.predict(pe, new BasicFeatureExtractor());
 		System.out.println(ce);

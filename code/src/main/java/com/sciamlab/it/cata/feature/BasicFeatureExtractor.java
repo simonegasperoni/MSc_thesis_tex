@@ -323,6 +323,7 @@ public class BasicFeatureExtractor implements FeatureExtractor {
 		stopwords.add("stessimo");
 		stopwords.add("stessero");
 		stopwords.add("stando");
+		
 	}
 	
 	private String stems(String s){
