@@ -8,6 +8,7 @@ import com.sciamlab.common.util.SciamlabStreamUtils;
 import com.sciamlab.it.cata.classifier.Classifier;
 import com.sciamlab.it.cata.classifier.PredictionEntry;
 import com.sciamlab.it.cata.classifier.Bayes;
+import com.sciamlab.it.cata.classifier.BayesBernoulli;
 import com.sciamlab.it.cata.classifier.BayesKullbackLeibler;
 import com.sciamlab.it.cata.classifier.BayesMultinomialWF;
 import com.sciamlab.it.cata.classifier.BayesMultinomialWO;
@@ -79,7 +80,7 @@ public class Cata{
 		set.add("imprese straniere");
 		
 		
-		Bayes bayes=new BayesKullbackLeibler(ts);
+		Bayes bayes=new BayesBernoulli(ts);
 				PredictionEntry pe=new PredictionEntry(
 						"Imprese Individuali gestite da imprenditori extracomunitari della Provincia di Lecce - II Trimestre 2016",
 						"a o", set);
