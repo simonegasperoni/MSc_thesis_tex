@@ -6,6 +6,10 @@ import com.sciamlab.it.cata.training.TrainingSet;
 
 public class MutualInformationSelector extends GenericFeatureSelector {
 
+	public MutualInformationSelector(int num){
+		this.num=num;
+	}
+	
 	private static Double log2(Double n){
 		Double res=Math.log10(n)/Math.log10(2);
 		return res;

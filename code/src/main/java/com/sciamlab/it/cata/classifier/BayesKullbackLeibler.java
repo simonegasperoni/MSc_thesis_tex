@@ -5,17 +5,12 @@ import java.util.Map;
 import java.util.Set;
 import com.sciamlab.common.model.mdr.vocabulary.EUNamedAuthorityDataTheme.Theme;
 import com.sciamlab.it.cata.feature.FeatureExtractor;
-import com.sciamlab.it.cata.selector.ChiSquareSelector;
-import com.sciamlab.it.cata.selector.GenericFeatureSelector;
 import com.sciamlab.it.cata.training.TrainingSet;
 
 public class BayesKullbackLeibler extends Bayes{
 	
 	public BayesKullbackLeibler(TrainingSet trainingSet){
-		
-		//feature selecting
-		GenericFeatureSelector gfs=new ChiSquareSelector();
-		gfs.filter(trainingSet, 1300);
+		this.featureSelector.filter(trainingSet);
 
 		this.featureToCategoryCountMap=trainingSet.getDf();
 		System.out.println("df map size: "+featureToCategoryCountMap.size());
@@ -83,13 +78,6 @@ public class BayesKullbackLeibler extends Bayes{
 		for(Theme t:tp.keySet()) 
 			results.put(t, tp.get(t));
 		
-//		Double max=Collections.max(results.values());
-//		Double min=Collections.min(results.values());
-//		Double thr=max-((max-min)*(1.0/9.0));
-//		
-//		for(Theme t:Theme.values()) 
-//			if(results.get(t)<thr) results.remove(t);
-		
-		return new ClassifiedEntry(featuresToPredict, results);
+		return new ClassifiedEntry(featuresToPredict, this.thr.getScore(results));
 	}
 }

@@ -1,5 +1,4 @@
 package com.sciamlab.it.cata.classifier;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,17 +19,7 @@ public abstract class BayesMultinomial extends Bayes{
 		for(Theme t:tp.keySet()) 
 			results.put(t, Math.log(pc.get(t))+tp.get(t));
 		
-		Double max=Collections.max(results.values());
-		//System.out.println(max);
-		Double min=Collections.min(results.values());
-		//System.out.println(min);
-		Double thr=max-((max-min)*(1.0/9.0));
-		//System.out.println(thr);
-		
-		for(Theme t:Theme.values()) 
-			if(results.get(t)<thr) results.remove(t);
-		
-		return new ClassifiedEntry(featuresToPredict, results);
+		return new ClassifiedEntry(featuresToPredict, thr.getScore(results));
 	}
 	
 	public Map<Theme, Double> termsProd(List<String> corpus){

@@ -15,6 +15,8 @@ import com.sciamlab.it.cata.classifier.BayesMultinomialWO;
 import com.sciamlab.it.cata.classifier.ClassifiedEntry;
 import com.sciamlab.it.cata.evaluation.OpenDataHubTest;
 import com.sciamlab.it.cata.feature.BasicFeatureExtractor;
+import com.sciamlab.it.cata.selector.ChiSquareSelector;
+import com.sciamlab.it.cata.selector.GenericFeatureSelector;
 import com.sciamlab.it.cata.training.AcquisTrainingSource;
 import com.sciamlab.it.cata.training.TrainingSet;
 
@@ -51,58 +53,37 @@ public class Cata{
 		
 		AcquisTrainingSource acquisTrainingSource = new AcquisTrainingSource();
 		TrainingSet ts=acquisTrainingSource.getTrainingSet();
-//		TrainingSet ts2=acquisTrainingSource.getTrainingSet();
-//		
-//		ts2.createDF();
-//		System.out.println("df pre: "+ts2.getDf().size());
 		
-//		Set<String> set=new HashSet<String>(); 
-//		set.add("lavoro");
-//		set.add("cessazioni");
-//		
-//		Bayes bayes=new BayesMultivariate(ts);
-//				PredictionEntry pe=new PredictionEntry(
-//						null,
-//						"Comunicazioni Obbligatorie - Cessazioni Le Comunicazioni Obbligatorie (CO) sono quelle che tutti "
-//						+ "i datori di lavoro, pubblici e privati, devono trasmettere in caso di assunzione, proroga, "
-//						+ "trasformazione e cessazione dei rapporti di lavoro e variazione della ragione sociale delle aziende. "
-//						+ "Il Sistema CO dall'11 gennaio 2008 connette tutti i Centri per l'impiego, le Province le Regioni "
-//						+ "d'Italia ed il Ministero del lavoro, oltre ad altri enti - come INPS ed INAIL. "
-//						+ "Le nuove disposizioni sono state introdotte dalla L. n. 296 2007 (legge finanziaria per il 2007)."
-//						+ "Successivamente, con il Decreto Ministeriale 30 ottobre 2007 sono stati approvati i nuovi modelli "
-//						+ "per le comunicazioni datoriali ed avviata la modalita telematica di invio delle stesse.", set);
-//		
-//		ClassifiedEntry ce=bayes.predict(pe, new BasicFeatureExtractor());
-//		System.out.println(ce);
-
 		Set<String> set=new HashSet<String>(); 
-		set.add("nazionalità");
-		set.add("imprese straniere");
+		set.add(" Sentenze favorevoli o sfavorevoli all'Amministrazione ( semestre gennaio - giugno 2015) "
+				+ "Numero delle sentenze favorevoli o sfavorevoli - Contenzioso civile e amministrativo");
+		PredictionEntry pe=new PredictionEntry(null,"", set);
 		
-		
-		Bayes bayes=new BayesBernoulli(ts);
-				PredictionEntry pe=new PredictionEntry(
-						"Imprese Individuali gestite da imprenditori extracomunitari della Provincia di Lecce - II Trimestre 2016",
-						"a o", set);
+		//Bayes bayes=new BayesBernoulli(ts);
+		//Bayes bayes=new BayesMultinomialWO(ts);
+		//Bayes bayes=new BayesMultinomialWF(ts);
+		Bayes bayes=new BayesKullbackLeibler(ts);
+				
 		
 		ClassifiedEntry ce=bayes.predict(pe, new BasicFeatureExtractor());
 		System.out.println(ce);
+
 		
 		
-		
-		
-//		GenericFeatureSelector gfs=new MutualInformationSelector();
+//		Set<String> set=new HashSet<String>(); 
+//		set.add("nazionalità");
+//		set.add("imprese straniere");
 //		
-//		gfs.filter(ts, 2800);
-//		System.out.println("df post: "+ts.getDf().size());
+//		
+//		Bayes bayes=new BayesBernoulli(ts);
+//				PredictionEntry pe=new PredictionEntry(
+//						"Imprese Individuali gestite da imprenditori extracomunitari della Provincia di Lecce - II Trimestre 2016",
+//						"a o", set);
+//		
+//		ClassifiedEntry ce=bayes.predict(pe, new BasicFeatureExtractor());
+//		System.out.println(ce);
 		
-//		Evaluator k=new KfoldEvaluator(ts, 10);
-//		k.evaluate(BayesMultivariate.class);
-		
-//		OpenDataHubTest o=new OpenDataHubTest(ts);
-//		o.loadData();
-//		o.evaluate(BayesMultivariate.class);
-		
+				
 		
 	}
 

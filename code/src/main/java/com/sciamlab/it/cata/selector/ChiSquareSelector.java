@@ -6,6 +6,10 @@ import com.sciamlab.it.cata.training.TrainingSet;
 
 public class ChiSquareSelector extends GenericFeatureSelector {
 
+	public ChiSquareSelector(int num){
+		this.num=num;
+	}
+	
 	public Map<String, Map<Theme, Double>> getScores(TrainingSet ts){
 		System.out.println(this.getClass().toString()+": chi square calculus");
 		this.buildData(ts);	

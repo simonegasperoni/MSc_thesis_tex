@@ -13,6 +13,15 @@ public abstract class GenericFeatureSelector implements FeatureSelector{
 	private Map<Theme, Integer> doccounter;
 	private Map<String, Integer> countTerms;
 	protected int sizeTS;
+	protected int num;
+	
+	public void featuresPerCategory(int num) {
+		this.num = num;
+	}
+	
+	public int getFeaturePerCategory() {
+		return num;
+	}
 	
 //MAP: 
 //<feature1, 
@@ -99,12 +108,12 @@ public abstract class GenericFeatureSelector implements FeatureSelector{
 		return thresholds;
 	}
 	
-	public void filter(TrainingSet ts, int k) {
+	public void filter(TrainingSet ts) {
 		System.out.println(this.getClass().toString()+": feature filtering");
 
 		
 		Map<String, Map<Theme, Double>> score=this.getScores(ts);
-		Map<Theme, Double> thresholds=this.getThresholds(score, k);
+		Map<Theme, Double> thresholds=this.getThresholds(score, num);
 		
 		//System.out.println(thresholds);
 		Map<String,Map<Theme,Integer>> df=ts.getDf();

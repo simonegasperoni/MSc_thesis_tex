@@ -26,7 +26,6 @@ public class OpenNlpExtractor implements FeatureExtractor {
 	private InputStream modelIn;
 	private POSTaggerME tagger;
 	private HashSet<String> ignoreset;
-	private HashSet<String> stopwords;
 
 	
 	//model for opennlp
@@ -47,8 +46,6 @@ public class OpenNlpExtractor implements FeatureExtractor {
 		this.tagger = new POSTaggerME(model);
 		this.is.close();
 		this.modelIn.close();
-		this.stopwords=new HashSet<String>();
-		this.setStopwords();
 	}
 	
 	public OpenNlpExtractor() throws InvalidFormatException, IOException{
@@ -63,37 +60,7 @@ public class OpenNlpExtractor implements FeatureExtractor {
 		this.tagger = new POSTaggerME(model);
 		this.is.close();
 		this.modelIn.close();
-		this.stopwords=new HashSet<String>();
-		this.setStopwords();
 		this.ignoreSet(OpenNlpExtractor.ONLY_NAMES_VERBS_ADJECTIVES);
-	}
-
-	//some stemmed stopwords
-	private void setStopwords(){
-		
-		stopwords.add(this.stems("gennaio"));
-		stopwords.add(this.stems("febbraio"));
-		stopwords.add(this.stems("marzo"));
-		stopwords.add(this.stems("aprile"));
-		stopwords.add(this.stems("maggio"));
-		stopwords.add(this.stems("giugno"));
-		stopwords.add(this.stems("luglio"));
-		stopwords.add(this.stems("agosto"));
-		stopwords.add(this.stems("settembre"));
-		stopwords.add(this.stems("ottobre"));
-		stopwords.add(this.stems("novembre"));
-		stopwords.add(this.stems("dicembre"));
-		stopwords.add(this.stems("luned�"));
-		stopwords.add(this.stems("marted�"));
-		stopwords.add(this.stems("mercoled�"));
-		stopwords.add(this.stems("gioved�"));
-		stopwords.add(this.stems("venerd�"));
-		stopwords.add(this.stems("sabato"));
-		stopwords.add(this.stems("domenica"));
-		stopwords.add(this.stems("pagina"));
-		stopwords.add(this.stems("pag"));
-		stopwords.add(this.stems("allegato"));
-		stopwords.add(this.stems("allegare"));
 	}
 
 	private static final String ONLY_NAMES_VERBS_ADJECTIVES="ONLY_NAMES_VERBS_ADJECTIVES";
@@ -201,7 +168,7 @@ public class OpenNlpExtractor implements FeatureExtractor {
 		while(i<tokens.length){
 			if(!ignoreset.contains(""+tags[i].charAt(0))&&(!tags[i].substring(0, 2).equals("VA"))){
 				String stemmed=stems(tokens[i].replaceAll("[^a-zA-Z ]", "").toLowerCase());
-				if((!stopwords.contains(stemmed))&&(stemmed.length()>2)) result.add(stemmed);
+				if(stemmed.length()>2) result.add(stemmed);
 			}
 			i++;
 		}
