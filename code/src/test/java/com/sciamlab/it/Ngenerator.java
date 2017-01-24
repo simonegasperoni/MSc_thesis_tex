@@ -52,7 +52,7 @@ public class Ngenerator {
 		@SuppressWarnings("resource")
 		AcquisTrainingSource acquisTrainingSource = new AcquisTrainingSource();
 		TrainingSet ts=acquisTrainingSource.getTrainingSet();
-		ChiSquareSelector gfs=new ChiSquareSelector();
+		ChiSquareSelector gfs=new ChiSquareSelector(2000);
 		gfs.buildData(ts);
 		Map<String, Map<Theme, Map<String, Integer>>> map=gfs.getData();
 		Map<String,Integer> method=map.get(term).get(category);

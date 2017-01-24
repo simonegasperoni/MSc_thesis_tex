@@ -38,13 +38,13 @@ public abstract class BayesMultinomial extends Bayes{
 		tp.put(Theme.REGI, 0.0);
 		tp.put(Theme.HEAL, 0.0);
 
-		for(Theme t:tp.keySet()){
+		for(Theme t:Theme.values()){
 			int categoryWholeCount = categoryWholeCountMap.get(t);
 
 			for(String feature:corpus){
 				Map<Theme,Integer> categoryCount = featureToCategoryCountMap.get(feature);
 				
-				if(categoryCount==null) continue;
+				if(categoryCount==null) continue;		
 				tp.put(t, tp.get(t)+Math.log(new Double(categoryCount.get(t))/categoryWholeCount));
 			}
 		}

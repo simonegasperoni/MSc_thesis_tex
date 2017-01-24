@@ -5,8 +5,9 @@ import java.util.List;
 import com.sciamlab.common.nlp.EurovocThesaurus;
 import com.sciamlab.it.acquis.xquery.FScrawling;
 import com.sciamlab.it.acquis.xquery.XQmain;
-import com.sciamlab.it.cata.feature.BasicFeatureExtractor;
 import com.sciamlab.it.cata.feature.FeatureExtractor;
+import com.sciamlab.it.cata.feature.StemFeatureExtractor;
+
 import opennlp.tools.util.InvalidFormatException;
 import java.io.File;
 import java.io.IOException;
@@ -21,13 +22,15 @@ public class Initdb {
 	private EurovocThesaurus thesaurusInfo;
 	private Psql db;
 	private static final int batchSize=200;
-
+	private String nametable;
+	
 	//private static final int batchSize=150;
-	public Initdb(String inputdir, Psql db, EurovocThesaurus thesaurusInfo) throws InvalidFormatException, IOException {
+	public Initdb(String inputdir, Psql db, EurovocThesaurus thesaurusInfo, String nametable) throws InvalidFormatException, IOException {
 		this.fsc=new FScrawling(inputdir);
 		this.files=fsc.crawl();
 		this.thesaurusInfo=thesaurusInfo;
 		this.db=db;
+		this.nametable=nametable;
 	}
 
 	public ArrayList<String> getFiles() {
@@ -35,7 +38,7 @@ public class Initdb {
 	}
 
 	public void createACQUIS3table() throws SQLException{
-		PreparedStatement ps = db.getC().prepareStatement("CREATE TABLE acquisTableBasic"+
+		PreparedStatement ps = db.getC().prepareStatement("CREATE TABLE "+nametable+" "+
 				"( doc text not null,"+
 				"dcats text[],"+
 				"features text[],"+
@@ -52,7 +55,7 @@ public class Initdb {
 			throws Exception{
 		int i=0;
 		Connection c=this.db.getC();
-		PreparedStatement insert = (c.prepareStatement("insert into acquisTableBasic values (?,?,?)"));
+		PreparedStatement insert = (c.prepareStatement("insert into "+nametable+" values (?,?,?)"));
 		for(String file:files){
 			HashSet<String> dcats=XQmain.dcatsFile(file,"C:/Users/simone/Desktop", thesaurusInfo);
 
@@ -77,7 +80,6 @@ public class Initdb {
 
 	public static void main (String[] args) throws Exception{
 
-
 		System.out.print("Loading thesaurus information... ");
 		File f=new File("src/main/resources/eurovoc/eurovoc_xml");
 		EurovocThesaurus thesaurusInfo = new EurovocThesaurus.Builder(f, "it").build();
@@ -88,9 +90,9 @@ public class Initdb {
 
 
 		Psql db=new Psql("indexdb","postgres","postgres");
-		Initdb initdb=new Initdb("C:/Users/simone/Desktop/it-acquis3", db, thesaurusInfo);
+		Initdb initdb=new Initdb("C:/Users/simone/Desktop/it-acquis3", db, thesaurusInfo, "acquisStemmed");
 		initdb.createACQUIS3table();
-		initdb.initIndexDOCFEATURES(new BasicFeatureExtractor());
+		initdb.initIndexDOCFEATURES(new StemFeatureExtractor());
 
 	}
 }

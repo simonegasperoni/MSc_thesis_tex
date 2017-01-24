@@ -1,12 +1,8 @@
 package com.sciamlab.it.cata.evaluation;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
-
 import com.sciamlab.common.model.mdr.vocabulary.EUNamedAuthorityDataTheme.Theme;
 import com.sciamlab.it.cata.classifier.ClassifiedEntry;
 import com.sciamlab.it.cata.classifier.Classifier;
@@ -76,7 +72,7 @@ public class KfoldEvaluator implements Evaluator {
 				ClassifiedEntry ce=docmap.get(id);
 				List<String> list=ce.getFeatureSet();
 				//System.out.println(list);
-				ClassifiedEntry classified=classifier.predict(list, 1.0);
+				ClassifiedEntry classified=classifier.predict(list);
 				//System.out.println(classified.getCategories().size());;
 
 				for(Theme t:classified.getCategories().keySet()){

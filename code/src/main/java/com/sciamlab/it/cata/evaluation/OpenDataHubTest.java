@@ -7,13 +7,12 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
 import com.sciamlab.common.model.mdr.vocabulary.EUNamedAuthorityDataTheme.Theme;
 import com.sciamlab.it.acquis.initdb.Psql;
 import com.sciamlab.it.cata.classifier.ClassifiedEntry;
 import com.sciamlab.it.cata.classifier.Classifier;
 import com.sciamlab.it.cata.classifier.PredictionEntry;
-import com.sciamlab.it.cata.feature.BasicFeatureExtractor;
+import com.sciamlab.it.cata.feature.StemFeatureExtractor;
 import com.sciamlab.it.cata.training.TrainingSet;
 
 class OdhEntry{
@@ -89,7 +88,7 @@ public class OpenDataHubTest implements Evaluator {
 			System.out.println(odhe.getDescription());
 			System.out.println(odhe.getTags());
 			
-			ClassifiedEntry ce=classifier.predict(new PredictionEntry(odhe.getTitle(), odhe.getDescription(), odhe.getTags()), new BasicFeatureExtractor());
+			ClassifiedEntry ce=classifier.predict(new PredictionEntry(odhe.getTitle(), odhe.getDescription(), odhe.getTags()), new StemFeatureExtractor());
 			
 			System.out.println(ce.getCategories());
 			System.out.println(odhe.getCategory());

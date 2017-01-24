@@ -1,27 +1,14 @@
 package com.sciamlab.it.cata.feature;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.StringTokenizer;
-import org.tartarus.snowball.SnowballStemmer;
-import org.tartarus.snowball.ext.italianStemmer;
 import com.sciamlab.it.cata.classifier.PredictionEntry;
-import opennlp.tools.util.InvalidFormatException;
 
-public class BasicFeatureExtractor implements FeatureExtractor {
+public abstract class BasicFeatureExtractor implements FeatureExtractor {
 
-	private HashSet<String> stopwords;
-	private SnowballStemmer stemmer;
+	protected HashSet<String> stopwords;
 
-	public BasicFeatureExtractor() throws InvalidFormatException, IOException{
-		this.stemmer = (SnowballStemmer) new italianStemmer();
-		this.stopwords=new HashSet<String>();
-		this.setStopwords();
-	}
-
-	//some stemmed stopwords
-	private void setStopwords(){
+	protected void setStopwords(){
 		stopwords.add("gennaio");
 		stopwords.add("febbraio");
 		stopwords.add("marzo");
@@ -323,32 +310,14 @@ public class BasicFeatureExtractor implements FeatureExtractor {
 		stopwords.add("stessimo");
 		stopwords.add("stessero");
 		stopwords.add("stando");
-		
 	}
-	
-	private String stems(String s){
-		stemmer.setCurrent(s);
-		stemmer.stem();
-		return stemmer.getCurrent();
-	}
-	
+
 	//main method for feature extraction
-	public List<String> execute(String text){
-		String resultString = text.replaceAll("\\P{L}+", " ").toLowerCase();
-		List<String> result=new ArrayList<String>();
-		StringTokenizer tk=new StringTokenizer(resultString);
-		while(tk.hasMoreTokens()){
-			String s=tk.nextToken();
-			if(!stopwords.contains(s)){
-				result.add(this.stems(s));
-			}
-		}
-		return result;
-	}
-	
+	public abstract List<String> execute(String text);
+
 	public List<String> extract(PredictionEntry entry) throws Exception {
 		List<String> res= new ArrayList<String>();
-		
+
 		if(entry.getTitle()!=null){
 			res.addAll(this.execute(entry.getTitle()));
 		}
@@ -358,7 +327,7 @@ public class BasicFeatureExtractor implements FeatureExtractor {
 		if(entry.getTags()!=null){
 			for(String s:entry.getTags()) res.addAll(this.execute(s));
 		}
-		
+
 		return res;
 	}
 

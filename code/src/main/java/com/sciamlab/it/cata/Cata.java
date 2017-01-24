@@ -8,15 +8,10 @@ import com.sciamlab.common.util.SciamlabStreamUtils;
 import com.sciamlab.it.cata.classifier.Classifier;
 import com.sciamlab.it.cata.classifier.PredictionEntry;
 import com.sciamlab.it.cata.classifier.Bayes;
-import com.sciamlab.it.cata.classifier.BayesBernoulli;
-import com.sciamlab.it.cata.classifier.BayesKullbackLeibler;
 import com.sciamlab.it.cata.classifier.BayesMultinomialWF;
-import com.sciamlab.it.cata.classifier.BayesMultinomialWO;
+import com.sciamlab.it.cata.classifier.BayesTagBased;
 import com.sciamlab.it.cata.classifier.ClassifiedEntry;
-import com.sciamlab.it.cata.evaluation.OpenDataHubTest;
-import com.sciamlab.it.cata.feature.BasicFeatureExtractor;
-import com.sciamlab.it.cata.selector.ChiSquareSelector;
-import com.sciamlab.it.cata.selector.GenericFeatureSelector;
+import com.sciamlab.it.cata.feature.StemFeatureExtractor;
 import com.sciamlab.it.cata.training.AcquisTrainingSource;
 import com.sciamlab.it.cata.training.TrainingSet;
 
@@ -24,6 +19,7 @@ public class Cata{
 
 	private static final Logger logger = Logger.getLogger(AcquisTrainingSource.class);
 	public static final Properties PROPS = new Properties();
+	@SuppressWarnings("unused")
 	private Classifier classifier;
 
 	
@@ -51,21 +47,22 @@ public class Cata{
 
 	public static void main(String[] args) throws Exception {
 		
+		@SuppressWarnings("resource")
 		AcquisTrainingSource acquisTrainingSource = new AcquisTrainingSource();
 		TrainingSet ts=acquisTrainingSource.getTrainingSet();
 		
 		Set<String> set=new HashSet<String>(); 
-		set.add(" Sentenze favorevoli o sfavorevoli all'Amministrazione ( semestre gennaio - giugno 2015) "
-				+ "Numero delle sentenze favorevoli o sfavorevoli - Contenzioso civile e amministrativo");
-		PredictionEntry pe=new PredictionEntry(null,"", set);
+		set.add("contributi");
+		PredictionEntry pe=new PredictionEntry("Aliquote contributive",
+				"", set);
 		
 		//Bayes bayes=new BayesBernoulli(ts);
 		//Bayes bayes=new BayesMultinomialWO(ts);
-		//Bayes bayes=new BayesMultinomialWF(ts);
-		Bayes bayes=new BayesKullbackLeibler(ts);
-				
+		Bayes bayes=new BayesMultinomialWF(ts);
+		//Bayes bayes=new BayesKullbackLeibler(ts);
+		//Bayes bayes=new BayesTagBased(ts);		
 		
-		ClassifiedEntry ce=bayes.predict(pe, new BasicFeatureExtractor());
+		ClassifiedEntry ce=bayes.predict(pe, new StemFeatureExtractor());
 		System.out.println(ce);
 
 		
