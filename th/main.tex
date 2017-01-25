@@ -35,7 +35,7 @@
 }
 
 \author{Simone Gasperoni}
-\title{title}
+\title{Categorizzazione di open-data per il profilo di applicazione DCAT-AP}
 
 \begin{document}
 
@@ -47,7 +47,7 @@
 
 \hrulefill
 
-{ \huge \bfseries title \\[0.4cm] }
+{ \huge \bfseries Categorizzazione di open-data per il profilo di applicazione DCAT-AP \\[0.4cm] }
 \textsc{\Large Simone Gasperoni}\\[0.5cm]
 \vfill
 \LaTeX
@@ -127,20 +127,35 @@ Le categorie - definite dal portale europeo European Data Portal - sono le segue
 \end{figure}
 
 \subsection{CKAN}
-CKAN (Comprehensive Knowledge Archive Network) è una sistema open source (https://github.com/ckan/ckan) pensato per l'immagazzinamento, la catalogazione e la distribuzione dei dati in diversi formati; quali ad esempio fogli di calcolo, csv, pdf, xml, rfd, ... CKAN è scritto in Python ed è ispirato dal sistema di gestione dei pacchetti comune a sistemi operativi open source come quelli della famiglia Linux.
+CKAN (Comprehensive Knowledge Archive Network) è una sistema open source (https://github.com/ckan/ckan) pensato per l'immagazzinamento, la catalogazione e la distribuzione dei dati in diversi formati; quali ad esempio fogli di calcolo, csv, pdf, xml, rfd, ... CKAN è scritto in Python ed è ispirato dal sistema di gestione dei pacchetti comune a sistemi operativi open source come quelli della famiglia Linux. CKAN è un sistema performante e manutenuto da una comunità di sviluppatori online (Open Knowledge Foundation).  
 \\
-Il codice base di CKAN viene mantenuto dalla Open Knowledge Foundation. Il sistema è usato sia come piattaforma pubblica su Datahub (https://datahub.io), sia da varie pubbliche amministrazioni nell'ambito della loro strategia di pubblicazione di dati aperti, ogni portale web basato su CKAN espone delle Application programming interface API mediante le quali è possibile interrogare i dataset e fruire dei dati di ciascun portale. 
+Il sistema è usato sia come piattaforma pubblica su Datahub (https://datahub.io), sia da varie pubbliche amministrazioni nell'ambito della loro strategia di pubblicazione di dati aperti, ogni portale web basato su CKAN espone delle Application programming interface API mediante le quali è possibile interrogare i dataset e fruire dei dati di ciascun portale. 
 \\
+Molte pubbliche amministrazioni europee utilizzano CKAN (standard de facto) per la pubblicazione, gestione, e presentazione dei propri dati aperti. Riporto i link ad alcune pubbliche amministrazioni che utilizzano CKAN:
+\begin{itemize}
+
+\item \url{https://data.gov.uk}
+\item \url{http://dati.emilia-romagna.it}
+\item \url{http://dati.trentino.it}
+\item \url{http://dati.comune.lecce.it}
+\item ...
+\end{itemize}
+Oltre alle amministrazioni esiste un portale europeo (anch'esso basato su CKAN) \url{https://europeandataportal.eu}, il quale raccoglie i metadati delle informazioni del settore pubblico disponibili sui portali di dati pubblici dei vari paesi europei.
+\\
+Come detto in precedenza il profilo DCAT-AP garantisce l'interoperabilità, CKAN salvaguarda questa importante caratteristica dei dati aperti mettendo a disposizione un'estensione (plugin) \url{https://github.com/ckan/ckanext-dcat} per abilitare l'esportazione dei metadati in formato DCAT. La corrispondenza tra i campi che descrivono i dati in CKAN ed i campi in DCAT è realizzata mediante un mapping \url{https://github.com/ckan/ckanext-dcat#rdf-dcat-to-ckan-dataset-mapping}, il quale prende i valori dai campi CKAN e li mappa in quelli DCAT.
+
+\subsubsection{European Data Portal}
+Il portale europeo oltre a raccogliere i metadati europei produce delle analisi riguardanti la fornitura di dati e i vantaggi del loro riutilizzo. In tutta Europa, i dati sono sempre più aperti e disponibile per il riutilizzo. Un certo numero di studi ha incrementato le aspettative per quanto riguarda i benefici finanziari dei dati aperti (open data), la strada da percorrere per sfruttare pienamente i dati aperti è ancora lunga. Il portale europeo esplora approfonditamente il tema del riutilizzo dei dati aperti, al fine di sostenere la trasformazione dei dati in valore (economico, sociale, politico). 
+
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[scale=0.50]{img/ckanedp.png}
-\caption{European Data Portal, basato su CKAN}
+\includegraphics[scale=0.50]{img/eustat.png}
+\caption{Alcune analisi prodotte dal portale europeo}
 \end{center}
 \end{figure}
-\\
-L'uso congiunto della rappresentazione dei dati DCAT-AP-it ed un portale web accessibile mediante API \say{standard} è una strategia di base per garantire l'interoperabilità dei dataset. Le pubbliche amministrazioni europee utilizzano CKAN (standard de facto) per la gestione dei propri dataset.
-\\
-CKAN mette a disposizione una estensione (plugin) \url{https://github.com/ckan/ckanext-dcat} per abilitare l'esportazione dei metadati in formato DCAT in aggiunta alle API JSON. La corrispondenza tra i campi che descrivono i dati in CKAN ed i campi in DCAT è realizzata mediante un mapping \url{https://github.com/ckan/ckanext-dcat#rdf-dcat-to-ckan-dataset-mapping}, il quale prende i valori dai campi CKAN e li mappa in quelli DCAT.
+
+\subsubsection{Open Data Hub Italy}
+\subsubsection{Dati.gov.it}
 
 
 \subsection{EuroVoc}
