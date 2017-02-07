@@ -4,11 +4,10 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.StringTokenizer;
-import opennlp.tools.util.InvalidFormatException;
 
 public class NoStemFeatureExtractor extends BasicFeatureExtractor {
 
-	public NoStemFeatureExtractor() throws InvalidFormatException, IOException{
+	public NoStemFeatureExtractor() throws IOException{
 		this.stopwords=new HashSet<String>();
 		this.setStopwords();
 	}

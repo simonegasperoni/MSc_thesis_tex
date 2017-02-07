@@ -35,12 +35,6 @@
 			<artifactId>common-lib</artifactId>
 			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.apache.opennlp/opennlp-tools -->
-		<dependency>
-			<groupId>org.apache.opennlp</groupId>
-			<artifactId>opennlp-tools</artifactId>
-			<version>1.6.0</version>
-		</dependency>
 		<dependency>
 			<groupId>postgresql</groupId>
 			<artifactId>postgresql</artifactId>
@@ -62,6 +56,11 @@
     		<artifactId>guava-collections</artifactId>
     		<version>r03</version>
 		</dependency>
+		<dependency>
+   			<groupId>sciamlab</groupId>
+   			<artifactId>ckan4j</artifactId>
+   			<version>2.0.0-SNAPSHOT</version>
+  		</dependency>
 	</dependencies>
 
 </project>

@@ -82,4 +82,5 @@ public class BayesBernoulli extends Bayes{
 		
 		return new ClassifiedEntry(featuresToPredict, thr.getScore(results));
 	}
+
 }

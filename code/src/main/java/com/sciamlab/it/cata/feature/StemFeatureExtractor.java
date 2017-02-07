@@ -6,13 +6,12 @@ import java.util.List;
 import java.util.StringTokenizer;
 import org.tartarus.snowball.SnowballStemmer;
 import org.tartarus.snowball.ext.italianStemmer;
-import opennlp.tools.util.InvalidFormatException;
 
 public class StemFeatureExtractor extends BasicFeatureExtractor {
 
 	private SnowballStemmer stemmer;
 
-	public StemFeatureExtractor() throws InvalidFormatException, IOException{
+	public StemFeatureExtractor() throws IOException{
 		this.stemmer = (SnowballStemmer) new italianStemmer();
 		this.stopwords=new HashSet<String>();
 		this.setStopwords();

@@ -210,5 +210,13 @@ public class TrainingSetImpl implements TrainingSet {
 	public Map<String, Integer> getTermOccurences() {
 		return this.countTerm;
 	}
+
+	@Override
+	public void merge(TrainingSet t) {
+		this.docMap.putAll(t.getDocMap());
+		
+	}
+
+
 	
 }

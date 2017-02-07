@@ -26,6 +26,7 @@ public interface TrainingSet {
 	public Map<Theme, Integer> getSumTF();
 	public Map<String, Integer> getTermOccurences();
 	public TrainingSet clone();
+	public void merge(TrainingSet t);
 	
 
 }

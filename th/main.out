@@ -1,7 +1,7 @@
 \BOOKMARK [1][-]{section.1}{Introduzione}{}% 1
 \BOOKMARK [1][-]{section.2}{Contesto}{}% 2
 \BOOKMARK [2][-]{subsection.2.1}{La filosofia open-data}{section.2}% 3
-\BOOKMARK [2][-]{subsection.2.2}{Interoperabilit\340}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.2}{Interoperabilit\340 dei dati}{section.2}% 4
 \BOOKMARK [2][-]{subsection.2.3}{DCAT-AP e DCAT-AP-it}{section.2}% 5
 \BOOKMARK [2][-]{subsection.2.4}{CKAN}{section.2}% 6
 \BOOKMARK [3][-]{subsubsection.2.4.1}{European Data Portal}{subsection.2.4}% 7
@@ -16,7 +16,7 @@
 \BOOKMARK [1][-]{section.3}{Elaborazione dei corpus}{}% 16
 \BOOKMARK [2][-]{subsection.3.1}{Disambiguazione}{section.3}% 17
 \BOOKMARK [2][-]{subsection.3.2}{Stemming}{section.3}% 18
-\BOOKMARK [1][-]{section.4}{Bayesian learning}{}% 19
+\BOOKMARK [1][-]{section.4}{Classificazione bayesiana}{}% 19
 \BOOKMARK [2][-]{subsection.4.1}{Formula di Bayes}{section.4}% 20
 \BOOKMARK [2][-]{subsection.4.2}{Classificatori bayesiani na\357ve}{section.4}% 21
 \BOOKMARK [2][-]{subsection.4.3}{Stima delle probabilit\340 \(m-estimate\)}{section.4}% 22

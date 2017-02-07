@@ -9,95 +9,65 @@ import java.util.List;
 import java.util.Set;
 import com.sciamlab.common.model.mdr.vocabulary.EUNamedAuthorityDataTheme.Theme;
 import com.sciamlab.it.acquis.initdb.Psql;
-import com.sciamlab.it.cata.classifier.ClassifiedEntry;
 import com.sciamlab.it.cata.classifier.Classifier;
 import com.sciamlab.it.cata.classifier.PredictionEntry;
 import com.sciamlab.it.cata.feature.StemFeatureExtractor;
 import com.sciamlab.it.cata.training.TrainingSet;
 
-class OdhEntry{
-	private String title;
-	private String description;
-	private Set<String> tags;
-	private Theme category;
-	public OdhEntry(String title, String description, Set<String> tags, Theme category){
-		this.description=description;
-		this.title=title;
-		this.tags=tags;
-		this.category=category;
-	}
-	
-	public Theme getCategory() {
-		return category;
-	}
-	public String getDescription() {
-		return description;
-	}
-	public Set<String> getTags() {
-		return tags;
-	}
-	public String getTitle() {
-		return title;
-	}
-}
 
 public class OpenDataHubTest implements Evaluator {
-	
+
 	private Psql psql;
 	private List<OdhEntry> odh;
 	private TrainingSet ts;
-	
+	private Classifier classifier;
+
+
 	public OpenDataHubTest(TrainingSet ts){
 		this.psql=new Psql("indexdb","postgres","postgres");
 		this.odh=new ArrayList<OdhEntry>();
 		this.ts=ts;
+		classifier=null;
 	}
-	
+
 	public void loadData() throws SQLException{
-		PreparedStatement stmt = psql.getC().prepareStatement("SELECT * from odh");
+		PreparedStatement stmt = psql.getC().prepareStatement("SELECT * from odh2lecce");
 		//logger.info(stmt.toString());
 		stmt.execute();
 		ResultSet rs = stmt.getResultSet();
-		
+
 		while(rs.next()){
+			String id = rs.getString("id");
 			String title = rs.getString("title");
 			String description = rs.getString("description");
-			
+			Set<Theme> categories = new HashSet<Theme>();
 			Set<String> tags = new HashSet<String>();
 			for(String tag : Arrays.asList((String[])rs.getArray("tags").getArray()))
 				tags.add(tag);
-		
-			Theme t=Theme.valueOf(rs.getString("category"));
-			
-			odh.add(new OdhEntry(title,description,tags,t));	
+			for(String cat : Arrays.asList((String[])rs.getArray("category").getArray()))
+				categories.add(Theme.valueOf(cat));			
+			odh.add(new OdhEntry(id,title,description,tags,categories));	
 		}
-		
+
 	}
-	
+
 
 	@Override
 	public void evaluate(Class<? extends Classifier> clazz) throws Exception {
-		// TODO Auto-generated method stub
-		
-		Classifier classifier=Classifier.Factory.build(clazz, ts);
-		
-		double i=0.0;
+		this.classifier = Classifier.Factory.build(clazz, ts);
+		this.loadData();
+		//Printlog pl=new Printlog("C:/Users/simone/Desktop/validationlog80000");
+		int i=0;
 		for(OdhEntry odhe:this.odh){
-			System.out.println("------------------------");
-			System.out.println(odhe.getTitle());
-			System.out.println(odhe.getDescription());
-			System.out.println(odhe.getTags());
-			
-			ClassifiedEntry ce=classifier.predict(new PredictionEntry(odhe.getTitle(), odhe.getDescription(), odhe.getTags()), new StemFeatureExtractor());
-			
-			System.out.println(ce.getCategories());
-			System.out.println(odhe.getCategory());
-			System.out.println("------------------------");
-			
-			if(ce.getCategories().keySet().contains(odhe.getCategory())) i++;
+			//pl.printDataset(odhe);
+			Theme t=classifier.predictFirst(
+					new PredictionEntry(odhe.getTitle(), odhe.getDescription(), odhe.getTags()), new StemFeatureExtractor());
+			if(odhe.getCategories().contains(t)) i++;
+			//pl.printTheme(t);
 		}
-		System.out.println(new Double(i/odh.size()));
-		
+		System.out.println(new Double(i)/new Double(odh.size()));
+		//pl.close();
+
 	}
 
 	@Override
@@ -123,10 +93,41 @@ public class OpenDataHubTest implements Evaluator {
 		// TODO Auto-generated method stub
 		return 0;
 	}
-	
-//	public static void main(String[] args) throws SQLException {
-//		// TODO Auto-generated method stub
-//		OpenDataHubTest odh=new OpenDataHubTest();
-//		odh.loadData();
-//	}
 }
+
+//class Db{
+//	Psql db=new Psql("indexdb","postgres","postgres");
+//	PreparedStatement insert;
+//	public Db() throws SQLException{
+//		Connection c=db.getC();
+//		insert = (c.prepareStatement("insert into odh2lecce values (?,?,?,?,?)"));
+//	}
+//	
+//	public Psql getPsql(){ return db; }
+//
+//	public void createOdhTable() throws SQLException{
+//		PreparedStatement ps = db.getC().prepareStatement(""
+//				+ "DROP TABLE IF EXISTS odh2lecce;"
+//				+ "CREATE TABLE odh2lecce"+
+//				"( id text not null,"+
+//				"category text[] not null,"+
+//				"title text not null,"+
+//				"description text,"+
+//				"tags text[] not null,"+
+//				"PRIMARY KEY(id));");
+//		ps.executeUpdate();
+//		ps.close();
+//	}
+//
+//	public void addEntry(String id, Array category, String title, String desc, Array tags) throws SQLException{
+//		insert.setString(1, id);
+//		insert.setArray(2, category);
+//		insert.setString(3, title);
+//		insert.setString(4, desc);
+//		insert.setArray(5, tags);
+//		insert.addBatch();
+//	}
+//	public void exBatch() throws SQLException{
+//		insert.executeBatch();
+//	}
+//}

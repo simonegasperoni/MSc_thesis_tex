@@ -7,8 +7,6 @@ import com.sciamlab.it.acquis.xquery.FScrawling;
 import com.sciamlab.it.acquis.xquery.XQmain;
 import com.sciamlab.it.cata.feature.FeatureExtractor;
 import com.sciamlab.it.cata.feature.StemFeatureExtractor;
-
-import opennlp.tools.util.InvalidFormatException;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Array;
@@ -25,7 +23,7 @@ public class Initdb {
 	private String nametable;
 	
 	//private static final int batchSize=150;
-	public Initdb(String inputdir, Psql db, EurovocThesaurus thesaurusInfo, String nametable) throws InvalidFormatException, IOException {
+	public Initdb(String inputdir, Psql db, EurovocThesaurus thesaurusInfo, String nametable) throws IOException {
 		this.fsc=new FScrawling(inputdir);
 		this.files=fsc.crawl();
 		this.thesaurusInfo=thesaurusInfo;

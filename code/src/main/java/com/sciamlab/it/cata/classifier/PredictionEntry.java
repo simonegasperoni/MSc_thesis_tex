@@ -29,7 +29,7 @@ public class PredictionEntry {
 
 	@Override
 	public String toString() {
-		return "PredictionEntry [title=" + title + ", description=" + description + ", tags=" + tags + "]";
+		return "title=" + title + ", description=" + description + ", tags=" + tags;
 	}
 
 	@Override

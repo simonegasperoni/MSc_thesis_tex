@@ -3,7 +3,7 @@ import java.util.HashMap;
 import java.util.Map;
 import com.sciamlab.common.model.mdr.vocabulary.EUNamedAuthorityDataTheme.Theme;
 
-public class NormalizedScore implements Thresholder {
+public class NormalizedScore extends Thresholder {
 	private double threshold;
 	
 	public NormalizedScore(double threshold){

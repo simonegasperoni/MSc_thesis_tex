@@ -31,6 +31,16 @@ public abstract class Bayes implements Classifier{
 		return pc;
 	}
 	
+	public Theme predictFirst(PredictionEntry entry, FeatureExtractor fe) throws Exception {
+		List<String> featuresToPredict=fe.extract(entry);
+		Map<Theme,Double> tp=termsProd(featuresToPredict);
+		Map<Theme,Double> pc=P_c();
+		Map<Theme,Double> results=new HashMap<Theme,Double>();
+		for(Theme t:tp.keySet()) 
+			results.put(t, Math.log(pc.get(t))+tp.get(t));
+		return thr.getFirst(results);
+	}
+	
 	public abstract Map<Theme, Double> termsProd(List<String> corpus);
 	
 	public abstract ClassifiedEntry predict(PredictionEntry entry, FeatureExtractor fe) throws Exception ;

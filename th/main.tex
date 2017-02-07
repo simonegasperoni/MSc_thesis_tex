@@ -35,7 +35,7 @@
 }
 
 \author{Simone Gasperoni}
-\title{Categorizzazione di open-data per il profilo di applicazione DCAT-AP}
+\title{Categorizzazione degli open-data italiani sul profilo europeo dei metadati DCAT-AP}
 
 \begin{document}
 
@@ -47,7 +47,7 @@
 
 \hrulefill
 
-{ \huge \bfseries Categorizzazione di open-data per il profilo di applicazione DCAT-AP \\[0.4cm] }
+{ \huge \bfseries Categorizzazione degli open-data italiani sul profilo europeo dei metadati DCAT-AP \\[0.4cm] }
 \textsc{\Large Simone Gasperoni}\\[0.5cm]
 \vfill
 \LaTeX
@@ -83,15 +83,40 @@ Il movimento open-data si diffuse per la prima volta a seguito della promulgazio
 \\
 In questo contesto è nato il portale Data.gov, creato con l'obiettivo di raccogliere in un unico portale tutte le informazioni rese disponibili dagli enti statunitensi in formato aperto. In Italia il portale che raccoglie i dati aperti della pubblica amministrazione è Dati.gov.it
  
-\subsection{Interoperabilità}
+\subsection{Interoperabilità dei dati}
 Tra le ragioni più importanti della filosofia open data abbiamo l'interoperabilità, vale a dire, la capacità di diversi sistemi e organizzazioni di lavorare insieme. Nel caso specifico degli open data - ovviamente - ci riferiamo alla capacità di combinare una grande quantità di dati da diverse fonti. L'interoperabilità è importante perché permette a componenti diverse di lavorare insieme. L'abilità di rendere ciascun dato un componente e di combinare insieme vari componenti è essenziale per la costruzione di sistemi sofisticati. In assenza di interoperabilità ciò diventa quasi impossibile - come nel mito della Torre di Babele, in cui l'impossibilità di comunicare (e quindi di Inter-operare) dà luogo a un fallimento sistemico della costruzione della torre. Una chiara definizione di \say{apertura} assicura che sia possibile combinare dataset aperti provenienti da fonti diverse in modo adeguato, evitando così la \say{Torre di Babele}.
 \\
 Il punto cruciale di un bacino di dati (o linee di codice) accessibili e utilizzabili in modo condiviso è il fatto che potenzialmente possono essere liberamente \say{mescolati} con dati provenienti da fonti anch'esse aperte. L'interoperabilità è la chiave per realizzare il principale vantaggio pratico dell'apertura: aumenta in modo esponenziale la possibilità di combinare diverse basi di dati, e quindi sviluppare nuovi e migliori prodotti e servizi.
 \footnotemark
 \footnotetext{http://opendatahandbook.org/guide/it/what-is-open-data}
 \\
-\\
-DCAT è un vocabolario RDF progettato per facilitare l'interoperabilità tra cataloghi di dati pubblicati sul web. DCAT incentiva la pubblicazione decentrata di cataloghi e facilita la ricerca federata di dati tra i siti. Usando lo standard DCAT chi pubblica insiemi di dati incrementa la propria visibilità e favorisce le applicazioni che lavorano su dati e metadati in cataloghi multipli (applicazioni cross-portali).
+Le amministrazioni che aprono i propri dati utilizzano un vocabolario RDF (DCAT) progettato per garantire l'interoperabilità tra cataloghi di dati pubblicati sul web. DCAT incentiva la pubblicazione decentrata di cataloghi e facilita la ricerca federata di dati tra i siti. Usando lo standard DCAT chi pubblica insiemi di dati incrementa la propria visibilità e favorisce le applicazioni che lavorano su dati e metadati in cataloghi multipli (applicazioni cross-portali). Ad esempio il Ministero delle infrastrutture pubblica il proprio catalogo dati (in DCAT) all'indirizzo \url{http://dati.mit.gov.it/dcat/catalog.rdf}, i cataloghi descritti in conformità a questo vocabolario hanno la seguente formattazione: 
+
+\begin{verbatim}
+<rdf:RDF>
+   <dcat:Catalog rdf:about="http://dati.mit.gov.it/dcat/catalog">
+   <dcat:dataset>
+      ...
+   </dcat:dataset>
+   <dcat:dataset>
+      ...
+   </dcat:dataset>
+   ...
+</rdf:RDF>
+\end{verbatim}
+
+Nei campi dataset ci sono i metadati per la descrizione delle risorse puntate. 
+Infatti ogni dataset comprende i link ai dati (risorse), e dei campi standard per la descrizione di questi dati (questi campi standard sono definiti proprio dal vocabolario DCAT).
+Ad esempio nell'ambito dei trasporti e delle infrastrutture ci potrebbero essere delle risorse riguardanti la gestione dei porti in Italia (file csv), queste risorse saranno arricchite con dei metadati come ad esempio: license per uso dei dati, frequenza di aggiornamento dei dati, descrizione dei dati, lingua di riferimento, informazioni spaziali, e così via. La lingua e la categoria di appartenenza del dataset sono descritti nel seguente modo:
+\begin{verbatim}
+<dcat:theme 
+   rdf:resource="http://publications.europa.eu/resource/
+   authority/data-theme/TRAN"/>
+<dct:language 
+   rdf:resource="http://publications.europa.eu/resource/     
+   authority/language/ITA"/>
+\end{verbatim}
+Pubblicare i dati sotto forma di cataloghi RDF DCAT garantisce l'interoperabilità, perché i dati sono descritti e pubblicati allo stesso modo indipendentemente dal portale di appartenenza.
 
 \newpage
 \subsection{DCAT-AP e DCAT-AP-it}
@@ -100,7 +125,7 @@ Il DCAT Application Profile (DCAT-AP) fornisce una specifica comune per la descr
 \footnotetext{https://www.w3.org/TR/vocab-dcat}
 \\
 DCAT-AP-it è la versione italiana di DCAT-AP, il profilo nazionale dei metadati utili per descrivere i dati delle pubbliche amministrazioni, conforme alla specifica di DCAT-AP serve a favorire l'interoperabilità semantica di dati e servizi. DCAT-AP-it è un modello dati pensato per rendere omogenei in tutta la pubblica amministrazione italiana i processi di accesso e scambio delle informazioni tra le istituzioni stesse e tra le istituzioni e i cittadini e le imprese, in coerenza con il relativo framework europeo. L'utilizzo di un modello dati valorizza il patrimonio informativo pubblico nazionale in linea con la Direttiva relativa al riutilizzo dell'informazione del settore pubblico.
-Le categorie - definite dal portale europeo European Data Portal - sono le seguenti:
+Le categorie definite nel profilo europeo dei metadati DCAT-AP (categorizzazione adottata dal portale europeo European Data Portal) - sono le seguenti:
 
 \begin{enumerate}
 \item Agriculture, Fisheries, Forestry \& Foods
@@ -345,22 +370,18 @@ Tra i metodi Dictionary-based abbiamo l'algoritmo di Lesk (1986) che è un metod
 
 
 \newpage
-\section{Bayesian learning}
-L'apprendimento bayesiano è un metodo computazionale di apprendimento automatico basato sul calcolo delle probabilità, che può fornire predizioni probabilistiche sfruttando i principi del teorema di Bayes per realizzare un apprendimento non supervisionato (mediante le Reti Bayesiane e i classificatori bayesiani).
-\\
+\section{Classificazione bayesiana}
 I classificatori bayesani sono metodi statistici di classificazione, predicono la probabilità che una data istanza appartenga ad una certa classe.
+Nel gergo della classificazione di testi o Text Categorization, con il termine classificatore bayesiano ci si riferisce convenzionalmente al classificatore bayesiano naïve (Naïve Bayes Classifier), ossia un classificatore bayesiano semplificato con un modello di probabilità sottostante che fa l'ipotesi di indipendenza delle feature, ovvero assume che la presenza o l'assenza di una particolare feature in un documento testuale non è correlata alla presenza o assenza di altre feature.
 \\
 I classificatori bayesiani sono metodi incrementali: ogni istanza dell’insieme di addestramento modifica in maniera incrementale la probabilità che una ipotesi sia corretta.
-La conoscenza già acquisita può essere combinata facilmente con le nuove osservazioni basta aggiornare i conteggi. Questi metodi sono utilizzati ad esmpio in Mozilla o SpamAssassin per riconoscere le mail spam dalle mail ham.\footnotemark
-
-\footnotetext{slide del corso di "Intelligenza artificiale", Università di Roma Tre, AA 2015-2016} 
-
+La conoscenza già acquisita può essere combinata facilmente con le nuove osservazioni basta aggiornare i conteggi. Questi metodi sono utilizzati ad esmpio in Mozilla o SpamAssassin per riconoscere le mail spam dalle mail ham.
+\\
 Una probabilità è una misura su un insieme di eventi che soddisfa tre assiomi:
-
 $$0≤P(E=e_i)≤1$$
 $$\sum_{n=1}^{n} P(E=e_i)=1$$
 $$P(E=e_1\cup E=e_2)=P(E=e_1)+P(E=e_2)\footnotemark$$
-\footnotetext{gli eventi e1 ed e2 sono disgiunti}
+Dove gli eventi e1 ed e2 sono disgiunti.
 Un modello probabilistico consiste in uno spazio di possibili esiti mutualmente esclusivi insieme alla misura di probabilità associata ad ogni esito.
 Che tempo fa domani? esiti: \{SOLE, NUVOLE, PIOGGIA, NEVE\}, l'evento corrispondente ad una precipitazione è il sottoinsieme \{PIOGGIA, NEVE\}.
 \begin{defn}
@@ -518,7 +539,7 @@ nuova_classificazione(x)
 \newpage
 \section{Feature selection}
 La selezione delle feature è il processo che ci porta a selezionare un sottoinsieme di feature (termini nella text classification), solo questo sottoinsieme sarà utilizzato come training set per i nostri classificatori.
-I motivi principali per cui si procede ad una selezione delle feature sono due: innanzi tutto alcuni modelli possono essere addestrati solo con un insieme di feature  contenuto, data la loro complessità computazionale in fase di addestramento o predizione. In secondo luogo dobbiamo considerare che i classificatori tendono ad essere più precisi quando il numero delle feature è ridotto, molte feature, non solo non sono determinanti nell'individuazione della classe di appartenenza di un documento, ma possono addirittura introdurre un rumore (noise feature). Le noise feature sono quelle feature che occorrendo accidentalmente in una sola classe si rendono responsabili di errate generalizzazioni che colpiscono l'accuratezza della classificazione (Overfitting).
+I motivi principali per cui si procede ad una selezione delle feature sono due: innanzi tutto alcuni modelli possono essere addestrati solo con un insieme di feature contenuto, data la loro complessità computazionale in fase di addestramento o predizione. In secondo luogo dobbiamo considerare che i classificatori tendono ad essere più precisi quando il numero delle feature è ridotto, molte feature, non solo non sono determinanti nell'individuazione della classe di appartenenza di un documento, ma possono addirittura introdurre un rumore (noise feature). Le noise feature sono quelle feature che occorrendo accidentalmente in una sola classe si rendono responsabili di errate generalizzazioni che colpiscono l'accuratezza della classificazione (overfitting).
 Introduction to Information Retrieval\footnotemark descrive tre procedure per la selezione di feature:
 \begin{itemize}  
 \item Mutual information

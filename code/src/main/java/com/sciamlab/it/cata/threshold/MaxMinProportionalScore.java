@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import com.sciamlab.common.model.mdr.vocabulary.EUNamedAuthorityDataTheme.Theme;
 
-public class MaxMinProportionalScore implements Thresholder {
+public class MaxMinProportionalScore extends Thresholder {
 
 	private double proportion;
 	
