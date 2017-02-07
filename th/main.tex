@@ -310,7 +310,7 @@ Map<String, EUNamedAuthorityDataTheme.Theme> EUROVOC_TO_DCAT_CATEGORIES = new Ha
 Il tesauro (EuroVoc) e il corpus (JRC-Acquis) sono i due componenti fondamentali per la costruzione dei dati di addestramento del classificatore, essendo questi due componenti disaccoppiati è possibile pensare di aggiornare uno e mantenere immutato l'altro qualora siano disponibili versioni più aggiornate del corpus o del tesauro. Anche questa è una forma di flessibilità, anche se in realtà dall'aggiornamento del tesauro non si traggono benefici se i descrittori dei concetti aggiunti non compaiono anche nel corpus. 
 
 \newpage
-\section{Elaborazione dei corpus}
+\section{Elaborazione del corpus}
 Una fase preliminare in qualsiasi ambito di classificazione è l'elaborazione dei dati, la loro formattazione, per renderli fruibili da parte di sistema di classificazione.
 \\Nel contesto di un sistema di text categorization vogliamo ottenere un sistema che utilizzi feature ben rappresentative del contenuto semantico dei documenti dai quali sono estratte.
 \\
@@ -634,12 +634,49 @@ Se non separassimo gli insiemi di test e di validation la stima di errore di un 
 La k-fold-cross-validation (in italiano validazione incrociata) è una tecnica utilizzabile in presenza di un training set abbastanza grande. In particolare la k-fold cross-validation consiste nella suddivisione del dataset totale in k parti di uguale numerosità e, ad ogni passo, la k-esima parte del dataset viene ad essere il test dataset, mentre la restante parte costituisce il training dataset. Così, per ognuna delle k parti (di solito k=10, k=5) si allena il modello, evitando quindi problemi di overfitting, ma anche di campionamento asimmetrico (e quindi affetto da bias) del training dataset, tipico della suddivisione del dataset in due sole parti (ovvero training e test dataset). In altre parole, si suddivide il campione osservato in gruppi di egual numerosità, si esclude iterativamente un gruppo alla volta e lo si cerca di predire con i gruppi non esclusi. Ciò al fine di verificare la bontà del modello di predizione utilizzato.
 
 \newpage
+\section{Sistemi di categorizzazione}
+I sistemi di categorizzazione dei testi coprono differenti aeree di interesse. I sistemi di categorizzazione sono stati realizzati per rispondere alla necessità di catalogare ed indicizzare i documenti. I task di categorizzazione multi label sono molto complessi ed i risultati ottenuti spesso sono molto distanti dai livelli accettabili di accuratezza.
+Molti approcci sono stati esplorati ed implementati, tra questi abbiamo i sistemi keyword-based, i quali sono stati pensati per la realizzazione di abstract, vale a dire l'individuazione di parole chiave che diano una descrizione semantica e sintetica del contenuto dei documenti. Un'altra classe di algoritmi utilizzati per la categorizzazione dei testi è quella basata su tecniche di machine learning come i classificatori binari, algoritmi margin-based, tecniche bayesiane, ...
+\\
+Nel seguito verranno descritti i sistemi che hanno avuto maggiore successo.
+  
+\subsection{MeSH}
+
+\subsection{BIOSIS}
+Uno dei più sofisticati programmi per l'indicizzazione automatica sviluppato negli studi BIOSIS è stato discusso da  Vleduts-Stokolov; \footnotetext{Natasha Vleduts-Stokolov, Concept recognition in an automatic text-processing system for the life sciences, 1987} le parole che occorrono nei titoli delle pubblicazioni che sono anche contenuto all'interno di un vocabolario semantico che rappresenta la terminologia scientifica, circa 15'000 termini.
+I termini coprono i seguenti campi di studio: agricoltura, anatomia, comportamento, biochimica, bioingegneria, biofisica, biotecnologie, botanica, biologia cellulare, biologia ambientale, medicina clinica sperimentale, genetica, immunologia, microbiologia, patologia, farmacologia, fisiologia e tossicologia.
+\\
+\url{www.cas.org/File%20Library/Training/STN/DBSS/biosis.pdf}
+\\
+
+\subsection{NASA MAI System}
+
+\subsection{JRC-JEX (EuroVoc)}
+
+\newpage
 \section{Aspetti software}
 \subsection{Architettura}
 \subsection{Deployment}
 
 \newpage
-\section{Bibliografia}
+\section{Bibliografia e risorse}
+\subsection{Bibliografia}
+\begin{itemize}
+\item 
+\item 
+\item 
+\item 
+\item 
+\end{itemize}
+
+\subsection{Link utili}
+\begin{itemize}
+\item \url{http://opendatahandbook.org/guide/it/what-is-open-data}
+\item 
+\item 
+\item 
+\item 
+\end{itemize}
 
 
 \newpage

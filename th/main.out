@@ -13,7 +13,7 @@
 \BOOKMARK [3][-]{subsubsection.2.6.2}{Corpus aggiornato e manutenuto}{subsection.2.6}% 13
 \BOOKMARK [3][-]{subsubsection.2.6.3}{Corpus parallelo multilingua}{subsection.2.6}% 14
 \BOOKMARK [3][-]{subsubsection.2.6.4}{Bridge dinamico tra EuroVoc e le categorie DCAT-AP}{subsection.2.6}% 15
-\BOOKMARK [1][-]{section.3}{Elaborazione dei corpus}{}% 16
+\BOOKMARK [1][-]{section.3}{Elaborazione del corpus}{}% 16
 \BOOKMARK [2][-]{subsection.3.1}{Disambiguazione}{section.3}% 17
 \BOOKMARK [2][-]{subsection.3.2}{Stemming}{section.3}% 18
 \BOOKMARK [1][-]{section.4}{Classificazione bayesiana}{}% 19
@@ -29,9 +29,16 @@
 \BOOKMARK [1][-]{section.6}{Evaluation}{}% 29
 \BOOKMARK [2][-]{subsection.6.1}{Metriche per l'evaluation}{section.6}% 30
 \BOOKMARK [2][-]{subsection.6.2}{K-fold-cross-validation}{section.6}% 31
-\BOOKMARK [1][-]{section.7}{Aspetti software}{}% 32
-\BOOKMARK [2][-]{subsection.7.1}{Architettura}{section.7}% 33
-\BOOKMARK [2][-]{subsection.7.2}{Deployment}{section.7}% 34
-\BOOKMARK [1][-]{section.8}{Bibliografia}{}% 35
-\BOOKMARK [1][-]{section.9}{Appendice}{}% 36
-\BOOKMARK [2][-]{subsection.9.1}{Associazione Temi DCAT-Microtesauri EuroVoc}{section.9}% 37
+\BOOKMARK [1][-]{section.7}{Sistemi di categorizzazione}{}% 32
+\BOOKMARK [2][-]{subsection.7.1}{MeSH}{section.7}% 33
+\BOOKMARK [2][-]{subsection.7.2}{BIOSIS}{section.7}% 34
+\BOOKMARK [2][-]{subsection.7.3}{NASA MAI System}{section.7}% 35
+\BOOKMARK [2][-]{subsection.7.4}{JRC-JEX \(EuroVoc\)}{section.7}% 36
+\BOOKMARK [1][-]{section.8}{Aspetti software}{}% 37
+\BOOKMARK [2][-]{subsection.8.1}{Architettura}{section.8}% 38
+\BOOKMARK [2][-]{subsection.8.2}{Deployment}{section.8}% 39
+\BOOKMARK [1][-]{section.9}{Bibliografia e risorse}{}% 40
+\BOOKMARK [2][-]{subsection.9.1}{Bibliografia}{section.9}% 41
+\BOOKMARK [2][-]{subsection.9.2}{Link utili}{section.9}% 42
+\BOOKMARK [1][-]{section.10}{Appendice}{}% 43
+\BOOKMARK [2][-]{subsection.10.1}{Associazione Temi DCAT-Microtesauri EuroVoc}{section.10}% 44
