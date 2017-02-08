@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.10.9)  8 FEB 2017 16:39
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.10.9)  8 FEB 2017 17:11
 entering extended mode
 **./main.tex
 (main.tex
@@ -509,21 +509,46 @@ pdfTeX warning (ext4): destination with the same identifier (name{Hfootnote.11}
                    \relax 
 l.648 ...ssing system for the life sciences, 1987}
                                                    le parole che occorrono n...
+
+Underfull \hbox (badness 10000) in paragraph at lines 656--670
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 656--670
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 656--670
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 656--670
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 656--670
+
+ []
+
 [28]
-Underfull \hbox (badness 10000) in paragraph at lines 665--672
+Underfull \hbox (badness 10000) in paragraph at lines 671--678
 
  []
 
 [29] [30] [31] [32] [33] [34] [35]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 861.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 867.
  [36]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 861.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 867.
  (main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 861.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 861.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 867.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 867.
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: 9C728C9D699E4E03AB5AFA60EFA5F746;3064.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 861.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 867.
  ) 
 Here is how much of TeX's memory you used:
  9219 strings out of 493334
@@ -553,7 +578,7 @@ X 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX
 /fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
 onts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fon
 ts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on main.pdf (37 pages, 619889 bytes).
+Output written on main.pdf (37 pages, 620166 bytes).
 PDF statistics:
  623 PDF objects out of 1000 (max. 8388607)
  183 named destinations out of 1000 (max. 500000)
