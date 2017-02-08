@@ -641,18 +641,40 @@ Molti approcci sono stati esplorati ed implementati, tra questi abbiamo i sistem
 Nel seguito verranno descritti i sistemi che hanno avuto maggiore successo.
   
 \subsection{MeSH}
+MeSh (acronimo di Medical Subject Headings), è un indicizzatore automatico utilizzato dalla U.S National Library of Medicine, il quale utilizza circa 18'000 termini del campo medico.
+\url{https://www.nlm.nih.gov/pubs/factsheets/mesh.html}
 
 \subsection{BIOSIS}
-Uno dei più sofisticati programmi per l'indicizzazione automatica sviluppato negli studi BIOSIS è stato discusso da  Vleduts-Stokolov; \footnotetext{Natasha Vleduts-Stokolov, Concept recognition in an automatic text-processing system for the life sciences, 1987} le parole che occorrono nei titoli delle pubblicazioni che sono anche contenuto all'interno di un vocabolario semantico che rappresenta la terminologia scientifica, circa 15'000 termini.
+Uno dei più sofisticati programmi per l'indicizzazione automatica sviluppato negli studi BIOSIS è stato discusso da  Vleduts-Stokolov; \footnotetext{Natasha Vleduts-Stokolov, Concept recognition in an automatic text-processing system for the life sciences, 1987} le parole che occorrono nei titoli delle pubblicazioni che sono anche contenute all'interno di un vocabolario semantico. Il quale vocabolario semantico rappresenta la terminologia scientifica rappresentata da circa 15'000 termini.
 I termini coprono i seguenti campi di studio: agricoltura, anatomia, comportamento, biochimica, bioingegneria, biofisica, biotecnologie, botanica, biologia cellulare, biologia ambientale, medicina clinica sperimentale, genetica, immunologia, microbiologia, patologia, farmacologia, fisiologia e tossicologia.
 \\
 \url{www.cas.org/File%20Library/Training/STN/DBSS/biosis.pdf}
 \\
+Questi 15'000 termini sono mappati su un vocabolario di 600 concetti (Concept Headings), pertanto un Concept Heading può essere assegnato dal sistema sulla base della presenza o meno di alcuni termini nei titolo. Vleduts-Stokolov ha documentato l'accuratezza di BIOSIS, notando che il sistema si comporta come un umano nella assegnazione dei concetti del vocabolario nel 61\% dei casi. Al fine di rendere più accurato il sistema si è pensato di utilizzare più livelli di astrazione dei concetti che stanno al di sopra dei termini (primario, secondario e terziario), portando così l'accuratezza al 75\%.
 
 \subsection{NASA MAI System}
-
+Nasa Center for Aerospace Information (CASI) ha un database contenente tre milioni di record, almeno due milioni sono report tecnici e articoli di giornale. La CASI indicizza i documenti al fine di ottenere degli abstract. Nasa MAI System (MAI è acronimo di Machine Aided Indexing) è un sistema di sostegno utilizzato dagli utenti (specialisti del dominio) per navigare e selezionare un'insieme di possibili parole chiave da utilizzare per annotare i documenti.
+Questo sistema è stato pensato per produrre delle annotazioni più coerenti, in quanto l'esperto del dominio è guidato dalle connessioni tra i concetti di un vocabolario. 
+\\
+\\
+Il progetto NASA MAI è stato pensato per minimizzare lo sforzo per la re-indicizzazione di documenti già indicizzati da altre agenzie, infatti, quando il progetto è iniziato circa la metà dei report tecnici all'interno del NASA STI (database) erano stati indicizzati da agenzie diverse.  
+Questi report, ricevuti in forma machine-readable, sono convertiti utilizzando tecniche di processamento del linguaggio naturale.
+\\
+\\
+Lo scopo principale di NASA MAI System è quello di fornire un'insieme di termini \say{adeguati} per l'annotazione dei documenti. Molti documenti provenienti da altre agenzie utilizzavano dei termini non corrispondenti al vocabolario utilizzato dalla NASA. L'utilizzo di un unico vocabolario specializzato permette di collegare i concetti a vari livelli di astrazione, e sfruttare i sinonimi nella ricerca dei documenti. Per ogni termine, MAI, propone una serie di termini candidati corrispondenti ai \say{NASA terms}.  
+\\
+\\
+Il NASA MAI System non è basato su sofisticate tecniche di processamento del linguaggio naturale e parsing grammaticale, segue un approccio rule-based che approssima i risultati dei parsing più approfonditi, e, che richiedono un notevole sforzo computazionale.
+\\
+\\
 \subsection{JRC-JEX (EuroVoc)}
-
+Il classificatore JEX, sviluppato presso i laboratori JRC (Joint Research Centre), è un classificatore multilabel basato sul tesauro EuroVoc. La scelta di basare il classificatore su EuroVoc rende il sistema multilingua e garantisce la copertura di tutte le tematiche di interesse della politica europea. 
+Le annotazioni prodotte da JEX sono i descrittori dei concetti di EuroVoc.
+Sul sito di JEX si descrivono in sintesi le funzionalità di questo sistema:
+\\
+\\
+\textit{\say{Multilingual Eurovoc thesaurus descriptors are used by a large number of European Parliaments and Documentation Centres to manually index their large document collections. The assigned descriptors are then used to search and retrieve documents in the collection and to summarise the document contents for the users. As Eurovoc descriptors exist in one-to-one translations in almost thirty languages, they can be displayed in a language other than the text language and give users cross-lingual access to the information contained in each document. At the same time, EuroVoc is an ideal means to search in the user's language and to retrieve documents in other languages.
+The European Commission's (EC) Joint Research Centre (JRC) has developed - and makes available - software that automatically assigns EuroVoc descriptors to documents in currently 22 languages. The system uses statistical Machine Learning methods that learn the multi-label categorisation rules from previously manually indexed documents. The method used can be described as profile-based category ranking. This software, called JRC EuroVoc Indexer, or short JEX, has been trained for 22 languages and is available for download from this site. The software allows users to re-train the software on their own data, even using their own, alternative classification systems}}
 \newpage
 \section{Aspetti software}
 \subsection{Architettura}
