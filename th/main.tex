@@ -170,7 +170,8 @@ Oltre alle amministrazioni esiste un portale europeo (anch'esso basato su CKAN) 
 Come detto in precedenza il profilo DCAT-AP garantisce l'interoperabilità, CKAN salvaguarda questa importante caratteristica dei dati aperti mettendo a disposizione un'estensione (plugin) \url{https://github.com/ckan/ckanext-dcat} per abilitare l'esportazione dei metadati in formato DCAT. La corrispondenza tra i campi che descrivono i dati in CKAN ed i campi in DCAT è realizzata mediante un mapping \url{https://github.com/ckan/ckanext-dcat#rdf-dcat-to-ckan-dataset-mapping}, il quale prende i valori dai campi CKAN e li mappa in quelli DCAT.
 
 \subsubsection{European Data Portal}
-Il portale europeo oltre a raccogliere i metadati europei produce delle analisi riguardanti la fornitura di dati e i vantaggi del loro riutilizzo. In tutta Europa, i dati sono sempre più aperti e disponibile per il riutilizzo. Un certo numero di studi ha incrementato le aspettative per quanto riguarda i benefici finanziari dei dati aperti (open data), la strada da percorrere per sfruttare pienamente i dati aperti è ancora lunga. Il portale europeo esplora approfonditamente il tema del riutilizzo dei dati aperti, al fine di sostenere la trasformazione dei dati in valore (economico, sociale, politico). 
+European Data Portal (\url{https://europeandataportal.eu}) è il portale europeo degli open-data dataset di tutta europa.
+Il portale europeo oltre a raccogliere i metadati europei produce delle analisi riguardanti la fornitura di dati e i vantaggi del loro riutilizzo. In tutta Europa, i dati sono sempre più aperti e disponibile per il riutilizzo. Un certo numero di studi ha incrementato le aspettative per quanto riguarda i benefici finanziari dei dati aperti, la strada da percorrere per sfruttare pienamente i dati aperti è ancora lunga. Il portale europeo esplora approfonditamente il tema del riutilizzo dei dati aperti, al fine di sostenere la trasformazione dei dati in valore (economico, sociale e politico). 
 
 \begin{figure}[htbp]
 \begin{center}
@@ -180,11 +181,20 @@ Il portale europeo oltre a raccogliere i metadati europei produce delle analisi 
 \end{figure}
 
 \subsubsection{Open Data Hub Italy}
-\subsubsection{Dati.gov.it}
+Open Data Hub Italy (\url{http://www.sciamlab.com/opendatahub/it}) è una piattaforma per l'indicizzazione e la ricerca di dati aperti (open-data), è il più grande portale italiano di raccordo dei dati aperti delle pubbliche amministrazioni italiane. 
+\\
+Questo portale - anch'esso basato su CKAN - raccoglie più di 34'000 dataset, l'ammontare dei dati e delle organizzazioni tracciate cresce continuamente in quanto il ciclo di aggiornamento del catalogo è contenuto grazie all'utilizzo di algoritmi di processamento parallelo e distribuito.
+\\
+La piattaforma utilizza algoritmi basati su esecuzione parallela per l'analisi dei testi, l'arricchimento dei metadati di categoria - è realizzato automaticamente mediante il classificatore JRC-JEX (categorizzazione con le voci del tesauro EuroVoc).
+\\
+Nella fase di harvesting, quando i dati non sono disponibili in maniera esplicita (mediante API), si utilizzano tecniche di \say{scraping} per reperire le informazioni direttamente dal codice HTML.
+\\
 
+\subsubsection{Dati.gov.it}
+Il portale Dati.gov.it (\url{http://dati.gov.it}) è il portale ufficiale dei dati aperti italiani, raccoglie circa 10'000 dataset open-data, è il portale italiano che fornisce i dati italiani al portale europeo. Il portale italiano è gestito dall'Agenzia per l'Italia digitale, la quale fornisce anche le linee guida per la modellazione del profilo italiano dei metadati DCAT-AP-it (il quale è un'estensione del profilo europeo DCAT-AP).
 
 \subsection{EuroVoc}
-EuroVoc è un thesaurus multilingue e pluridisciplinare che comprende la terminologia dei settori d'attività dell'Unione europea. Contiene termini in 23 lingue dell'UE. EuroVoc è in linea con le raccomandazioni del W3C e con gli ultimi sviluppi negli standard di classificazione. Il thesaurus EuroVoc viene utilizzato dalle istituzioni dell'Unione europea, dall'Ufficio delle pubblicazioni dell'UE, da parlamenti nazionali e regionali in Europa, come pure da amministrazioni nazionali e utenti privati di tutto il mondo.
+EuroVoc è un tesauro multilingue e pluridisciplinare che comprende la terminologia dei settori d'attività dell'Unione europea. Contiene termini in 23 lingue dell'UE. EuroVoc è in linea con le raccomandazioni del W3C e con gli ultimi sviluppi negli standard di classificazione. Il thesaurus EuroVoc viene utilizzato dalle istituzioni dell'Unione europea, dall'Ufficio delle pubblicazioni dell'UE, da parlamenti nazionali e regionali in Europa, come pure da amministrazioni nazionali e utenti privati di tutto il mondo.
 \footnotemark
 \footnotetext{http://eurovoc.europa.eu}
 I descrittori del thesaurus multilingua EuroVoc sono usati da molti parlamentari europei e centri di documentazione per indicizzare manualmente le loro collezioni di documenti, i descrittori assegnati ai documenti sono utilizzati per cercare ed individuare documenti in una gerarchia semantica divisa in 21 domini, 127 sottodomini (microtesauri) e circa 7000 descrittori (concetti).
@@ -312,12 +322,10 @@ Il tesauro (EuroVoc) e il corpus (JRC-Acquis) sono i due componenti fondamentali
 \newpage
 \section{Elaborazione del corpus}
 Una fase preliminare in qualsiasi ambito di classificazione è l'elaborazione dei dati, la loro formattazione, per renderli fruibili da parte di sistema di classificazione.
-\\Nel contesto di un sistema di text categorization vogliamo ottenere un sistema che utilizzi feature ben rappresentative del contenuto semantico dei documenti dai quali sono estratte.
 \\
-Le strade che si possono percorrere sono principalmente due:
-
-\begin{description}
-\item [Lemmatizzazione:] \say{quel complesso di operazioni che conducono a riunire tutte le forme sotto il rispettivo lemma}, intendendo per lemma \say{ciascuna parola-titolo o parola-chiave di un dizionario} e per forma ogni possibile diversa realizzazione grafica di un lemma.\footnotemark
+Nel contesto di un sistema di categorizzazione dei testi vogliamo ottenere un sistema che utilizzi \say{feature} ben rappresentative del contenuto semantico dei documenti dai quali sono estratte. Le tappe che dobbiamo percorrere sono essenzialmente due: innanzitutto dobbiamo 
+\\
+\say{quel complesso di operazioni che conducono a riunire tutte le forme sotto il rispettivo lemma}, intendendo per lemma \say{ciascuna parola-titolo o parola-chiave di un dizionario} e per forma ogni possibile diversa realizzazione grafica di un lemma.\footnotemark
 \footnotetext{R. Busa, Fondamenti di informatica linguistica. Istituto Geografico De Agostini, 1987}
 \\
 Esistono delle convenzioni di lemmatizzazione proprie di ciascuna lingua: ad esempio in italiano è uso convenzionale che il lemma verbale sia la forma coniugata all'infinito presente attivo.
@@ -335,9 +343,7 @@ Esistono due tipi di lemmatizzazione:
 \item \textbf{Lemmatizzazione morfologica:} analizza le forme di parole in isolamento, ovvero fuori dal contesto sintattico, fornendone tutti i valori che sono possibili in un dato sistema linguistico.
 \item \textbf{Lemmatizzazione morfo-sintattica:} analizza le forme di parole entro il contesto sintattico. Non è mai ambigua, ma sempre univoca, in quanto l'immersione della forma nella frase ne precisa il valore. Quindi, mentre la lemmatizzazione morfologica è indipendente dal testo, la lemmatizzazione sintattica è, invece, legata al contesto.
 \end{itemize}
-  
-\item [Stemmerizzazione:]Lo stemming è il processo usato per ridurre parole flesse al loro tema, il tema non deve necessariamente coincidere con la radice morfologica della parola: l'importante è che parole con una semantica strettamente correlata vengano mappate sullo stesso tema. Le tecniche di stemming sono studiate in informatica da quarant'anni, sono uno dei metodi di base per ridurre la dimensionalità dei documenti di testo.
-\end{description}
+
 
 Questo processo è reso particolarmente difficile e complesso a causa delle caratteristiche intrinseche di ambiguità del linguaggio umano. Per questo motivo il processo di elaborazione viene suddiviso in fasi diverse, tuttavia simili a quelle che si possono incontrare nel processo di elaborazione di un linguaggio di programmazione:
 
@@ -353,8 +359,6 @@ Nell'analisi semantica la procedura automatica che attribuisce all'espressione l
 La comprensione del linguaggio naturale è spesso considerata un problema IA-completo, poiché si pensa che il riconoscimento del linguaggio richieda una conoscenza estesa del mondo e una grande capacità di manipolarlo. Per questa ragione, la definizione di \say{comprensione} è uno dei maggiori problemi dell'elaborazione del linguaggio naturale.\footnotemark
 \footnotetext{I. Chiari, Introduzione alla linguistica computazionale. Laterza, 2007}
 
-
-\subsection{Disambiguazione}
 Molte parole nel linguaggio naturale sono delle polisemie, vale a dire, possono avere più significati. Le tecniche finalizzate alla disambiguazione sono conosciute in letteratura come \textit{Word Sense Disambiguation} (WSD).
 \\
 La WSD può essere affrontata come un problema di classificazione, il senso corretto è la classe da predire la parola è rappresentata con un insieme (vettore) di feature in ingresso al classificatore, l'ingresso è di solito costituito da una rappresentazione della parola da disambiguare (target) e del contesto in cui si trova (un certo numero di parole a sinistra e destra della parola target). Il classificatore può essere stimato con tecniche di apprendimento automatico a partire da un dataset etichettato. Si possono usare diversi modelli per costruire il classificatore (Naïve Bayes, reti neurali, alberi di decisione...).
@@ -364,9 +368,10 @@ Tra i metodi Dictionary-based abbiamo l'algoritmo di Lesk (1986) che è un metod
 
  
 \subsection{Stemming}
+Lo stemming è il processo usato per ridurre parole flesse al loro tema, il tema non deve necessariamente coincidere con la radice morfologica della parola: l'importante è che parole con una semantica strettamente correlata vengano mappate sullo stesso tema. Le tecniche di stemming sono studiate in informatica da quarant'anni, sono uno dei metodi di base per ridurre la dimensionalità dei documenti di testo.
 
-
-
+\begin{verbatim}
+\end{verbatim}
 
 
 \newpage
@@ -664,7 +669,10 @@ Questi report, ricevuti in forma machine-readable, sono convertiti utilizzando t
 Lo scopo principale di NASA MAI System è quello di fornire un'insieme di termini \say{adeguati} per l'annotazione dei documenti. Molti documenti provenienti da altre agenzie utilizzavano dei termini non corrispondenti al vocabolario utilizzato dalla NASA. L'utilizzo di un unico vocabolario specializzato permette di collegare i concetti a vari livelli di astrazione, e sfruttare i sinonimi nella ricerca dei documenti. Per ogni termine, MAI, propone una serie di termini candidati corrispondenti ai \say{NASA terms}.  
 \\
 \\
-Il NASA MAI System non è basato su sofisticate tecniche di processamento del linguaggio naturale e parsing grammaticale, segue un approccio rule-based che approssima i risultati dei parsing più approfonditi, e, che richiedono un notevole sforzo computazionale.
+Il NASA MAI System non è basato su sofisticate tecniche di processamento del linguaggio naturale e parsing grammaticale, segue un approccio rule-based che approssima i risultati dei parsing più approfonditi, e, che richiedono un notevole sforzo computazionale. Le regole sono sviluppate al fine di ottenere dei termini (feature testuali) che meglio rappresentino i concetti.
+\\
+\\
+MAI usa una grande knowledge base (manutenuta), oltre 170'000 termini e frasi, oltre alle regole. I valori di precision e recall sono attorno al 50\% (break-even point), sebbene possa sembrare basso questo risultato è piuttosto buono se si considera la vastità di argomenti coperti e la diversità dei documenti processati.
 \\
 \\
 \subsection{JRC-JEX (EuroVoc)}
