@@ -152,9 +152,9 @@ Le categorie definite nel profilo europeo dei metadati DCAT-AP (categorizzazione
 \end{figure}
 
 \subsection{CKAN}
-CKAN (Comprehensive Knowledge Archive Network) è una sistema open source (https://github.com/ckan/ckan) pensato per l'immagazzinamento, la catalogazione e la distribuzione dei dati in diversi formati; quali ad esempio fogli di calcolo, csv, pdf, xml, rfd, ... CKAN è scritto in Python ed è ispirato dal sistema di gestione dei pacchetti comune a sistemi operativi open source come quelli della famiglia Linux. CKAN è un sistema performante e manutenuto da una comunità di sviluppatori online (Open Knowledge Foundation).  
+CKAN (Comprehensive Knowledge Archive Network) è una sistema open source (\url{https://github.com/ckan/ckan}) pensato per l'immagazzinamento, la catalogazione e la distribuzione dei dati in diversi formati; quali ad esempio fogli di calcolo, csv, pdf, xml, rfd, ... CKAN è scritto in Python ed è ispirato dal sistema di gestione dei pacchetti comune a sistemi operativi open source come quelli della famiglia Linux. CKAN è un sistema performante e manutenuto da una comunità di sviluppatori online (Open Knowledge Foundation).  
 \\
-Il sistema è usato sia come piattaforma pubblica su Datahub (https://datahub.io), sia da varie pubbliche amministrazioni nell'ambito della loro strategia di pubblicazione di dati aperti, ogni portale web basato su CKAN espone delle Application programming interface API mediante le quali è possibile interrogare i dataset e fruire dei dati di ciascun portale. 
+Il sistema è usato sia come piattaforma pubblica su Datahub (\url{https://datahub.io}), sia da varie pubbliche amministrazioni nell'ambito della loro strategia di pubblicazione di dati aperti, ogni portale web basato su CKAN espone delle Application programming interface API mediante le quali è possibile interrogare i dataset e fruire dei dati di ciascun portale. 
 \\
 Molte pubbliche amministrazioni europee utilizzano CKAN (standard de facto) per la pubblicazione, gestione, e presentazione dei propri dati aperti. Riporto i link ad alcune pubbliche amministrazioni che utilizzano CKAN:
 \begin{itemize}
@@ -165,9 +165,28 @@ Molte pubbliche amministrazioni europee utilizzano CKAN (standard de facto) per 
 \item \url{http://dati.comune.lecce.it}
 \item ...
 \end{itemize}
-Oltre alle amministrazioni esiste un portale europeo (anch'esso basato su CKAN) \url{https://europeandataportal.eu}, il quale raccoglie i metadati delle informazioni del settore pubblico disponibili sui portali di dati pubblici dei vari paesi europei.
+Oltre alle amministrazioni esiste un portale europeo (anch'esso basato su CKAN):
 \\
-Come detto in precedenza il profilo DCAT-AP garantisce l'interoperabilità, CKAN salvaguarda questa importante caratteristica dei dati aperti mettendo a disposizione un'estensione (plugin) \url{https://github.com/ckan/ckanext-dcat} per abilitare l'esportazione dei metadati in formato DCAT. La corrispondenza tra i campi che descrivono i dati in CKAN ed i campi in DCAT è realizzata mediante un mapping \url{https://github.com/ckan/ckanext-dcat#rdf-dcat-to-ckan-dataset-mapping}, il quale prende i valori dai campi CKAN e li mappa in quelli DCAT.
+\\
+\url{https://europeandataportal.eu}
+\\
+\\
+Il portale europeo raccoglie i metadati delle informazioni del settore pubblico disponibili sui portali di dati pubblici dei vari paesi europei.
+\\
+Come detto in precedenza il profilo DCAT-AP garantisce l'interoperabilità, CKAN salvaguarda questa importante caratteristica dei dati aperti mettendo a disposizione un'estensione (plugin):
+\\
+\\
+\url{https://github.com/ckan/ckanext-dcat} 
+\\
+\\
+Il plugin è pensato per abilitare l'esportazione dei metadati in formato DCAT. La corrispondenza tra i campi che descrivono i dati in CKAN ed i campi in DCAT è realizzata mediante un mapping:
+\\
+\\
+\url{https://github.com/ckan/ckanext-dcat#rdf-dcat-to-ckan-
+dataset-mapping}
+\\
+\\
+il quale prende i valori dai campi CKAN e li mappa in quelli DCAT.
 
 \subsubsection{European Data Portal}
 European Data Portal (\url{https://europeandataportal.eu}) è il portale europeo degli open-data dataset di tutta europa.
@@ -181,7 +200,7 @@ Il portale europeo oltre a raccogliere i metadati europei produce delle analisi 
 \end{figure}
 
 \subsubsection{Open Data Hub Italy}
-Open Data Hub Italy (\url{http://www.sciamlab.com/opendatahub/it}) è una piattaforma per l'indicizzazione e la ricerca di dati aperti (open-data), è il più grande portale italiano di raccordo dei dati aperti delle pubbliche amministrazioni italiane. 
+Open Data Hub Italy (\url{http://sciamlab.com/opendatahub/it}) è una piattaforma per l'indicizzazione e la ricerca di dati aperti (open-data), è il più grande portale italiano di raccordo dei dati aperti delle pubbliche amministrazioni italiane. 
 \\
 Questo portale - anch'esso basato su CKAN - raccoglie più di 34'000 dataset, l'ammontare dei dati e delle organizzazioni tracciate cresce continuamente in quanto il ciclo di aggiornamento del catalogo è contenuto grazie all'utilizzo di algoritmi di processamento parallelo e distribuito.
 \\
@@ -321,12 +340,26 @@ Il tesauro (EuroVoc) e il corpus (JRC-Acquis) sono i due componenti fondamentali
 
 \newpage
 \section{Elaborazione del corpus}
-Una fase preliminare in qualsiasi ambito di classificazione è l'elaborazione dei dati, la loro formattazione, per renderli fruibili da parte di sistema di classificazione.
+Una fase preliminare in qualsiasi ambito di classificazione di documenti è l'elaborazione dei corpi testuali, si tratta di scegliere le modalità con le quali estrarre le \say{feature} dai testi - in base alla loro formattazione, al fine di rendere le \say{feature} fruibili al sistema di classificazione in modo opportuno.
 \\
-Nel contesto di un sistema di categorizzazione dei testi vogliamo ottenere un sistema che utilizzi \say{feature} ben rappresentative del contenuto semantico dei documenti dai quali sono estratte. Le tappe che dobbiamo percorrere sono essenzialmente due: innanzitutto dobbiamo 
 \\
-\say{quel complesso di operazioni che conducono a riunire tutte le forme sotto il rispettivo lemma}, intendendo per lemma \say{ciascuna parola-titolo o parola-chiave di un dizionario} e per forma ogni possibile diversa realizzazione grafica di un lemma.\footnotemark
+Nel contesto di un sistema di categorizzazione dei testi vogliamo ottenere delle \say{feature} ben rappresentative del contenuto semantico dei documenti dai quali sono estratte. Le tappe che dobbiamo percorrere sono essenzialmente due: innanzitutto è necessario utilizzare degli algoritmi per l'estrazione di \say{feature}, dopodiché queste \say{feature} potranno essere stemmerizzate o rielaborate in vario modo, ad esempio utilizzando n-grammi di parole. 
+\\
+\\
+Il processo di elaborazione viene suddiviso in fasi diverse, tuttavia simili a quelle che si possono incontrare nel processo di elaborazione di un linguaggio di programmazione, i seguenti passi rappresentano un possibile canovaccio da seguire per l'elaborazione dei testi:
+
+\begin{itemize}
+\item \textbf{Analisi lessicale:} scomposizione di un'espressione linguistica in token (in questo caso le parole).
+\item \textbf{Analisi grammaticale:} associazione delle parti del discorso a ciascuna parola nel testo.
+\item \textbf{Analisi sintattica:} arrangiamento dei token in una struttura sintattica (ad albero: parse tree).
+\item  \textbf{Analisi semantica:} assegnazione di un significato (semantica) alla struttura sintattica e, di conseguenza, all'espressione linguistica.
+\end{itemize}
+
+
+\subsection{Lemmatizzazione}
+Una tecnica di elaborazione delle \say{feature} è la lemmatizzazione, vale a dire, \say{quel complesso di operazioni che conducono a riunire tutte le forme sotto il rispettivo lemma}, intendendo per lemma \say{ciascuna parola-titolo o parola-chiave di un dizionario} e per forma ogni possibile diversa realizzazione grafica di un lemma.\footnotemark
 \footnotetext{R. Busa, Fondamenti di informatica linguistica. Istituto Geografico De Agostini, 1987}
+\\
 \\
 Esistono delle convenzioni di lemmatizzazione proprie di ciascuna lingua: ad esempio in italiano è uso convenzionale che il lemma verbale sia la forma coniugata all'infinito presente attivo.
 \\
@@ -337,40 +370,189 @@ La lemmatizzazione è, dunque, una pratica apparentemente facile, se non, addiri
 \item Quanto sia difficile formalizzare questi automatismi.
 \end{itemize}
 
-Esistono due tipi di lemmatizzazione:
-
-\begin{itemize}  
-\item \textbf{Lemmatizzazione morfologica:} analizza le forme di parole in isolamento, ovvero fuori dal contesto sintattico, fornendone tutti i valori che sono possibili in un dato sistema linguistico.
-\item \textbf{Lemmatizzazione morfo-sintattica:} analizza le forme di parole entro il contesto sintattico. Non è mai ambigua, ma sempre univoca, in quanto l'immersione della forma nella frase ne precisa il valore. Quindi, mentre la lemmatizzazione morfologica è indipendente dal testo, la lemmatizzazione sintattica è, invece, legata al contesto.
-\end{itemize}
-
-
-Questo processo è reso particolarmente difficile e complesso a causa delle caratteristiche intrinseche di ambiguità del linguaggio umano. Per questo motivo il processo di elaborazione viene suddiviso in fasi diverse, tuttavia simili a quelle che si possono incontrare nel processo di elaborazione di un linguaggio di programmazione:
+Esistono due tipi di lemmatizzazione: la lemmatizzazione morfologica analizza le forme di parole in isolamento, ovvero fuori dal contesto sintattico, fornendone tutti i valori che sono possibili in un dato sistema linguistico. 
+\\
+\\
+La lemmatizzazione morfo-sintattica analizza le forme di parole entro il contesto sintattico. Non è mai ambigua, ma sempre univoca, in quanto l'immersione della forma nella frase ne precisa il valore. Quindi, mentre la lemmatizzazione morfologica è indipendente dal testo, la lemmatizzazione sintattica è, invece, legata al contesto.
+\\
+\\
+Questo processo è reso particolarmente difficile e complesso a causa delle caratteristiche intrinseche di ambiguità del linguaggio umano. Il problema della lemmatizzazione richiama il problema della disambiguazione, infatti talvolta nell'assegnazione dei lemmi ai termini è necessario contestualizzare il termine.
 
 
-\begin{itemize}
-\item \textbf{Analisi lessicale:} scomposizione di un'espressione linguistica in token (in questo caso le parole).
-\item \textbf{Analisi grammaticale:} associazione delle parti del discorso a ciascuna parola nel testo.
-\item \textbf{Analisi sintattica:} arrangiamento dei token in una struttura sintattica (ad albero: parse tree).
-\item  \textbf{Analisi semantica:} assegnazione di un significato (semantica) alla struttura sintattica e, di conseguenza, all'espressione linguistica.
-\end{itemize}
 
+\subsection{Disambiguazione}
 Nell'analisi semantica la procedura automatica che attribuisce all'espressione linguistica un significato tra i diversi possibili è detta disambiguazione.
 La comprensione del linguaggio naturale è spesso considerata un problema IA-completo, poiché si pensa che il riconoscimento del linguaggio richieda una conoscenza estesa del mondo e una grande capacità di manipolarlo. Per questa ragione, la definizione di \say{comprensione} è uno dei maggiori problemi dell'elaborazione del linguaggio naturale.\footnotemark
 \footnotetext{I. Chiari, Introduzione alla linguistica computazionale. Laterza, 2007}
-
+\\
+\\
 Molte parole nel linguaggio naturale sono delle polisemie, vale a dire, possono avere più significati. Le tecniche finalizzate alla disambiguazione sono conosciute in letteratura come \textit{Word Sense Disambiguation} (WSD).
 \\
+\\
 La WSD può essere affrontata come un problema di classificazione, il senso corretto è la classe da predire la parola è rappresentata con un insieme (vettore) di feature in ingresso al classificatore, l'ingresso è di solito costituito da una rappresentazione della parola da disambiguare (target) e del contesto in cui si trova (un certo numero di parole a sinistra e destra della parola target). Il classificatore può essere stimato con tecniche di apprendimento automatico a partire da un dataset etichettato. Si possono usare diversi modelli per costruire il classificatore (Naïve Bayes, reti neurali, alberi di decisione...).
+\\
+\\
 Il problema dell'approccio appena descritto è che il modello di apprendimento supervisionato che scegliamo di adottare potrebbe richiedere un training set troppo grande per essere sufficientemente preciso, per questo motivo esistono tecniche alternative come i metodi Dictionary-based.
+\\
 \\
 Tra i metodi Dictionary-based abbiamo l'algoritmo di Lesk (1986) che è un metodo molto semplice, basato sull'intuizione secondo cui un dizionario può fornire informazioni sul contesto legato ai sensi delle parole (le glosse).  
 
  
-\subsection{Stemming}
+\subsection{Snowballstem}
 Lo stemming è il processo usato per ridurre parole flesse al loro tema, il tema non deve necessariamente coincidere con la radice morfologica della parola: l'importante è che parole con una semantica strettamente correlata vengano mappate sullo stesso tema. Le tecniche di stemming sono studiate in informatica da quarant'anni, sono uno dei metodi di base per ridurre la dimensionalità dei documenti di testo.
+\\
+\\
+In questo campo è stato fondamentale il contributo di Martin Porter, inventore dello \say{stemmer di Porter}, uno dei più comuni algoritmi per la stemmerizzazione in lingua inglese, e inventore del framework Snowball:
+\\
+\url{http://snowballstem.org}
+\\
+\\
+Porter definì il suo algoritmo di stemming in un articolo del 1980 \say{An algorithm for suffix stripping}, il quale è stato citato più di 8'000 volte secondo Google Scholar.
+
+\subsection{Snowball}
+\textit{
+Since it effectively provides a \say{suffix STRIPPER GRAMmar}, I had toyed with the idea of calling it \say{strippergram}, but good sense has prevailed, and so it is \say{Snowball} named as a tribute to SNOBOL, the excellent string handling language of Messrs Farber, Griswold, Poage and Polonsky from the 1960s.
+\\
+Martin Porter
+}
+\\
+\\
+Il progetto Snowball è un progetto open source:
+\\
+\url{https://github.com/snowballstem/snowball}
+\\
+Il progetto Snowball raccoglie le implementazioni di vari algoritmi di stemming (per più lingue e in più linguaggi di programmazione). Snowball è utilizzato in diversi progetti Apache Software Foundation, tra i quali abbiamo Apache Solr e Apache Lucene.
+\\
+Le stopword della lingua italiana sono riportate in formato txt al seguente indirizzo:
+\\
+\url{http://snowballstem.org/algorithms/italian/stop.txt}
+\\
+\\
+Tartarus Snowball contiene anche un adattamento dell'algoritmo di Porter per la lingua italiana, riporto di seguito l'algoritmo di stemming per la lingua italiana:
+\\
+\\
+La lingua italiana prevede le seguenti forme accentate:
+\\
+\\
+\textit{á, é, í, ó, ú, à, è, ì, ò, ù}
+\\
+\\
+Gli accenti acuti vanno rimpiazzati con gli accenti gravi. Le vocali sono:
+\\
+\\
+\textit{a, e, i, o, u, à, è, ì, ò, ù}
+\\
+\\
+Nell'algoritmo di stemming della lingua italiana - ma non solo - si utilizzano le due seguenti definizioni di \say{regione}: 
+
+\begin{itemize}
+\item \textbf{R1}: è la regione che segue la prima non vocale seguita da una vocale, potrebbe essere nulla qualora non ci fosse una non vocale.
+\item \textbf{R2}: è la regione che segue la prima non vocale seguita da una vocale nella regione R1, anche questa potrebbe essere una regione nulla.
+\item \textbf{RV}: Se la seconda lettera è una consonante, RV è la regione che segue la prossima vocale, oppure se le prime due lettere sono vocali, RV è la regione che segue la prossima consonante; altrimenti (nel caso consonante-vocale) RV è la regione dopo la terza lettera.
+\end{itemize}
+Riporto di seguito i passi dell'algoritmo:
+\begin{enumerate}
+\item Ricerca del più lungo suffisso tra i seguenti:
+\\
+\textit{ci, gli, la, le, li, lo, mi, ne, si, ti, vi, sene, gliela, gliele, glieli, glielo, gliene, mela, mele, meli, melo, mene, tela, tele, teli, telo, tene, cela, cele, celi, celo, cene, vela, vele, veli, velo, vene}
+\\
+\\
+a seguito di questi altri suffissi:
+\\
+\\
+(a) \textit{ando, endo}
+\\
+(b) \textit{ar, er, ir}
+\\
+\\
+In RV, nel caso di (a) il suffisso è cancellato, nel caso di (b) è rimpiazzato dalla \say{e}:
+\\
+\\
+Ad esempio abbiamo:
+\\
+guardandogli → guardando
+\\
+accomodarci → accomodare
+\\
+\item Ricerca del più lungo suffisso tra i seguenti suffissi:
+\\
+Cancellare se in R2:
+\\
+\textit{anza, anze, ico, ici, ica, ice, iche, ichi, ismo, ismi, abile, abili, ibile, ibili, ista, iste, isti, istà,  istè, istì, oso, osi, osa, ose, mente, atrice, atrici, ante, anti}
+\\
+\\
+Cancellare se in R2:
+\\
+\textit{azione, azioni, atore, atori} 
+\\
+\\
+Sostituire con \textit{log}, se in R2:
+\\ 
+\textit{logia, logie}
+\\
+\\
+Sostituire con \textit{u}, se in R2:
+\\
+\textit{uzione, uzioni, usione, usioni} 
+\\
+\\
+Sostituire con \textit{ente}, se in R2:
+\\
+\textit{enza, enze}  
+\\
+\\
+Cancellare se in RV:
+\\
+\textit{amento, amenti, imento, imenti}
+\\
+\\
+Cancellare \textit{amente} se in R1
+\\
+se preceduto da \textit{iv}, cancellare se in R2 (anche se preceduto da \textit{at}, cancellato se in R2), altrimenti, se preceduto da \textit{os, ic, abil} cancellare se in R2 
+\\
+\\
+Cancellare \textit{ità} se preceduto da \textit{abil, ic, iv} in R2
+\\
+\\
+Cancellare \textit{ivo, ivi, iva, ive} in R2 
+\\
+\\
+Si passa al passo tre se non abbiamo più nulla da rimuovere.
+
+\item Per quanto riguarda i suffissi dei verbi si va alla ricerca del più lungo suffisso in RV, e, se trovato, si cancella:
+\\
+\\
+\textit{ammo, ando, ano, are, arono, asse, assero, assi, assimo, ata, ate, ati, ato, ava, avamo, avano, avate, avi, avo, emmo, enda, ende, endi, endo, erà, erai, eranno, ere, erebbe, erebbero, erei, eremmo, eremo, ereste, eresti, erete, erò, erono, essero, ete, eva, evamo, evano, evate, evi, evo, Yamo, iamo, immo, irà, irai, iranno, ire, irebbe, irebbero, irei, iremmo, iremo, ireste, iresti, irete, irò, irono, isca, iscano, isce, isci, isco, iscono, issero, ita, ite, iti, ito, iva, ivamo, ivano, ivate, ivi, ivo, ono, uta, ute, uti, uto, ar, ir}
+\\
+\\
+\item Cancellare \textit{a, e, i, o, à, è, ì} oppure \textit{ò} se in RV
+\\
+\\
+crocchi → crocch
+\\
+crocchio → crocch 
+\\
+\\
+Sostituire infine \textit{ch, gh} con \textit{c, g} se in RV 
+\\
+\\
+crocch → crocc 
+
+\end{enumerate}
 
 \begin{verbatim}
+public List<String> execute(String text){
+    String resultString = text.replaceAll("\\P{L}+", " ").toLowerCase();
+    List<String> result=new ArrayList<String>();
+    StringTokenizer tk=new StringTokenizer(resultString);
+    while(tk.hasMoreTokens()){
+        String s=tk.nextToken(); 
+        if(!stopwords.contains(s)){
+            result.add(this.stems(s));
+        }
+    }
+    return result;
+}
 \end{verbatim}
 
 
@@ -573,7 +755,30 @@ Tra le tre procedure è la più semplice, consiste nell'andare a selezionare sol
 \say{Document frequency} è più appropriata per il modello di Bernoulli, mentre invece la \say{Collection frequency} è più appropriata per il modello multinomiale. Sebbene questo metodo sia molto meno complesso rispetto agli altri due, questo approccio introduce una limitazione, nel selezionare le feature potrebbe includere feature trasversali alle classi, queste feaure non danno un contributo informativo circa il legame tra la feature e la classe.
 
 \newpage
-\section{Evaluation}
+\subsection{Benefici della feature selection}
+In \say{Introduction to Information Retrieval (Manning, Raghavan, Schütze)}\footnotetext{C.D. Manning, P. Raghavan, H. Schütze, Introduction to Information Retrieval, Cambridge University Press, 2008} è presente uno studio sui benefici delle tecniche di feature selection. Il grafico che segue evidenzia i benefici prodotti su alcuni corpora REUTERS, in particolare gli algoritmi di feature selection sono applicati in modo combinato con diversi algoritmi (Naïve Bayes) di classificazione:
+
+\begin{itemize}  
+\item Mutual information feature selection - Bayes multinomiale
+\item Chi square feature selection - Bayes multinomiale
+\item Frequency based feature selection - Bayes multinomiale
+\item Mutual information feature selection - Bayes binomiale
+
+\end{itemize}
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.80]{img/fselection.png}
+\caption{Benefici della feature selection su alcuni corpora REUTERS}
+\end{center}
+\end{figure}
+
+Come si può notare, tramite la limitazione del numero di feature si raggiunge una F-measure più alta, in questo caso sia il classificatore multinomiale che quello binomiale è più accurato con circa 100 feature.
+
+
+
+\newpage
+\section{Sperimentazioni e validazione}
 La validazione di un sistema di text categorization è basata sulla classificazione di un campione di esempi che sono stati categorizzati manualmente da esperti del dominio. Quando si vuole valutare un sistema di text categorization si devono confrontare le categorie assegnate manualmente con le categorie assegnate dal sistema di text categorization.
 \\
 \\
@@ -639,7 +844,7 @@ Se non separassimo gli insiemi di test e di validation la stima di errore di un 
 La k-fold-cross-validation (in italiano validazione incrociata) è una tecnica utilizzabile in presenza di un training set abbastanza grande. In particolare la k-fold cross-validation consiste nella suddivisione del dataset totale in k parti di uguale numerosità e, ad ogni passo, la k-esima parte del dataset viene ad essere il test dataset, mentre la restante parte costituisce il training dataset. Così, per ognuna delle k parti (di solito k=10, k=5) si allena il modello, evitando quindi problemi di overfitting, ma anche di campionamento asimmetrico (e quindi affetto da bias) del training dataset, tipico della suddivisione del dataset in due sole parti (ovvero training e test dataset). In altre parole, si suddivide il campione osservato in gruppi di egual numerosità, si esclude iterativamente un gruppo alla volta e lo si cerca di predire con i gruppi non esclusi. Ciò al fine di verificare la bontà del modello di predizione utilizzato.
 
 \newpage
-\section{Sistemi di categorizzazione}
+\section{Sistemi di catalogazione}
 I sistemi di categorizzazione dei testi coprono differenti aeree di interesse. I sistemi di categorizzazione sono stati realizzati per rispondere alla necessità di catalogare ed indicizzare i documenti. I task di categorizzazione multi label sono molto complessi ed i risultati ottenuti spesso sono molto distanti dai livelli accettabili di accuratezza.
 Molti approcci sono stati esplorati ed implementati, tra questi abbiamo i sistemi keyword-based, i quali sono stati pensati per la realizzazione di abstract, vale a dire l'individuazione di parole chiave che diano una descrizione semantica e sintetica del contenuto dei documenti. Un'altra classe di algoritmi utilizzati per la categorizzazione dei testi è quella basata su tecniche di machine learning come i classificatori binari, algoritmi margin-based, tecniche bayesiane, ...
 \\
@@ -696,16 +901,39 @@ The European Commission's (EC) Joint Research Centre (JRC) has developed - and m
 \item 
 \item 
 \item 
-\item 
+\item
 \end{itemize}
 
 \subsection{Link utili}
 \begin{itemize}
+\item \url{https://github.com/simonegasperoni/cata}
+\item \url{http://opendefinition.org/od/2.1/en}
 \item \url{http://opendatahandbook.org/guide/it/what-is-open-data}
-\item 
-\item 
-\item 
-\item 
+\item \url{http://dati.mit.gov.it/dcat/catalog.rdf}
+\item \url{https://www.w3.org/TR/vocab-dcat}
+\item \url{https://ckan.org}
+\item \url{https://github.com/ckan/ckan}
+\item \url{https://datahub.io}
+\item \url{https://europeandataportal.eu}
+\item \url{http://sciamlab.com/opendatahub/it}
+\item \url{http://dati.gov.it}
+\item \url{https://github.com/ckan/ckanext-dcat}
+\item \url{https://github.com/ckan/ckanext-dcat#rdf-dcat-to-ckan-dataset-mapping}
+\item \url{http://eurovoc.europa.eu}
+\item \url{https://ec.europa.eu/jrc/en/language-technologies/jrc-acquis}
+\item \url{https://ec.europa.eu/jrc/en/language-technologies/jrc-eurovoc-indexer}
+\item \url{http://tei-c.org}
+\item \url{http://snowballstem.org}
+\item \url{https://github.com/snowballstem/snowball}
+\item \url{https://www.nlm.nih.gov/pubs/factsheets/mesh.html}
+\item \url{www.cas.org/File%20Library/Training/STN/DBSS/biosis.pdf}
+\item \url{}
+\item \url{}
+\item \url{}
+\item \url{}
+\item \url{}
+\item \url{}
+
 \end{itemize}
 
 
@@ -714,162 +942,162 @@ The European Commission's (EC) Joint Research Centre (JRC) has developed - and m
 \subsection{Associazione Temi DCAT-Microtesauri EuroVoc}
 Microtesauri EuroVoc associati al tema DCAT-AP (EU Data Themes): AGRI (Agriculture, Fisheries, Forestry \& Foods) 
 \begin{verbatim}
-	5606 agricultural policy
-	5611 agricultural structures and production 
-	5616 farming systems 
-	5621 cultivation of agricultural land 
-	5626 means of agricultural production 
-	5631 agricultural activity
-	5636 forestry 
-	5641 fisheries
-	6006 plant product
-	6011 animal product 
-	6021 beverages and sugar beverage sugar 
-	6026 foodstuff 
-	6031 agri-foodstuffs
-	6036 food technology
+    5606 agricultural policy
+    5611 agricultural structures and production 
+    5616 farming systems 
+   	5621 cultivation of agricultural land 
+   	5626 means of agricultural production 
+   	5631 agricultural activity
+   	5636 forestry 
+   	5641 fisheries
+   	6006 plant product
+   	6011 animal product 
+   	6021 beverages and sugar beverage sugar 
+   	6026 foodstuff 
+   	6031 agri-foodstuffs
+   	6036 food technology
 \end{verbatim}
 Microtesauri EuroVoc associati al tema DCAT-AP (EU Data Themes): ENER (Energy) 
 \begin{verbatim}
-	6606 energy policy 
-	6616 oil industry 
-	6621 electrical and nuclear industries 
-	6626 soft energy
-	6611 coal and mining industries
+    6606 energy policy 
+    6616 oil industry 
+    6621 electrical and nuclear industries 
+    6626 soft energy
+    6611 coal and mining industries
 \end{verbatim}
 Microtesauri EuroVoc associati al tema DCAT-AP (EU Data Themes): REGI (Regions \& Cities) 
 \begin{verbatim}
-	7206 Europe
-	7211 regions of EU Member States 
-	7216 America 
-	7221 Africa
-	7226 Asia and Oceania
-	7231 economic geography 
-	7236 political geography
-	7241 overseas countries and territories
+    7206 Europe
+    7211 regions of EU Member States 
+    7216 America 
+    7221 Africa
+    7226 Asia and Oceania
+    7231 economic geography 
+    7236 political geography
+    7241 overseas countries and territories
 \end{verbatim}
 Microtesauri EuroVoc associati al tema DCAT-AP (EU Data Themes): TRAN (Transport)
 \begin{verbatim}
-	4806 transport policy
-	4811 organisation of transport 
-	4816 land transport land transport 
-	4821 maritime and inland waterway transport 
-	4826 air and space transport
+    4806 transport policy
+    4811 organisation of transport 
+    4816 land transport land transport 
+    4821 maritime and inland waterway transport 
+    4826 air and space transport
 \end{verbatim}
 Microtesauri EuroVoc associati al tema DCAT-AP (EU Data Themes): ECON (Economy \& Finance) 
 \begin{verbatim}
-	1606 economic policy 
-	1611 economic growth 
-	1616 regions and regional policy 
-	1621 economic structure 
-	1626 national accounts 
-	1631 economic analysis 
-	2406 monetary relations
-	2411 monetary economics
-	2416 financial institutions and credit
-	2421 free movement of capital
-	2426 financing and investment 
-	2431 insurance
-	2436 public finance and budget policy 
-	2441 budget 
-	2446 taxation
-	2451 prices
-	2006 trade policy
-	2011 tariff policy 
-	2016 trade supply
-	2021 international trade 
-	2026 consumption 
-	2031 marketing
-	4006 business organisation
-	4011 business classification
-	4016 legal form of organisations
-	4021 management
-	4026 accounting
-	4031 competition 
-	6806 industrial structures
-	6811 chemistry 
-	6816 iron
-	6821 mechanical engineering
-	6826 electronics and electrical engineering
-	6831 building and public works
-	6841 leather and textile industries 
-	6846 miscellaneous industries 
+    1606 economic policy 
+    1611 economic growth 
+    1616 regions and regional policy 
+    1621 economic structure 
+    1626 national accounts 
+    1631 economic analysis 
+    2406 monetary relations
+    2411 monetary economics
+    2416 financial institutions and credit
+    2421 free movement of capital
+    2426 financing and investment 
+    2431 insurance
+    2436 public finance and budget policy 
+    2441 budget 
+    2446 taxation
+    2451 prices
+    2006 trade policy
+    2011 tariff policy 
+    2016 trade supply
+    2021 international trade 
+    2026 consumption 
+    2031 marketing
+    4006 business organisation
+    4011 business classification
+    4016 legal form of organisations
+    4021 management
+    4026 accounting
+    4031 competition 
+    6806 industrial structures
+    6811 chemistry 
+    6816 iron
+    6821 mechanical engineering
+    6826 electronics and electrical engineering
+    6831 building and public works
+    6841 leather and textile industries 
+    6846 miscellaneous industries 
 \end{verbatim}
 Microtesauri EuroVoc associati al tema DCAT-AP (EU Data Themes): INTR (International Issues) 
 \begin{verbatim}
-	7606 United Nations
-	7611 European organisations 
-	7616 extra-European organisations 
-	7621 world organisations
-	7626 non-governmental organisations
-	0811 cooperation policy
-	0816 international balance 
-	0821 defence 
+    7606 United Nations
+    7611 European organisations 
+    7616 extra-European organisations 
+    7621 world organisations
+    7626 non-governmental organisations
+    0811 cooperation policy
+    0816 international balance 
+    0821 defence 
 \end{verbatim}
 Microtesauri EuroVoc associati al tema DCAT-AP (EU Data Themes): GOVE (Government \& Public Sector) 
 \begin{verbatim}
-	0406 political framework
-	0411 political party 
-	0416 electoral procedure and voting election
-	0421 parliament 
-	0426 parliamentary proceedings
-	0431 politics and public safety 
-	0436 executive power and public service 
-	1006 Community institutions and European civil service 
-	1011 European Union law 
-	1016 European construction
+    0406 political framework
+    0411 political party 
+    0416 electoral procedure and voting election
+    0421 parliament 
+    0426 parliamentary proceedings
+    0431 politics and public safety 
+    0436 executive power and public service 
+    1006 Community institutions and European civil service 
+    1011 European Union law 
+    1016 European construction
 \end{verbatim}
 Microtesauri EuroVoc associati al tema DCAT-AP (EU Data Themes): JUST (Justice, Legal System \& Public Safety) 
 \begin{verbatim}
-	1206 sources and branches of the law 
-	1211 civil law 
-	1216 criminal law 
-	1221 justice access to the courts 
-	1226 organisation of the legal system 
-	1236 rights and freedoms
+    1206 sources and branches of the law 
+    1211 civil law 
+    1216 criminal law 
+    1221 justice access to the courts 
+    1226 organisation of the legal system 
+    1236 rights and freedoms
 \end{verbatim}
 Microtesauri EuroVoc associati al tema DCAT-AP (EU Data Themes): ENVI (Environment) 
 \begin{verbatim}
-	5206 environmental policy
-	5211 natural environment
-	5216 deterioration of the environment 
+    5206 environmental policy
+    5211 natural environment
+    5216 deterioration of the environment 
 \end{verbatim}
 Microtesauri EuroVoc associati al tema DCAT-AP (EU Data Themes): EDUC (Education, Culture \& Sport) 
 \begin{verbatim}
-	3206 education
-	3211 teaching 
-	3216 organisation of teaching 
-	3221 documentation 
-	3226 communications
-	3231 information and information processing
-	3236 information technology and data processing 
-	2831 culture and religion arts cultural policy culture
+    3206 education
+    3211 teaching 
+    3216 organisation of teaching 
+    3221 documentation 
+    3226 communications
+    3231 information and information processing
+    3236 information technology and data processing 
+    2831 culture and religion arts cultural policy culture
 \end{verbatim}
 Microtesauri EuroVoc associati al tema DCAT-AP (EU Data Themes): HEAL (Health) 
 \begin{verbatim}
-	2841 health
+    2841 health
 \end{verbatim}
 Microtesauri EuroVoc associati al tema DCAT-AP (EU Data Themes): SOCI (Population \& Society) 
 \begin{verbatim}
-	2806 family 
-	2811 migration internal 
-	2816 demography and population composition 
-	2821 social framework
-	2826 social affairs
-	2836 social protection
-	2846 construction and town planning 
-	4406 employment
-	4411 labour market 
-	4416 organisation of work and working conditions 
-	4421 personnel management and staff remuneration
-	4426 labour law and labour relations
+    2806 family 
+    2811 migration internal 
+    2816 demography and population composition 
+    2821 social framework
+    2826 social affairs
+    2836 social protection
+    2846 construction and town planning 
+    4406 employment
+    4411 labour market 
+    4416 organisation of work and working conditions 
+    4421 personnel management and staff remuneration
+    4426 labour law and labour relations
 \end{verbatim}
 Microtesauri EuroVoc associati al tema DCAT-AP (EU Data Themes): TECH (Science \& Technology)
 \begin{verbatim}
-	3606 natural and applied sciences 
-	3611 humanities behavioural 
-	6406 production 
-	6411 technology and technical regulations
+    3606 natural and applied sciences 
+    3611 humanities behavioural 
+    6406 production 
+    6411 technology and technical regulations
 \end{verbatim}
 
 \end{document}
