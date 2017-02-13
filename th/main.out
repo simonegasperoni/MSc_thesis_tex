@@ -16,7 +16,7 @@
 \BOOKMARK [1][-]{section.3}{Elaborazione del corpus}{}% 16
 \BOOKMARK [2][-]{subsection.3.1}{Lemmatizzazione}{section.3}% 17
 \BOOKMARK [2][-]{subsection.3.2}{Disambiguazione}{section.3}% 18
-\BOOKMARK [2][-]{subsection.3.3}{Snowballstem}{section.3}% 19
+\BOOKMARK [2][-]{subsection.3.3}{Stemming}{section.3}% 19
 \BOOKMARK [2][-]{subsection.3.4}{Snowball}{section.3}% 20
 \BOOKMARK [1][-]{section.4}{Classificazione bayesiana}{}% 21
 \BOOKMARK [2][-]{subsection.4.1}{Formula di Bayes}{section.4}% 22
@@ -36,12 +36,15 @@
 \BOOKMARK [2][-]{subsection.7.1}{MeSH}{section.7}% 36
 \BOOKMARK [2][-]{subsection.7.2}{BIOSIS}{section.7}% 37
 \BOOKMARK [2][-]{subsection.7.3}{NASA MAI System}{section.7}% 38
-\BOOKMARK [2][-]{subsection.7.4}{JRC-JEX \(EuroVoc\)}{section.7}% 39
-\BOOKMARK [1][-]{section.8}{Aspetti software}{}% 40
-\BOOKMARK [2][-]{subsection.8.1}{Architettura}{section.8}% 41
-\BOOKMARK [2][-]{subsection.8.2}{Deployment}{section.8}% 42
-\BOOKMARK [1][-]{section.9}{Bibliografia e risorse}{}% 43
-\BOOKMARK [2][-]{subsection.9.1}{Bibliografia}{section.9}% 44
-\BOOKMARK [2][-]{subsection.9.2}{Link utili}{section.9}% 45
-\BOOKMARK [1][-]{section.10}{Appendice}{}% 46
-\BOOKMARK [2][-]{subsection.10.1}{Associazione Temi DCAT-Microtesauri EuroVoc}{section.10}% 47
+\BOOKMARK [2][-]{subsection.7.4}{JRC-JEX \(JRC EuroVoc Indexer\)}{section.7}% 39
+\BOOKMARK [3][-]{subsubsection.7.4.1}{Pre-processamento corpus}{subsection.7.4}% 40
+\BOOKMARK [3][-]{subsubsection.7.4.2}{Vector space model}{subsection.7.4}% 41
+\BOOKMARK [3][-]{subsubsection.7.4.3}{Weighting dei vettori}{subsection.7.4}% 42
+\BOOKMARK [1][-]{section.8}{Aspetti software}{}% 43
+\BOOKMARK [2][-]{subsection.8.1}{Architettura}{section.8}% 44
+\BOOKMARK [2][-]{subsection.8.2}{Deployment}{section.8}% 45
+\BOOKMARK [1][-]{section.9}{Bibliografia e risorse}{}% 46
+\BOOKMARK [2][-]{subsection.9.1}{Bibliografia}{section.9}% 47
+\BOOKMARK [2][-]{subsection.9.2}{Link utili}{section.9}% 48
+\BOOKMARK [1][-]{section.10}{Appendice}{}% 49
+\BOOKMARK [2][-]{subsection.10.1}{Associazione Temi DCAT-Microtesauri EuroVoc}{section.10}% 50

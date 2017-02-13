@@ -128,19 +128,19 @@ DCAT-AP-it è la versione italiana di DCAT-AP, il profilo nazionale dei metadati
 Le categorie definite nel profilo europeo dei metadati DCAT-AP (categorizzazione adottata dal portale europeo European Data Portal) - sono le seguenti:
 
 \begin{enumerate}
-\item Agriculture, Fisheries, Forestry \& Foods
-\item Energy
-\item Regions \& Cities
-\item Transport
-\item Economy \& Finance
-\item International Issues
-\item Government \& Public Sector
-\item Justice, Legal System \& Public Safety
-\item Education, Culture \& Sport
-\item Environment
-\item Health
-\item Population \& Society
-\item Science \& Technology
+\item \textbf{AGRI:} Agriculture, Fisheries, Forestry \& Foods
+\item \textbf{ENER:} Energy
+\item \textbf{REGI:} Regions \& Cities
+\item \textbf{TRAN:} Transport
+\item \textbf{ECON:} Economy \& Finance
+\item \textbf{INTR:} International Issues
+\item \textbf{GOVE:} Government \& Public Sector
+\item \textbf{JUST:} Justice, Legal System \& Public Safety
+\item \textbf{EDUC:} Education, Culture \& Sport
+\item \textbf{ENVI:} Environment
+\item \textbf{HEAL:} Health
+\item \textbf{SOCI:} Population \& Society
+\item \textbf{TECH:} Science \& Technology
 \end{enumerate}
 
 
@@ -222,13 +222,54 @@ I descrittori del thesaurus multilingua EuroVoc sono usati da molti parlamentari
 JRC-Acquis è un corpus parallelo multilingua che contiene documenti di natura governativa (riguardanti varie tematiche) utilizzati/prodotti dalle istituzioni europee.  
 La versione corrente di JRC-Acquis (3.0) contiene più di 23'000 documenti annotati manualmente con i descrittori dei concetti del tesauro EuroVoc. 
 \\
+\\
 \url{https://ec.europa.eu/jrc/en/language-technologies/jrc-acquis}
+\\
 \\
 JRC-Acquis può essere usato per addestrare e/o testare sistemi di classificazione basati su algoritmi di text mining o software per la keyword-assignment basati su varie tecnologie semantiche. Il corpus è codificato in XML, in accordo con lo standard TEI per la descrizione dei campi.
 \footnotemark
 \footnotetext{Steinberger Ralf, Mohamed Ebrahim, Alexandros Poulis, Manuel Carrasco-Benitez, Patrick Schlüter, Marek Przybyszewski \& Signe Gilbro. An overview of the European Union's highly multilingual parallel corpora. Language Resources and Evaluation Journal, 2014}
 \\
-I vantaggi che possiamo trarre utilizzando JRC-Acquis come corpus di addestramento per la catalogazione di open data sono molteplici, tra i vantaggi principali abbiamo: 
+\\
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=1.00]{img/evocimbalanced.png}
+\caption{Utilizzo dei descrittori EuroVoc in JRC-Acquis}
+\end{center}
+\end{figure}
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=1.00]{img/evocdistribution.png}
+\caption{Utilizzo dei descrittori EuroVoc per documento in JRC-Acquis}
+\end{center}
+\end{figure}
+\\
+\\
+Alcuni descrittori sono utilizzati molto di più rispetto ad altri all'interno del corpus Acquis, 1733 descrittori sono utilizzati 5 volte o meno di 5 volte nei documenti, 355 descrittori sono utilizzati tra le 50 e le 100 volte, 420 descrittori sono utilizzati tra il centinaio e il migliaio di documenti. Questo sbilanciamento nell'utilizzo dei descrittori rappresenta una grande sfida nel contesto della classificazione basata sui descrittori del tesauro EuroVoc (vedi classificatore JRC-JEX, capitolo 7)
+\\
+\\
+Ciascun documento di Acquis è etichettato con 5.43 (in media) descrittori EuroVoc, con una deviazione standard di 1.86.
+\footnotemark
+\footnotetext{Steinberger Ralf, Mohamed Ebrahim, Marco Turchi. JRC EuroVoc Indexer JEX - A freely available multi-label categorisation tool. European Commission, JRC, 2014}
+\\
+\\
+I descrittori di EuroVoc sono riconducibili alle 12 categorie Eu-Data-Themes (DCAT-AP), così facendo il corpus JRC-Acquis può essere utilizzato per il task di classificazione su DCAT-AP (12 categorie), il corpus che si ottiene è sempre multi-label (ogni documento ha 3.47 categorie DCAT-AP), riporto di seguito il numero di documenti (tra i circa 23'000 documenti etichettati con i descrittori EuroVoc) il numero di volte che occorrono le varie categorie Eu-Data-Themes (DCAT-AP):
+\begin{verbatim}
+       |    REGI    |    7314    |    
+       |    AGRI    |    9164    |    
+       |    JUST    |    7012    |    
+       |    GOVE    |    4973    |    
+       |    TRAN    |    1739    |    
+       |    SOCI    |    2167    |    
+       |    ECON    |    14544   |    
+       |    HEAL    |    2165    |    
+       |    TECH    |    4093    |    
+       |    EDUC    |    775     |    
+       |    ENER    |    1350    |    
+       |    ENVI    |    1882    |    
+       |    INTR    |    2474    |    
+\end{verbatim}
+I vantaggi che possiamo trarre utilizzando JRC-Acquis come corpus di addestramento per la catalogazione di open-data con le categorie DCAT-AP sono molteplici, tra i vantaggi principali abbiamo: 
 
 \begin{enumerate}
 \item Standard TEI
@@ -398,7 +439,7 @@ Il problema dell'approccio appena descritto è che il modello di apprendimento s
 Tra i metodi Dictionary-based abbiamo l'algoritmo di Lesk (1986) che è un metodo molto semplice, basato sull'intuizione secondo cui un dizionario può fornire informazioni sul contesto legato ai sensi delle parole (le glosse).  
 
  
-\subsection{Snowballstem}
+\subsection{Stemming}
 Lo stemming è il processo usato per ridurre parole flesse al loro tema, il tema non deve necessariamente coincidere con la radice morfologica della parola: l'importante è che parole con una semantica strettamente correlata vengano mappate sullo stesso tema. Le tecniche di stemming sono studiate in informatica da quarant'anni, sono uno dei metodi di base per ridurre la dimensionalità dei documenti di testo.
 \\
 \\
@@ -841,6 +882,7 @@ Test set: è uni insieme di esempi usato per assegnare le performance di un clas
 Se non separassimo gli insiemi di test e di validation la stima di errore di un modello sulla validazione sarà parziale (inferiore) in quanto il validation set è utilizzato per selezionare il modello finale, infine si può procedere alla valutazione del modello finale sul test set.
 \footnotetext{Ricardo Gutierrez-Osuna, Introduction to Pattern Analysis, Texas A\&M University}
 \\
+\\
 La k-fold-cross-validation (in italiano validazione incrociata) è una tecnica utilizzabile in presenza di un training set abbastanza grande. In particolare la k-fold cross-validation consiste nella suddivisione del dataset totale in k parti di uguale numerosità e, ad ogni passo, la k-esima parte del dataset viene ad essere il test dataset, mentre la restante parte costituisce il training dataset. Così, per ognuna delle k parti (di solito k=10, k=5) si allena il modello, evitando quindi problemi di overfitting, ma anche di campionamento asimmetrico (e quindi affetto da bias) del training dataset, tipico della suddivisione del dataset in due sole parti (ovvero training e test dataset). In altre parole, si suddivide il campione osservato in gruppi di egual numerosità, si esclude iterativamente un gruppo alla volta e lo si cerca di predire con i gruppi non esclusi. Ciò al fine di verificare la bontà del modello di predizione utilizzato.
 
 \newpage
@@ -880,14 +922,99 @@ Il NASA MAI System non è basato su sofisticate tecniche di processamento del li
 MAI usa una grande knowledge base (manutenuta), oltre 170'000 termini e frasi, oltre alle regole. I valori di precision e recall sono attorno al 50\% (break-even point), sebbene possa sembrare basso questo risultato è piuttosto buono se si considera la vastità di argomenti coperti e la diversità dei documenti processati.
 \\
 \\
-\subsection{JRC-JEX (EuroVoc)}
-Il classificatore JEX, sviluppato presso i laboratori JRC (Joint Research Centre), è un classificatore multilabel basato sul tesauro EuroVoc. La scelta di basare il classificatore su EuroVoc rende il sistema multilingua e garantisce la copertura di tutte le tematiche di interesse della politica europea. 
-Le annotazioni prodotte da JEX sono i descrittori dei concetti di EuroVoc.
+\subsection{JRC-JEX (JRC EuroVoc Indexer)}
+Il classificatore JEX, sviluppato presso i laboratori JRC (Joint Research Centre) è stato presentato nell'ambito del workshop \say{Ontologies and Information Extraction at EUROLAN 2003: The Semantic Web and Language Technology – Its Potential and Practicalities}. 
+\\
+\\
+JEX è un classificatore multi-label, addestrato con il corpus JRC-Acquis (training set) categorizza con i descrittori (concetti) del tesauro EuroVoc con tecniche basate sull'approccio \say{VSM} (vector space model).
+La scelta di basare il classificatore su EuroVoc e JRC-Acquis rende il sistema multilingua e garantisce la copertura di tutte le tematiche di interesse della politica europea. 
+\\
+\\
 Sul sito di JEX si descrivono in sintesi le funzionalità di questo sistema:
 \\
+\textit{\say{Multilingual Eurovoc thesaurus descriptors are used by a large number of European Parliaments and Documentation Centres to manually index their large document collections. The assigned descriptors are then used to search and retrieve documents in the collection and to summarise the document contents for the users. 
 \\
-\textit{\say{Multilingual Eurovoc thesaurus descriptors are used by a large number of European Parliaments and Documentation Centres to manually index their large document collections. The assigned descriptors are then used to search and retrieve documents in the collection and to summarise the document contents for the users. As Eurovoc descriptors exist in one-to-one translations in almost thirty languages, they can be displayed in a language other than the text language and give users cross-lingual access to the information contained in each document. At the same time, EuroVoc is an ideal means to search in the user's language and to retrieve documents in other languages.
-The European Commission's (EC) Joint Research Centre (JRC) has developed - and makes available - software that automatically assigns EuroVoc descriptors to documents in currently 22 languages. The system uses statistical Machine Learning methods that learn the multi-label categorisation rules from previously manually indexed documents. The method used can be described as profile-based category ranking. This software, called JRC EuroVoc Indexer, or short JEX, has been trained for 22 languages and is available for download from this site. The software allows users to re-train the software on their own data, even using their own, alternative classification systems}}
+\\
+As Eurovoc descriptors exist in one-to-one translations in almost thirty languages, they can be displayed in a language other than the text language and give users cross-lingual access to the information contained in each document. At the same time, EuroVoc is an ideal means to search in the user's language and to retrieve documents in other languages.
+\\
+\\
+The European Commission's (EC) Joint Research Centre (JRC) has developed - and makes available - software that automatically assigns EuroVoc descriptors to documents in currently 22 languages. The system uses statistical Machine Learning methods that learn the multi-label categorisation rules from previously manually indexed documents. The method used can be described as profile-based category ranking. 
+\\
+\\
+This software, called JRC EuroVoc Indexer, or short JEX, has been trained for 22 languages and is available for download from this site. The software allows users to re-train the software on their own data, even using their own, alternative classification systems}}
+\\
+\\
+La decisione di rilasciare gratuitamente JEX è in linea con la Direttiva 2003/98/EC del parlamento europeo sul riuso delle informazioni delle pubbliche amministrazioni europee, la Direttiva riconosce l'importanza strategica della pubblicazione di collezioni di documenti multilingua al fine di migliorare prodotti e servizi \say{cross-border}. In questa prospettiva è stato rilasciato anche JRC-Acquis parallel corpus (Steinberg et al. 2006), il DGT-TM translation memory (Steinberg et al. 2012), e JRC-Names (Steinberg et al. 2011) che è un sistema per la named entity recognition.
+\subsubsection{Pre-processamento corpus}
+Al fine di realizzare un sistema di catalogazione multilingua, la fase di elaborazione dei corpus (corpus pre-processing) è stata implementata con tecniche elementari (indipendenti dalla lingua). In realtà inizialmente si pensava fosse fondamentale l'utilizzo di feature multi-word (ad esempio \say{green plant} vs \say{power plant}), o lemmatizzate per favorire notevolmente l'accuratezza oltre alla classica \say{stop-word list}; specialmente per alcune lingue con forme di coniugazione più complesse di quelle inglesi come lo spagnolo, il francese e l'italiano. 
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=1.00]{img/jexfmeasure.png}
+\caption{F-measure al variare delle tecniche di pre-processamento dei corpus}
+\end{center}
+\end{figure}
+\\
+Sebbene queste tecniche migliorino la F-measure di JEX, i risultati ottenuti utilizzando solamente una buona \say{stop-word list} sono circa uguali sia per la lingua spagnola che per la lingua inglese (Spagnolo F-measure = 47.4 vs 48). L'utilizzo di una buona \say{stop-word list} porta dei benefici (Spagnolo F-measure = 46.6 vs 47.4), questa situazione è particolarmente vantaggiosa per la realizzazione di un sistema di catalogazione multilingua, utilizzando solamente delle \say{stop-word list} si è sostanzialmente disaccoppiati dalla lingua in cui si classifica.
+\footnotemark
+\footnotetext{Bruno Pouliquen, Ralf Steinberger, Camelia Ignat, Automatic Annotation of Multilingual Text Collections  
+with a Conceptual Thesaurus, European Commission - Joint Research Centre (JRC), (2003)}  
+\subsubsection{Vector space model}
+L'algoritmo di classificazione sul quale è basato JEX è un adattamento di una tecnica di information retrieval al problema della categorizzazione dei testi: il modello a spazi vettoriali. 
+\\
+\\
+\textit{
+Vector space model or term vector model is an algebraic model for representing text documents (and any objects, in general) as vectors of identifiers, such as, for example, index terms. It is used in information filtering, information retrieval, indexing and relevancy rankings. (wikipedia-eng)
+}
+\\
+\\
+Vector Space Model (VSM) sfrutta un'intuizione geometrica nella rappresentazione dei documenti, ogni documento è un vettore le cui componenti sono i termini che lo compongono e il valore assunto dalle componenti può essere associato a diverse misure: term frequency, term frequency normalizzata, tf-idf, document frequency, chi-square, log-likelihood.
+\\
+\\  
+VSM nella categorizzazione dei testi è essenzialmente applicata seguendo due tecniche: k-nearest-neighbor (kNN) e Rocchio.\footnotemark
+\footnotetext{C.D. Manning, P. Raghavan, H. Schütze, Introduction to Information Retrieval, Cambridge University Press, pp. 289-290, 2008}
+\\
+\\
+La classificazione VSM-Rocchio divide lo spazio vettoriale in regioni in base ai centroidi (\say{prototypes}), uno per ogni categoria (concetti EuroVoc nel caso di JEX), questi centroidi o prototipi sono i centri di massa (baricentri) di tutti i vettori di una determinata categoria. La classificazione VSM-Rocchio è semplice e efficiente ma inaccurata in alcuni casi, ad esempio quando la distribuzione dei documenti per categoria non è esattamente rappresentabile come una sfera nello spazio vettoriale
+\\
+\\
+La classificazione VSM-kNN assegna la categoria dei k vettori più vicini al vettore del documento che va classificato. kNN non richiede necessariamente una fase di addestramento. Sebbene sia più preciso del metodo Rocchio, questo metodo è sostanzialmente più pesante dal punto di vista computazionale perché si devono confrontare tutti i documenti dello spazio vettoriale con il vettore del documento da classificare. Generalmente training set grandi hanno una distribuzione delle categorie non completamente uniformi e sferiche, in questi casi VSM-kNN classificherà meglio rispetto al metodo Rocchio.
+\\
+\\
+L'approccio adottato da JEX è un approccio VSM-Rocchio nel quale la selezione dei termini (componenti dei vettori) è basata sulla metrica log-likelihood descritta da Kligarriff (1996).\footnotemark In JEX il valore assunto dal log-likelihood dai termini (o lemmi) serve a determinare la \say{lista degli associati}, che sono le componenti dello spazio vettoriale, pertanto questa metrica serve a realizzare la feature selection.
+\footnotetext{Kilgarriff, Which words are particularly  
+characteristic of a text? A survey of statistical approaches. Proceedings of the AISB Workshop on Language Engineering for Document Analysis and Recognition, pp. 33-40, 1996}
+
+\subsubsection{Weighting dei vettori}
+Al fine di determinare il peso di un associato (associato = feature = lemma = termine) per un descrittore (descrittore = concetto = categoria) JEX non utilizza la metrica log-likelihood ma una variazione della formula TF-IDF nella quale si considera la descriptor-frequency piuttosto che la document-frequency. Esattamente come nella formula TF-IDF si vogliono penalizzare i termini che occorrono in tanti descrittori diversi (piuttosto che documenti diversi).
+\\
+La formula finale per stabilire il peso delle feature (componenti dello spazio vettoriale) è $Weight_{l,d}$ (per il lemma $l$ e il descrittore $d$):
+\\
+\[Weight_{l,d}=W_{l,d} \cdot IDF_l \]
+\\
+$W_{l,d}$ è il peso di un lemma rispetto ad un descrittore, mentre $IDF_l$ è l'\say{Inverse Descriptor Frequency}.
+\\
+\[W_{l,d}= \]
+\\
+...
+\\
+\[IDF_{l}= \]
+\\
+...
+
+Sono state provate le seguenti misure di similarità tra il vettore del documento da classificare ed i vettori che rappresentano i descrittori:
+\begin{itemize}
+\item \textbf{Cosine formula:} (Salton, 1989)\footnotemark\footnotetext{Salton, Automatic Text Processing: the Transformation, Analysis and Retrieval of Information by Computer. Addison-Wesley, 1989}
+\item \textbf{Okapi formula:} (Robertson et al., 1994)\footnotemark
+\item  \textbf{Prodotto scalare:} Cosine formula senza normalizzazione
+\item \textbf{Una combinazione lineare delle formule Cosine, Okapi e prodotto scalare:} (Wilkinson, 1994)
+\end{itemize}
+La combinazione lineare delle formule di similarità è una soluzione molto buona, i coefficienti di proporzionalità vanno assegnati in base alla lingua e in base ad altri parametri, tuttavia si è visto che la proporzione 40\%-20\%-40\% è la migliore in molti casi.
+
+\footnotetext{Robertson, Walker, Hancock-Beaulieu, Gatford, Okapi in TREC-3. Proceedings of Text Retrieval Conference  TREC-3, U.S. National Institute of Standards and Technology,   
+Gaithersburg, USA. NIST Special Publication 500-225, pp. 109-126, 1994}
+ 
+
+
 \newpage
 \section{Aspetti software}
 \subsection{Architettura}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.10.9)  12 FEB 2017 19:12
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.10.9)  13 FEB 2017 18:50
 entering extended mode
 **./main.tex
 (main.tex
@@ -338,7 +338,7 @@ dfTeX warning (ext4): destination with the same identifier (name{page.1}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.41 ...ine {8.1}Architettura}{36}{subsection.8.1}
+l.41 ...ctor space model}{38}{subsubsection.7.4.2}
                                                    [1])
 \tf@toc=\write4
 \openout4 = `main.toc'.
@@ -361,7 +361,7 @@ Overfull \hbox (8.44292pt too wide) in paragraph at lines 119--120
 ce l'interoperabilita,
  []
 
-[5] <img/DCAT-AP_IT_UML.png, id=281, 733.99219pt x 1330.21968pt>
+[5] <img/DCAT-AP_IT_UML.png, id=296, 733.99219pt x 1330.21968pt>
 File: img/DCAT-AP_IT_UML.png Graphic file (type png)
 
 <use img/DCAT-AP_IT_UML.png>
@@ -419,7 +419,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 168--190
 
  []
 
-[8] <img/eustat.png, id=323, 891.93225pt x 322.806pt>
+[8] <img/eustat.png, id=338, 891.93225pt x 322.806pt>
 File: img/eustat.png Graphic file (type png)
  <use img/eustat.png>
 Package pdftex.def Info: img/eustat.png used on input line 197.
@@ -440,392 +440,523 @@ Underfull \hbox (badness 10000) in paragraph at lines 203--211
 
  []
 
-[9 <./img/eustat.png>] [10]
-Underfull \hbox (badness 10000) in paragraph at lines 241--246
+[9 <./img/eustat.png>]
+<img/evocimbalanced.png, id=349, 304.13625pt x 198.14024pt>
+File: img/evocimbalanced.png Graphic file (type png)
+
+<use img/evocimbalanced.png>
+Package pdftex.def Info: img/evocimbalanced.png used on input line 236.
+(pdftex.def)             Requested size: 304.1355pt x 198.13974pt.
+
+<img/evocdistribution.png, id=350, 300.52275pt x 206.57175pt>
+File: img/evocdistribution.png Graphic file (type png)
+
+<use img/evocdistribution.png>
+Package pdftex.def Info: img/evocdistribution.png used on input line 242.
+(pdftex.def)             Requested size: 300.522pt x 206.57123pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 222--257
 
  []
 
 
-Overfull \hbox (11.99689pt too wide) in paragraph at lines 254--254
+Underfull \hbox (badness 10000) in paragraph at lines 222--257
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 222--257
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 222--257
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 222--257
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 222--257
+
+ []
+
+[10] [11 <./img/evocimbalanced.png> <./img/evocdistribution.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 282--287
+
+ []
+
+[12]
+Overfull \hbox (11.99689pt too wide) in paragraph at lines 295--295
 []   \OT1/cmtt/m/n/10 Decisione n. 2046/2002/CE del Parlamento europeo e del Co
 nsiglio,[] 
  []
 
 
-Overfull \hbox (6.74693pt too wide) in paragraph at lines 254--254
+Overfull \hbox (6.74693pt too wide) in paragraph at lines 295--295
 []   \OT1/cmtt/m/n/10 relativa ad una serie di orientamenti, compresa l'individ
 uazione[] 
  []
 
-[11] [12] <img/eurovocdcat.png, id=353, 957.5775pt x 1005.7575pt>
+[13] [14] <img/eurovocdcat.png, id=383, 957.5775pt x 1005.7575pt>
 File: img/eurovocdcat.png Graphic file (type png)
 
 <use img/eurovocdcat.png>
-Package pdftex.def Info: img/eurovocdcat.png used on input line 306.
+Package pdftex.def Info: img/eurovocdcat.png used on input line 347.
 (pdftex.def)             Requested size: 287.27547pt x 301.72958pt.
-pdfTeX warning (ext4): destination with the same identifier (name{Hfootnote.5})
+pdfTeX warning (ext4): destination with the same identifier (name{Hfootnote.6})
  has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.312 ...1.0, Agenzia per l'Italia digitale, 2006}
+l.353 ...1.0, Agenzia per l'Italia digitale, 2006}
                                                   
-Underfull \hbox (badness 10000) in paragraph at lines 311--321
+Underfull \hbox (badness 10000) in paragraph at lines 352--362
 
  []
 
-[13 <./img/eurovocdcat.png>] [14]
-Overfull \hbox (25.63956pt too wide) in paragraph at lines 343--350
+[15 <./img/eurovocdcat.png>] [16]
+Overfull \hbox (25.63956pt too wide) in paragraph at lines 384--391
 \OT1/cmr/m/n/10 Una fase pre-lim-inare in qual-si-asi am-bito di clas-si-fi-caz
 ione di doc-u-menti e l'elaborazione
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 343--350
+Underfull \hbox (badness 10000) in paragraph at lines 384--391
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 343--350
+Underfull \hbox (badness 10000) in paragraph at lines 384--391
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 360--367
+Underfull \hbox (badness 10000) in paragraph at lines 401--408
 
  []
 
-[15]
-Underfull \hbox (badness 10000) in paragraph at lines 373--380
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 373--380
+[17]
+Underfull \hbox (badness 10000) in paragraph at lines 414--421
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 384--399
+Underfull \hbox (badness 10000) in paragraph at lines 414--421
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 384--399
+Underfull \hbox (badness 10000) in paragraph at lines 425--440
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 384--399
+Underfull \hbox (badness 10000) in paragraph at lines 425--440
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 384--399
-
- []
-
-[16]
-Underfull \hbox (badness 10000) in paragraph at lines 402--411
+Underfull \hbox (badness 10000) in paragraph at lines 425--440
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 402--411
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 417--447
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 417--447
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 417--447
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 417--447
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 417--447
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 417--447
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 417--447
-
- []
-
-[17] ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ucs\uni-33.def"
-File: uni-33.def 2013/05/13 UCS: Unicode data U+2100..U+21FF
-)
-Underfull \hbox (badness 10000) in paragraph at lines 455--477
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 455--477
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 455--477
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 455--477
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 455--477
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 477--521
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 477--521
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 477--521
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 477--521
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 477--521
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 477--521
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 477--521
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 477--521
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 477--521
+Underfull \hbox (badness 10000) in paragraph at lines 425--440
 
  []
 
 [18]
-Underfull \hbox (badness 10000) in paragraph at lines 522--528
+Underfull \hbox (badness 10000) in paragraph at lines 443--452
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 522--528
+Underfull \hbox (badness 10000) in paragraph at lines 443--452
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 522--528
+Underfull \hbox (badness 10000) in paragraph at lines 458--488
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 528--540
+Underfull \hbox (badness 10000) in paragraph at lines 458--488
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 528--540
+Underfull \hbox (badness 10000) in paragraph at lines 458--488
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 528--540
+Underfull \hbox (badness 10000) in paragraph at lines 458--488
 
  []
 
-[19]
-Overfull \hbox (32.9967pt too wide) in paragraph at lines 556--556
+
+Underfull \hbox (badness 10000) in paragraph at lines 458--488
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 458--488
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 458--488
+
+ []
+
+[19] ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ucs\uni-33.def"
+File: uni-33.def 2013/05/13 UCS: Unicode data U+2100..U+21FF
+)
+Underfull \hbox (badness 10000) in paragraph at lines 496--518
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 496--518
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 496--518
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 496--518
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 496--518
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 518--562
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 518--562
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 518--562
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 518--562
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 518--562
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 518--562
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 518--562
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 518--562
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 518--562
+
+ []
+
+[20]
+Underfull \hbox (badness 10000) in paragraph at lines 563--569
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 563--569
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 563--569
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 569--581
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 569--581
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 569--581
+
+ []
+
+[21]
+Overfull \hbox (32.9967pt too wide) in paragraph at lines 597--597
 []    \OT1/cmtt/m/n/10 String resultString = text.replaceAll("\\P{L}+", " ").to
 LowerCase();[] 
  []
 
-[20] ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ucs\uni-32.def"
+[22] ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ucs\uni-32.def"
 File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
 )
 ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ucs\uni-34.def"
 File: uni-34.def 2013/05/13 UCS: Unicode data U+2200..U+22FF
-) [21] [22]
-[23] [24] [25] [26]
+) [23] [24]
+[25] [26] [27] [28]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 743.
+(Font)              <12> on input line 784.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 743.
+(hyperref)                removing `math shift' on input line 784.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\chi' on input line 743.
+(hyperref)                removing `\chi' on input line 784.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 743.
+(hyperref)                removing `superscript' on input line 784.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 743.
+(hyperref)                removing `math shift' on input line 784.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 745--749
+Underfull \hbox (badness 10000) in paragraph at lines 786--790
 
  []
 
-[27] [28]pdfTeX warning (ext4): destination with the same identifier (name{Hfoo
-tnote.11}) has been already used, duplicate ignored
+[29] [30]pdfTeX warning (ext4): destination with the same identifier (name{Hfoo
+tnote.12}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.759 ...rieval, Cambridge University Press, 2008}
+l.800 ...rieval, Cambridge University Press, 2008}
                                                    è presente uno studio su...
-<img/fselection.png, id=518, 352.9185pt x 295.1025pt>
+<img/fselection.png, id=549, 352.9185pt x 295.1025pt>
 File: img/fselection.png Graphic file (type png)
  <use img/fselection.png>
-Package pdftex.def Info: img/fselection.png used on input line 771.
+Package pdftex.def Info: img/fselection.png used on input line 812.
 (pdftex.def)             Requested size: 282.33517pt x 236.0823pt.
 
-[29 <./img/fselection.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 782--797
+[31 <./img/fselection.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 823--838
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 782--797
+Underfull \hbox (badness 10000) in paragraph at lines 823--838
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 782--797
+Underfull \hbox (badness 10000) in paragraph at lines 823--838
 
  []
 
 
-Overfull \hbox (21.7168pt too wide) in paragraph at lines 798--799
+Overfull \hbox (21.7168pt too wide) in paragraph at lines 839--840
 []\OT1/cmr/bx/n/10 true pos-i-tive: \OT1/cmr/m/n/10 il sis-tema e l'esperto del
  do-minio sono co-er-enti nell'assegnazione
  []
 
-[30]pdfTeX warning (ext4): destination with the same identifier (name{Hfootnote
-.11}) has been already used, duplicate ignored
+[32]pdfTeX warning (ext4): destination with the same identifier (name{Hfootnote
+.12}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.842 ... Pattern Analysis, Texas A\&M University}
-                                                   [31] [32]
-Overfull \hbox (8.40558pt too wide) in paragraph at lines 854--856
+l.883 ... Pattern Analysis, Texas A\&M University}
+                                                  
+Underfull \hbox (badness 10000) in paragraph at lines 874--887
+
+ []
+
+[33] [34]
+Overfull \hbox (8.40558pt too wide) in paragraph at lines 896--898
 \OT1/cmr/m/n/10 ter-mini del campo medico. []$\OT1/cmtt/m/n/10 https : / / www 
 . nlm . nih . gov / pubs / factsheets / mesh .
  []
 
-pdfTeX warning (ext4): destination with the same identifier (name{Hfootnote.11}
+pdfTeX warning (ext4): destination with the same identifier (name{Hfootnote.12}
 ) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.858 ...ssing system for the life sciences, 1987}
+l.900 ...ssing system for the life sciences, 1987}
                                                    le parole che occorrono n...
 
-Underfull \hbox (badness 10000) in paragraph at lines 866--883
+Underfull \hbox (badness 10000) in paragraph at lines 908--925
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 866--883
+Underfull \hbox (badness 10000) in paragraph at lines 908--925
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 866--883
+Underfull \hbox (badness 10000) in paragraph at lines 908--925
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 866--883
+Underfull \hbox (badness 10000) in paragraph at lines 908--925
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 866--883
+Underfull \hbox (badness 10000) in paragraph at lines 908--925
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 866--883
+Underfull \hbox (badness 10000) in paragraph at lines 908--925
 
  []
 
-[33]
-Underfull \hbox (badness 10000) in paragraph at lines 884--891
+[35]
+Underfull \hbox (badness 10000) in paragraph at lines 926--948
 
  []
 
-[34] [35] [36]
-Overfull \hbox (45.24687pt too wide) in paragraph at lines 921--922
+
+Underfull \hbox (badness 10000) in paragraph at lines 926--948
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 926--948
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 926--948
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 926--948
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 926--948
+
+ []
+
+
+Overfull \hbox (9.24953pt too wide) in paragraph at lines 926--948
+\OT1/cmr/m/n/10 La de-ci-sione di ri-las-ciare gra-tuita-mente JEX e in linea 
+con la Di-ret-tiva 2003/98/EC
+ []
+
+[36] <img/jexfmeasure.png, id=579, 287.8755pt x 199.947pt>
+File: img/jexfmeasure.png Graphic file (type png)
+
+<use img/jexfmeasure.png>
+Package pdftex.def Info: img/jexfmeasure.png used on input line 952.
+(pdftex.def)             Requested size: 287.87479pt x 199.9465pt.
+ [37]
+Underfull \hbox (badness 10000) in paragraph at lines 962--986
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 962--986
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 962--986
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 962--986
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 962--986
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 962--986
+
+ []
+
+[38 <./img/jexfmeasure.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 988--992
+
+ []
+
+[39]
+Underfull \hbox (badness 10000) in paragraph at lines 992--996
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 996--1000
+
+ []
+
+[40] [41]
+Overfull \hbox (45.24687pt too wide) in paragraph at lines 1048--1049
 [][]$\OT1/cmtt/m/n/10 https : / / github . com / ckan / ckanext-[]dcat # rdf-[]
 dcat-[]to-[]ckan-[]dataset-[]mapping$[] 
  []
 
 
-Overfull \hbox (43.74687pt too wide) in paragraph at lines 924--925
+Overfull \hbox (43.74687pt too wide) in paragraph at lines 1051--1052
 [][]$\OT1/cmtt/m/n/10 https : / / ec . europa . eu / jrc / en / language-[]tech
 nologies / jrc-[]eurovoc-[]indexer$[] 
  []
 
-[37] [38] [39] [40] [41]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1103.
- [42]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1103.
+[42] [43] [44] [45] [46]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1230.
+ [47]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1230.
  (main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1103.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1103.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1230.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1230.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 3E277D124AF2BA7B2A7BB034D789058A;3292.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1103.
+(rerunfilecheck)             Checksum: E0A3BEB3B62A68BE209A5CDE5108BF6B;3546.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1230.
  ) 
 Here is how much of TeX's memory you used:
- 9465 strings out of 493334
- 131491 string characters out of 3136669
+ 9500 strings out of 493334
+ 132112 string characters out of 3136669
  249139 words of memory out of 3000000
- 12698 multiletter control sequences out of 15000+200000
+ 12713 multiletter control sequences out of 15000+200000
  10143 words of font info for 36 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  37i,8n,40p,996b,1847s stack positions out of 5000i,500n,10000p,200000b,50000s
-pdfTeX warning (dest): name{Hfootnote.8} has been referenced but does not exi
+pdfTeX warning (dest): name{Hfootnote.9} has been referenced but does not exi
 st, replaced by a fixed one
 
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C
@@ -845,9 +976,9 @@ X 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files (x86)/MiKTeX
 /fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files (x86)/MiKTeX 2.9/f
 onts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fon
 ts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on main.pdf (43 pages, 669820 bytes).
+Output written on main.pdf (48 pages, 804150 bytes).
 PDF statistics:
- 706 PDF objects out of 1000 (max. 8388607)
- 197 named destinations out of 1000 (max. 500000)
- 397 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 763 PDF objects out of 1000 (max. 8388607)
+ 214 named destinations out of 1000 (max. 500000)
+ 436 words of extra memory for PDF output out of 10000 (max. 10000000)
 

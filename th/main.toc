@@ -9,39 +9,42 @@
 \contentsline {subsubsection}{\numberline {2.4.3}Dati.gov.it}{10}{subsubsection.2.4.3}
 \contentsline {subsection}{\numberline {2.5}EuroVoc}{10}{subsection.2.5}
 \contentsline {subsection}{\numberline {2.6}JRC-Acquis}{10}{subsection.2.6}
-\contentsline {subsubsection}{\numberline {2.6.1}Standard TEI}{11}{subsubsection.2.6.1}
-\contentsline {subsubsection}{\numberline {2.6.2}Corpus aggiornato e manutenuto}{12}{subsubsection.2.6.2}
-\contentsline {subsubsection}{\numberline {2.6.3}Corpus parallelo multilingua}{12}{subsubsection.2.6.3}
-\contentsline {subsubsection}{\numberline {2.6.4}Bridge dinamico tra EuroVoc e le categorie DCAT-AP}{13}{subsubsection.2.6.4}
-\contentsline {section}{\numberline {3}Elaborazione del corpus}{15}{section.3}
-\contentsline {subsection}{\numberline {3.1}Lemmatizzazione}{15}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Disambiguazione}{16}{subsection.3.2}
-\contentsline {subsection}{\numberline {3.3}Snowballstem}{17}{subsection.3.3}
-\contentsline {subsection}{\numberline {3.4}Snowball}{17}{subsection.3.4}
-\contentsline {section}{\numberline {4}Classificazione bayesiana}{21}{section.4}
-\contentsline {subsection}{\numberline {4.1}Formula di Bayes}{21}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Classificatori bayesiani na\IeC {\"\i }ve}{23}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Stima delle probabilit\IeC {\`a} (m-estimate)}{24}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}Classificazione bayesiana di testi }{25}{subsection.4.4}
-\contentsline {subsection}{\numberline {4.5}Rappresentazione testi e stima delle probabilit\IeC {\`a}}{25}{subsection.4.5}
-\contentsline {section}{\numberline {5}Feature selection}{27}{section.5}
-\contentsline {subsection}{\numberline {5.1}Mutual information feature selection}{27}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}$\chi ^2$ feature selection}{27}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}Frequency-based feature selection}{28}{subsection.5.3}
-\contentsline {subsection}{\numberline {5.4}Benefici della feature selection}{29}{subsection.5.4}
-\contentsline {section}{\numberline {6}Sperimentazioni e validazione}{30}{section.6}
-\contentsline {subsection}{\numberline {6.1}Metriche per l'evaluation}{30}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}K-fold-cross-validation}{31}{subsection.6.2}
-\contentsline {section}{\numberline {7}Sistemi di catalogazione}{33}{section.7}
-\contentsline {subsection}{\numberline {7.1}MeSH}{33}{subsection.7.1}
-\contentsline {subsection}{\numberline {7.2}BIOSIS}{33}{subsection.7.2}
-\contentsline {subsection}{\numberline {7.3}NASA MAI System}{34}{subsection.7.3}
-\contentsline {subsection}{\numberline {7.4}JRC-JEX (EuroVoc)}{34}{subsection.7.4}
-\contentsline {section}{\numberline {8}Aspetti software}{36}{section.8}
-\contentsline {subsection}{\numberline {8.1}Architettura}{36}{subsection.8.1}
-\contentsline {subsection}{\numberline {8.2}Deployment}{36}{subsection.8.2}
-\contentsline {section}{\numberline {9}Bibliografia e risorse}{37}{section.9}
-\contentsline {subsection}{\numberline {9.1}Bibliografia}{37}{subsection.9.1}
-\contentsline {subsection}{\numberline {9.2}Link utili}{37}{subsection.9.2}
-\contentsline {section}{\numberline {10}Appendice}{39}{section.10}
-\contentsline {subsection}{\numberline {10.1}Associazione Temi DCAT-Microtesauri EuroVoc}{39}{subsection.10.1}
+\contentsline {subsubsection}{\numberline {2.6.1}Standard TEI}{13}{subsubsection.2.6.1}
+\contentsline {subsubsection}{\numberline {2.6.2}Corpus aggiornato e manutenuto}{14}{subsubsection.2.6.2}
+\contentsline {subsubsection}{\numberline {2.6.3}Corpus parallelo multilingua}{14}{subsubsection.2.6.3}
+\contentsline {subsubsection}{\numberline {2.6.4}Bridge dinamico tra EuroVoc e le categorie DCAT-AP}{15}{subsubsection.2.6.4}
+\contentsline {section}{\numberline {3}Elaborazione del corpus}{17}{section.3}
+\contentsline {subsection}{\numberline {3.1}Lemmatizzazione}{17}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Disambiguazione}{18}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.3}Stemming}{19}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.4}Snowball}{19}{subsection.3.4}
+\contentsline {section}{\numberline {4}Classificazione bayesiana}{23}{section.4}
+\contentsline {subsection}{\numberline {4.1}Formula di Bayes}{23}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Classificatori bayesiani na\IeC {\"\i }ve}{25}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Stima delle probabilit\IeC {\`a} (m-estimate)}{26}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Classificazione bayesiana di testi }{27}{subsection.4.4}
+\contentsline {subsection}{\numberline {4.5}Rappresentazione testi e stima delle probabilit\IeC {\`a}}{27}{subsection.4.5}
+\contentsline {section}{\numberline {5}Feature selection}{29}{section.5}
+\contentsline {subsection}{\numberline {5.1}Mutual information feature selection}{29}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}$\chi ^2$ feature selection}{29}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Frequency-based feature selection}{30}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}Benefici della feature selection}{31}{subsection.5.4}
+\contentsline {section}{\numberline {6}Sperimentazioni e validazione}{32}{section.6}
+\contentsline {subsection}{\numberline {6.1}Metriche per l'evaluation}{32}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}K-fold-cross-validation}{33}{subsection.6.2}
+\contentsline {section}{\numberline {7}Sistemi di catalogazione}{35}{section.7}
+\contentsline {subsection}{\numberline {7.1}MeSH}{35}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}BIOSIS}{35}{subsection.7.2}
+\contentsline {subsection}{\numberline {7.3}NASA MAI System}{36}{subsection.7.3}
+\contentsline {subsection}{\numberline {7.4}JRC-JEX (JRC EuroVoc Indexer)}{36}{subsection.7.4}
+\contentsline {subsubsection}{\numberline {7.4.1}Pre-processamento corpus}{37}{subsubsection.7.4.1}
+\contentsline {subsubsection}{\numberline {7.4.2}Vector space model}{38}{subsubsection.7.4.2}
+\contentsline {subsubsection}{\numberline {7.4.3}Weighting dei vettori}{39}{subsubsection.7.4.3}
+\contentsline {section}{\numberline {8}Aspetti software}{41}{section.8}
+\contentsline {subsection}{\numberline {8.1}Architettura}{41}{subsection.8.1}
+\contentsline {subsection}{\numberline {8.2}Deployment}{41}{subsection.8.2}
+\contentsline {section}{\numberline {9}Bibliografia e risorse}{42}{section.9}
+\contentsline {subsection}{\numberline {9.1}Bibliografia}{42}{subsection.9.1}
+\contentsline {subsection}{\numberline {9.2}Link utili}{42}{subsection.9.2}
+\contentsline {section}{\numberline {10}Appendice}{44}{section.10}
+\contentsline {subsection}{\numberline {10.1}Associazione Temi DCAT-Microtesauri EuroVoc}{44}{subsection.10.1}
