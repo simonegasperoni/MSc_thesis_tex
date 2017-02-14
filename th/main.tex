@@ -82,16 +82,30 @@ Tim O'Reilly
 
 \newpage
 \section{Introduzione}
+\newpage
+\section{Contesto}
+\subsubsection{Web semantico}
 Al giorno d'oggi il web ha cambiato sia il modo di comunicare con le persone sia il modo di utilizzare il computer. In passato, l'elaboratore veniva utilizzato espressamente solo per l'elaborazione di calcoli, oggi, invece, incorpora strumenti per processare informazioni testuali e multimediali. Gli utenti del web usano il computer soprattutto per effettuare ricerche di informazioni di carattere generale (come la ricerca di informazioni di altre persone), per entrare in contatto con altre persone, per consultare cataloghi, e per ordinare prodotti di negozi on-line, ... Tutte queste attività sono rese possibili grazie all'utilizzo di strumenti particolari quali i motori di ricerca. 
 \\
 \\
 Essi hanno avuto un grande successo e hanno contribuito al miglioramento del web. Il problema però è che, siccome si basano su un matching tra le parole chiave, hanno bisogno dell'intervento umano per interpretare e combinare i risultati che propongono. Questo è dovuto dal fatto che i risultati delle ricerche non sono facilmente accessibili da altri strumenti e quindi il significato del contenuto non è accessibile alla macchina. 
 \\
 \\
-Gli strumenti che oggi si ha a disposizione, sono prevalentemente per recuperare testi, scomporli in parti, controllare l'ortografia, contare le parole, ... Un approccio per risolvere questo problema è di rappresentare il web in un modo diverso, ovvero, utilizzare tecniche intelligenti affinché anche la macchina possa interpretare le informazioni. Così nasce il Semantic web.
+Il web semantico si pone nella prospettiva di andare oltre questo tipo di limitazioni del web, si vuole infatti rappresentare il web in un modo diverso, utilizzando tecniche intelligenti affinché anche le macchine possano interpretare le informazioni.
 \\
 \\
-Il web semantico è l'evoluzione del vecchio web dove si associa ad ogni documento un'etichettatura intelligente (metadati), in modo tale che si da un significato semantico al contenuto, e le informazioni possono essere collegate ed integrate tra loro. Grazie al web semantico, dunque, è possibile effettuare operazione specialistiche e ricerche altamente più precise.
+Nel 2001, nel pieno della pur continua espansione del web e dei suoi molteplici utilizzi Tim Berners-Lee, James Hendler,  e Ora Lassila pubblicavano un articolo che sarebbe diventato una nuova pietra miliare. In esso l'inventore del web, insieme ai suoi co-autori lanciavano il web semantico definendolo come una \say{estensione del web attuale, in cui all'informazione è dato un ben determinato significato, facilitando la cooperazione tra i computer e le persone}. In estrema sintesi, la visione espressa era di un web in cui l'enfasi si sposta dai documenti - e dalla relativa interpretazione da parte degli umani - ai dati e al loro significato e interpretazione da parte degli elaboratori.
+\\ 
+\\
+Ad onor del vero già da qualche anno diversi studi e progetti, sia in Europa che negli USA, indicavano le opportunità, quasi la necessità, del passaggio ad un web in cui oltre che il puro testo ci fosse una qualche forma di struttura atta a facilitare la comprensione da parte delle macchine del contenuto delle pagine web e una maggiore interoperabilità. 
+\\
+\\
+L'appoggio e il sostegno del creatore del web e direttore del W3C rappresentavano però un evidente viatico e sprone a reinventare il web, passando da un web di documenti collegati tra di loro ad uno di dati interconnessi.
+\footnotemark
+\footnotetext{Di Noia, De Virgilio, Di Sciascio, Donini, Semantic Web: Tra ontologie e Open Data, Apogeo, 2013}
+\\
+\\
+Il semantic web è l'evoluzione del vecchio web dove si associa ad ogni documento un'etichettatura intelligente (metadati), al fine di correlare una semantica ai dati, e le informazioni possono essere collegate ed integrate tra loro. Grazie al web semantico, dunque, è possibile effettuare operazione specialistiche e ricerche altamente più precise.
 \\
 \\
 Il W3 Consortium definisce il web semantico: \say{web dei dati}, proprio perché al suo interno ha un elevato numero di documenti ed informazioni che sono accessibili a tutti liberamente (open-data). Affinché i risultati ottenuti dalle attività di recupero delle informazioni siano di reale utilità per l'utente risulterebbe di grande vantaggio che i dati fossero proposti all'utente in forma aggregata, anziché isolata.
@@ -104,54 +118,72 @@ In tal modo è possibile navigare da un documento all'altro attraverso i concett
 \\
 \\
 L'architettura dei linked-open-data di Tim Berners-Lee mostra quattro principi:
-\begin{enumerate}
-\item \textbf{URI:} utilizzare URI come nomi per le cose: Uniform Resource Indentifiers, è una stringa che identifica in maniera univoca oggetti globali che si trovano nel web (risorse). Qui ci si riferisce non solo a documenti web ma anche oggetti reali e concreti come le persone, i luoghi, ...
-\item \textbf{HTTP:} utilizzare HTTP (Hypertext transfer protocol) in modo che le persone possano cercare quei nomi, HTTP è un protocollo utilizzato dal web per la rappresentazione e la negoziazione dei dati. Con HTTP è possibile recuperare gli oggetti e i concetti indicati dall'URI.
+\begin{itemize}
 
-\item \textbf{RDF:} Nella ricerca delle risorse, è necessario utilizzare un modello dati formalizzato in RDF (Resource Description Framework).
+\item \textbf{URI:} utilizzare \say{Uniform Resource Indentifiers} come nomi per le cose,  URI è una stringa che identifica in maniera univoca oggetti globali che si trovano nel web (risorse). Qui ci si riferisce non solo a documenti web ma anche oggetti reali e concreti come le persone, i luoghi, ...
+\item \textbf{HTTP:} utilizzare HTTP in modo che le persone possano cercare quei nomi, HTTP è un protocollo utilizzato dal web per la rappresentazione e la negoziazione dei dati. Con HTTP è possibile recuperare gli oggetti e i concetti indicati dall'URI.
+
+\item \textbf{RDF:} Per processare le informazioni è necessario concordare formati standard. Attualmente il linguaggio di riferimento è RDF (Resource Description Framework), nato appunto per soddisfare esigenze di rappresentazione machine-readable delle informazioni mediante opportuni modelli dati e vocabolari (specializzati). RDF è pensato per l'elaborazione automatica delle informazioni del web da parte di agenti software. Altri aspetti importanti sono la necessità di combinare più dati provenienti da fonti diverse per avere maggiori informazioni e l'introduzione dei metadati nel web.
 
 \item Includere collegamenti ad altri URI in modo che possano scoprire altre cose: documenti che contengono collegamenti ad altri documenti che trattano lo stesso argomento, risulta utile all'utente per avere sempre maggiori informazioni sull'oggetto di interesse. 
-\end{enumerate}
-Affinchè si riesca a processare le informazioni è necessario concordare formati standard. Attualmente il linguaggio di riferimento è RDF, nato appunto per soddisfare esigenze di rappresentazione delle informazioni:
- 
-\begin{itemize}
-\item Elaborazione automatica delle informazioni del web da parte di agenti software.
-\item Processare informazioni da parte di una macchina.
-\item Combinare più dati provenienti da fonti diverse per avere maggiori informazioni.
-\item Introduzione dei metadati sul web.
+
 \end{itemize} 
 \phantom
 \\
 RDF ha un semplice modello di metadati basato su grafo orientato, utilizza la sintassi XML e si basa su un vocabolario. La struttura di base di ogni espressione in RDF è un insieme di triple: $<SOGGETTO, PREDICATO, OGGETTO>$.
-\newpage
-\section{Contesto}
-\textbf{\textit{I dati sono aperti se chiunque è libero di accederli, usarli, modificarli, e condividerli.}}
+
+\subsection{Open-data}
+\textit{Open data is data that can be freely used, re-used and redistributed by any one - subject only, at most, to the requirement to attribute and sharealike}
 \footnotemark
 \footnotetext{http://opendefinition.org/od/2.1/en}
-
-\subsection{La filosofia open-data}
-
+\footnotetext{http://opendatahandbook.org/guide/en/what-is-open-data}
+\\
+\\
+Diversi progetti sono stati avviati nella pubblica amministrazione. Tali progetti mirano alla pubblicazione dei dati di competenza della pubblica amministrazione. Scopo comune di questi progetti è mettere a disposizione i dati in modo tale che possano essere utilizzati in modo automatico da applicazioni software e risultare disponibili per la consultazione, facendo in modo che siano fruibili. Mediante il documento \say{Linee guida per i siti web della pubblica amministrazione}\footnotemark
+\footnotetext{Linee guida per i siti web della pubblica amministrazione, articolo 4 Direttiva 8/09, Ministero della pubblica amministrazione}, pubblicato il 26 luglio 2010, sono stati formalizzati i criteri da seguire nell'attività di realizzazione dei siti web da parte delle pubbliche amministrazioni. In particolare, il documento presenta una serie di principi su caratteristiche tecniche da considerare per la creazione dei siti web e sulla loro gestione, sviluppo, e aggiornamento dei dati delle pubbliche amministrazioni forniti on-line. 
+\\
+\\
 Gli aspetti più importanti della filosofia open-data sono:
 \begin{itemize}
-\item Disponibilità e accesso.
+\item Disponibilità e accesso (al fine di garantire la giusta trasparenza).
 \item Riutilizzo e ridistribuzione: i dati devono essere forniti a condizioni tali da permetterne il riutilizzo e la ridistribuzione. Ciò comprende la possibilità di combinarli con altre basi di dati.
 \item Partecipazione universale: tutti devono essere in grado di usare, riutilizzare e ridistribuire i dati.
 \end{itemize}
-
-Il movimento open-data si diffuse per la prima volta a seguito della promulgazione della Direttiva sull'Open government del 2009 negli Stati Uniti d'America:
+\phantom
+\\
+Il movimento open-data si diffuse per la prima volta a seguito della promulgazione della Direttiva sull'open-government del 2009 negli Stati Uniti d'America:
 \textit{Fin dove possibile e sottostando alle sole restrizioni valide, le agenzie devono pubblicare le informazioni on line utilizzando un formato aperto (open) che possa cioè essere recuperato, soggetto ad azioni di download, indicizzato e ricercato attraverso le applicazioni di ricerca web più comunemente utilizzate. Per formato open si intende un formato indipendente rispetto alla piattaforma, leggibile dall'elaboratore e reso disponibile al pubblico senza che sia impedito il riuso dell'informazione veicolata.}
 \\
-In questo contesto è nato il portale Data.gov, creato con l'obiettivo di raccogliere in un unico portale tutte le informazioni rese disponibili dagli enti statunitensi in formato aperto. In Italia il portale che raccoglie i dati aperti della pubblica amministrazione è Dati.gov.it
+\\
+In questo contesto è nato il portale Data.gov, creato con l'obiettivo di raccogliere in un unico portale tutte le informazioni rese disponibili dagli enti statunitensi in formato aperto. In Italia il portale che raccoglie i dati aperti delle pubbliche amministrazione è Dati.gov.it
+
+\subsection{Open-government} 
+Il rapporto tra pubbliche amministrazioni e cittadino viene ridefinito dalla dottrina open-government in quanto quest'ultimo non è più solo fruitore di servizi forniti dalle pubbliche amministrazioni, ma bensì partecipante alle scelte di governo.
+\\
+\\
+L'open-government, dunque, rappresenta un modello di amministrazione che chiama gli enti e le istituzioni pubbliche a ripensare gli schemi operativi e i processi decisionali consolidati, in particolare dal punto di vista delle modalità e degli strumenti attraverso i quali si espleta la relazione con il cittadino. Un modello \say{open} all'interno delle amministrazioni pubbliche centrali e locali, difatti, si contraddistingue per forme di discussione e collaborazione con i cittadini, così come per azioni di comunicazione aperta e trasparente nei confronti della comunità locale. In una logica di open-government le amministrazioni mettono al centro la comunicazione e la collaborazione con i cittadini, sono aperte al dialogo e al confronto diretto e partecipato con i privati e quindi focalizzano i processi decisionali sulle effettive esigenze e necessità delle comunità locali. Centralità del cittadino, amministrazione partecipata e collaborativa, insieme a trasparenza, apertura dei dati e delle informazioni e alla loro condivisione attraverso le nuove tecnologie digitali ( Internet e il Web in primo piano) quindi, sono i tratti distintivi dell'open-government. 
  
 \subsection{Interoperabilità dei dati}
-Tra le ragioni più importanti della filosofia open data abbiamo l'interoperabilità, vale a dire, la capacità di diversi sistemi e organizzazioni di lavorare insieme. Nel caso specifico degli open data - ovviamente - ci riferiamo alla capacità di combinare una grande quantità di dati da diverse fonti. L'interoperabilità è importante perché permette a componenti diverse di lavorare insieme. L'abilità di rendere ciascun dato un componente e di combinare insieme vari componenti è essenziale per la costruzione di sistemi sofisticati. In assenza di interoperabilità ciò diventa quasi impossibile - come nel mito della Torre di Babele, in cui l'impossibilità di comunicare (e quindi di Inter-operare) dà luogo a un fallimento sistemico della costruzione della torre. Una chiara definizione di \say{apertura} assicura che sia possibile combinare dataset aperti provenienti da fonti diverse in modo adeguato, evitando così la \say{Torre di Babele}.
+Tra le ragioni più importanti della filosofia open data abbiamo l'interoperabilità, vale a dire, la capacità di diversi sistemi e organizzazioni di lavorare insieme. 
+\\
+\\
+Nel caso specifico degli open-data - ovviamente - ci riferiamo alla capacità di combinare una grande quantità di dati da diverse fonti. L'interoperabilità è importante perché permette a componenti diverse di lavorare insieme.
+\\
+\\
+L'abilità di rendere ciascun dato un componente e di combinare insieme vari componenti è essenziale per la costruzione di sistemi sofisticati e per la realizzazione di analisi orizzontali sui dati. In assenza di interoperabilità ciò diventa quasi impossibile, come nel mito della Torre di Babele, in cui l'impossibilità di comunicare (e quindi di Inter-operare) dà luogo a un fallimento sistemico della costruzione della torre. 
+\\
+\\
+Una chiara definizione di \say{apertura} assicura che sia possibile combinare dataset aperti provenienti da fonti diverse in modo adeguato, evitando così la \say{Torre di Babele}.
 \\
 Il punto cruciale di un bacino di dati (o linee di codice) accessibili e utilizzabili in modo condiviso è il fatto che potenzialmente possono essere liberamente \say{mescolati} con dati provenienti da fonti anch'esse aperte. L'interoperabilità è la chiave per realizzare il principale vantaggio pratico dell'apertura: aumenta in modo esponenziale la possibilità di combinare diverse basi di dati, e quindi sviluppare nuovi e migliori prodotti e servizi.
 \footnotemark
 \footnotetext{http://opendatahandbook.org/guide/it/what-is-open-data}
 \\
-Le amministrazioni che aprono i propri dati utilizzano un vocabolario RDF (DCAT) progettato per garantire l'interoperabilità tra cataloghi di dati pubblicati sul web. DCAT incentiva la pubblicazione decentrata di cataloghi e facilita la ricerca federata di dati tra i siti. Usando lo standard DCAT chi pubblica insiemi di dati incrementa la propria visibilità e favorisce le applicazioni che lavorano su dati e metadati in cataloghi multipli (applicazioni cross-portali). Ad esempio il Ministero delle infrastrutture pubblica il proprio catalogo dati (in DCAT) all'indirizzo \url{http://dati.mit.gov.it/dcat/catalog.rdf}, i cataloghi descritti in conformità a questo vocabolario hanno la seguente formattazione: 
-
+\\
+Le amministrazioni che aprono i propri dati utilizzano un vocabolario RDF (DCAT) progettato per garantire l'interoperabilità tra cataloghi di dati pubblicati sul web. DCAT incentiva la pubblicazione decentrata di cataloghi e facilita la ricerca federata di dati tra i siti. Usando lo standard DCAT chi pubblica insiemi di dati incrementa la propria visibilità e favorisce le applicazioni che lavorano su dati e metadati in cataloghi multipli (applicazioni cross-portali).
+\\
+\\
+Nelle pubbliche amministrazioni europee si utilizza un'estensione del vocabolario DCAT (DCAT-AP-it), ad esempio il Ministero delle infrastrutture pubblica il proprio catalogo dati all'indirizzo \url{http://dati.mit.gov.it/dcat/catalog.rdf}, i cataloghi descritti in conformità a questo vocabolario hanno la seguente formattazione: 
 \begin{verbatim}
 <rdf:RDF>
    <dcat:Catalog rdf:about="http://dati.mit.gov.it/dcat/catalog">
@@ -164,7 +196,6 @@ Le amministrazioni che aprono i propri dati utilizzano un vocabolario RDF (DCAT)
    ...
 </rdf:RDF>
 \end{verbatim}
-
 Nei campi dataset ci sono i metadati per la descrizione delle risorse puntate. 
 Infatti ogni dataset comprende i link ai dati (risorse), e dei campi standard per la descrizione di questi dati (questi campi standard sono definiti proprio dal vocabolario DCAT).
 Ad esempio nell'ambito dei trasporti e delle infrastrutture ci potrebbero essere delle risorse riguardanti la gestione dei porti in Italia (file csv), queste risorse saranno arricchite con dei metadati come ad esempio: license per uso dei dati, frequenza di aggiornamento dei dati, descrizione dei dati, lingua di riferimento, informazioni spaziali, e così via. La lingua e la categoria di appartenenza del dataset sono descritti nel seguente modo:
@@ -178,13 +209,24 @@ Ad esempio nell'ambito dei trasporti e delle infrastrutture ci potrebbero essere
 \end{verbatim}
 Pubblicare i dati sotto forma di cataloghi RDF DCAT garantisce l'interoperabilità, perché i dati sono descritti e pubblicati allo stesso modo indipendentemente dal portale di appartenenza.
 
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.40]{img/dcatmodel.jpg}
+\caption{Modello DCAT}
+\end{center}
+\end{figure}
+
 \newpage
 \subsection{DCAT-AP e DCAT-AP-it}
 
 Il DCAT Application Profile (DCAT-AP) fornisce una specifica comune per la descrizione di dati della pubblica amministrazione in Europa, questa specifica è basata sullo standard DCAT: Data Catalog Vocabulary. \footnotemark
 \footnotetext{https://www.w3.org/TR/vocab-dcat}
 \\
-DCAT-AP-it è la versione italiana di DCAT-AP, il profilo nazionale dei metadati utili per descrivere i dati delle pubbliche amministrazioni, conforme alla specifica di DCAT-AP serve a favorire l'interoperabilità semantica di dati e servizi. DCAT-AP-it è un modello dati pensato per rendere omogenei in tutta la pubblica amministrazione italiana i processi di accesso e scambio delle informazioni tra le istituzioni stesse e tra le istituzioni e i cittadini e le imprese, in coerenza con il relativo framework europeo. L'utilizzo di un modello dati valorizza il patrimonio informativo pubblico nazionale in linea con la Direttiva relativa al riutilizzo dell'informazione del settore pubblico.
+\\
+DCAT-AP-it è la versione italiana di DCAT-AP, il profilo nazionale dei metadati utili per descrivere i dati delle pubbliche amministrazioni, conforme alla specifica di DCAT-AP serve a favorire l'interoperabilità semantica di dati e servizi. DCAT-AP-it è un modello dati pensato per rendere omogenei in tutta la pubblica amministrazione italiana i processi di accesso e scambio delle informazioni tra le istituzioni stesse e tra le istituzioni e i cittadini e le imprese, in coerenza con il relativo framework europeo. 
+\\
+\\
+L'utilizzo di un modello dati valorizza il patrimonio informativo pubblico nazionale in linea con la Direttiva relativa al riutilizzo dell'informazione del settore pubblico.
 Le categorie definite nel profilo europeo dei metadati DCAT-AP (categorizzazione adottata dal portale europeo European Data Portal) - sono le seguenti:
 
 \begin{enumerate}
@@ -310,25 +352,23 @@ Alcuni descrittori sono utilizzati molto di più rispetto ad altri all'interno d
 \\
 Ciascun documento di Acquis è etichettato con 5.43 (in media) descrittori EuroVoc, con una deviazione standard di 1.86.
 \footnotemark
-\footnotetext{Steinberger Ralf, Mohamed Ebrahim, Marco Turchi. JRC EuroVoc Indexer JEX - A freely available multi-label categorisation tool. European Commission, JRC, 2014}
+\footnotetext{Steinberger, Ebrahim, Turchi. JRC EuroVoc Indexer JEX - A freely available multi-label categorisation tool. European Commission, JRC, 2014}
 \\
 \\
 I descrittori di EuroVoc sono riconducibili alle 12 categorie Eu-Data-Themes (DCAT-AP), così facendo il corpus JRC-Acquis può essere utilizzato per il task di classificazione su DCAT-AP (12 categorie), il corpus che si ottiene è sempre multi-label (ogni documento ha 3.47 categorie DCAT-AP), riporto di seguito il numero di documenti (tra i circa 23'000 documenti etichettati con i descrittori EuroVoc) il numero di volte che occorrono le varie categorie Eu-Data-Themes (DCAT-AP):
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.70]{img/numacquis.png}
+\caption{Documenti di Acquis 3.0 indicizzati con EU-Data-Themes}
+\end{center}
+\end{figure}
 \begin{verbatim}
-       |    REGI    |    7314    |    
-       |    AGRI    |    9164    |    
-       |    JUST    |    7012    |    
-       |    GOVE    |    4973    |    
-       |    TRAN    |    1739    |    
-       |    SOCI    |    2167    |    
-       |    ECON    |    14544   |    
-       |    HEAL    |    2165    |    
-       |    TECH    |    4093    |    
-       |    EDUC    |    775     |    
-       |    ENER    |    1350    |    
-       |    ENVI    |    1882    |    
-       |    INTR    |    2474    |    
+REGI, 7314; AGRI, 9164; JUST, 7012; GOVE, 4973; TRAN, 1739;
+SOCI, 2167; ECON, 14544; HEAL, 2165; TECH, 4093; EDUC, 775;
+ENER, 1350; ENVI, 1882; INTR, 2474
 \end{verbatim}
+\phantom
+\\
 I vantaggi che possiamo trarre utilizzando JRC-Acquis come corpus di addestramento per la catalogazione di open-data con le categorie DCAT-AP sono molteplici, tra i vantaggi principali abbiamo: 
 
 \begin{enumerate}
@@ -947,41 +987,18 @@ La k-fold-cross-validation (in italiano validazione incrociata) è una tecnica u
 
 \newpage
 \section{Sistemi di catalogazione}
-I sistemi di categorizzazione dei testi coprono differenti aeree di interesse. I sistemi di categorizzazione sono stati realizzati per rispondere alla necessità di catalogare ed indicizzare i documenti. I task di categorizzazione multi label sono molto complessi ed i risultati ottenuti spesso sono molto distanti dai livelli accettabili di accuratezza.
-Molti approcci sono stati esplorati ed implementati, tra questi abbiamo i sistemi keyword-based, i quali sono stati pensati per la realizzazione di abstract, vale a dire l'individuazione di parole chiave che diano una descrizione semantica e sintetica del contenuto dei documenti. Un'altra classe di algoritmi utilizzati per la categorizzazione dei testi è quella basata su tecniche di machine learning come i classificatori binari, algoritmi margin-based, tecniche bayesiane, ...
+I sistemi di categorizzazione dei testi coprono differenti aeree di interesse. I sistemi di categorizzazione sono stati realizzati per rispondere alla necessità di catalogare ed indicizzare i documenti. 
 \\
-Nel seguito verranno descritti i sistemi che hanno avuto maggiore successo.
-  
-\subsection{MeSH}
-MeSh (acronimo di Medical Subject Headings), è un indicizzatore automatico utilizzato dalla U.S National Library of Medicine, il quale utilizza circa 18'000 termini del campo medico.
-\url{https://www.nlm.nih.gov/pubs/factsheets/mesh.html}
-
-\subsection{BIOSIS}
-Uno dei più sofisticati programmi per l'indicizzazione automatica sviluppato negli studi BIOSIS è stato discusso da  Vleduts-Stokolov; \footnotetext{Natasha Vleduts-Stokolov, Concept recognition in an automatic text-processing system for the life sciences, 1987} le parole che occorrono nei titoli delle pubblicazioni che sono anche contenute all'interno di un vocabolario semantico. Il quale vocabolario semantico rappresenta la terminologia scientifica rappresentata da circa 15'000 termini.
-I termini coprono i seguenti campi di studio: agricoltura, anatomia, comportamento, biochimica, bioingegneria, biofisica, biotecnologie, botanica, biologia cellulare, biologia ambientale, medicina clinica sperimentale, genetica, immunologia, microbiologia, patologia, farmacologia, fisiologia e tossicologia.
-\\
-\url{www.cas.org/File%20Library/Training/STN/DBSS/biosis.pdf}
-\\
-Questi 15'000 termini sono mappati su un vocabolario di 600 concetti (Concept Headings), pertanto un Concept Heading può essere assegnato dal sistema sulla base della presenza o meno di alcuni termini nei titolo. Vleduts-Stokolov ha documentato l'accuratezza di BIOSIS, notando che il sistema si comporta come un umano nella assegnazione dei concetti del vocabolario nel 61\% dei casi. Al fine di rendere più accurato il sistema si è pensato di utilizzare più livelli di astrazione dei concetti che stanno al di sopra dei termini (primario, secondario e terziario), portando così l'accuratezza al 75\%.
-
-\subsection{NASA MAI System}
-Nasa Center for Aerospace Information (CASI) ha un database contenente tre milioni di record, almeno due milioni sono report tecnici e articoli di giornale. La CASI indicizza i documenti al fine di ottenere degli abstract. Nasa MAI System (MAI è acronimo di Machine Aided Indexing) è un sistema di sostegno utilizzato dagli utenti (specialisti del dominio) per navigare e selezionare un'insieme di possibili parole chiave da utilizzare per annotare i documenti.
-Questo sistema è stato pensato per produrre delle annotazioni più coerenti, in quanto l'esperto del dominio è guidato dalle connessioni tra i concetti di un vocabolario. 
+I task di categorizzazione multi label sono molto complessi ed i risultati ottenuti spesso sono molto distanti dai livelli accettabili di accuratezza.
 \\
 \\
-Il progetto NASA MAI è stato pensato per minimizzare lo sforzo per la re-indicizzazione di documenti già indicizzati da altre agenzie, infatti, quando il progetto è iniziato circa la metà dei report tecnici all'interno del NASA STI (database) erano stati indicizzati da agenzie diverse.  
-Questi report, ricevuti in forma machine-readable, sono convertiti utilizzando tecniche di processamento del linguaggio naturale.
+Molti approcci sono stati esplorati ed implementati, tra questi abbiamo i sistemi keyword-based (come MeSH, BIOSIS, e NASA MAI System), i quali sono stati pensati per la realizzazione di abstract, vale a dire l'individuazione di keyword (tag) che diano una descrizione semantica, sintetica ed univoca (standard) del contenuto dei documenti. 
 \\
 \\
-Lo scopo principale di NASA MAI System è quello di fornire un'insieme di termini \say{adeguati} per l'annotazione dei documenti. Molti documenti provenienti da altre agenzie utilizzavano dei termini non corrispondenti al vocabolario utilizzato dalla NASA. L'utilizzo di un unico vocabolario specializzato permette di collegare i concetti a vari livelli di astrazione, e sfruttare i sinonimi nella ricerca dei documenti. Per ogni termine, MAI, propone una serie di termini candidati corrispondenti ai \say{NASA terms}.  
+Un'altra classe di algoritmi utilizzati per la catalogazione multi label dei testi è quella basata su tecniche di machine learning, come ad esempio possono essere gli algoritmi margin-based (SVM), tecniche bayesiane, modelli a spazi vettoriali (VSM). Il classificatore EuroVoc JRC-JEX è basato su particolare approccio VSM.
 \\
 \\
-Il NASA MAI System non è basato su sofisticate tecniche di processamento del linguaggio naturale e parsing grammaticale, segue un approccio rule-based che approssima i risultati dei parsing più approfonditi, e, che richiedono un notevole sforzo computazionale. Le regole sono sviluppate al fine di ottenere dei termini (feature testuali) che meglio rappresentino i concetti.
-\\
-\\
-MAI usa una grande knowledge base (manutenuta), oltre 170'000 termini e frasi, oltre alle regole. I valori di precision e recall sono attorno al 50\% (break-even point), sebbene possa sembrare basso questo risultato è piuttosto buono se si considera la vastità di argomenti coperti e la diversità dei documenti processati.
-\\
-\\
+Segue una descrizione in astratto dei sistemi MeSH, BIOSIS, NASA MAI System, e JRC-JEX; con un particolare focus su quest'ultimo essendo l'indexer più vicino al task di classificazione open-data.
 \subsection{JRC-JEX (JRC EuroVoc Indexer)}
 Il classificatore JEX, sviluppato presso i laboratori JRC (Joint Research Centre) è stato presentato nell'ambito del workshop \say{Ontologies and Information Extraction at EUROLAN 2003: The Semantic Web and Language Technology – Its Potential and Practicalities}. 
 \\
@@ -1047,20 +1064,26 @@ characteristic of a text? A survey of statistical approaches. Proceedings of the
 \subsubsection{Weighting dei vettori}
 Al fine di determinare il peso di un associato (associato = feature = lemma = termine) per un descrittore (descrittore = concetto = categoria) JEX non utilizza la metrica log-likelihood ma una variazione della formula TF-IDF nella quale si considera la descriptor-frequency piuttosto che la document-frequency. Esattamente come nella formula TF-IDF si vogliono penalizzare i termini che occorrono in tanti descrittori diversi (piuttosto che documenti diversi).
 \\
-La formula finale per stabilire il peso delle feature (componenti dello spazio vettoriale) è $Weight_{l,d}$ (per il lemma $l$ e il descrittore $d$):
+La formula per stabilire il peso delle feature (componenti dei vettori nello spazio vettoriale) è $Weight_{l,d}$ (per il lemma $l$ e il descrittore $d$):
 \\
 \[Weight_{l,d}=W_{l,d} \cdot IDF_l \]
 \\
-$W_{l,d}$ è il peso di un lemma rispetto ad un descrittore, mentre $IDF_l$ è l'\say{Inverse Descriptor Frequency}.
+$W_{l,d}$ è il peso di un lemma relativamente ad un descrittore, mentre $IDF_l$ è l'\say{Inverse Descriptor Frequency}.
 \\
-\[W_{l,d}= \]
+\[W_{l,d}=\sum_{t \in T_{l,d}} \frac{1}{Nd_t} \]
 \\
-...
+$Nd_t$ è il numero di descrittori manualmente assegnati al documento $t$, $T_{l,d}$ sono i documenti che contengono il lemma $l$ e il descrittore $d$. La normalizzazione rispetto la lunghezza dei documenti non fornisce buoni risultati, mentre invece si è visto che la normalizzazione rispetto al numero di descrittori è una buona scelta soprattutto per diminuire l'interferenza tra i descrittori.
 \\
-\[IDF_{l}= \]
+\[IDF_{l}= log \Bigg(\frac{Max_{DF_{l}}}{\beta \cdot DF_l}+1 \Bigg) \]
 \\
-...
-
+$DF_l$ è il numero di descrittori nei quali il lemma compare come associato, mentre invece $Max_{DF_{l}}$ è il massimo valore di $DF$ per tutti i lemmi.
+\\
+Il parametro $\beta$ è settato a 10 al fine di penalizzare i lemmi che occorrono di più del 10\% di $Max_{DF_{l}}$.
+\\
+In finale otteniamo la formula:
+\\
+\[Weight_{l,d}=\sum_{t \in T_{l,d}} \frac{1}{Nd_t} \cdot log \Bigg(\frac{Max_{DF_{l}}}{\beta \cdot DF_l}+1 \Bigg) \]
+\\
 Sono state provate le seguenti misure di similarità tra il vettore del documento da classificare ed i vettori che rappresentano i descrittori:
 \begin{itemize}
 \item \textbf{Cosine formula:} (Salton, 1989)\footnotemark\footnotetext{Salton, Automatic Text Processing: the Transformation, Analysis and Retrieval of Information by Computer. Addison-Wesley, 1989}
@@ -1072,7 +1095,37 @@ La combinazione lineare delle formule di similarità è una soluzione molto buon
 
 \footnotetext{Robertson, Walker, Hancock-Beaulieu, Gatford, Okapi in TREC-3. Proceedings of Text Retrieval Conference  TREC-3, U.S. National Institute of Standards and Technology,   
 Gaithersburg, USA. NIST Special Publication 500-225, pp. 109-126, 1994}
- 
+  
+\subsection{BIOSIS}
+Uno dei più sofisticati programmi per l'indicizzazione automatica sviluppato negli studi BIOSIS è stato discusso da  Vleduts-Stokolov; \footnotetext{Natasha Vleduts-Stokolov, Concept recognition in an automatic text-processing system for the life sciences, 1987} le parole che occorrono nei titoli delle pubblicazioni che sono anche contenute all'interno di un vocabolario semantico. Il quale vocabolario semantico rappresenta la terminologia scientifica rappresentata da circa 15'000 termini.
+I termini coprono i seguenti campi di studio: agricoltura, anatomia, comportamento, biochimica, bioingegneria, biofisica, biotecnologie, botanica, biologia cellulare, biologia ambientale, medicina clinica sperimentale, genetica, immunologia, microbiologia, patologia, farmacologia, fisiologia e tossicologia.
+\\
+\\
+\url{www.cas.org/File%20Library/Training/STN/DBSS/biosis.pdf}
+\\
+\\
+Questi 15'000 termini sono mappati su un vocabolario di 600 concetti (Concept Headings), pertanto un Concept Heading può essere assegnato dal sistema sulla base della presenza o meno di alcuni termini nei titolo. Vleduts-Stokolov ha documentato l'accuratezza di BIOSIS, notando che il sistema si comporta come un umano nella assegnazione dei concetti del vocabolario nel 61\% dei casi. Al fine di rendere più accurato il sistema si è pensato di utilizzare più livelli di astrazione dei concetti che stanno al di sopra dei termini (primario, secondario e terziario), portando così l'accuratezza al 75\%.
+
+\subsection{NASA MAI System}
+Nasa Center for Aerospace Information (CASI) ha un database contenente tre milioni di record, almeno due milioni sono report tecnici e articoli di giornale. La CASI indicizza i documenti al fine di ottenere degli abstract. Nasa MAI System (MAI è acronimo di Machine Aided Indexing) è un sistema di sostegno utilizzato dagli utenti (specialisti del dominio) per navigare e selezionare un'insieme di possibili parole chiave da utilizzare per annotare i documenti.
+Questo sistema è stato pensato per produrre delle annotazioni più coerenti, in quanto l'esperto del dominio è guidato dalle connessioni tra i concetti di un vocabolario. 
+\\
+\\
+Il progetto NASA MAI è stato pensato per minimizzare lo sforzo per la re-indicizzazione di documenti già indicizzati da altre agenzie, infatti, quando il progetto è iniziato circa la metà dei report tecnici all'interno del NASA STI (database) erano stati indicizzati da agenzie diverse.  
+Questi report, ricevuti in forma machine-readable, sono convertiti utilizzando tecniche di processamento del linguaggio naturale.
+\\
+\\
+Lo scopo principale di NASA MAI System è quello di fornire un'insieme di termini \say{adeguati} per l'annotazione dei documenti. Molti documenti provenienti da altre agenzie utilizzavano dei termini non corrispondenti al vocabolario utilizzato dalla NASA. L'utilizzo di un unico vocabolario specializzato permette di collegare i concetti a vari livelli di astrazione, e sfruttare i sinonimi nella ricerca dei documenti. Per ogni termine, MAI, propone una serie di termini candidati corrispondenti ai \say{NASA terms}.  
+\\
+\\
+Il NASA MAI System non è basato su sofisticate tecniche di processamento del linguaggio naturale e parsing grammaticale, segue un approccio rule-based che approssima i risultati dei parsing più approfonditi, e, che richiedono un notevole sforzo computazionale. Le regole sono sviluppate al fine di ottenere dei termini (feature testuali) che meglio rappresentino i concetti.
+\\
+\\
+MAI usa una grande knowledge base (manutenuta), oltre 170'000 termini e frasi, oltre alle regole. I valori di precision e recall sono attorno al 50\% (break-even point), sebbene possa sembrare basso questo risultato è piuttosto buono se si considera la vastità di argomenti coperti e la diversità dei documenti processati.
+
+\subsection{MeSH}
+MeSh (acronimo di Medical Subject Headings), è un indicizzatore automatico utilizzato dalla U.S National Library of Medicine, il quale utilizza un database di circa 18'000 termini del campo medico. Le tecniche adottate sono simili a quelle già descritte negli altri indexer keyword-based.
+\url{https://www.nlm.nih.gov/pubs/factsheets/mesh.html}
 
 
 \newpage
@@ -1128,7 +1181,7 @@ Gaithersburg, USA. NIST Special Publication 500-225, pp. 109-126, 1994}
 \section{Appendice}
 
 \subsection{Qualità dei dataset secondo il W3C}
-Per distinguere i diversi formati utilizzabili nella codifica dei set di dati o dataset (insieme di dati pubblicati), è stato proposto in seno al W3C (World Wide Web Consortium, un Consorzio internazionale fondato nel 1994 con l'obiettivo di potenziare e diffondere il WWW) dal suo Presidente ed ideatore, Tim Berners Lee, un modello di catalogazione che li classifica in base alle loro caratteristiche su una scala di valori da 1 (una stella) a 5 (cinque stelle):
+Per distinguere i diversi formati utilizzabili nella codifica dei set di dati o dataset (insieme di dati pubblicati), è stato proposto in seno al W3C (World Wide Web Consortium, un Consorzio internazionale fondato nel 1994 con l'obiettivo di potenziare e diffondere il WWW) dal suo Presidente ed ideatore, Tim Berners-Lee, un modello di catalogazione che li classifica in base alle loro caratteristiche su una scala di valori da 1 (una stella) a 5 (cinque stelle):
 \\
 \begin{itemize}
 \item \textbf{1 stella:} Dati grezzi. Sono dati raccolti che non sono stati soggetti a nessun processo, aggregazione o manipolazione, che sono disponibili in quei formati che – seppure disponibili su supporto informatico – non consentono un'estrapolazione immediata degli stessi. Rappresentano, cioè, il livello base costituito da file non strutturati: ad esempio immagini nei diversi formati grafici bitmap (.gif, .Jpg, .bmp, .png, ecc…), documenti in formato Microsoft Word, file in formato Adobe Pdf. Una sola stella indica la semplice disponibilità di un'informazione e di un dato on line, in un formato qualsiasi, purché distribuito con licenza aperta. I dati distribuiti in questo formato sono leggibili e stampabili dagli utenti, possono essere conservati localmente su un PC e sono semplici da pubblicare. Tuttavia non sono un formato aperto in quanto non è possibile effettuare su di essi alcuna elaborazione.
