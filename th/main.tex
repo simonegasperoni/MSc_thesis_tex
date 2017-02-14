@@ -256,7 +256,9 @@ Le categorie definite nel profilo europeo dei metadati DCAT-AP (categorizzazione
 \subsection{CKAN}
 CKAN (Comprehensive Knowledge Archive Network) è una sistema open source (\url{https://github.com/ckan/ckan}) pensato per l'immagazzinamento, la catalogazione e la distribuzione dei dati in diversi formati; quali ad esempio fogli di calcolo, csv, pdf, xml, rfd, ... CKAN è scritto in Python ed è ispirato dal sistema di gestione dei pacchetti comune a sistemi operativi open source come quelli della famiglia Linux. CKAN è un sistema performante e manutenuto da una comunità di sviluppatori online (Open Knowledge Foundation).  
 \\
+\\
 Il sistema è usato sia come piattaforma pubblica su Datahub (\url{https://datahub.io}), sia da varie pubbliche amministrazioni nell'ambito della loro strategia di pubblicazione di dati aperti, ogni portale web basato su CKAN espone delle Application programming interface API mediante le quali è possibile interrogare i dataset e fruire dei dati di ciascun portale. 
+\\
 \\
 Molte pubbliche amministrazioni europee utilizzano CKAN (standard de facto) per la pubblicazione, gestione, e presentazione dei propri dati aperti. Riporto i link ad alcune pubbliche amministrazioni che utilizzano CKAN:
 \begin{itemize}
@@ -320,7 +322,7 @@ EuroVoc è un tesauro multilingue e pluridisciplinare che comprende la terminolo
 \footnotetext{http://eurovoc.europa.eu}
 I descrittori del thesaurus multilingua EuroVoc sono usati da molti parlamentari europei e centri di documentazione per indicizzare manualmente le loro collezioni di documenti, i descrittori assegnati ai documenti sono utilizzati per cercare ed individuare documenti in una gerarchia semantica divisa in 21 domini, 127 sottodomini (microtesauri) e circa 7000 descrittori (concetti).
 
-\subsection{JRC-Acquis}
+\subsection{JRC-Acquis 3.0}
 JRC-Acquis è un corpus parallelo multilingua che contiene documenti di natura governativa (riguardanti varie tematiche) utilizzati/prodotti dalle istituzioni europee.  
 La versione corrente di JRC-Acquis (3.0) contiene più di 23'000 documenti annotati manualmente con i descrittori dei concetti del tesauro EuroVoc. 
 \\
@@ -330,9 +332,7 @@ La versione corrente di JRC-Acquis (3.0) contiene più di 23'000 documenti annot
 \\
 JRC-Acquis può essere usato per addestrare e/o testare sistemi di classificazione basati su algoritmi di text mining o software per la keyword-assignment basati su varie tecnologie semantiche. Il corpus è codificato in XML, in accordo con lo standard TEI per la descrizione dei campi.
 \footnotemark
-\footnotetext{Steinberger Ralf, Mohamed Ebrahim, Alexandros Poulis, Manuel Carrasco-Benitez, Patrick Schlüter, Marek Przybyszewski \& Signe Gilbro. An overview of the European Union's highly multilingual parallel corpora. Language Resources and Evaluation Journal, 2014}
-\\
-\\
+\footnotetext{Steinberger, Ebrahim, Poulis, Carrasco-Benitez, Schlüter, Przybyszewski \& Gilbro. An overview of the European Union's highly multilingual parallel corpora. Language Resources and Evaluation Journal, JRC, 2014}
 \begin{figure}[htbp]
 \begin{center}
 \includegraphics[scale=1.00]{img/evocimbalanced.png}
@@ -499,7 +499,7 @@ Il processo di elaborazione viene suddiviso in fasi diverse, tuttavia simili a q
 
 \subsection{Lemmatizzazione}
 Una tecnica di elaborazione delle \say{feature} è la lemmatizzazione, vale a dire, \say{quel complesso di operazioni che conducono a riunire tutte le forme sotto il rispettivo lemma}, intendendo per lemma \say{ciascuna parola-titolo o parola-chiave di un dizionario} e per forma ogni possibile diversa realizzazione grafica di un lemma.\footnotemark
-\footnotetext{R. Busa, Fondamenti di informatica linguistica. Istituto Geografico De Agostini, 1987}
+\footnotetext{Busa, Fondamenti di informatica linguistica, Istituto Geografico De Agostini, 1987}
 \\
 \\
 Esistono delle convenzioni di lemmatizzazione proprie di ciascuna lingua: ad esempio in italiano è uso convenzionale che il lemma verbale sia la forma coniugata all'infinito presente attivo.
@@ -524,7 +524,7 @@ Questo processo è reso particolarmente difficile e complesso a causa delle cara
 \subsection{Disambiguazione}
 Nell'analisi semantica la procedura automatica che attribuisce all'espressione linguistica un significato tra i diversi possibili è detta disambiguazione.
 La comprensione del linguaggio naturale è spesso considerata un problema IA-completo, poiché si pensa che il riconoscimento del linguaggio richieda una conoscenza estesa del mondo e una grande capacità di manipolarlo. Per questa ragione, la definizione di \say{comprensione} è uno dei maggiori problemi dell'elaborazione del linguaggio naturale.\footnotemark
-\footnotetext{I. Chiari, Introduzione alla linguistica computazionale. Laterza, 2007}
+\footnotetext{Chiari, Introduzione alla linguistica computazionale, Laterza, 2007}
 \\
 \\
 Molte parole nel linguaggio naturale sono delle polisemie, vale a dire, possono avere più significati. Le tecniche finalizzate alla disambiguazione sono conosciute in letteratura come \textit{Word Sense Disambiguation} (WSD).
@@ -744,7 +744,7 @@ essendo gli eventi A incompatibili abbiamo
 $$P(E)=\sum {n \atop j=1}P(E \cap A_{j}) \Rightarrow 
 \sum {n \atop j=1}P(E|A_{j})P(A_{j})$$
 
-\footnotetext{Introduzione alla probabilità, Enzo Orsingher, Luisa Beghin, Carocci editore}
+\footnotetext{Orsingher, Beghin, Introduzione alla probabilità, Carocci editore}
 
 \end{thm}
 \subsection{Classificatori bayesiani naïve}
@@ -753,7 +753,7 @@ Questa assunzione consentono di considerare le relazioni causali tra gli attribu
 
 Sia X una istanza da classificare, e C1,...,Cn le possibili classi. I classificatori Bayesiani calcolano $$P(C_i|X)$$ come $$P(C_i|X)=\frac{P(X|C_i)P(C_i)}{P(X)}$$
 Andiamo a cercare l'indice i per massimizzare la probabilità condizionata, ottenendo $$Max_i [P(C_i|X)]$$
-P(X) è uguale per tutte le classi per cui non occorre calcolarla, P(Ci) si può calcolare facilmente sull’insieme dei dati di addestramento, si conta la percentuale di istanze di classe Ci sul totale.
+P(X) è uguale per tutte le classi per cui non occorre calcolarla, P(Ci) si può calcolare facilmente sull'insieme dei dati di addestramento, si conta la percentuale di istanze di classe Ci sul totale.
 Assunzione dei classificatori naïve: indipendenza degli
 attributi.
 Se X è composta dagli attributi 'a' con indice da 1 a m, otteniamo
@@ -813,7 +813,7 @@ m è la \textit{equivalent sample size}, come si può vedere dalla formula serve
 \subsection{Classificazione bayesiana di testi }
 Il classificatore byaesiano sopradescritto trova applicazione nel campo della categorizzazione dei testi essendo - ad oggi - uno dei metodi più efficaci conosciuti.
 Segue una trattazione sull'algoritmo che sfrutta le intuizioni probabilistiche bayesiane, altri esempi sono descritti da Lewis (1991), Lang (1995), Joachims (1996)\footnotemark
-\footnotetext{Machine learning, Mc Graw Hill, 1997, Tom M. Mitchell}
+\footnotetext{Mitchell, Machine learning, Mc Graw Hill, 1997}
 
 Le istanze X che abbiamo considerato fin'ora possono ora essere considerati documenti testuali. Il training set da considerare è una collezione di documenti etichettati (classificati), su questa base di conoscenza si dovrà costruire un sistema di predizione per le entry dello spazio X.
 
@@ -876,7 +876,7 @@ Introduction to Information Retrieval\footnotemark descrive tre procedure per la
 \end{itemize}
 Queste tre procedure ci permettono di ottenere una misura di utilità di ciascuna feature.
 
-\footnotetext{C.D. Manning, P. Raghavan, H. Schütze, Introduction to Information Retrieval, Cambridge University Press, 2008}
+\footnotetext{Manning, Raghavan, Schütze, Introduction to Information Retrieval, Cambridge University Press, 2008}
 
 \subsection{Mutual information feature selection}
 Mutual information di un termine t e una classe c è la misura di quanto la feature contribuisce a determinare la corretta classificazione
@@ -897,7 +897,7 @@ Tra le tre procedure è la più semplice, consiste nell'andare a selezionare sol
 
 \newpage
 \subsection{Benefici della feature selection}
-In \say{Introduction to Information Retrieval (Manning, Raghavan, Schütze)}\footnotetext{C.D. Manning, P. Raghavan, H. Schütze, Introduction to Information Retrieval, Cambridge University Press, 2008} è presente uno studio sui benefici delle tecniche di feature selection. Il grafico che segue evidenzia i benefici prodotti su alcuni corpora REUTERS, in particolare gli algoritmi di feature selection sono applicati in modo combinato con diversi algoritmi (Naïve Bayes) di classificazione:
+In \say{Introduction to Information Retrieval (Manning, Raghavan, Schütze)}\footnotetext{Manning, Raghavan, Schütze, Introduction to Information Retrieval, Cambridge University Press, 2008} è presente uno studio sui benefici delle tecniche di feature selection. Il grafico che segue evidenzia i benefici prodotti su alcuni corpora REUTERS, in particolare gli algoritmi di feature selection sono applicati in modo combinato con diversi algoritmi (Naïve Bayes) di classificazione:
 
 \begin{itemize}  
 \item Mutual information feature selection - Bayes multinomiale
@@ -971,19 +971,25 @@ Tra le due metriche è preferibile usare l'F1, in quanto più sensibile a valori
 
 
 \subsection{K-fold-cross-validation}
-Gli algoritmi di apprendimento supervisionato per la text categorization (Bayes-multinomiale, Bayes-Bernoulli, VSM-Rocchio, VSM-Knn, SVM, sono tutti supervisionati) hanno bisogno di un test dataset ed un training dataset per poter essere valutati. Questi due insiemi devono essere disgiunti per avere delle buone stime delle performance del sistema di classificazione.
+Gli algoritmi di apprendimento supervisionati per la categorizzazione dei testi (Bayesiani, margin-based, vettoriale, ...) hanno bisogno di un test-set ed un training-set per poter essere valutati. Questi due insiemi devono essere disgiunti per avere delle buone stime delle performance del sistema di classificazione.
 \\
 Training set: è un insieme di esempi usato per l'addestramento (apprendimento) del classificatore.
 \\
+\\
 Validation set: è un insieme di esempi usato per regolare i parametri del classificatore.
+\\
 \\
 Test set: è uni insieme di esempi usato per assegnare le performance di un classificatore addestrato.
 \\
+\\
 Se non separassimo gli insiemi di test e di validation la stima di errore di un modello sulla validazione sarà parziale (inferiore) in quanto il validation set è utilizzato per selezionare il modello finale, infine si può procedere alla valutazione del modello finale sul test set.
-\footnotetext{Ricardo Gutierrez-Osuna, Introduction to Pattern Analysis, Texas A\&M University}
+\footnotetext{Gutierrez-Osuna, Introduction to Pattern Analysis, Texas A\&M University}
 \\
 \\
-La k-fold-cross-validation (in italiano validazione incrociata) è una tecnica utilizzabile in presenza di un training set abbastanza grande. In particolare la k-fold cross-validation consiste nella suddivisione del dataset totale in k parti di uguale numerosità e, ad ogni passo, la k-esima parte del dataset viene ad essere il test dataset, mentre la restante parte costituisce il training dataset. Così, per ognuna delle k parti (di solito k=10, k=5) si allena il modello, evitando quindi problemi di overfitting, ma anche di campionamento asimmetrico (e quindi affetto da bias) del training dataset, tipico della suddivisione del dataset in due sole parti (ovvero training e test dataset). In altre parole, si suddivide il campione osservato in gruppi di egual numerosità, si esclude iterativamente un gruppo alla volta e lo si cerca di predire con i gruppi non esclusi. Ciò al fine di verificare la bontà del modello di predizione utilizzato.
+La k-fold-cross-validation (in italiano validazione incrociata) è una tecnica utilizzabile in presenza di un training set abbastanza grande. In particolare la k-fold cross-validation consiste nella suddivisione del dataset totale in k parti di uguale numerosità e, ad ogni passo, la k-esima parte del dataset viene ad essere il test dataset, mentre la restante parte costituisce il training dataset.
+\\
+\\
+Così, per ognuna delle k parti (di solito k=10, k=5) si allena il modello, evitando quindi problemi di overfitting, ma anche di campionamento asimmetrico (e quindi affetto da bias) del training dataset, tipico della suddivisione del dataset in due sole parti (ovvero training e test dataset). In altre parole, si suddivide il campione osservato in gruppi di uguale numerosità, si esclude iterativamente un gruppo alla volta e lo si cerca di predire con i gruppi non esclusi. Ciò al fine di verificare la bontà del modello di predizione utilizzato.
 
 \newpage
 \section{Sistemi di catalogazione}
@@ -1031,10 +1037,13 @@ Al fine di realizzare un sistema di catalogazione multilingua, la fase di elabor
 \end{center}
 \end{figure}
 \\
-Sebbene queste tecniche migliorino la F-measure di JEX, i risultati ottenuti utilizzando solamente una buona \say{stop-word list} sono circa uguali sia per la lingua spagnola che per la lingua inglese (Spagnolo F-measure = 47.4 vs 48). L'utilizzo di una buona \say{stop-word list} porta dei benefici (Spagnolo F-measure = 46.6 vs 47.4), questa situazione è particolarmente vantaggiosa per la realizzazione di un sistema di catalogazione multilingua, utilizzando solamente delle \say{stop-word list} si è sostanzialmente disaccoppiati dalla lingua in cui si classifica.
+\\
+Sebbene queste tecniche migliorino la F-measure di JEX, i risultati ottenuti utilizzando solamente una buona \say{stop-word list} sono circa uguali sia per la lingua spagnola che per la lingua inglese (Spagnolo F-measure = 47.4 vs 48).
+\\
+\\
+L'utilizzo di una buona \say{stop-word list} porta dei benefici (Spagnolo F-measure = 46.6 vs 47.4), questa situazione è particolarmente vantaggiosa per la realizzazione di un sistema di catalogazione multilingua, utilizzando solamente delle \say{stop-word list} si è sostanzialmente disaccoppiati dalla lingua in cui si classifica.
 \footnotemark
-\footnotetext{Bruno Pouliquen, Ralf Steinberger, Camelia Ignat, Automatic Annotation of Multilingual Text Collections  
-with a Conceptual Thesaurus, European Commission - Joint Research Centre (JRC), (2003)}  
+\footnotetext{Pouliquen, Steinberger, Ignat, Automatic Annotation of Multilingual Text Collections with a Conceptual Thesaurus, JRC, 2003}  
 \subsubsection{Vector space model}
 L'algoritmo di classificazione sul quale è basato JEX è un adattamento di una tecnica di information retrieval al problema della categorizzazione dei testi: il modello a spazi vettoriali. 
 \\
@@ -1048,7 +1057,7 @@ Vector Space Model (VSM) sfrutta un'intuizione geometrica nella rappresentazione
 \\
 \\  
 VSM nella categorizzazione dei testi è essenzialmente applicata seguendo due tecniche: k-nearest-neighbor (kNN) e Rocchio.\footnotemark
-\footnotetext{C.D. Manning, P. Raghavan, H. Schütze, Introduction to Information Retrieval, Cambridge University Press, pp. 289-290, 2008}
+\footnotetext{Manning, Raghavan, Schütze, Introduction to Information Retrieval, Cambridge University Press, pp. 289-290, 2008}
 \\
 \\
 La classificazione VSM-Rocchio divide lo spazio vettoriale in regioni in base ai centroidi (\say{prototypes}), uno per ogni categoria (concetti EuroVoc nel caso di JEX), questi centroidi o prototipi sono i centri di massa (baricentri) di tutti i vettori di una determinata categoria. La classificazione VSM-Rocchio è semplice e efficiente ma inaccurata in alcuni casi, ad esempio quando la distribuzione dei documenti per categoria non è esattamente rappresentabile come una sfera nello spazio vettoriale
@@ -1086,7 +1095,7 @@ In finale otteniamo la formula:
 \\
 Sono state provate le seguenti misure di similarità tra il vettore del documento da classificare ed i vettori che rappresentano i descrittori:
 \begin{itemize}
-\item \textbf{Cosine formula:} (Salton, 1989)\footnotemark\footnotetext{Salton, Automatic Text Processing: the Transformation, Analysis and Retrieval of Information by Computer. Addison-Wesley, 1989}
+\item \textbf{Cosine formula:} (Salton, 1989)\footnotemark\footnotetext{Salton, Automatic Text Processing: the Transformation, Analysis and Retrieval of Information by Computer, Addison-Wesley, 1989}
 \item \textbf{Okapi formula:} (Robertson et al., 1994)\footnotemark
 \item  \textbf{Prodotto scalare:} Cosine formula senza normalizzazione
 \item \textbf{Una combinazione lineare delle formule Cosine, Okapi e prodotto scalare:} (Wilkinson, 1994)
@@ -1097,7 +1106,7 @@ La combinazione lineare delle formule di similarità è una soluzione molto buon
 Gaithersburg, USA. NIST Special Publication 500-225, pp. 109-126, 1994}
   
 \subsection{BIOSIS}
-Uno dei più sofisticati programmi per l'indicizzazione automatica sviluppato negli studi BIOSIS è stato discusso da  Vleduts-Stokolov; \footnotetext{Natasha Vleduts-Stokolov, Concept recognition in an automatic text-processing system for the life sciences, 1987} le parole che occorrono nei titoli delle pubblicazioni che sono anche contenute all'interno di un vocabolario semantico. Il quale vocabolario semantico rappresenta la terminologia scientifica rappresentata da circa 15'000 termini.
+Uno dei più sofisticati programmi per l'indicizzazione automatica sviluppato negli studi BIOSIS è stato discusso da  Vleduts-Stokolov; \footnotetext{Vleduts-Stokolov, Concept recognition in an automatic text-processing system for the life sciences, 1987} le parole che occorrono nei titoli delle pubblicazioni che sono anche contenute all'interno di un vocabolario semantico. Il quale vocabolario semantico rappresenta la terminologia scientifica rappresentata da circa 15'000 termini.
 I termini coprono i seguenti campi di studio: agricoltura, anatomia, comportamento, biochimica, bioingegneria, biofisica, biotecnologie, botanica, biologia cellulare, biologia ambientale, medicina clinica sperimentale, genetica, immunologia, microbiologia, patologia, farmacologia, fisiologia e tossicologia.
 \\
 \\
@@ -1137,11 +1146,25 @@ MeSh (acronimo di Medical Subject Headings), è un indicizzatore automatico util
 \section{Bibliografia e risorse}
 \subsection{Bibliografia}
 \begin{itemize}
-\item 
-\item 
-\item 
-\item 
-\item
+\item Di Noia, De Virgilio, Di Sciascio, Donini, Semantic Web: Tra ontologie e Open Data, Apogeo, 2013
+\item Linee guida per i siti web della pubblica amministrazione, articolo 4 Direttiva 8/09, Ministero della pubblica amministrazione
+\item Steinberger, Ebrahim, Poulis, Carrasco-Benitez, Schlüter, Przybyszewski \& Gilbro. An overview of the European Union's highly multilingual parallel corpora. Language Resources and Evaluation Journal, JRC, 2014
+\item Steinberger, Ebrahim, Turchi. JRC EuroVoc Indexer JEX - A freely available multi-label categorisation tool. European Commission, JRC, 2014
+\item Profilo italiano di DCAT-AP (DCAT Application Profile for data portals in Europe), Versione 1.0, Agenzia per l'Italia digitale, 2006
+\item Busa, Fondamenti di informatica linguistica, Istituto Geografico De Agostini, 1987
+\item Chiari, Introduzione alla linguistica computazionale, Laterza, 2007
+\item Orsingher, Beghin, Introduzione alla probabilità, Carocci editore
+\item Mitchell, Machine learning, Mc Graw Hill, 1997
+\item Manning, Raghavan, Schütze, Introduction to Information Retrieval, Cambridge University Press, 2008
+\item Gutierrez-Osuna, Introduction to Pattern Analysis, Texas A\&M University
+\item Pouliquen, Steinberger, Ignat, Automatic Annotation of Multilingual Text Collections with a Conceptual Thesaurus, JRC, 2003
+\item Kilgarriff, Which words are particularly  
+characteristic of a text? A survey of statistical approaches. Proceedings of the AISB Workshop on Language Engineering for Document Analysis and Recognition, pp. 33-40, 1996
+\item Salton, Automatic Text Processing: the Transformation, Analysis and Retrieval of Information by Computer, Addison-Wesley, 1989
+\item Robertson, Walker, Hancock-Beaulieu, Gatford, Okapi in TREC-3. Proceedings of Text Retrieval Conference  TREC-3, U.S. National Institute of Standards and Technology,   
+Gaithersburg, USA. NIST Special Publication 500-225, pp. 109-126, 1994
+\item Vleduts-Stokolov, Concept recognition in an automatic text-processing system for the life sciences, 1987
+\item Fumagalli, Trasparenza e Open Data: l'evoluzione del quadro normativo fino all'emanazione del neo D.Lgs. 33/2013. La Bussola della Trasparenza, 2014
 \end{itemize}
 
 \subsection{Link utili}
@@ -1167,15 +1190,7 @@ MeSh (acronimo di Medical Subject Headings), è un indicizzatore automatico util
 \item \url{https://github.com/snowballstem/snowball}
 \item \url{https://www.nlm.nih.gov/pubs/factsheets/mesh.html}
 \item \url{www.cas.org/File%20Library/Training/STN/DBSS/biosis.pdf}
-\item \url{}
-\item \url{}
-\item \url{}
-\item \url{}
-\item \url{}
-\item \url{}
-
 \end{itemize}
-
 
 \newpage
 \section{Appendice}
@@ -1199,7 +1214,7 @@ Per distinguere i diversi formati utilizzabili nella codifica dei set di dati o 
 I Linked Open Data, quindi, consentono di combinare i contenuti di dataset diversi grazie a costrutti formali formulati secondo il modello RDF in uno dei diversi formati esistenti (XML/RDF, N3, ecc…). Ciò aumenta esponenzialmente il valore dei dataset reciprocamente correlati, consentendo il passaggio dal livello dei dati a quello dell'informazione e, quindi, a quello della conoscenza e fornendo così un quadro di contesto strutturato a partire dalla correlazione di informazioni provenienti da fonti diverse.
 \\
 \\
-Una delle opportunità più importanti dell'Open Data è rappresentata dall'interoperabilità. Il valore dei dati, infatti, è tanto più alto quanto più è possibile effettuare correlazioni tra più dataset indipendenti l'uno dall'altro ma interoperabili nel formato e nel data model. Per questo motivo è auspicabile che i dati vengano aperti in modalità Linked Open Data rispetto alle altre tipologie di dati aperti, essendo i LOD la tipologia di dati aperti che consente il massimo livello di interoperabilità tra dataset diversi.
+Una delle opportunità più importanti dell'Open Data è rappresentata dall'interoperabilità. Il valore dei dati, infatti, è tanto più alto quanto più è possibile effettuare correlazioni tra più dataset indipendenti l'uno dall'altro ma interoperabili nel formato e nel data model. Per questo motivo è auspicabile che i dati vengano aperti in modalità Linked Open Data rispetto alle altre tipologie di dati aperti, essendo i LOD la tipologia di dati aperti che consente il massimo livello di interoperabilità tra dataset diversi. \footnotemark\footnotetext{Fumagalli, Trasparenza e Open Data: l'evoluzione del quadro normativo fino all'emanazione del neo D.Lgs. 33/2013. La Bussola della Trasparenza, 2014}
 
 \newpage
 \subsection{Associazione Temi DCAT - Microtesauri EuroVoc}

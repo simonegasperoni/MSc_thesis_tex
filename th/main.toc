@@ -10,7 +10,7 @@
 \contentsline {subsubsection}{\numberline {2.5.2}Open Data Hub Italy}{14}{subsubsection.2.5.2}
 \contentsline {subsubsection}{\numberline {2.5.3}Dati.gov.it}{15}{subsubsection.2.5.3}
 \contentsline {subsection}{\numberline {2.6}EuroVoc}{15}{subsection.2.6}
-\contentsline {subsection}{\numberline {2.7}JRC-Acquis}{15}{subsection.2.7}
+\contentsline {subsection}{\numberline {2.7}JRC-Acquis 3.0}{15}{subsection.2.7}
 \contentsline {subsubsection}{\numberline {2.7.1}Standard TEI}{18}{subsubsection.2.7.1}
 \contentsline {subsubsection}{\numberline {2.7.2}Corpus aggiornato e manutenuto}{19}{subsubsection.2.7.2}
 \contentsline {subsubsection}{\numberline {2.7.3}Corpus parallelo multilingua}{19}{subsubsection.2.7.3}
@@ -47,7 +47,7 @@
 \contentsline {subsection}{\numberline {8.2}Deployment}{47}{subsection.8.2}
 \contentsline {section}{\numberline {9}Bibliografia e risorse}{48}{section.9}
 \contentsline {subsection}{\numberline {9.1}Bibliografia}{48}{subsection.9.1}
-\contentsline {subsection}{\numberline {9.2}Link utili}{48}{subsection.9.2}
+\contentsline {subsection}{\numberline {9.2}Link utili}{49}{subsection.9.2}
 \contentsline {section}{\numberline {10}Appendice}{50}{section.10}
 \contentsline {subsection}{\numberline {10.1}Qualit\IeC {\`a} dei dataset secondo il W3C}{50}{subsection.10.1}
 \contentsline {subsection}{\numberline {10.2}Associazione Temi DCAT - Microtesauri EuroVoc}{52}{subsection.10.2}
