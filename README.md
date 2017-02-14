@@ -3,10 +3,10 @@ This rep contains notes about my MSc Computer engineering thesis about administr
 
 Open-CATA is optimized for the categorization of open-data using the data model DCAT-AP, it combines the following techniques to get the best results:
 
-1.Multiclass task with Multinomial, Bernoulli (posteriori probability)
-2.Multilabel task with Kullback-Leibler divergence (posteriori probability)
-3.Chi-square, mutual information feature selection
-4.Outlier & incremental training with gain-information & 'CKAN-API' rules
+1. Multiclass task with Multinomial, Bernoulli (posteriori probability)
+2. Multilabel task with Kullback-Leibler divergence (posteriori probability)
+3. Chi-square, mutual information feature selection
+4. Outlier & incremental training with gain-information & 'CKAN-API' rules
 
 ##UML class diagram & packages
 
