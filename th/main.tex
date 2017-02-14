@@ -60,9 +60,69 @@ Roma, Italia
 
 \tableofcontents
 
+
+\newpage
+
+\topskip0pt
+\vspace*{\fill}
+\textit{
+\\
+\\
+\say{Data is a precious thing and will last longer than the systems themselves.}} 
+\\
+Tim Berners-Lee
+\\
+\\
+\textit{
+\say{Who has the data has the power.}}
+\\
+Tim O'Reilly 
+\vspace*{\fill}
+\newpage
+
 \newpage
 \section{Introduzione}
+Al giorno d'oggi il web ha cambiato sia il modo di comunicare con le persone sia il modo di utilizzare il computer. In passato, l'elaboratore veniva utilizzato espressamente solo per l'elaborazione di calcoli, oggi, invece, incorpora strumenti per processare informazioni testuali e multimediali. Gli utenti del web usano il computer soprattutto per effettuare ricerche di informazioni di carattere generale (come la ricerca di informazioni di altre persone), per entrare in contatto con altre persone, per consultare cataloghi, e per ordinare prodotti di negozi on-line, ... Tutte queste attività sono rese possibili grazie all'utilizzo di strumenti particolari quali i motori di ricerca. 
+\\
+\\
+Essi hanno avuto un grande successo e hanno contribuito al miglioramento del web. Il problema però è che, siccome si basano su un matching tra le parole chiave, hanno bisogno dell'intervento umano per interpretare e combinare i risultati che propongono. Questo è dovuto dal fatto che i risultati delle ricerche non sono facilmente accessibili da altri strumenti e quindi il significato del contenuto non è accessibile alla macchina. 
+\\
+\\
+Gli strumenti che oggi si ha a disposizione, sono prevalentemente per recuperare testi, scomporli in parti, controllare l'ortografia, contare le parole, ... Un approccio per risolvere questo problema è di rappresentare il web in un modo diverso, ovvero, utilizzare tecniche intelligenti affinché anche la macchina possa interpretare le informazioni. Così nasce il Semantic web.
+\\
+\\
+Il web semantico è l'evoluzione del vecchio web dove si associa ad ogni documento un'etichettatura intelligente (metadati), in modo tale che si da un significato semantico al contenuto, e le informazioni possono essere collegate ed integrate tra loro. Grazie al web semantico, dunque, è possibile effettuare operazione specialistiche e ricerche altamente più precise.
+\\
+\\
+Il W3 Consortium definisce il web semantico: \say{web dei dati}, proprio perché al suo interno ha un elevato numero di documenti ed informazioni che sono accessibili a tutti liberamente (open-data). Affinché i risultati ottenuti dalle attività di recupero delle informazioni siano di reale utilità per l'utente risulterebbe di grande vantaggio che i dati fossero proposti all'utente in forma aggregata, anziché isolata.
+\\
+\\
+Vi è infatti l'esigenza di esplicitare i collegamenti tra le informazioni, anche se questi sono di differente formato e provengono da fonti eterogenee. Per realizzare il collegamento tra i dati si ricorre alla definizione di un link diretto che colleghi le informazioni che si riferiscono allo stesso concetto oppure che risultano simili.
+\\
+\\
+In tal modo è possibile navigare da un documento all'altro attraverso i concetti che ne fanno parte. Tale meccanismo prende il nome di linked-open-data. Quando parliamo di linked-open-data ci riferiamo ad un insieme di procedure proposte per la pubblicazione e l'interconnessione dei dati sul web.
+\\
+\\
+L'architettura dei linked-open-data di Tim Berners-Lee mostra quattro principi:
+\begin{enumerate}
+\item \textbf{URI:} utilizzare URI come nomi per le cose: Uniform Resource Indentifiers, è una stringa che identifica in maniera univoca oggetti globali che si trovano nel web (risorse). Qui ci si riferisce non solo a documenti web ma anche oggetti reali e concreti come le persone, i luoghi, ...
+\item \textbf{HTTP:} utilizzare HTTP (Hypertext transfer protocol) in modo che le persone possano cercare quei nomi, HTTP è un protocollo utilizzato dal web per la rappresentazione e la negoziazione dei dati. Con HTTP è possibile recuperare gli oggetti e i concetti indicati dall'URI.
 
+\item \textbf{RDF:} Nella ricerca delle risorse, è necessario utilizzare un modello dati formalizzato in RDF (Resource Description Framework).
+
+\item Includere collegamenti ad altri URI in modo che possano scoprire altre cose: documenti che contengono collegamenti ad altri documenti che trattano lo stesso argomento, risulta utile all'utente per avere sempre maggiori informazioni sull'oggetto di interesse. 
+\end{enumerate}
+Affinchè si riesca a processare le informazioni è necessario concordare formati standard. Attualmente il linguaggio di riferimento è RDF, nato appunto per soddisfare esigenze di rappresentazione delle informazioni:
+ 
+\begin{itemize}
+\item Elaborazione automatica delle informazioni del web da parte di agenti software.
+\item Processare informazioni da parte di una macchina.
+\item Combinare più dati provenienti da fonti diverse per avere maggiori informazioni.
+\item Introduzione dei metadati sul web.
+\end{itemize} 
+\phantom
+\\
+RDF ha un semplice modello di metadati basato su grafo orientato, utilizza la sintassi XML e si basa su un vocabolario. La struttura di base di ogni espressione in RDF è un insieme di triple: $<SOGGETTO, PREDICATO, OGGETTO>$.
 \newpage
 \section{Contesto}
 \textbf{\textit{I dati sono aperti se chiunque è libero di accederli, usarli, modificarli, e condividerli.}}
@@ -1066,7 +1126,30 @@ Gaithersburg, USA. NIST Special Publication 500-225, pp. 109-126, 1994}
 
 \newpage
 \section{Appendice}
-\subsection{Associazione Temi DCAT-Microtesauri EuroVoc}
+
+\subsection{Qualità dei dataset secondo il W3C}
+Per distinguere i diversi formati utilizzabili nella codifica dei set di dati o dataset (insieme di dati pubblicati), è stato proposto in seno al W3C (World Wide Web Consortium, un Consorzio internazionale fondato nel 1994 con l'obiettivo di potenziare e diffondere il WWW) dal suo Presidente ed ideatore, Tim Berners Lee, un modello di catalogazione che li classifica in base alle loro caratteristiche su una scala di valori da 1 (una stella) a 5 (cinque stelle):
+\\
+\begin{itemize}
+\item \textbf{1 stella:} Dati grezzi. Sono dati raccolti che non sono stati soggetti a nessun processo, aggregazione o manipolazione, che sono disponibili in quei formati che – seppure disponibili su supporto informatico – non consentono un'estrapolazione immediata degli stessi. Rappresentano, cioè, il livello base costituito da file non strutturati: ad esempio immagini nei diversi formati grafici bitmap (.gif, .Jpg, .bmp, .png, ecc…), documenti in formato Microsoft Word, file in formato Adobe Pdf. Una sola stella indica la semplice disponibilità di un'informazione e di un dato on line, in un formato qualsiasi, purché distribuito con licenza aperta. I dati distribuiti in questo formato sono leggibili e stampabili dagli utenti, possono essere conservati localmente su un PC e sono semplici da pubblicare. Tuttavia non sono un formato aperto in quanto non è possibile effettuare su di essi alcuna elaborazione.
+
+\item \textbf{2 stelle:} Dati strutturati. Questo livello indica dati strutturati ma codificati con un formato proprietario (ad esempio documenti realizzati con fogli di calcolo come Microsoft Excel salvati in formato .xls, ecc…). Due stelle indicano, oltre alle possibilità offerte dai dati contraddistinti da una sola stella, la possibilità di effettuare elaborazioni e sistematizzazioni in forma strutturata sui dati, a patto di disporre del software necessario a gestire un file codificato con un formato proprietario. I dati caratterizzati dalle due stelle non sono un formato aperto in quanto per elaborarli è necessario un software proprietario, tuttavia di norma possono essere convertiti – essendo dati strutturati – in dati aperti.
+
+\item \textbf{3 stelle:} Dati strutturati. Questo livello indica dati strutturati e codificati in un formato non proprietario. Ad esempio documenti realizzati con fogli di calcolo come OpenOffice Calc salvati in formati come .csv (Comma Separated Values), .sxc, al posto – ad esempio – del formato Microsoft Excel. Tre stelle indicano, oltre alle possibilità offerte dai dati contraddistinti da due sole stelle, la possibilità di effettuare elaborazioni e sistematizzazioni in forma strutturata sui dati senza essere costretti ad utilizzare software proprietario. Quello caratterizzato dalle tre stelle è il formato più semplice di dati aperti.
+
+\item \textbf{4 stelle:} Dati presenti in database. Questo livello indica dati strutturati e codificati in un formato non proprietario che sono dotati di un URI (Uniform Resource Identifier – Identificatore Univoco di Risorsa, ossia di norma un indirizzo internet nel formato http://www.nomedominio.it/) che li rende indirizzabili sulla rete e quindi utilizzabili direttamente on line attraverso l'inclusione in una struttura basata sul modello RDF (Resource Description Framework). Quattro stelle indicano quindi il fatto che il singolo dato di un dataset, disponibile on line in un formato aperto (tipicamente XML/RDF) può essere richiamato attraverso un URL (Uniform Resource Locator, indirizzo Web che identifica univocamente una risorsa su internet ed è la tipologia più frequente e riconosciuta di URI) specifico. Ciò consente di puntare al dato o ad un insieme di dati da una applicazione o accedervi dall'interno di un programma che può poi elaborarlo in vari modi.
+
+\item \textbf{5 stelle:} Dati presenti in database. Questo livello indica quelli che vengono definiti Linked Open Data (LOD), dati aperti, cioè, che – dal punto di vista del formato – oltre a rispondere alle caratteristiche della classificazione a quattro stelle presentano anche, nella struttura del dataset, collegamenti ad altri dataset. In altri termini, grazie al ricorso al modello di descrizione dei dati RDF, è possibile collegare dinamicamente tra loro più dataset, incrociando così informazioni provenienti da fonti diverse, eventualmente gestite da diverse Amministrazioni.
+\end{itemize}
+\phantom
+\\
+I Linked Open Data, quindi, consentono di combinare i contenuti di dataset diversi grazie a costrutti formali formulati secondo il modello RDF in uno dei diversi formati esistenti (XML/RDF, N3, ecc…). Ciò aumenta esponenzialmente il valore dei dataset reciprocamente correlati, consentendo il passaggio dal livello dei dati a quello dell'informazione e, quindi, a quello della conoscenza e fornendo così un quadro di contesto strutturato a partire dalla correlazione di informazioni provenienti da fonti diverse.
+\\
+\\
+Una delle opportunità più importanti dell'Open Data è rappresentata dall'interoperabilità. Il valore dei dati, infatti, è tanto più alto quanto più è possibile effettuare correlazioni tra più dataset indipendenti l'uno dall'altro ma interoperabili nel formato e nel data model. Per questo motivo è auspicabile che i dati vengano aperti in modalità Linked Open Data rispetto alle altre tipologie di dati aperti, essendo i LOD la tipologia di dati aperti che consente il massimo livello di interoperabilità tra dataset diversi.
+
+\newpage
+\subsection{Associazione Temi DCAT - Microtesauri EuroVoc}
 Microtesauri EuroVoc associati al tema DCAT-AP (EU Data Themes): AGRI (Agriculture, Fisheries, Forestry \& Foods) 
 \begin{verbatim}
     5606 agricultural policy
