@@ -117,7 +117,7 @@ Vi è infatti l'esigenza di esplicitare i collegamenti tra le informazioni, anch
 In tal modo è possibile navigare da un documento all'altro attraverso i concetti che ne fanno parte. Tale meccanismo prende il nome di linked-open-data. Quando parliamo di linked-open-data ci riferiamo ad un insieme di procedure proposte per la pubblicazione e l'interconnessione dei dati sul web.
 \\
 \\
-L'architettura dei linked-open-data di Tim Berners-Lee mostra quattro principi:
+L'architettura dei Linked Open Data di Tim Berners-Lee mostra quattro principi:
 \begin{itemize}
 
 \item \textbf{URI:} utilizzare \say{Uniform Resource Indentifiers} come nomi per le cose,  URI è una stringa che identifica in maniera univoca oggetti globali che si trovano nel web (risorse). Qui ci si riferisce non solo a documenti web ma anche oggetti reali e concreti come le persone, i luoghi, ...
@@ -131,6 +131,12 @@ L'architettura dei linked-open-data di Tim Berners-Lee mostra quattro principi:
 \phantom
 \\
 RDF ha un semplice modello di metadati basato su grafo orientato, utilizza la sintassi XML e si basa su un vocabolario. La struttura di base di ogni espressione in RDF è un insieme di triple: $<SOGGETTO, PREDICATO, OGGETTO>$.
+\\
+\\
+I Linked Open Data, quindi, consentono di combinare i contenuti di dataset diversi grazie a costrutti formali formulati secondo il modello RDF in uno dei diversi formati esistenti (XML/RDF, N3, ecc…). Ciò aumenta esponenzialmente il valore dei dataset reciprocamente correlati, consentendo il passaggio dal livello dei dati a quello dell'informazione e, quindi, a quello della conoscenza e fornendo così un quadro di contesto strutturato a partire dalla correlazione di informazioni provenienti da fonti diverse.
+\\
+\\
+Una delle opportunità più importanti dell'Open Data è rappresentata dall'interoperabilità. Il valore dei dati, infatti, è tanto più alto quanto più è possibile effettuare correlazioni tra più dataset indipendenti l'uno dall'altro ma interoperabili nel formato e nel data model. Per questo motivo è auspicabile che i dati vengano aperti in modalità Linked Open Data rispetto alle altre tipologie di dati aperti, essendo i LOD la tipologia di dati aperti che consente il massimo livello di interoperabilità tra dataset diversi. \footnotemark\footnotetext{Fumagalli, Trasparenza e Open Data: l'evoluzione del quadro normativo fino all'emanazione del neo D.Lgs. 33/2013. La Bussola della Trasparenza, 2014}
 
 \subsection{Open-data}
 \textit{Open data is data that can be freely used, re-used and redistributed by any one - subject only, at most, to the requirement to attribute and sharealike}
@@ -479,6 +485,13 @@ Map<String, EUNamedAuthorityDataTheme.Theme> EUROVOC_TO_DCAT_CATEGORIES = new Ha
 
 Il tesauro (EuroVoc) e il corpus (JRC-Acquis) sono i due componenti fondamentali per la costruzione dei dati di addestramento del classificatore, essendo questi due componenti disaccoppiati è possibile pensare di aggiornare uno e mantenere immutato l'altro qualora siano disponibili versioni più aggiornate del corpus o del tesauro. Anche questa è una forma di flessibilità, anche se in realtà dall'aggiornamento del tesauro non si traggono benefici se i descrittori dei concetti aggiunti non compaiono anche nel corpus. 
 
+\subsection{JRC-JEX: il classificatore EuroVoc}
+Il classificatore JEX, sviluppato presso i laboratori JRC (Joint Research Centre) è stato presentato nell'ambito del workshop \say{Ontologies and Information Extraction at EUROLAN 2003: The Semantic Web and Language Technology – Its Potential and Practicalities}. 
+\\
+\\
+JEX è un classificatore multi-label, addestrato con il corpus JRC-Acquis (training set) categorizza con i descrittori (concetti) del tesauro EuroVoc con tecniche basate sull'approccio \say{VSM} (vector space model).
+La scelta di basare il classificatore su EuroVoc e JRC-Acquis rende il sistema multilingua e garantisce la copertura di tutte le tematiche di interesse della politica europea. 
+
 \newpage
 \section{Elaborazione del corpus}
 Una fase preliminare in qualsiasi ambito di classificazione di documenti è l'elaborazione dei corpi testuali, si tratta di scegliere le modalità con le quali estrarre le \say{feature} dai testi - in base alla loro formattazione, al fine di rendere le \say{feature} fruibili al sistema di classificazione in modo opportuno.
@@ -698,20 +711,30 @@ public List<String> execute(String text){
 
 
 \newpage
-\section{Classificazione bayesiana}
+\section{Algoritmi di classificazione}
+\subsection{Tassonomia degli algoritmi di classificazione}
+\subsection{Classificatori bayesiani naïve}
 I classificatori bayesani sono metodi statistici di classificazione, predicono la probabilità che una data istanza appartenga ad una certa classe.
-Nel gergo della classificazione di testi o Text Categorization, con il termine classificatore bayesiano ci si riferisce convenzionalmente al classificatore bayesiano naïve (Naïve Bayes Classifier), ossia un classificatore bayesiano semplificato con un modello di probabilità sottostante che fa l'ipotesi di indipendenza delle feature, ovvero assume che la presenza o l'assenza di una particolare feature in un documento testuale non è correlata alla presenza o assenza di altre feature.
 \\
-I classificatori bayesiani sono metodi incrementali: ogni istanza dell’insieme di addestramento modifica in maniera incrementale la probabilità che una ipotesi sia corretta.
+\\
+Nel gergo della classificazione di testi (o Text Categorization), con il termine classificatore bayesiano ci si riferisce convenzionalmente al classificatore bayesiano naïve (Naïve Bayes Classifier), ossia un classificatore bayesiano semplificato con un modello di probabilità sottostante che si basa sull'ipotesi di indipendenza delle feature, ovvero assume che la presenza o l'assenza di una particolare feature in un documento testuale non sia correlata alla presenza o assenza di altre feature.
+\\
+\\
+I classificatori bayesiani sono metodi incrementali: ogni istanza dell'insieme di addestramento modifica in maniera incrementale la probabilità che una ipotesi sia corretta.
 La conoscenza già acquisita può essere combinata facilmente con le nuove osservazioni basta aggiornare i conteggi. Questi metodi sono utilizzati ad esmpio in Mozilla o SpamAssassin per riconoscere le mail spam dalle mail ham.
+\subsection{Assunzioni di indipendenza delle feature}
+L'assunzione di indipendenza rende i calcoli possibili, consente di ottenere classificatori ottimali quando è soddisfatta. La condizione di indipendenza delle feature è, purtroppo, raramente soddisfatta in pratica, tuttavia, si è visto che anche quando l'ipotesi di indipendenza non è soddisfatta, i classificatori Naïve Bayes spesso forniscono ottimi risultati.
 \\
-Una probabilità è una misura su un insieme di eventi che soddisfa tre assiomi:
-$$0≤P(E=e_i)≤1$$
-$$\sum_{n=1}^{n} P(E=e_i)=1$$
-$$P(E=e_1\cup E=e_2)=P(E=e_1)+P(E=e_2)\footnotemark$$
-Dove gli eventi e1 ed e2 sono disgiunti.
-Un modello probabilistico consiste in uno spazio di possibili esiti mutualmente esclusivi insieme alla misura di probabilità associata ad ogni esito.
-Che tempo fa domani? esiti: \{SOLE, NUVOLE, PIOGGIA, NEVE\}, l'evento corrispondente ad una precipitazione è il sottoinsieme \{PIOGGIA, NEVE\}.
+\\
+La probabilità dell'intersezione di due eventi indipendenti $E1$ ed $E2$ è data dal prodotto delle probabilità di ciascun evento, ovvero:
+$$ P(E1 \cap E2) = P(E1) \cdot P(E2)$$
+Se invece siamo di fronte a due eventi dipendenti, sappiamo che il verificarsi dell'uno, ad esempio di $E1$, influisce sul calcolo del verificarsi dell'altro, ad esempio $E2$. Si parlerà in tal caso di probabilità condizionata, $P(E2|E1)$.
+\\
+La probabilità dell'intersezione di due eventi dipendenti $E1$ e di $E2$ è data dal prodotto della probabilità di un evento per la probabilità condizionata dell'altro, cioè: 
+$$ P(E1 \cap E2) = P(E1) \cdot P(E2|E1)$$
+$E1$ e $E2$ possono essere invertiti, cioè:
+$$ P(E1 \cap E2) = P(E2) \cdot P(E1|E2)$$
+
 \begin{defn}
 	La probabilità condizionale è definita come: $$P(B|A)=\frac{P(B \cap A)}{P(A)}$$
 \end{defn}
@@ -721,62 +744,71 @@ Che tempo fa domani? esiti: \{SOLE, NUVOLE, PIOGGIA, NEVE\}, l'evento corrispond
 
 \subsection{Formula di Bayes}
 Il teorema di Bayes (formula di Bayes o teorema della probabilità delle cause), proposto da Thomas Bayes, deriva da due teoremi fondamentali delle probabilità: il teorema della probabilità composta e il teorema della probabilità assoluta. Viene impiegato per calcolare la probabilità di una causa che ha scatenato l'evento verificato.
-\begin{thm}
-gli eventi A (per ogni i) sono stocasticamente indipendenti e sono spesso chiamati cause di E, vale a dire:
+\\
+\\
+\textbf{Teorema di Bayes}
+\\
+\textit{
+Dati gli eventi $A_j$ $\forall j$, stocasticamente indipendenti, vale a dire:
 $$E \subset \bigcup\limits_{j=1}^{n} A_j $$
-abbiamo
-$$P(A_{i}|E)={\frac  {P(E|A_{i})P(A_{i})}{P(E)}}={\frac  {P(E|A_{i})P(A_{i})}{\sum {n \atop j=1}P(E|A_{j})P(A_{j})}}$$
-Segue la dimostrazione.\footnotemark
-Dalla teoria delle probabilità condizionali abbiamo:
-$$(1)\,\,\, P(A_i|E)=\frac{P(A_i\cap E)}{P(E)}$$
-$$(2)\,\,\, P(E|A_i)=\frac{P(A_i\cap E)}{P(A_i)} \Rightarrow P(A_i\cap E)=P(E|A_i)P(A_i)$$
-andiamo a sostituire la (2) a numeratore della (1) ottenendo: 
-$$P(A_i|E)=\frac{P(E|A_i)P(A_i)}{P(E)}$$
-dato che
-$$E \subset \bigcup\limits_{j=1}^{n} A_j $$
-abbiamo che
-$$P(E)=\sum {n \atop j=1}P(E|A_{j})P(A_{j})$$
-perché
-$$E=E \cap (\bigcup\limits_{j=1}^{n} A_j) \Rightarrow E=\bigcup\limits_{j=1}^{n} E \cap A_j$$  
-infine abbiamo che
-$$P(E)=P(\bigcup\limits_{j=1}^{n} E \cap A_j)$$ 
-essendo gli eventi A incompatibili abbiamo 
-$$P(E)=\sum {n \atop j=1}P(E \cap A_{j}) \Rightarrow 
-\sum {n \atop j=1}P(E|A_{j})P(A_{j})$$
-
+si dice che gli eventi $A_j$ sono la causa di $E$,  abbiamo dunque:
+$$
+P(A_{i}|E)={\frac  {P(E|A_{j})P(A_{j})}{P(E)}}={\frac  {P(E|A_{j})P(A_{j})}{\sum {n \atop j=1}P(E|A_{j})P(A_{j})}}$$
+\qed
+}
+\\
+\\
+La Formula di Bayes si dimostra facilmente sfruttando la teoria delle probabilità condizionali. 
+\footnotemark
 \footnotetext{Orsingher, Beghin, Introduzione alla probabilità, Carocci editore}
-
-\end{thm}
-\subsection{Classificatori bayesiani naïve}
-L'assunzione di indipendenza rende i calcoli possibili consente di ottenere classificatori ottimali quando è soddisfatta ma è raramente soddisfatta in pratica.
-Questa assunzione consentono di considerare le relazioni causali tra gli attributi, in realtà, si è visto che anche quando l’ipotesi di indipendenza non è soddisfatta, il classificatore naïve Bayes spesso fornisce ottimi risultati.
-
-Sia X una istanza da classificare, e C1,...,Cn le possibili classi. I classificatori Bayesiani calcolano $$P(C_i|X)$$ come $$P(C_i|X)=\frac{P(X|C_i)P(C_i)}{P(X)}$$
-Andiamo a cercare l'indice i per massimizzare la probabilità condizionata, ottenendo $$Max_i [P(C_i|X)]$$
-P(X) è uguale per tutte le classi per cui non occorre calcolarla, P(Ci) si può calcolare facilmente sull'insieme dei dati di addestramento, si conta la percentuale di istanze di classe Ci sul totale.
-Assunzione dei classificatori naïve: indipendenza degli
-attributi.
-Se X è composta dagli attributi 'a' con indice da 1 a m, otteniamo
-
+\\
+Nella formula di Bayes:
+$$P(A_{j}|E)={\frac  {P(E|A_{j})P(A_{j})}{P(E)}}$$
+\\
+si definiscono:
+\begin{itemize}
+\item Le probabilità a priori delle cause: $P(A_j)$
+\item Le probabilità a posteriori: $P(A_j|E)$
+\item Le verosimiglianze $P(E|A_{j})$
+\end{itemize} 
+La formula di Bayes collega la probabilità a priori delle cause con le probabilità a posteriori attraverso le verosimiglianze.
+\\
+\\
+Ipotizziamo che sia $X$ un'istanza da classificare, e $C1,...,Cn$ le possibili classi. I classificatori Bayesiani naïve calcolano $$P(C_i|X)$$ sfruttando la formula di Bayes: $$P(C_i|X)=\frac{P(X|C_i)P(C_i)}{P(X)}$$
+Dato che - al fine della classificazione - si vuole cercare la classe $C$ con la probabilità più alta, andiamo a cercare l'indice $i$ per massimizzare la probabilità condizionata, ottenendo: 
+$$Max_i [P(C_i|X)]$$
+$P(X)$ è uguale per tutte le classi per cui non occorre calcolarla, $P(Ci)$ si può calcolare facilmente sull'insieme dei dati di addestramento, si conta la percentuale di istanze di classe $Ci$ sul totale.
+\\
+\\
+Se $X$ è composta dagli attributi $a_j$ con indice da 1 a m, otteniamo:
 $$P(X|C_i)=\prod_{j=1}^m P(A_j=a_j|C_i)$$
 per il calcolo di 
 $$P(A_j=a_j|C_i)$$
 La formula che verrà utilizzata nella fase di predizione dal classificatore sarà pertanto:
 $$v=Max_i [P(C_i)\prod_{j=1}^m P(A_j=a_j|C_i)]$$
 dove $v$ è la categoria predetta.
-
+\\
+\\
 Se gli A sono categorici, viene stimato come la frequenza relativa delle istanze che hanno quel determinato valore a con indice j tra tutte le istanze di C.
-Se A è continuo, si assume che la probabilità segue una distribuzione Gaussiana, con media e varianza stimata a partire dalle istanze di classe C.
+\\
+Se A è continuo, si assume che la probabilità segua una distribuzione Gaussiana.
+
+\newpage
+\subsection{Pseudocodice Naïve Bayes}
+Riporto di seguito uno script che sintetizza l'agoritmo Naïve Bayes nei suoi passi fondamentali:
 
 \begin{lstlisting}
-#pseudo codice classificatore naif
-#vettore dei target v[j]
+#vettore dei target (categorie) v[j]:
 def v[]
-#vettore degli attributi a[i]
+
+#vettore degli attributi a[i]:
 def a[]
-#p(a[i]|v[j]) 
-#probabilita' che occorra a[i] quando il documento  etichettato v[j]
-#p(v[j]) probab. che occorra v[j]
+
+#prob. che occorra a[i] quando il documento appartiene a v[j]:
+p(a[i]|v[j]) 
+
+#prob. che occorra v[j]:
+p(v[j])
 
 def double p(e){
 	"ritorna la stima probabilistica per l'evento e"
@@ -799,42 +831,44 @@ def v nuova_classificazione(x){
 }
 \end{lstlisting}
 
-
 \subsection{Stima delle probabilità (m-estimate)}
-Quando calcoliamo le probabilità dobbiamo avere alcune accortezze, infatti, se un certo valore di un attributo non si verifica mai per una data classe quando arriva una nuova istanza X la probabilità sarà sempre nulla indipendentemente da quanto siano probabili i valori per gli altri attributi. Il problema delle frequenze nulle non è il solo nella stima delle probabilità in un classificatore bayesiano. Le probabilità tendono ad essere sottostimate in alcune circostanze, ad esempio:
+Quando calcoliamo le probabilità dobbiamo avere alcune accortezze, infatti, se un certo valore di un attributo non si verifica mai per una data classe quando arriva una nuova istanza X la probabilità sarà sempre nulla indipendentemente da quanto siano probabili i valori per gli altri attributi. 
+\\
+\\
+Il problema delle frequenze nulle non è il solo nella stima delle probabilità in un classificatore bayesiano. Le probabilità tendono ad essere sottostimate in alcune circostanze, ad esempio:
 $$P(wind=strong|playTennis=no)$$ stimato come $$\frac{n_C}{n}$$
-Questa stima è buona in molti casi ma se abbiamo pochi esempi con playTennis=no la stima tenderà a zero.
-Un modo per far fronte a tutte queste problematiche è mediante l'uso di una stima chiamata "m-estimate":
+Questa stima è buona in molti casi, ma se abbiamo pochi esempi con playTennis=no la stima tenderà a zero.
+Un modo per far fronte a tutte queste problematiche è mediante l'uso di una stima chiamata \say{m-estimate}:
 $$\frac{n_C+mp}{n+m}$$
 p è la probabilità a priori, solitamente si assume p come il reciproco di k dove k è il numero di valori diversi per attributo
 $$\frac{n_C+m\frac{1}{k}}{n+m}$$
 m è la \textit{equivalent sample size}, come si può vedere dalla formula serve a determinare il peso di incidenza di p sui dati osservati. 
 
 \subsection{Classificazione bayesiana di testi }
-Il classificatore byaesiano sopradescritto trova applicazione nel campo della categorizzazione dei testi essendo - ad oggi - uno dei metodi più efficaci conosciuti.
-Segue una trattazione sull'algoritmo che sfrutta le intuizioni probabilistiche bayesiane, altri esempi sono descritti da Lewis (1991), Lang (1995), Joachims (1996)\footnotemark
+Il classificatore bayesiano sopradescritto trova applicazione nel campo della categorizzazione dei testi essendo - ad oggi - uno dei metodi più efficaci conosciuti.
+\footnotemark
 \footnotetext{Mitchell, Machine learning, Mc Graw Hill, 1997}
-
+\\
+\\
 Le istanze X che abbiamo considerato fin'ora possono ora essere considerati documenti testuali. Il training set da considerare è una collezione di documenti etichettati (classificati), su questa base di conoscenza si dovrà costruire un sistema di predizione per le entry dello spazio X.
-
-Prendiamo in considerazione una collezione di testi, ad esempio 1000, dei quali 300 interessano ad una certa persone, mentre invece, gli altri 700 sono considerati non interessanti, questo può essere considerato un dataset per addestrare il nostro classificatore dove le categorie sono "like" e "dislike".
-
+\\
+\\
+Prendiamo in considerazione una collezione di testi, ad esempio 1000, dei quali 300 interessano ad una certa persone, mentre invece, gli altri 700 sono considerati non interessanti, questo può essere considerato un training set per addestrare il nostro classificatore dove le categorie sono \say{like} e \say{dislike}.
+\\
+\\
 Due problemi fondamentali nella progettazione del classificatore bayesiano sono: la rappresentazione dei documenti, e la modalità di stima delle probabilità.
 
-\subsection{Rappresentazione testi e stima delle probabilità}
+\subsubsection{Rappresentazione testi}
 Il modo più semplice di rappresentare i testi è mediante una raccolta - senza considerare l'ordine - di parole. Testi lunghi daranno luogo ad insiemi di attributi molto grandi, come vedremo questo non è un problema. Questo tipo di approccio è personalizzabile introducendo n-grammi di parole o la lemmatizzazione.
 Ricollegandoci all'esempio di prima abbiamo: 
 $$v=Max_i [P(C_i)\prod_{j=1}^m P(A_j=a_j|C_i)]$$
 dove le categorie sono due: $$C_1:like, C_2:dislike$$
 avremo dunque $$P(C_1)=\frac{300}{1000},\,\,\, P(C_2)=\frac{700}{1000}$$
 
-Le probabilità condizionate sono semplicemente proporzionali alle frequenze con cui occorre un parola dentro tutti i documenti di una categoria.
-La stima delle probabilità è una m-estimate nella quale consideriamo $$m=p=|Vocabolario|$$
-$$\frac{w+1}{n+|Vocabolario|}$$
-con n numero di parole di tutti i documenti di una determinata categoria, w numero di occorrenze di una data parola nell'insieme di parole di una data categoria.
-
+\subsubsection{Pseudocodice per la text categorization}
 In sintesi l'algoritmo di classificazione dei testi usa un classificatore bayesiano naïve con l'assunzione che la probabilità di occorrenza della parola è indipendente dalla posizione dentro i documenti.
-
+\\
+\\
 Segue lo psudocodice di un approccio minimale:
 \begin{lstlisting}
 #pseudo codice classificatore naif per la categorizzazione testi
@@ -865,7 +899,61 @@ nuova_classificazione(x)
 \end{lstlisting}
 
 \newpage
-\section{Feature selection}
+\subsubsection{Stima delle probabilità}
+Esistono vari approcci per il calcolo delle probabilità a posteriori nell'ambito della classificazione bayesiana dei testi, tra questi i più importanti sono il modello multivariato (di Bernoulli), il modello multinomiale (il quale può essere basato su \say{term frequency} o su \say{document frequency}). La divergenza di Kullback-Leibler è una tecnica utilizzata per ottenere un valore di probabilità a posteriori normalizzata rispetto alla lunghezza dei documenti.
+
+\subsubsection{Modello di Bernoulli}
+Il modello di Bernoulli è basato su informazioni binarie, nel vettore delle feature ad ogni termine corrisponde un valore booleano (1 o 0). Il vettore delle feature ha dimensione pari alla grandezza del vocabolario considerato, il valore 1 corrisponde al fatto che il termine occorre in un determinato documento, mentre invece, 0 significa che non occorre.
+\\
+\\
+Assumendo l'indipendenza delle feature occorrenti in un documento, il calcolo delle verosimiglianze può essere calcolata mediante una distribuzione di Bernoulli:
+$$P(b_{i}|C)=\prod_{t=1}^{|V|}[ b_{it}\cdot P(w_t | C) +  (1-b_{it})\cdot(1-P(w_t | C))]$$
+Se il termine $w_{t}$ fosse presente nel documento $i$ allora $b_{it}=1$, pertanto il valore che andrebbe nel calcolo della produttoria sarebbe $P(w_t | C)$.
+\\
+Analogamente se il termine $w_{t}$ non fosse presente allora $b_{it}=0$, e il valore che andrebbe nel calcolo della produttoria sarebbe $1-P(w_t | C)$.
+\\
+\\
+Per quanto riguarda la stima di probabilità per le verosimiglianze $P(w_t | C)$ possiamo pensare di calcolarle nel seguente modo: $P(w_t | C=k)=\frac{n_k(w_t)}{N_k}$, dove $n_k(w_t)$ è il numero di documenti di classe $C=k$ nei quali $w_t$ è osservato, e $N_k$ è il numero di documenti totali nella classe $C=k$
+\footnotemark
+\footnotetext{Shimodaira, Text classification using Naive Bayes, 2015}
+\subsubsection{Modello multinomiale}
+Nel modello multinomiale ci interessa catturare la frequenza di un termine all'interno di un documento, non solamente la sua presenza o assenza
+$$P(C|D_j)= P(C)\cdot \prod_{h=1}^{len(D_{j})} P(u_h|C)$$
+Dove $u_h$ è l'$h$-esimo termine nel documento $D_j$.
+\\
+\\
+Le probabilità condizionate sono semplicemente proporzionali alle frequenze con cui occorre un parola dentro tutti i documenti di una categoria.
+Nella fattispecie la stima delle probabilità è una m-estimate nella quale consideriamo $$m=p=|Vocabolario|$$
+$$\frac{w+1}{n+|Vocabolario|}$$
+con $n$ numero di parole di tutti i documenti di una determinata categoria, $w$ numero di occorrenze di una data parola nell'insieme di parole di una data categoria.
+\\
+\\
+L'approccio appena descritto è basato sulle \say{term-frequency}, è tuttavia possibile utilizzare le \say{document-frequency}, vale a dire, anziché considerare il numero di occorrenze di un termine in una categoria, si considera il numero di documenti nei quali occorre un determinato termine.
+
+\subsubsection{Divergenza di Kullback-Leibler}
+La divergenza di Kullback-Leibler è una tecnica utilizzata per ottenere un valore di probabilità a posteriori normalizzata rispetto alla lunghezza dei documenti. Insieme alla feature selection è una delle tecniche di base utilizzate per migliorare le prestazioni della classificazione bayesiana di testi\footnotemark
+\footnotetext{Schneider, Techniques for Improving the Performance of Naive Bayes for Text Classification, University of Passau, Department of General Linguistics}
+\\
+\\
+Come è facile immaginare, utilizzare la divergenza di Kullback-Leibler nel calcolo delle probabilità a posteriori favorisce notevolmente la classificazione multi-label. 
+\subsubsection{Approcci ad-hoc}
+Oltre agli approcci appena descritti è possibile realizzare degli approcci ad-hoc rispetto a determinati contesti, ad esempio si possono modellare le frequenze tramite la formula TF-IDF:\textit{term frquency-inverse document frequency}\footnotemark
+\footnotetext{Raschka, Naive Bayes and Text Classification, Introduction and Theory, 2014}, è un sistema di weighting dei termini, utile quando non si ha una adeguata stopword-list: 
+$$TF-IDF=tf_n(t,d) \cdot idf(t)$$
+
+\subsubsection{Performance}
+Analisi empiriche comparative ci dicono che il modello multinomiale tende a funzionare meglio del modello di Bernoulli se il vocabolario è relativamente grande\footnotemark
+\footnotetext{McCallum, Nigam, et al, A comparison of event models for naive bayes text classification, in AAAI-98 workshop on learning for text categorization, vol. 752, pp. 41–48, Citeseer, 1998}
+\\
+\\
+Dobbiamo tuttavia considerare che le performance degli algoritmi di machine learning sono altamente dipendenti dalla appropriata scelta delle feature (vedi algoritmi di feature selection). Nella classificazione del testo le performance sono relative anche alla fase di preprocessamento dei corpi testuali: stopword removal, stemming, token-length, n-grammi, ...
+\footnotemark
+\footnotetext{Rudner, Liang, Automated essay scoring using bayes theorem, The Journal of Technology, Learning and Assessment, vol. 1, no. 2, 2002}
+\\
+\\
+In finale, la scelta tra i vari modelli di classificazione e le tecniche di processamento dei corpi testuali vanno considerate contestualmente al task di classificazione specifico, non esistono soluzioni sempre valide.
+\newpage
+\section{Algoritmi di feature selection}
 La selezione delle feature è il processo che ci porta a selezionare un sottoinsieme di feature (termini nella text classification), solo questo sottoinsieme sarà utilizzato come training set per i nostri classificatori.
 I motivi principali per cui si procede ad una selezione delle feature sono due: innanzi tutto alcuni modelli possono essere addestrati solo con un insieme di feature contenuto, data la loro complessità computazionale in fase di addestramento o predizione. In secondo luogo dobbiamo considerare che i classificatori tendono ad essere più precisi quando il numero delle feature è ridotto, molte feature, non solo non sono determinanti nell'individuazione della classe di appartenenza di un documento, ma possono addirittura introdurre un rumore (noise feature). Le noise feature sono quelle feature che occorrendo accidentalmente in una sola classe si rendono responsabili di errate generalizzazioni che colpiscono l'accuratezza della classificazione (overfitting).
 Introduction to Information Retrieval\footnotemark descrive tre procedure per la selezione di feature:
@@ -967,8 +1055,6 @@ La F-measure (anche nota come F1-score) è la media armonica
 \[ Interpolated-break-even: \quad IB= \frac{P+R}{2} \]
 
 Tra le due metriche è preferibile usare l'F1, in quanto più sensibile a valori di precision o recall molto bassi.
-
-
 
 \subsection{K-fold-cross-validation}
 Gli algoritmi di apprendimento supervisionati per la categorizzazione dei testi (Bayesiani, margin-based, vettoriale, ...) hanno bisogno di un test-set ed un training-set per poter essere valutati. Questi due insiemi devono essere disgiunti per avere delle buone stime delle performance del sistema di classificazione.
@@ -1104,7 +1190,8 @@ La combinazione lineare delle formule di similarità è una soluzione molto buon
 
 \footnotetext{Robertson, Walker, Hancock-Beaulieu, Gatford, Okapi in TREC-3. Proceedings of Text Retrieval Conference  TREC-3, U.S. National Institute of Standards and Technology,   
 Gaithersburg, USA. NIST Special Publication 500-225, pp. 109-126, 1994}
-  
+
+\newpage
 \subsection{BIOSIS}
 Uno dei più sofisticati programmi per l'indicizzazione automatica sviluppato negli studi BIOSIS è stato discusso da  Vleduts-Stokolov; \footnotetext{Vleduts-Stokolov, Concept recognition in an automatic text-processing system for the life sciences, 1987} le parole che occorrono nei titoli delle pubblicazioni che sono anche contenute all'interno di un vocabolario semantico. Il quale vocabolario semantico rappresenta la terminologia scientifica rappresentata da circa 15'000 termini.
 I termini coprono i seguenti campi di studio: agricoltura, anatomia, comportamento, biochimica, bioingegneria, biofisica, biotecnologie, botanica, biologia cellulare, biologia ambientale, medicina clinica sperimentale, genetica, immunologia, microbiologia, patologia, farmacologia, fisiologia e tossicologia.
@@ -1154,8 +1241,16 @@ MeSh (acronimo di Medical Subject Headings), è un indicizzatore automatico util
 \item Busa, Fondamenti di informatica linguistica, Istituto Geografico De Agostini, 1987
 \item Chiari, Introduzione alla linguistica computazionale, Laterza, 2007
 \item Orsingher, Beghin, Introduzione alla probabilità, Carocci editore
+\item Porter, An algorithm for suffix stripping, Program: electronic library and information systems, vol. 14, no. 3, pp. 130–137, 1980
 \item Mitchell, Machine learning, Mc Graw Hill, 1997
+\item Shimodaira, Text classification using Naive Bayes, 2015
+\item Raschka, Naive Bayes and Text Classification, Introduction and Theory, 2014
+\item Rudner, Liang, Automated essay scoring using bayes theorem, The Journal of Technology, Learning and Assessment, vol. 1, no. 2, 2002
+\item McCallum, Nigam, et al, A comparison of event models for naive bayes text classification, in AAAI-98 workshop on learning for text categorization, vol. 752, pp. 41–48, Citeseer, 1998
+\item Domingos, Pazzani, On the optimality of the simple bayesian classifier under zero-one loss, Machine learning, vol. 29, no. 2-3, pp. 103–130, 1997
+\item Zhang, The optimality of naive bayes, AA, vol. 1, no. 2, p. 3, 2004
 \item Manning, Raghavan, Schütze, Introduction to Information Retrieval, Cambridge University Press, 2008
+\item Schneider, Techniques for Improving the Performance of Naive Bayes for Text Classification, University of Passau, Department of General Linguistics
 \item Gutierrez-Osuna, Introduction to Pattern Analysis, Texas A\&M University
 \item Pouliquen, Steinberger, Ignat, Automatic Annotation of Multilingual Text Collections with a Conceptual Thesaurus, JRC, 2003
 \item Kilgarriff, Which words are particularly  
@@ -1167,6 +1262,7 @@ Gaithersburg, USA. NIST Special Publication 500-225, pp. 109-126, 1994
 \item Fumagalli, Trasparenza e Open Data: l'evoluzione del quadro normativo fino all'emanazione del neo D.Lgs. 33/2013. La Bussola della Trasparenza, 2014
 \end{itemize}
 
+\newpage
 \subsection{Link utili}
 \begin{itemize}
 \item \url{https://github.com/simonegasperoni/open-cata}
@@ -1211,10 +1307,7 @@ Per distinguere i diversi formati utilizzabili nella codifica dei set di dati o 
 \end{itemize}
 \phantom
 \\
-I Linked Open Data, quindi, consentono di combinare i contenuti di dataset diversi grazie a costrutti formali formulati secondo il modello RDF in uno dei diversi formati esistenti (XML/RDF, N3, ecc…). Ciò aumenta esponenzialmente il valore dei dataset reciprocamente correlati, consentendo il passaggio dal livello dei dati a quello dell'informazione e, quindi, a quello della conoscenza e fornendo così un quadro di contesto strutturato a partire dalla correlazione di informazioni provenienti da fonti diverse.
-\\
-\\
-Una delle opportunità più importanti dell'Open Data è rappresentata dall'interoperabilità. Il valore dei dati, infatti, è tanto più alto quanto più è possibile effettuare correlazioni tra più dataset indipendenti l'uno dall'altro ma interoperabili nel formato e nel data model. Per questo motivo è auspicabile che i dati vengano aperti in modalità Linked Open Data rispetto alle altre tipologie di dati aperti, essendo i LOD la tipologia di dati aperti che consente il massimo livello di interoperabilità tra dataset diversi. \footnotemark\footnotetext{Fumagalli, Trasparenza e Open Data: l'evoluzione del quadro normativo fino all'emanazione del neo D.Lgs. 33/2013. La Bussola della Trasparenza, 2014}
+\footnotetext{Fumagalli, Trasparenza e Open Data: l'evoluzione del quadro normativo fino all'emanazione del neo D.Lgs. 33/2013. La Bussola della Trasparenza, 2014}
 
 \newpage
 \subsection{Associazione Temi DCAT - Microtesauri EuroVoc}
