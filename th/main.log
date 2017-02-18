@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.10.9)  17 FEB 2017 18:51
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.10.9)  18 FEB 2017 22:44
 entering extended mode
 **./main.tex
 (main.tex
@@ -338,7 +338,7 @@ dfTeX warning (ext4): destination with the same identifier (name{page.1}) has b
 een already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.42 ...^2$ feature selection}{38}{subsection.5.2}
+l.42 ...ion feature selection}{40}{subsection.5.1}
                                                    [1])
 \tf@toc=\write4
 \openout4 = `main.toc'.
@@ -363,67 +363,58 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 105.
 
-Underfull \hbox (badness 10000) in paragraph at lines 88--121
+Underfull \hbox (badness 10000) in paragraph at lines 88--109
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 88--121
+Underfull \hbox (badness 10000) in paragraph at lines 88--109
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 88--121
+Underfull \hbox (badness 10000) in paragraph at lines 88--109
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 88--121
+Underfull \hbox (badness 10000) in paragraph at lines 88--109
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 88--121
+Underfull \hbox (badness 10000) in paragraph at lines 88--109
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 88--121
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 88--121
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 88--121
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 88--121
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 88--121
+Underfull \hbox (badness 10000) in paragraph at lines 88--109
 
  []
 
 [5]
+Underfull \hbox (badness 10000) in paragraph at lines 111--121
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 111--121
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 111--121
+
+ []
+
 LaTeX Font Info:    Try loading font information for OMS+cmr on input line 123.
 
- ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\base\omscmr.fd"
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 123.
  [6]
-("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ucs\uni-32.def"
-File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
-)
 Underfull \hbox (badness 2717) in paragraph at lines 139--139
 [][][]\OT1/cmr/m/n/8 Fumagalli, Trasparenza e Open Data: l'evoluzione del quadr
 o nor-ma-tivo fino
@@ -437,12 +428,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 133--140
 
 Underfull \hbox (badness 10000) in paragraph at lines 133--140
 
- []
-
-
-Overfull \hbox (42.3064pt too wide) in paragraph at lines 133--140
-\OT1/cmr/m/n/10 Una delle op-por-tu-nita piu im-por-tanti dell'Open Data e r
-ap-p-re-sen-tata dall'interoperabilita.
  []
 
 
@@ -473,512 +458,596 @@ Underfull \hbox (badness 10000) in paragraph at lines 160--165
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 167--171
+Underfull \hbox (badness 10000) in paragraph at lines 167--177
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 167--177
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 167--177
 
  []
 
 [8]
-Underfull \hbox (badness 10000) in paragraph at lines 173--193
+Underfull \hbox (badness 10000) in paragraph at lines 179--206
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 173--193
+Underfull \hbox (badness 10000) in paragraph at lines 179--206
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 173--193
+Underfull \hbox (badness 10000) in paragraph at lines 179--206
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 173--193
+Underfull \hbox (badness 10000) in paragraph at lines 179--206
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 173--193
+Underfull \hbox (badness 10000) in paragraph at lines 179--206
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 179--206
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 179--206
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 179--206
 
  []
 
 [9]
-Overfull \hbox (8.44292pt too wide) in paragraph at lines 216--217
+Underfull \hbox (badness 10000) in paragraph at lines 218--222
+
+ []
+
+
+Overfull \hbox (8.44292pt too wide) in paragraph at lines 230--231
 \OT1/cmr/m/n/10 Pubblicare i dati sotto forma di cat-a-loghi RDF DCAT garan-tis
 ce l'interoperabilita,
  []
 
-<img/dcatmodel.jpg, id=389, 1084.05pt x 748.7975pt>
+<img/dcatmodel.jpg, id=391, 1084.05pt x 748.7975pt>
 File: img/dcatmodel.jpg Graphic file (type jpg)
  <use img/dcatmodel.jpg>
-Package pdftex.def Info: img/dcatmodel.jpg used on input line 220.
+Package pdftex.def Info: img/dcatmodel.jpg used on input line 234.
 (pdftex.def)             Requested size: 433.61232pt x 299.51369pt.
 
-Overfull \hbox (88.61232pt too wide) in paragraph at lines 220--221
+Overfull \hbox (88.61232pt too wide) in paragraph at lines 234--235
  [] 
  []
 
 [10] [11 <./img/dcatmodel.jpg>]
-Underfull \hbox (badness 10000) in paragraph at lines 228--237
+Underfull \hbox (badness 10000) in paragraph at lines 241--252
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 228--237
+Underfull \hbox (badness 10000) in paragraph at lines 241--252
 
  []
 
 
-Overfull \hbox (8.27858pt too wide) in paragraph at lines 228--237
+Overfull \hbox (8.27858pt too wide) in paragraph at lines 241--252
 \OT1/cmr/m/n/10 L'utilizzo di un mod-ello dati val-orizza il pat-ri-mo-nio in-f
 or-ma-tivo pub-blico nazionale
  []
 
-<img/DCAT-AP_IT_UML.png, id=402, 733.99219pt x 1330.21968pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 241--252
+
+ []
+
+<img/DCAT-AP_IT_UML.png, id=403, 733.99219pt x 1330.21968pt>
 File: img/DCAT-AP_IT_UML.png Graphic file (type png)
 
 <use img/DCAT-AP_IT_UML.png>
-Package pdftex.def Info: img/DCAT-AP_IT_UML.png used on input line 257.
+Package pdftex.def Info: img/DCAT-AP_IT_UML.png used on input line 272.
 (pdftex.def)             Requested size: 293.59167pt x 532.07845pt.
 
 
-LaTeX Warning: Float too large for page by 16.02289pt on input line 260.
+LaTeX Warning: Float too large for page by 16.02289pt on input line 275.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 263--270
+Underfull \hbox (badness 10000) in paragraph at lines 278--288
 
  []
 
 
-Overfull \hbox (1.66641pt too wide) in paragraph at lines 263--270
+Underfull \hbox (badness 10000) in paragraph at lines 278--288
+
+ []
+
+
+Overfull \hbox (1.66641pt too wide) in paragraph at lines 278--288
 \OT1/cmr/m/n/10 Il sis-tema e us-ato sia come pi-attaforma pub-blica su Datahu
 b ([]$\OT1/cmtt/m/n/10 https : / / datahub .
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 263--270
+Underfull \hbox (badness 10000) in paragraph at lines 278--288
 
  []
 
 [12] [13 <./img/DCAT-AP_IT_UML.png>]
-Overfull \hbox (3.55617pt too wide) in paragraph at lines 278--300
+Overfull \hbox (3.55617pt too wide) in paragraph at lines 295--315
 \OT1/cmr/m/n/10 Oltre alle am-min-is-trazioni es-iste un por-tale eu-ropeo (anc
 h'esso basato su CKAN): 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 278--300
+Underfull \hbox (badness 10000) in paragraph at lines 295--315
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 278--300
+Underfull \hbox (badness 10000) in paragraph at lines 295--315
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 278--300
+Underfull \hbox (badness 10000) in paragraph at lines 295--315
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 278--300
+Underfull \hbox (badness 10000) in paragraph at lines 295--315
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 278--300
+Underfull \hbox (badness 10000) in paragraph at lines 295--315
 
  []
 
 
-Overfull \hbox (20.24684pt too wide) in paragraph at lines 278--300
+Overfull \hbox (20.24684pt too wide) in paragraph at lines 295--315
 []$\OT1/cmtt/m/n/10 https : / / github . com / ckan / ckanext-[]dcat # rdf-[]dc
 at-[]to-[]ckan-[]dataset-[]mapping$[] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 278--300
+Underfull \hbox (badness 10000) in paragraph at lines 295--315
 
  []
 
-[14] <img/eustat.png, id=444, 891.93225pt x 322.806pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 317--322
+
+ []
+
+[14] <img/eustat.png, id=445, 891.93225pt x 322.806pt>
 File: img/eustat.png Graphic file (type png)
  <use img/eustat.png>
-Package pdftex.def Info: img/eustat.png used on input line 307.
+Package pdftex.def Info: img/eustat.png used on input line 325.
 (pdftex.def)             Requested size: 445.96503pt x 161.4026pt.
 
-Overfull \hbox (100.96503pt too wide) in paragraph at lines 307--308
+Overfull \hbox (100.96503pt too wide) in paragraph at lines 325--326
  [] 
  []
 
 
-Overfull \hbox (13.10995pt too wide) in paragraph at lines 313--321
+Overfull \hbox (13.10995pt too wide) in paragraph at lines 331--341
 \OT1/cmr/m/n/10 Open Data Hub Italy ([]$\OT1/cmtt/m/n/10 http : / / sciamlab . 
 com / opendatahub / it$[]\OT1/cmr/m/n/10 ) e una pi-attaforma
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 313--321
+Underfull \hbox (badness 10000) in paragraph at lines 331--341
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 331--341
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 331--341
 
  []
 
 [15 <./img/eustat.png>]
-<img/evocimbalanced.png, id=455, 304.13625pt x 198.14024pt>
+Underfull \hbox (badness 10000) in paragraph at lines 345--357
+
+ []
+
+
+Overfull \hbox (21.16737pt too wide) in paragraph at lines 345--357
+\OT1/cmr/m/n/10 Il the-saurus Eu-roVoc viene uti-liz-zato dalle is-ti-tuzioni d
+ell'Unione eu-ro-pea, dall'Ufficio
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 345--357
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 345--357
+
+ []
+
+[16] <img/evocimbalanced.png, id=461, 304.13625pt x 198.14024pt>
 File: img/evocimbalanced.png Graphic file (type png)
 
 <use img/evocimbalanced.png>
-Package pdftex.def Info: img/evocimbalanced.png used on input line 344.
+Package pdftex.def Info: img/evocimbalanced.png used on input line 371.
 (pdftex.def)             Requested size: 304.1355pt x 198.13974pt.
 
-<img/evocdistribution.png, id=456, 300.52275pt x 206.57175pt>
+<img/evocdistribution.png, id=462, 300.52275pt x 206.57175pt>
 File: img/evocdistribution.png Graphic file (type png)
 
 <use img/evocdistribution.png>
-Package pdftex.def Info: img/evocdistribution.png used on input line 350.
+Package pdftex.def Info: img/evocdistribution.png used on input line 380.
 (pdftex.def)             Requested size: 300.522pt x 206.57123pt.
 
-<img/numacquis.png, id=458, 457.71pt x 276.43275pt>
+Underfull \hbox (badness 10000) in paragraph at lines 359--393
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 359--393
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 359--393
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 359--393
+
+ []
+
+[17 <./img/evocimbalanced.png>]
+<img/numacquis.png, id=472, 457.71pt x 276.43275pt>
 File: img/numacquis.png Graphic file (type png)
  <use img/numacquis.png>
-Package pdftex.def Info: img/numacquis.png used on input line 367.
+Package pdftex.def Info: img/numacquis.png used on input line 396.
 (pdftex.def)             Requested size: 320.39482pt x 193.5016pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 332--371
+Underfull \hbox (badness 10000) in paragraph at lines 417--422
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 332--371
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 332--371
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 332--371
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 332--371
-
- []
-
-[16] [17 <./img/evocimbalanced.png> <./img/evocdistribution.png>] [18 <./img/nu
-macquis.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 388--393
-
- []
-
-
-Overfull \hbox (11.99689pt too wide) in paragraph at lines 401--401
+[18 <./img/evocdistribution.png>]
+Overfull \hbox (11.99689pt too wide) in paragraph at lines 430--430
 []   \OT1/cmtt/m/n/10 Decisione n. 2046/2002/CE del Parlamento europeo e del Co
 nsiglio,[] 
  []
 
 
-Overfull \hbox (6.74693pt too wide) in paragraph at lines 401--401
+Overfull \hbox (6.74693pt too wide) in paragraph at lines 430--430
 []   \OT1/cmtt/m/n/10 relativa ad una serie di orientamenti, compresa l'individ
 uazione[] 
  []
 
-[19] [20] <img/eurovocdcat.png, id=491, 957.5775pt x 1005.7575pt>
+[19 <./img/numacquis.png>] [20]
+<img/eurovocdcat.png, id=492, 957.5775pt x 1005.7575pt>
 File: img/eurovocdcat.png Graphic file (type png)
 
 <use img/eurovocdcat.png>
-Package pdftex.def Info: img/eurovocdcat.png used on input line 453.
+Package pdftex.def Info: img/eurovocdcat.png used on input line 482.
 (pdftex.def)             Requested size: 287.27547pt x 301.72958pt.
 pdfTeX warning (ext4): destination with the same identifier (name{Hfootnote.9})
  has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.459 ...1.0, Agenzia per l'Italia digitale, 2006}
+l.488 ...1.0, Agenzia per l'Italia digitale, 2006}
                                                   
-Underfull \hbox (badness 10000) in paragraph at lines 458--468
+Underfull \hbox (badness 10000) in paragraph at lines 487--497
 
  []
 
-[21 <./img/eurovocdcat.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 489--494
+[21 <./img/eurovocdcat.png>] [22]
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ucs\uni-32.def"
+File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
+)
+<img/statjex.png, id=518, 611.886pt x 465.53925pt>
+File: img/statjex.png Graphic file (type png)
+ <use img/statjex.png>
+Package pdftex.def Info: img/statjex.png used on input line 528.
+(pdftex.def)             Requested size: 428.31728pt x 325.87524pt.
+
+Overfull \hbox (83.31728pt too wide) in paragraph at lines 528--529
+ [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 518--532
 
  []
 
-[22]
-Overfull \hbox (25.63956pt too wide) in paragraph at lines 497--504
+
+Underfull \hbox (badness 10000) in paragraph at lines 518--532
+
+ []
+
+[23 <./img/statjex.png>]
+Overfull \hbox (25.63956pt too wide) in paragraph at lines 534--541
 \OT1/cmr/m/n/10 Una fase pre-lim-inare in qual-si-asi am-bito di clas-si-fi-caz
 ione di doc-u-menti e l'elaborazione
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 497--504
+Underfull \hbox (badness 10000) in paragraph at lines 534--541
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 497--504
+Underfull \hbox (badness 10000) in paragraph at lines 534--541
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 514--521
-
- []
-
-[23]
-Underfull \hbox (badness 10000) in paragraph at lines 527--534
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 527--534
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 538--553
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 538--553
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 538--553
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 538--553
+Underfull \hbox (badness 10000) in paragraph at lines 551--558
 
  []
 
 [24]
-Underfull \hbox (badness 10000) in paragraph at lines 556--565
+Underfull \hbox (badness 10000) in paragraph at lines 564--571
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 556--565
+Underfull \hbox (badness 10000) in paragraph at lines 564--571
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 571--601
+Underfull \hbox (badness 10000) in paragraph at lines 575--590
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 571--601
+Underfull \hbox (badness 10000) in paragraph at lines 575--590
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 571--601
+Underfull \hbox (badness 10000) in paragraph at lines 575--590
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 571--601
+Underfull \hbox (badness 10000) in paragraph at lines 575--590
+
+ []
+
+[25]
+Underfull \hbox (badness 10000) in paragraph at lines 593--602
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 571--601
+Underfull \hbox (badness 10000) in paragraph at lines 593--602
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 571--601
+Underfull \hbox (badness 10000) in paragraph at lines 608--638
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 571--601
+Underfull \hbox (badness 10000) in paragraph at lines 608--638
 
  []
 
-[25] ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ucs\uni-33.def"
+
+Underfull \hbox (badness 10000) in paragraph at lines 608--638
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 608--638
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 608--638
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 608--638
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 608--638
+
+ []
+
+[26] ("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\ucs\uni-33.def"
 File: uni-33.def 2013/05/13 UCS: Unicode data U+2100..U+21FF
 )
-Underfull \hbox (badness 10000) in paragraph at lines 609--631
+Underfull \hbox (badness 10000) in paragraph at lines 646--668
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 609--631
+Underfull \hbox (badness 10000) in paragraph at lines 646--668
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 609--631
+Underfull \hbox (badness 10000) in paragraph at lines 646--668
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 609--631
+Underfull \hbox (badness 10000) in paragraph at lines 646--668
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 609--631
+Underfull \hbox (badness 10000) in paragraph at lines 646--668
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 631--675
+Underfull \hbox (badness 10000) in paragraph at lines 668--712
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 631--675
+Underfull \hbox (badness 10000) in paragraph at lines 668--712
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 631--675
+Underfull \hbox (badness 10000) in paragraph at lines 668--712
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 631--675
+Underfull \hbox (badness 10000) in paragraph at lines 668--712
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 631--675
+Underfull \hbox (badness 10000) in paragraph at lines 668--712
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 631--675
+Underfull \hbox (badness 10000) in paragraph at lines 668--712
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 631--675
+Underfull \hbox (badness 10000) in paragraph at lines 668--712
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 631--675
+Underfull \hbox (badness 10000) in paragraph at lines 668--712
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 631--675
-
- []
-
-[26]
-Underfull \hbox (badness 10000) in paragraph at lines 676--682
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 676--682
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 676--682
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 682--694
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 682--694
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 682--694
+Underfull \hbox (badness 10000) in paragraph at lines 668--712
 
  []
 
 [27]
-Overfull \hbox (32.9967pt too wide) in paragraph at lines 710--710
+Underfull \hbox (badness 10000) in paragraph at lines 713--719
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 713--719
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 713--719
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 719--731
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 719--731
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 719--731
+
+ []
+
+[28]
+Overfull \hbox (32.9967pt too wide) in paragraph at lines 747--747
 []    \OT1/cmtt/m/n/10 String resultString = text.replaceAll("\\P{L}+", " ").to
 LowerCase();[] 
  []
 
-[28]
-Underfull \hbox (badness 10000) in paragraph at lines 717--725
+[29]
+Underfull \hbox (badness 10000) in paragraph at lines 755--763
 
  []
 
 
-Overfull \hbox (4.16719pt too wide) in paragraph at lines 717--725
+Overfull \hbox (4.16719pt too wide) in paragraph at lines 755--763
 \OT1/cmr/m/n/10 clas-si-fi-ca-tore bayesiano ci si riferisce con-ven-zional-men
 te al clas-si-fi-ca-tore bayesiano
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 717--725
+Underfull \hbox (badness 10000) in paragraph at lines 755--763
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 726--730
-
- []
-
-[29]
-Underfull \hbox (badness 10000) in paragraph at lines 746--758
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 758--766
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 774--777
+Underfull \hbox (badness 10000) in paragraph at lines 764--768
 
  []
 
 [30]
-Underfull \hbox (badness 10000) in paragraph at lines 779--784
+Underfull \hbox (badness 10000) in paragraph at lines 783--795
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 788--795
+Underfull \hbox (badness 10000) in paragraph at lines 795--803
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 811--814
 
  []
 
 [31]
-Underfull \hbox (badness 10000) in paragraph at lines 835--839
+Underfull \hbox (badness 10000) in paragraph at lines 816--821
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 825--832
 
  []
 
 [32]
-Underfull \hbox (badness 10000) in paragraph at lines 848--860
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 848--860
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 848--860
+Underfull \hbox (badness 10000) in paragraph at lines 872--876
 
  []
 
 [33]
-Underfull \hbox (badness 10000) in paragraph at lines 869--873
+Underfull \hbox (badness 10000) in paragraph at lines 885--897
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 885--897
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 885--897
 
  []
 
@@ -987,331 +1056,362 @@ Underfull \hbox (badness 10000) in paragraph at lines 906--910
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 910--919
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 921--926
-
- []
-
 [35]
-Underfull \hbox (badness 10000) in paragraph at lines 927--932
+Underfull \hbox (badness 10000) in paragraph at lines 943--947
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 934--939
+Underfull \hbox (badness 10000) in paragraph at lines 947--956
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 945--955
+Underfull \hbox (badness 10000) in paragraph at lines 958--963
+
+ []
+
+[36]
+Underfull \hbox (badness 10000) in paragraph at lines 964--969
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 945--955
+Underfull \hbox (badness 10000) in paragraph at lines 970--983
 
  []
 
-[36] [37]
+
+Underfull \hbox (badness 10000) in paragraph at lines 970--983
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 970--983
+
+ []
+
+[37] <img/klbenefits.png, id=668, 542.025pt x 198.7425pt>
+File: img/klbenefits.png Graphic file (type png)
+
+<use img/klbenefits.png>
+Package pdftex.def Info: img/klbenefits.png used on input line 988.
+(pdftex.def)             Requested size: 433.62057pt x 158.9942pt.
+
+Overfull \hbox (88.62057pt too wide) in paragraph at lines 988--989
+ [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 998--1003
+
+ []
+
+[38 <./img/klbenefits.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1004--1014
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1004--1014
+
+ []
+
+[39]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 972.
+(Font)              <12> on input line 1031.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 972.
+(hyperref)                removing `math shift' on input line 1031.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `\chi' on input line 972.
+(hyperref)                removing `\chi' on input line 1031.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `superscript' on input line 972.
+(hyperref)                removing `superscript' on input line 1031.
 
 
 Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
-(hyperref)                removing `math shift' on input line 972.
+(hyperref)                removing `math shift' on input line 1031.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 974--978
+Underfull \hbox (badness 10000) in paragraph at lines 1033--1037
 
  []
 
-[38] [39]pdfTeX warning (ext4): destination with the same identifier (name{Hfoo
-tnote.19}) has been already used, duplicate ignored
+[40] [41]pdfTeX warning (ext4): destination with the same identifier (name{Hfoo
+tnote.20}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.988 ...rieval, Cambridge University Press, 2008}
+l.1047 ...ieval, Cambridge University Press, 2008}
                                                    è presente uno studio su...
-<img/fselection.png, id=680, 352.9185pt x 295.1025pt>
+<img/fselection.png, id=695, 352.9185pt x 295.1025pt>
 File: img/fselection.png Graphic file (type png)
  <use img/fselection.png>
-Package pdftex.def Info: img/fselection.png used on input line 1000.
+Package pdftex.def Info: img/fselection.png used on input line 1059.
 (pdftex.def)             Requested size: 282.33517pt x 236.0823pt.
 
-[40 <./img/fselection.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1011--1026
+[42 <./img/fselection.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1070--1085
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1011--1026
+Underfull \hbox (badness 10000) in paragraph at lines 1070--1085
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1011--1026
+Underfull \hbox (badness 10000) in paragraph at lines 1070--1085
 
  []
 
 
-Overfull \hbox (21.7168pt too wide) in paragraph at lines 1027--1028
+Overfull \hbox (21.7168pt too wide) in paragraph at lines 1086--1087
 []\OT1/cmr/bx/n/10 true pos-i-tive: \OT1/cmr/m/n/10 il sis-tema e l'esperto del
  do-minio sono co-er-enti nell'assegnazione
  []
 
-[41]pdfTeX warning (ext4): destination with the same identifier (name{Hfootnote
-.19}) has been already used, duplicate ignored
+[43]pdfTeX warning (ext4): destination with the same identifier (name{Hfootnote
+.20}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1072 ...Pattern Analysis, Texas A\&M University}
+l.1131 ...Pattern Analysis, Texas A\&M University}
                                                   
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1079
+Underfull \hbox (badness 10000) in paragraph at lines 1119--1138
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1079
+Underfull \hbox (badness 10000) in paragraph at lines 1119--1138
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1079
+Underfull \hbox (badness 10000) in paragraph at lines 1119--1138
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1079
+Underfull \hbox (badness 10000) in paragraph at lines 1119--1138
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1060--1079
+Underfull \hbox (badness 10000) in paragraph at lines 1119--1138
 
  []
 
-[42] [43]
-Underfull \hbox (badness 10000) in paragraph at lines 1082--1094
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1082--1094
+[44] [45]
+Underfull \hbox (badness 10000) in paragraph at lines 1141--1153
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1082--1094
+Underfull \hbox (badness 10000) in paragraph at lines 1141--1153
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1095--1117
+Underfull \hbox (badness 10000) in paragraph at lines 1141--1153
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1095--1117
+Underfull \hbox (badness 10000) in paragraph at lines 1154--1176
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1095--1117
+Underfull \hbox (badness 10000) in paragraph at lines 1154--1176
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1095--1117
+Underfull \hbox (badness 10000) in paragraph at lines 1154--1176
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1095--1117
+Underfull \hbox (badness 10000) in paragraph at lines 1154--1176
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1095--1117
+Underfull \hbox (badness 10000) in paragraph at lines 1154--1176
 
  []
 
 
-Overfull \hbox (9.24953pt too wide) in paragraph at lines 1095--1117
+Underfull \hbox (badness 10000) in paragraph at lines 1154--1176
+
+ []
+
+
+Overfull \hbox (9.24953pt too wide) in paragraph at lines 1154--1176
 \OT1/cmr/m/n/10 La de-ci-sione di ri-las-ciare gra-tuita-mente JEX e in linea 
 con la Di-ret-tiva 2003/98/EC
  []
 
-[44] <img/jexfmeasure.png, id=703, 287.8755pt x 199.947pt>
+[46] <img/jexfmeasure.png, id=718, 287.8755pt x 199.947pt>
 File: img/jexfmeasure.png Graphic file (type png)
 
 <use img/jexfmeasure.png>
-Package pdftex.def Info: img/jexfmeasure.png used on input line 1121.
+Package pdftex.def Info: img/jexfmeasure.png used on input line 1180.
 (pdftex.def)             Requested size: 287.87479pt x 199.9465pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 1118--1133
+Underfull \hbox (badness 10000) in paragraph at lines 1177--1192
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1118--1133
+Underfull \hbox (badness 10000) in paragraph at lines 1177--1192
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1134--1158
+Underfull \hbox (badness 10000) in paragraph at lines 1193--1217
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1134--1158
+Underfull \hbox (badness 10000) in paragraph at lines 1193--1217
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1134--1158
+Underfull \hbox (badness 10000) in paragraph at lines 1193--1217
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1134--1158
+Underfull \hbox (badness 10000) in paragraph at lines 1193--1217
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1134--1158
+Underfull \hbox (badness 10000) in paragraph at lines 1193--1217
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1134--1158
+Underfull \hbox (badness 10000) in paragraph at lines 1193--1217
 
  []
 
-[45] [46 <./img/jexfmeasure.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 1160--1164
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1164--1168
+[47] [48 <./img/jexfmeasure.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1219--1223
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1168--1172
+Underfull \hbox (badness 10000) in paragraph at lines 1223--1227
 
  []
 
-[47]
-Underfull \hbox (badness 10000) in paragraph at lines 1172--1180
+
+Underfull \hbox (badness 10000) in paragraph at lines 1227--1231
 
  []
 
-[48]pdfTeX warning (ext4): destination with the same identifier (name{Hfootnote
-.24}) has been already used, duplicate ignored
+[49]
+Underfull \hbox (badness 10000) in paragraph at lines 1231--1239
+
+ []
+
+[50]pdfTeX warning (ext4): destination with the same identifier (name{Hfootnote
+.25}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1196 ...sing system for the life sciences, 1987}
+l.1255 ...sing system for the life sciences, 1987}
                                                    le parole che occorrono n...
 
-Underfull \hbox (badness 10000) in paragraph at lines 1196--1204
+Underfull \hbox (badness 10000) in paragraph at lines 1255--1263
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1196--1204
+Underfull \hbox (badness 10000) in paragraph at lines 1255--1263
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1206--1221
+Underfull \hbox (badness 10000) in paragraph at lines 1265--1280
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1206--1221
+Underfull \hbox (badness 10000) in paragraph at lines 1265--1280
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1206--1221
+Underfull \hbox (badness 10000) in paragraph at lines 1265--1280
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1206--1221
+Underfull \hbox (badness 10000) in paragraph at lines 1265--1280
 
  []
 
-[49] [50] [51]
-Overfull \hbox (1.25073pt too wide) in paragraph at lines 1252--1253
+[51] [52] [53]
+Overfull \hbox (1.25073pt too wide) in paragraph at lines 1311--1312
 []\OT1/cmr/m/n/10 Manning, Ragha-van, Schutze, In-tro-duc-tion to In-for-ma-ti
 on Re-trieval, Cam-
  []
 
-[52] [53]
-Overfull \hbox (45.24687pt too wide) in paragraph at lines 1280--1281
+[54] [55]
+Overfull \hbox (45.24687pt too wide) in paragraph at lines 1340--1341
 [][]$\OT1/cmtt/m/n/10 https : / / github . com / ckan / ckanext-[]dcat # rdf-[]
 dcat-[]to-[]ckan-[]dataset-[]mapping$[] 
  []
 
 
-Overfull \hbox (43.74687pt too wide) in paragraph at lines 1283--1284
+Overfull \hbox (43.74687pt too wide) in paragraph at lines 1343--1344
 [][]$\OT1/cmtt/m/n/10 https : / / ec . europa . eu / jrc / en / language-[]tech
 nologies / jrc-[]eurovoc-[]indexer$[] 
  []
 
-[54]
-Underfull \hbox (badness 10000) in paragraph at lines 1295--1297
+[56]
+Underfull \hbox (badness 10000) in paragraph at lines 1355--1357
 
  []
 
-[55]pdfTeX warning (ext4): destination with the same identifier (name{Hfootnote
-.24}) has been already used, duplicate ignored
+[57]pdfTeX warning (ext4): destination with the same identifier (name{Hfootnote
+.25}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.1310 ...013. La Bussola della Trasparenza, 2014}
+l.1370 ...013. La Bussola della Trasparenza, 2014}
                                                   
-Underfull \hbox (badness 2717) in paragraph at lines 1310--1310
+Underfull \hbox (badness 2717) in paragraph at lines 1370--1370
 [][][]\OT1/cmr/m/n/8 Fumagalli, Trasparenza e Open Data: l'evoluzione del quadr
 o nor-ma-tivo fino
  []
 
-[56] [57] [58] [59]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1474.
- [60]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1474.
+[58] [59] [60] [61]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1534.
+ [62]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1534.
  (main.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1474.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1474.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1534.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1534.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 11720A30AFB07090FDB8AE62AA8AE2C7;4699.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1474.
+(rerunfilecheck)             Checksum: 8E328788CC9091A1989CAC3EF69E34A1;4783.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1534.
  ) 
 Here is how much of TeX's memory you used:
- 8914 strings out of 493334
- 126107 string characters out of 3136669
+ 8931 strings out of 493334
+ 126376 string characters out of 3136669
  250139 words of memory out of 3000000
- 12090 multiletter control sequences out of 15000+200000
+ 12099 multiletter control sequences out of 15000+200000
  9784 words of font info for 35 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,8n,40p,1216b,1256s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 37i,8n,40p,1016b,1256s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx10.pfb>
 <C:/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C
 :/Program Files (x86)/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmcsc10.pfb><C:
@@ -1329,9 +1429,9 @@ KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/MiKTeX
 fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fo
 nts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on main.pdf (61 pages, 990271 bytes).
+Output written on main.pdf (63 pages, 1097124 bytes).
 PDF statistics:
- 915 PDF objects out of 1000 (max. 8388607)
- 252 named destinations out of 1000 (max. 500000)
- 558 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 932 PDF objects out of 1000 (max. 8388607)
+ 258 named destinations out of 1000 (max. 500000)
+ 576 words of extra memory for PDF output out of 10000 (max. 10000000)
 

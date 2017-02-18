@@ -1,64 +1,65 @@
 \BOOKMARK [1][-]{section.1}{Introduzione}{}% 1
 \BOOKMARK [1][-]{section.2}{Contesto}{}% 2
-\BOOKMARK [2][-]{subsubsection.2.0.1}{Web semantico}{section.2}% 3
-\BOOKMARK [2][-]{subsection.2.1}{Open-data}{section.2}% 4
-\BOOKMARK [2][-]{subsection.2.2}{Open-government}{section.2}% 5
-\BOOKMARK [2][-]{subsection.2.3}{Interoperabilit\340 dei dati}{section.2}% 6
-\BOOKMARK [2][-]{subsection.2.4}{DCAT-AP e DCAT-AP-it}{section.2}% 7
-\BOOKMARK [2][-]{subsection.2.5}{CKAN}{section.2}% 8
-\BOOKMARK [3][-]{subsubsection.2.5.1}{European Data Portal}{subsection.2.5}% 9
-\BOOKMARK [3][-]{subsubsection.2.5.2}{Open Data Hub Italy}{subsection.2.5}% 10
-\BOOKMARK [3][-]{subsubsection.2.5.3}{Dati.gov.it}{subsection.2.5}% 11
-\BOOKMARK [2][-]{subsection.2.6}{EuroVoc}{section.2}% 12
-\BOOKMARK [2][-]{subsection.2.7}{JRC-Acquis 3.0}{section.2}% 13
-\BOOKMARK [3][-]{subsubsection.2.7.1}{Standard TEI}{subsection.2.7}% 14
-\BOOKMARK [3][-]{subsubsection.2.7.2}{Corpus aggiornato e manutenuto}{subsection.2.7}% 15
-\BOOKMARK [3][-]{subsubsection.2.7.3}{Corpus parallelo multilingua}{subsection.2.7}% 16
-\BOOKMARK [3][-]{subsubsection.2.7.4}{Bridge dinamico tra EuroVoc e le categorie DCAT-AP}{subsection.2.7}% 17
-\BOOKMARK [2][-]{subsection.2.8}{JRC-JEX: il classificatore EuroVoc}{section.2}% 18
-\BOOKMARK [1][-]{section.3}{Elaborazione del corpus}{}% 19
-\BOOKMARK [2][-]{subsection.3.1}{Lemmatizzazione}{section.3}% 20
-\BOOKMARK [2][-]{subsection.3.2}{Disambiguazione}{section.3}% 21
-\BOOKMARK [2][-]{subsection.3.3}{Stemming}{section.3}% 22
-\BOOKMARK [2][-]{subsection.3.4}{Snowball}{section.3}% 23
-\BOOKMARK [1][-]{section.4}{Algoritmi di classificazione}{}% 24
-\BOOKMARK [2][-]{subsection.4.1}{Tassonomia degli algoritmi di classificazione}{section.4}% 25
-\BOOKMARK [2][-]{subsection.4.2}{Classificatori bayesiani na\357ve}{section.4}% 26
-\BOOKMARK [2][-]{subsection.4.3}{Assunzioni di indipendenza delle feature}{section.4}% 27
-\BOOKMARK [2][-]{subsection.4.4}{Formula di Bayes}{section.4}% 28
-\BOOKMARK [2][-]{subsection.4.5}{Pseudocodice Na\357ve Bayes}{section.4}% 29
-\BOOKMARK [2][-]{subsection.4.6}{Stima delle probabilit\340 \(m-estimate\)}{section.4}% 30
-\BOOKMARK [2][-]{subsection.4.7}{Classificazione bayesiana di testi }{section.4}% 31
-\BOOKMARK [3][-]{subsubsection.4.7.1}{Rappresentazione testi}{subsection.4.7}% 32
-\BOOKMARK [3][-]{subsubsection.4.7.2}{Pseudocodice per la text categorization}{subsection.4.7}% 33
-\BOOKMARK [3][-]{subsubsection.4.7.3}{Stima delle probabilit\340}{subsection.4.7}% 34
-\BOOKMARK [3][-]{subsubsection.4.7.4}{Modello di Bernoulli}{subsection.4.7}% 35
-\BOOKMARK [3][-]{subsubsection.4.7.5}{Modello multinomiale}{subsection.4.7}% 36
-\BOOKMARK [3][-]{subsubsection.4.7.6}{Divergenza di Kullback-Leibler}{subsection.4.7}% 37
-\BOOKMARK [3][-]{subsubsection.4.7.7}{Approcci ad-hoc}{subsection.4.7}% 38
-\BOOKMARK [3][-]{subsubsection.4.7.8}{Performance}{subsection.4.7}% 39
-\BOOKMARK [1][-]{section.5}{Algoritmi di feature selection}{}% 40
-\BOOKMARK [2][-]{subsection.5.1}{Mutual information feature selection}{section.5}% 41
-\BOOKMARK [2][-]{subsection.5.2}{2 feature selection}{section.5}% 42
-\BOOKMARK [2][-]{subsection.5.3}{Frequency-based feature selection}{section.5}% 43
-\BOOKMARK [2][-]{subsection.5.4}{Benefici della feature selection}{section.5}% 44
-\BOOKMARK [1][-]{section.6}{Sperimentazioni e validazione}{}% 45
-\BOOKMARK [2][-]{subsection.6.1}{Metriche per l'evaluation}{section.6}% 46
-\BOOKMARK [2][-]{subsection.6.2}{K-fold-cross-validation}{section.6}% 47
-\BOOKMARK [1][-]{section.7}{Sistemi di catalogazione}{}% 48
-\BOOKMARK [2][-]{subsection.7.1}{JRC-JEX \(JRC EuroVoc Indexer\)}{section.7}% 49
-\BOOKMARK [3][-]{subsubsection.7.1.1}{Pre-processamento corpus}{subsection.7.1}% 50
-\BOOKMARK [3][-]{subsubsection.7.1.2}{Vector space model}{subsection.7.1}% 51
-\BOOKMARK [3][-]{subsubsection.7.1.3}{Weighting dei vettori}{subsection.7.1}% 52
-\BOOKMARK [2][-]{subsection.7.2}{BIOSIS}{section.7}% 53
-\BOOKMARK [2][-]{subsection.7.3}{NASA MAI System}{section.7}% 54
-\BOOKMARK [2][-]{subsection.7.4}{MeSH}{section.7}% 55
-\BOOKMARK [1][-]{section.8}{Aspetti software}{}% 56
-\BOOKMARK [2][-]{subsection.8.1}{Architettura}{section.8}% 57
-\BOOKMARK [2][-]{subsection.8.2}{Deployment}{section.8}% 58
-\BOOKMARK [1][-]{section.9}{Bibliografia e risorse}{}% 59
-\BOOKMARK [2][-]{subsection.9.1}{Bibliografia}{section.9}% 60
-\BOOKMARK [2][-]{subsection.9.2}{Link utili}{section.9}% 61
-\BOOKMARK [1][-]{section.10}{Appendice}{}% 62
-\BOOKMARK [2][-]{subsection.10.1}{Qualit\340 dei dataset secondo il W3C}{section.10}% 63
-\BOOKMARK [2][-]{subsection.10.2}{Associazione Temi DCAT - Microtesauri EuroVoc}{section.10}% 64
+\BOOKMARK [2][-]{subsubsection.2.0.1}{Semantic web}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.1}{Linked Open Data}{section.2}% 4
+\BOOKMARK [2][-]{subsection.2.2}{Open-data \046 PA}{section.2}% 5
+\BOOKMARK [2][-]{subsection.2.3}{Open-government}{section.2}% 6
+\BOOKMARK [2][-]{subsection.2.4}{Interoperabilit\340 dei dati \046 DCAT}{section.2}% 7
+\BOOKMARK [2][-]{subsection.2.5}{DCAT-AP e DCAT-AP-it}{section.2}% 8
+\BOOKMARK [2][-]{subsection.2.6}{CKAN}{section.2}% 9
+\BOOKMARK [3][-]{subsubsection.2.6.1}{European Data Portal}{subsection.2.6}% 10
+\BOOKMARK [3][-]{subsubsection.2.6.2}{Open Data Hub Italy}{subsection.2.6}% 11
+\BOOKMARK [3][-]{subsubsection.2.6.3}{Dati.gov.it}{subsection.2.6}% 12
+\BOOKMARK [2][-]{subsection.2.7}{EuroVoc}{section.2}% 13
+\BOOKMARK [2][-]{subsection.2.8}{JRC-Acquis 3.0}{section.2}% 14
+\BOOKMARK [3][-]{subsubsection.2.8.1}{Standard TEI}{subsection.2.8}% 15
+\BOOKMARK [3][-]{subsubsection.2.8.2}{Corpus aggiornato e manutenuto}{subsection.2.8}% 16
+\BOOKMARK [3][-]{subsubsection.2.8.3}{Corpus parallelo multilingua}{subsection.2.8}% 17
+\BOOKMARK [3][-]{subsubsection.2.8.4}{Bridge dinamico tra EuroVoc e le categorie DCAT-AP}{subsection.2.8}% 18
+\BOOKMARK [2][-]{subsection.2.9}{JRC-JEX: il classificatore EuroVoc}{section.2}% 19
+\BOOKMARK [1][-]{section.3}{Elaborazione del corpus}{}% 20
+\BOOKMARK [2][-]{subsection.3.1}{Lemmatizzazione}{section.3}% 21
+\BOOKMARK [2][-]{subsection.3.2}{Disambiguazione}{section.3}% 22
+\BOOKMARK [2][-]{subsection.3.3}{Stemming}{section.3}% 23
+\BOOKMARK [2][-]{subsection.3.4}{Snowball}{section.3}% 24
+\BOOKMARK [1][-]{section.4}{Algoritmi di classificazione}{}% 25
+\BOOKMARK [2][-]{subsection.4.1}{Tassonomia degli algoritmi di classificazione}{section.4}% 26
+\BOOKMARK [2][-]{subsection.4.2}{Classificatori bayesiani na\357ve}{section.4}% 27
+\BOOKMARK [2][-]{subsection.4.3}{Assunzioni di indipendenza delle feature}{section.4}% 28
+\BOOKMARK [2][-]{subsection.4.4}{Formula di Bayes}{section.4}% 29
+\BOOKMARK [2][-]{subsection.4.5}{Pseudocodice Na\357ve Bayes}{section.4}% 30
+\BOOKMARK [2][-]{subsection.4.6}{Stima delle probabilit\340 \(m-estimate\)}{section.4}% 31
+\BOOKMARK [2][-]{subsection.4.7}{Classificazione bayesiana di testi }{section.4}% 32
+\BOOKMARK [3][-]{subsubsection.4.7.1}{Rappresentazione testi}{subsection.4.7}% 33
+\BOOKMARK [3][-]{subsubsection.4.7.2}{Pseudocodice per la text categorization}{subsection.4.7}% 34
+\BOOKMARK [3][-]{subsubsection.4.7.3}{Stima delle probabilit\340}{subsection.4.7}% 35
+\BOOKMARK [3][-]{subsubsection.4.7.4}{Modello di Bernoulli}{subsection.4.7}% 36
+\BOOKMARK [3][-]{subsubsection.4.7.5}{Modello multinomiale}{subsection.4.7}% 37
+\BOOKMARK [3][-]{subsubsection.4.7.6}{Divergenza di Kullback-Leibler}{subsection.4.7}% 38
+\BOOKMARK [3][-]{subsubsection.4.7.7}{Approcci ad-hoc}{subsection.4.7}% 39
+\BOOKMARK [3][-]{subsubsection.4.7.8}{Performance}{subsection.4.7}% 40
+\BOOKMARK [1][-]{section.5}{Algoritmi di feature selection}{}% 41
+\BOOKMARK [2][-]{subsection.5.1}{Mutual information feature selection}{section.5}% 42
+\BOOKMARK [2][-]{subsection.5.2}{2 feature selection}{section.5}% 43
+\BOOKMARK [2][-]{subsection.5.3}{Frequency-based feature selection}{section.5}% 44
+\BOOKMARK [2][-]{subsection.5.4}{Benefici della feature selection}{section.5}% 45
+\BOOKMARK [1][-]{section.6}{Sperimentazioni e validazione}{}% 46
+\BOOKMARK [2][-]{subsection.6.1}{Metriche per l'evaluation}{section.6}% 47
+\BOOKMARK [2][-]{subsection.6.2}{K-fold-cross-validation}{section.6}% 48
+\BOOKMARK [1][-]{section.7}{Sistemi di catalogazione}{}% 49
+\BOOKMARK [2][-]{subsection.7.1}{JRC-JEX \(JRC EuroVoc Indexer\)}{section.7}% 50
+\BOOKMARK [3][-]{subsubsection.7.1.1}{Pre-processamento corpus}{subsection.7.1}% 51
+\BOOKMARK [3][-]{subsubsection.7.1.2}{Vector space model}{subsection.7.1}% 52
+\BOOKMARK [3][-]{subsubsection.7.1.3}{Weighting dei vettori}{subsection.7.1}% 53
+\BOOKMARK [2][-]{subsection.7.2}{BIOSIS}{section.7}% 54
+\BOOKMARK [2][-]{subsection.7.3}{NASA MAI System}{section.7}% 55
+\BOOKMARK [2][-]{subsection.7.4}{MeSH}{section.7}% 56
+\BOOKMARK [1][-]{section.8}{Aspetti software}{}% 57
+\BOOKMARK [2][-]{subsection.8.1}{Architettura}{section.8}% 58
+\BOOKMARK [2][-]{subsection.8.2}{Deployment}{section.8}% 59
+\BOOKMARK [1][-]{section.9}{Bibliografia e risorse}{}% 60
+\BOOKMARK [2][-]{subsection.9.1}{Bibliografia}{section.9}% 61
+\BOOKMARK [2][-]{subsection.9.2}{Link utili}{section.9}% 62
+\BOOKMARK [1][-]{section.10}{Appendice}{}% 63
+\BOOKMARK [2][-]{subsection.10.1}{Qualit\340 dei dataset secondo il W3C}{section.10}% 64
+\BOOKMARK [2][-]{subsection.10.2}{Associazione Temi DCAT - Microtesauri EuroVoc}{section.10}% 65
