@@ -39,10 +39,10 @@
 \BOOKMARK [3][-]{subsubsection.4.7.7}{Approcci ad-hoc}{subsection.4.7}% 39
 \BOOKMARK [3][-]{subsubsection.4.7.8}{Performance}{subsection.4.7}% 40
 \BOOKMARK [1][-]{section.5}{Algoritmi di feature selection}{}% 41
-\BOOKMARK [2][-]{subsection.5.1}{Mutual information feature selection}{section.5}% 42
-\BOOKMARK [2][-]{subsection.5.2}{2 feature selection}{section.5}% 43
-\BOOKMARK [2][-]{subsection.5.3}{Frequency-based feature selection}{section.5}% 44
-\BOOKMARK [2][-]{subsection.5.4}{Benefici della feature selection}{section.5}% 45
+\BOOKMARK [2][-]{subsection.5.1}{Benefici della feature selection}{section.5}% 42
+\BOOKMARK [2][-]{subsection.5.2}{Mutual information feature selection}{section.5}% 43
+\BOOKMARK [2][-]{subsection.5.3}{2 feature selection}{section.5}% 44
+\BOOKMARK [2][-]{subsection.5.4}{Frequency-based feature selection}{section.5}% 45
 \BOOKMARK [1][-]{section.6}{Sperimentazioni e validazione}{}% 46
 \BOOKMARK [2][-]{subsection.6.1}{Metriche per l'evaluation}{section.6}% 47
 \BOOKMARK [2][-]{subsection.6.2}{K-fold-cross-validation}{section.6}% 48

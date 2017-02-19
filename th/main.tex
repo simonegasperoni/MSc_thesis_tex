@@ -11,6 +11,7 @@
 \usepackage{dirtytalk}
 \usepackage{graphicx}
 \usepackage{listings}
+\usepackage{amsmath}
 \usepackage{color}
 \usepackage{hyperref}
 \definecolor{dkgreen}{rgb}{0,0.6,0}
@@ -1013,34 +1014,52 @@ Dobbiamo tuttavia considerare che le performance degli algoritmi di machine lear
 In finale, la scelta tra i vari modelli di classificazione e le tecniche di processamento dei corpi testuali vanno considerate contestualmente al task di classificazione specifico, non esistono soluzioni sempre valide.
 \newpage
 \section{Algoritmi di feature selection}
-La selezione delle feature è il processo che ci porta a selezionare un sottoinsieme di feature (termini nella text classification), solo questo sottoinsieme sarà utilizzato come training set per i nostri classificatori.
-I motivi principali per cui si procede ad una selezione delle feature sono due: innanzi tutto alcuni modelli possono essere addestrati solo con un insieme di feature contenuto, data la loro complessità computazionale in fase di addestramento o predizione. In secondo luogo dobbiamo considerare che i classificatori tendono ad essere più precisi quando il numero delle feature è ridotto, molte feature, non solo non sono determinanti nell'individuazione della classe di appartenenza di un documento, ma possono addirittura introdurre un rumore (noise feature). Le noise feature sono quelle feature che occorrendo accidentalmente in una sola classe si rendono responsabili di errate generalizzazioni che colpiscono l'accuratezza della classificazione (overfitting).
-Introduction to Information Retrieval\footnotemark descrive tre procedure per la selezione di feature:
+La selezione delle feature è una tecnica di riduzione di dimensionalità di feature che fornisce miglior potere predittivo nella modellazione dei dati. È utile quando si lavora con dati di ampie dimensioni oppure quando la raccolta di dati per tutte le feature è proibitiva dal punto di vista dei costi.
+\\
+\\
+La selezione delle feature è, dunque, il processo che ci porta a selezionare un sottoinsieme di feature (termini nella text classification), solo questo sottoinsieme sarà utilizzato come training set per i nostri classificatori. I motivi principali per cui si procede ad una selezione delle feature sono due: innanzi tutto alcuni modelli possono essere addestrati solo con un insieme di feature contenuto, data la loro complessità computazionale in fase di addestramento o predizione. 
+\\
+\\
+In secondo luogo dobbiamo considerare che i classificatori tendono ad essere più precisi quando il numero delle feature è ridotto, molte feature, non solo non sono determinanti nell'individuazione della classe di appartenenza di un documento, ma possono addirittura introdurre un rumore (noise feature). Le \say{noise feature} sono quelle feature che occorrendo accidentalmente in una sola classe si rendono responsabili di errate generalizzazioni che colpiscono l'accuratezza della classificazione (overfitting).
+\\
+\\
+La feature selection talvolta è realizzata in modo totalmente randomica, vale a dire, selezionando sottoinsiemi casuali di feature e validando le performance finché non si raggiungono le prestazioni relative migliori.
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.70]{img/fs.jpeg}
+\caption{Feature selection randomica}
+\end{center}
+\end{figure}
+Approcci di questo tipo sono molto dispendiosi, solitamente si procede con tecniche più deterministiche basate sulla teoria dell'informazione e della probabilità. Introduction to Information Retrieval\footnotemark descrive tre procedure per la selezione di feature (funzioni di utilità delle feature):
 \begin{itemize}  
 \item Mutual information
 \item Chi square
 \item Frequency based
 \end{itemize}
-Queste tre procedure ci permettono di ottenere una misura di utilità di ciascuna feature.
-
 \footnotetext{Manning, Raghavan, Schütze, Introduction to Information Retrieval, Cambridge University Press, 2008}
-
-\subsection{Mutual information feature selection}
-Mutual information di un termine t e una classe c è la misura di quanto la feature contribuisce a determinare la corretta classificazione
-
-\subsection{$\chi^2$ feature selection}
-Nella selezione delle feature $\chi^2$ si sfrutta l'intuizione statistica del test $\chi^2$ che serve a determinare il grado di indipendenza tra eventi, nel nostro caso tra feature e classe di appartenenza.
-\[\chi^2(t,c)=\sum_{t \in [0,1]} \sum_{c \in [0,1]} \frac{(N_{c,t} - E_{c,t})^2}{E_{c,t}} \]  Il calcolo delle N riguarda le frequenze osservate: $N_{1,1}$ è il numero di documenti nei quali occorre il termine t nella classe c, $N_{1,0}$ è il numero di documenti nei quali non occorre il termine t nella classe c, $N_{0,1}$ è il numero di documenti nei quali occorre il termine t in tutte le classi eccetto la classe c, $N_{0,0}$ è il numero di documenti nei quali non occorre il termine t in tutte le classi eccetto c. 
+Queste tre procedure forniscono delle metriche per misurare l'utilità di una feature. Indipendentemente dalla misura di utilità che si sceglie, la feature selection seguirà il seguente algoritmo per selezionare le $k$ migliori feature per ciascuna categoria (le più significative):
 \\
 \\
-$E_{c,t}$ sono le frequenze attese che il termine t e la classe c occorrano nello stesso documento essendo indipendenti:
-\[ E_{c,t}= N \cdot P(t) \cdot P(c) \] 
-ad esempio
-\[ E_{1,1}= N \cdot \frac{N_{1,1} + N_{1,0}}{N} \cdot \frac{N_{1,1} + N_{0,1}}{N} \]
-
-\subsection{Frequency-based feature selection}
-Tra le tre procedure è la più semplice, consiste nell'andare a selezionare solo le feature che occorrono di più nelle varie classi. La frequenza può essere considerata come \say{Document frequency} (numero di documenti della classe che contengono una determinata feature), o come \say{Collection frequency} (numero di occorrenze della feature in una classe, senza considerare i documenti).
-\say{Document frequency} è più appropriata per il modello di Bernoulli, mentre invece la \say{Collection frequency} è più appropriata per il modello multinomiale. Sebbene questo metodo sia molto meno complesso rispetto agli altri due, questo approccio introduce una limitazione, nel selezionare le feature potrebbe includere feature trasversali alle classi, queste feaure non danno un contributo informativo circa il legame tra la feature e la classe.
+\begin{verbatim}
+SELECT FEATURE(DOCs, CATs, k)
+   DOCs: doucumenti
+   CATs: classi
+   k: numero di top feature da selezionare per classe 
+   
+   Voc <- EstrazioneVocabolario(DOCs): vocabolario
+   L <- []: migliori feature
+   U <- []: utilità di tutte le feature   
+   
+   for each feature t of Voc
+         U[t,c]=CalcoloUtilità(t,c)
+   
+   repeat k times      
+      for each categoria c of CATs
+         feature t <- Max(U[t,c])       
+         L.put(t)
+   
+   return L
+\end{verbatim} 
 
 \newpage
 \subsection{Benefici della feature selection}
@@ -1051,19 +1070,82 @@ In \say{Introduction to Information Retrieval (Manning, Raghavan, Schütze)}\foo
 \item Chi square feature selection - Bayes multinomiale
 \item Frequency based feature selection - Bayes multinomiale
 \item Mutual information feature selection - Bayes binomiale
-
 \end{itemize}
-
 \begin{figure}[htbp]
 \begin{center}
 \includegraphics[scale=0.80]{img/fselection.png}
 \caption{Benefici della feature selection su alcuni corpora REUTERS}
 \end{center}
 \end{figure}
-
 Come si può notare, tramite la limitazione del numero di feature si raggiunge una F-measure più alta, in questo caso sia il classificatore multinomiale che quello binomiale è più accurato con circa 100 feature.
 
 
+\newpage
+\subsection{Mutual information feature selection}
+Mutual information è una misura di utilità delle feature che sfrutta l'intuizione della teoria dell'informazione. L'informazione mutua di un termine $t$ (feature) e una classe $c$ è la misura di quanto la presenza o assenza della feature contribuisce a determinare la corretta classificazione sulla classe $c$.
+\\
+\\
+Formalmente:
+$$I(U,C)=\sum_{e_t \in [0,1]} \sum_{e_c \in [0,1]} P(U=e_t, C=e_c) \log_2 \frac{P(U=e_t, C=e_c)}{P(U=e_t)P(C=e_c)}$$
+Dove $U$ è una variabile random che assume il valore $e_t=1$ (il documento contiene il termine $t$), $e_t=0$ (il documento non contiene il termine $t$); analogamente $C$ è una variabile random che assume il valore $e_c=1$ (il documento appartiene alla classe $c$), $e_c=0$ (il documento non appartiene alla classe $c$).
+\\
+\\
+Aritmicamente si ha:
+$$I(U,C)=X_{11}+X_{10}+X_{01}+X_{00}$$
+$$X{11}=\frac{n_{11}}{n} \cdot \log_2 \frac{n \cdot n_{11}}{(n_{11}+n_{01})\cdot(n_{11}+n_{10})};
+X{10}=\frac{n_{10}}{n} \cdot \log_2 \frac{n \cdot n_{10}}{(n_{10}+n_{00})\cdot(n_{11}+n_{10})}$$
+$$X{01}=\frac{n_{01}}{n} \cdot \log_2 \frac{n \cdot n_{01}}{(n_{11}+n_{01})\cdot(n_{01}+n_{00})};
+X{00}=\frac{n_{00}}{n} \cdot \log_2 \frac{n \cdot n_{00}}{(n_{10}+n_{00})\cdot(n_{01}+n_{00})}$$
+\\
+\\
+con $n$ numero di documenti totali, $n_{tc}$ è il numero di documenti con $e_t \in [0,1]$ e $e_c \in [0,1]$, quindi ad esempio $n_{10}$ è il numero di documenti in cui occorre il termine $t$ ma non la classe $c$, $n_{11}$ è il numero di documenti in cui occorre il termine $t$ e la classe $c$, e così via.
+\\
+\\
+La misura di utilità è, dunque, $I(U,C)$, utilizzando dei valori di soglia per categoria si possono scegliere le $k$ feature più significative per ciascuna categoria.
+\subsection{$\chi^2$ feature selection}
+Nella selezione delle feature $\chi^2$ si sfrutta l'intuizione probabilistica del test $\chi^2$ che serve a determinare il grado di indipendenza tra eventi, nel nostro caso tra feature e classe di appartenenza:
+$$\chi^2(t,c)=\sum_{t \in [0,1]} \sum_{c \in [0,1]} \frac{(N_{e_{t}e_{c}} - E_{e_{t}e_{c}})^2}{E_{e_{t}e_{c}}} $$  
+Il calcolo delle $N$ come nel calcolo delle $n$ nell'informazione mutua riguarda le frequenze osservate: $N_{11}$ è il numero di documenti nei quali occorre il termine $t$ nella classe $c$, $N_{10}$ è il numero di documenti nei quali non occorre il termine $t$ nella classe $c$, $N_{01}$ è il numero di documenti nei quali occorre il termine $t$ in tutte le classi eccetto la classe $c$, $N_{00}$ è il numero di documenti nei quali non occorre il termine $t$ in tutte le classi eccetto $c$.
+\\ 
+\\
+Aritmicamente:
+$$\chi^2(t,c)=\frac{(n11+n10+n01+n00) \cdot ((n11*n00)-(n10*n01))^2}{(n11+n01)*(n11+n10)*(n10+n00)*(n01+n00)}
+$$
+$E_{e_{t}e_{c}}$ sono le frequenze attese che il termine $t$ e la classe $c$ occorrano nello stesso documento essendo indipendenti:
+$$E_{e_{t}e_{c}} = N \cdot P(t) \cdot P(c)$$
+Come si può notare, il calcolo del $\chi^2$ rappresenta lo scarto del valore osservato rispetto all'assunzione di indipendenza delle feature e delle categorie. 
+\\
+Un alto valore di $\chi^2$ indica che l'ipotesi di indipendenza (la quale indica che il valore atteso ed il osservato devono essere simili) è sbagliata.
+\\
+\\
+I valori di criticità della distribuzione $\chi^2$ con un grado di libertà, ad esempio, se i due eventi sono indipendenti, allora $p$ ($\chi^2>6.63$) è minore di 0.01. Quindi per $\chi^2>6.63$ l'assunzione di indipendenza può essere scartata con una confidenza del 99% 
+\\
+\\
+\begin{tabular}{l*{6}{c}r}
+p  & $\chi^2$ critical value \\
+\hline
+0.1 & 2.71 \\
+0.05 & 3.84 \\
+0.01 & 6.63 \\
+0.005 & 7.88 \\
+0.0001 & 10.83 \\
+
+\end{tabular}
+\\
+\\
+Esattamente come l'informazione mutua anche il $\chi^2$ si può considerare misura di utilità della feature, e come per l'informazione mutua è possibile variare il valore di soglia dell'utilità per categoria per selezionare più o meno feature. 
+\\
+\\
+In particolare all'aumentare del valore di $\chi^2$ la probabilità che l'occorrenza della feature e l'occorrenza della categoria siano eventi indipendenti è sempre più bassa (come mostrato nella tabella). Alla luce di questo il valore di soglia dovrà essere molto alto per selezionare poche feature, molto basso per selezionarne di più, e così via.
+\subsection{Frequency-based feature selection}
+Frequency-based feature selection è la tecnica più intuitiva e più semplice, consiste nell'andare a selezionare solo le feature che occorrono di più nelle varie classi. 
+\\
+\\
+La frequenza può essere considerata come \say{Document frequency} (numero di documenti della classe che contengono una determinata feature), o come \say{Collection frequency} (numero di occorrenze della feature in una classe, senza considerare i documenti).
+\say{Document frequency} è più appropriata per il modello di Bernoulli, mentre invece la \say{Collection frequency} è più appropriata per il modello multinomiale. 
+\\
+\\
+Sebbene questo metodo sia molto meno complesso rispetto agli altri due, questo approccio introduce una limitazione, nel selezionare le feature potrebbe includere feature trasversali alle classi, queste feaure non danno un contributo informativo circa il legame tra la feature e la classe.
 
 \newpage
 \section{Sperimentazioni e validazione}

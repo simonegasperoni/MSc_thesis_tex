@@ -39,27 +39,27 @@
 \contentsline {subsubsection}{\numberline {4.7.7}Approcci ad-hoc}{38}{subsubsection.4.7.7}
 \contentsline {subsubsection}{\numberline {4.7.8}Performance}{39}{subsubsection.4.7.8}
 \contentsline {section}{\numberline {5}Algoritmi di feature selection}{40}{section.5}
-\contentsline {subsection}{\numberline {5.1}Mutual information feature selection}{40}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}$\chi ^2$ feature selection}{40}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}Frequency-based feature selection}{41}{subsection.5.3}
-\contentsline {subsection}{\numberline {5.4}Benefici della feature selection}{42}{subsection.5.4}
-\contentsline {section}{\numberline {6}Sperimentazioni e validazione}{43}{section.6}
-\contentsline {subsection}{\numberline {6.1}Metriche per l'evaluation}{43}{subsection.6.1}
-\contentsline {subsection}{\numberline {6.2}K-fold-cross-validation}{44}{subsection.6.2}
-\contentsline {section}{\numberline {7}Sistemi di catalogazione}{46}{section.7}
-\contentsline {subsection}{\numberline {7.1}JRC-JEX (JRC EuroVoc Indexer)}{46}{subsection.7.1}
-\contentsline {subsubsection}{\numberline {7.1.1}Pre-processamento corpus}{47}{subsubsection.7.1.1}
-\contentsline {subsubsection}{\numberline {7.1.2}Vector space model}{48}{subsubsection.7.1.2}
-\contentsline {subsubsection}{\numberline {7.1.3}Weighting dei vettori}{49}{subsubsection.7.1.3}
-\contentsline {subsection}{\numberline {7.2}BIOSIS}{51}{subsection.7.2}
-\contentsline {subsection}{\numberline {7.3}NASA MAI System}{51}{subsection.7.3}
-\contentsline {subsection}{\numberline {7.4}MeSH}{52}{subsection.7.4}
-\contentsline {section}{\numberline {8}Aspetti software}{53}{section.8}
-\contentsline {subsection}{\numberline {8.1}Architettura}{53}{subsection.8.1}
-\contentsline {subsection}{\numberline {8.2}Deployment}{53}{subsection.8.2}
-\contentsline {section}{\numberline {9}Bibliografia e risorse}{54}{section.9}
-\contentsline {subsection}{\numberline {9.1}Bibliografia}{54}{subsection.9.1}
-\contentsline {subsection}{\numberline {9.2}Link utili}{56}{subsection.9.2}
-\contentsline {section}{\numberline {10}Appendice}{57}{section.10}
-\contentsline {subsection}{\numberline {10.1}Qualit\IeC {\`a} dei dataset secondo il W3C}{57}{subsection.10.1}
-\contentsline {subsection}{\numberline {10.2}Associazione Temi DCAT - Microtesauri EuroVoc}{59}{subsection.10.2}
+\contentsline {subsection}{\numberline {5.1}Benefici della feature selection}{42}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Mutual information feature selection}{43}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}$\chi ^2$ feature selection}{43}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}Frequency-based feature selection}{44}{subsection.5.4}
+\contentsline {section}{\numberline {6}Sperimentazioni e validazione}{46}{section.6}
+\contentsline {subsection}{\numberline {6.1}Metriche per l'evaluation}{46}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}K-fold-cross-validation}{47}{subsection.6.2}
+\contentsline {section}{\numberline {7}Sistemi di catalogazione}{49}{section.7}
+\contentsline {subsection}{\numberline {7.1}JRC-JEX (JRC EuroVoc Indexer)}{49}{subsection.7.1}
+\contentsline {subsubsection}{\numberline {7.1.1}Pre-processamento corpus}{50}{subsubsection.7.1.1}
+\contentsline {subsubsection}{\numberline {7.1.2}Vector space model}{51}{subsubsection.7.1.2}
+\contentsline {subsubsection}{\numberline {7.1.3}Weighting dei vettori}{52}{subsubsection.7.1.3}
+\contentsline {subsection}{\numberline {7.2}BIOSIS}{54}{subsection.7.2}
+\contentsline {subsection}{\numberline {7.3}NASA MAI System}{54}{subsection.7.3}
+\contentsline {subsection}{\numberline {7.4}MeSH}{55}{subsection.7.4}
+\contentsline {section}{\numberline {8}Aspetti software}{56}{section.8}
+\contentsline {subsection}{\numberline {8.1}Architettura}{56}{subsection.8.1}
+\contentsline {subsection}{\numberline {8.2}Deployment}{56}{subsection.8.2}
+\contentsline {section}{\numberline {9}Bibliografia e risorse}{57}{section.9}
+\contentsline {subsection}{\numberline {9.1}Bibliografia}{57}{subsection.9.1}
+\contentsline {subsection}{\numberline {9.2}Link utili}{59}{subsection.9.2}
+\contentsline {section}{\numberline {10}Appendice}{60}{section.10}
+\contentsline {subsection}{\numberline {10.1}Qualit\IeC {\`a} dei dataset secondo il W3C}{60}{subsection.10.1}
+\contentsline {subsection}{\numberline {10.2}Associazione Temi DCAT - Microtesauri EuroVoc}{62}{subsection.10.2}
