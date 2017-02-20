@@ -1,6 +1,8 @@
 #open-cata project
 This rep contains notes about my MSc Computer engineering thesis about administrative open-data categorization with text mining techniques. Open-CATA is a text classifier (Bayesian classifier) designed to assign a category Eu-Data-Themes for each dataset (open-data) of the Open Data Hub Italy portal (http://www.sciamlab.com/opendatahub).
 
+![Alt text](th/img/abstract.png?raw=true "abstract")
+
 Open-CATA is optimized for the categorization of open-data using the data model DCAT-AP, it combines the following techniques to get the best results:
 
 1. Multiclass task with Multinomial, Bernoulli (posteriori probability)
