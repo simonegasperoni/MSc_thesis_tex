@@ -4,7 +4,6 @@ import com.sciamlab.it.cata.training.TrainingSet;
 public class BayesMultinomialWF extends BayesMultinomial{
 
 	public BayesMultinomialWF(TrainingSet trainingSet){
-		this.featureSelector.filter(trainingSet);
 		
 		this.featureToCategoryCountMap=trainingSet.getDf();
 		System.out.println("df map size: "+featureToCategoryCountMap.size());

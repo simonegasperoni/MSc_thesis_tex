@@ -11,7 +11,7 @@ import com.sciamlab.it.cata.training.TrainingSet;
 public class BayesTagBased extends Bayes{
 	
 	public BayesTagBased(TrainingSet trainingSet){
-		this.featureSelector.filter(trainingSet);
+
 
 		this.featureToCategoryCountMap=trainingSet.getDf();
 		System.out.println("df map size: "+featureToCategoryCountMap.size());

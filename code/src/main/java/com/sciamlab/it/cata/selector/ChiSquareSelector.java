@@ -21,10 +21,10 @@ public class ChiSquareSelector extends GenericFeatureSelector {
 			Map<Theme, Map<String, Integer>> n=data.get(feature);
 			chiscore.put(feature, new HashMap<Theme, Double>());
 			for(Theme theme:n.keySet()){
-				Double n00=(double)n.get(theme).get("n00");
-				Double n01=(double)n.get(theme).get("n01");
-				Double n10=(double)n.get(theme).get("n10");
-				Double n11=(double)n.get(theme).get("n11");
+				double n00=(double)n.get(theme).get("n00");
+				double n01=(double)n.get(theme).get("n01");
+				double n10=(double)n.get(theme).get("n10");
+				double n11=(double)n.get(theme).get("n11");
 				double score=((n11+n10+n01+n00)
 						*Math.pow((n11*n00)-(n10*n01),2))
 						/((n11+n01)*(n11+n10)*(n10+n00)*(n01+n00));

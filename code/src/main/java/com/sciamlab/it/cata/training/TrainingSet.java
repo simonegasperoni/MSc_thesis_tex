@@ -1,7 +1,10 @@
 package com.sciamlab.it.cata.training;
 import java.util.Map;
+import java.util.Set;
+
 import com.sciamlab.common.model.mdr.vocabulary.EUNamedAuthorityDataTheme.Theme;
 import com.sciamlab.it.cata.classifier.ClassifiedEntry;
+import com.sciamlab.it.cata.selector.GenericFeatureSelector;
 
 public interface TrainingSet {
 
@@ -17,6 +20,14 @@ public interface TrainingSet {
 	//document frequency per term
 	public void createTermOccurences();
 	
+	public TrainingSet clone();
+	public TrainingSet merge(TrainingSet t);
+	public TrainingSet remove(TrainingSet ts);
+	public TrainingSet filter(GenericFeatureSelector fs);
+	public TrainingSet remove(Set<String> stopfeatures);
+	
+	
+	
 	//getters
 	public Map<String, ClassifiedEntry> getDocMap();
 	public Map<String, Map<Theme, Integer>> getDf();
@@ -25,8 +36,6 @@ public interface TrainingSet {
 	public Map<Theme, Integer> getSumDF();
 	public Map<Theme, Integer> getSumTF();
 	public Map<String, Integer> getTermOccurences();
-	public TrainingSet clone();
-	public void merge(TrainingSet t);
 	
 
 }

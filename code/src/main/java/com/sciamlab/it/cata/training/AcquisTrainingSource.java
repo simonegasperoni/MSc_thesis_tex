@@ -86,7 +86,7 @@ public class AcquisTrainingSource implements TrainingSource {
 		}
 	}
 	
-	public TrainingSet getTrainingSet() {
+	public TrainingSet getTrainingSet(Object... objects) {
 		trainingSet = new TrainingSetImpl(docMap);
 		return this.trainingSet;		
 	}

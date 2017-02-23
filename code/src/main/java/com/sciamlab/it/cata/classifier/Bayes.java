@@ -15,7 +15,6 @@ public abstract class Bayes implements Classifier{
 	protected Map<Theme, Integer> categoryWholeCountMap;
 	protected Map<String, Map<Theme, Integer>> featureToCategoryCountMap;
 	protected Map<Theme, Integer> docCounter;
-	protected GenericFeatureSelector featureSelector=new ChiSquareSelector(2000);
 	Thresholder thr=new MaxMinProportionalScore(1.0/9.0);
 	
 	// P(c) calculus - BAYES classifier

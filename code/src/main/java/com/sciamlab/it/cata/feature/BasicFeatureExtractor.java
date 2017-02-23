@@ -318,16 +318,14 @@ public abstract class BasicFeatureExtractor implements FeatureExtractor {
 	public List<String> extract(PredictionEntry entry) throws Exception {
 		List<String> res= new ArrayList<String>();
 
-		if(entry.getTitle()!=null){
-			res.addAll(this.execute(entry.getTitle()));
+		if(entry.title!=null){
+			res.addAll(this.execute(entry.title));
 		}
-		if(entry.getDescription()!=null){
-			res.addAll(this.execute(entry.getDescription()));
+		if(entry.description!=null){
+			res.addAll(this.execute(entry.description));
 		}
-		if(entry.getTags()!=null){
-			for(String s:entry.getTags()) res.addAll(this.execute(s));
-		}
-
+		for(String s:entry.tags) res.addAll(this.execute(s));
+		
 		return res;
 	}
 

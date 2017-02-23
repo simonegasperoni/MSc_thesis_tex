@@ -1,35 +1,29 @@
 package com.sciamlab.it.cata.classifier;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class PredictionEntry {
 
+
+	public final String id;
 	public final String title;
 	public final String description;
 	public final Set<String> tags;
+	public final String publisher;
 	
-	public PredictionEntry(String title, String description, Set<String> tags) {
+	public PredictionEntry(Builder builder) {
 		super();
-		this.title = title;
-		this.description = description;
-		this.tags = tags;
-	}
-	
-	public String getTitle() {
-		return title;
-	}
-	
-	public String getDescription() {
-		return description;
-	}
-	
-	public Set<String> getTags() {
-		return tags;
+		this.publisher=builder.publisher;
+		this.id = builder.id;
+		this.title = builder.title;
+		this.description = builder.description;
+		this.tags = builder.tags;
 	}
 
 	@Override
 	public String toString() {
-		return "title=" + title + ", description=" + description + ", tags=" + tags;
+		return "id=" + id + ", title=" + title + ", description=" + description + ", tags=" + tags;
 	}
 
 	@Override
@@ -69,5 +63,45 @@ public class PredictionEntry {
 		return true;
 	}
 	
+	public static class Builder{
+		private String publisher;
+		private String id;
+		private String title;
+		private final String description;
+		private final Set<String> tags = new HashSet<String>();
+		
+		public Builder publisher(String publisher){
+			this.publisher = publisher;
+			return this;
+		}
+		
+		public Builder(String description){
+			this.description = description;
+		}
+		
+		public Builder title(String title){
+			this.title = title;
+			return this;
+		}
+		
+		public Builder id(String id){
+			this.id = id;
+			return this;
+		}
+		
+		public Builder tag(String tag){
+			this.tags.add(tag);
+			return this;
+		}
+		
+		public Builder tag(Set<String> tags){
+			this.tags.addAll(tags);
+			return this;
+		}
+		
+		public PredictionEntry build(){
+			return new PredictionEntry(this);
+		}
+	}
 	
 }

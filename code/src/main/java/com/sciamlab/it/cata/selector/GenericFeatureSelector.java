@@ -2,8 +2,11 @@ package com.sciamlab.it.cata.selector;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
 import com.sciamlab.common.model.mdr.vocabulary.EUNamedAuthorityDataTheme.Theme;
 import com.sciamlab.it.cata.training.TrainingSet;
 
@@ -108,7 +111,7 @@ public abstract class GenericFeatureSelector implements FeatureSelector{
 		return thresholds;
 	}
 	
-	public void filter(TrainingSet ts) {
+	public Set<String> getFilteredFeatures(TrainingSet ts) {
 		System.out.println(this.getClass().toString()+": feature filtering");
 
 		
@@ -116,8 +119,9 @@ public abstract class GenericFeatureSelector implements FeatureSelector{
 		Map<Theme, Double> thresholds=this.getThresholds(score, num);
 		
 		//System.out.println(thresholds);
-		Map<String,Map<Theme,Integer>> df=ts.getDf();
+//		Map<String,Map<Theme,Integer>> df=ts.getDf();
 		
+		Set<String> fetaures_removed = new HashSet<String>();
 		for(String feature:score.keySet()){
 			
 			 Map<Theme,Double>map =score.get(feature);
@@ -135,8 +139,10 @@ public abstract class GenericFeatureSelector implements FeatureSelector{
 			 if(map.get(Theme.REGI)>thresholds.get(Theme.REGI)) continue;
 			 if(map.get(Theme.HEAL)>thresholds.get(Theme.HEAL)) continue;
 			 //System.out.println("!!");
-			 df.remove(feature);
+//			 df.remove(feature);
+			 fetaures_removed.add(feature);
 		 }
+		return fetaures_removed;
 	}
 	public  abstract Map<String, Map<Theme, Double>> getScores(TrainingSet ts);
 }

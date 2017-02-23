@@ -35,5 +35,21 @@ public class StemFeatureExtractor extends BasicFeatureExtractor {
 		}
 		return result;
 	}
+	
+	public static void main(String[] args) throws IOException{
+		StemFeatureExtractor sfe=new StemFeatureExtractor();
+	     //cir colored infrared foto aerea infrarosso orto immagini ortofoto 
+		System.out.println(sfe.execute("cir"));
+		System.out.println(sfe.execute("colored"));
+		System.out.println(sfe.execute("infrared"));
+		System.out.println(sfe.execute("foto"));
+		System.out.println(sfe.execute("area"));
+		System.out.println(sfe.execute("infrarosso"));
+		System.out.println(sfe.execute("orto"));
+		System.out.println(sfe.execute("immagini"));
+		System.out.println(sfe.execute("ortofoto"));
+		
+		
+	}
 
 }

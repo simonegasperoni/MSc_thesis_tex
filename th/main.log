@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.10.9)  19 FEB 2017 16:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (MiKTeX 2.9) (preloaded format=pdflatex 2016.10.9)  21 FEB 2017 10:17
 entering extended mode
 **./main.tex
 (main.tex
@@ -407,11 +407,6 @@ Underfull \hbox (badness 10000) in paragraph at lines 72--82
  []
 
 [3] [4]
-
-Package hyperref Warning: Difference (2) between bookmark levels is greater 
-(hyperref)                than one, level fixed on input line 88.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 89--110
 
  []
@@ -1543,12 +1538,12 @@ Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1616.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1616.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 0E186D6FAB404C9CE8AF8F53EE2A8B1E;4783.
+(rerunfilecheck)             Checksum: AD0B5B67E8E1A73DB66C2EDDC0599EEC;4779.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1616.
  ) 
 Here is how much of TeX's memory you used:
  9506 strings out of 493334
- 132953 string characters out of 3136669
+ 132945 string characters out of 3136669
  260544 words of memory out of 3000000
  12650 multiletter control sequences out of 15000+200000
  10912 words of font info for 40 fonts, out of 3000000 for 9000
@@ -1571,7 +1566,7 @@ KTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files (x86)/MiKTeX
 fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files (x86)/MiKTeX 2.9/fo
 nts/type1/public/amsfonts/cm/cmtt10.pfb><C:/Program Files (x86)/MiKTeX 2.9/font
 s/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on main.pdf (66 pages, 1169682 bytes).
+Output written on main.pdf (66 pages, 1169646 bytes).
 PDF statistics:
  947 PDF objects out of 1000 (max. 8388607)
  262 named destinations out of 1000 (max. 500000)

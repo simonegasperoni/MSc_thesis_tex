@@ -4,9 +4,12 @@ import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+
 import com.sciamlab.common.model.mdr.vocabulary.EUNamedAuthorityDataTheme;
 import com.sciamlab.common.model.mdr.vocabulary.EUNamedAuthorityDataTheme.Theme;
 import com.sciamlab.it.cata.classifier.ClassifiedEntry;
+import com.sciamlab.it.cata.selector.GenericFeatureSelector;
 
 public class TrainingSetImpl implements TrainingSet {
 	private Map<String, Map<Theme, Integer>> tf;
@@ -24,6 +27,7 @@ public class TrainingSetImpl implements TrainingSet {
 
 	public TrainingSet clone(){
 		TrainingSet t=new TrainingSetImpl(new HashMap<String, ClassifiedEntry>(this.docMap));
+		//potrebbe esssere utile fare la clonazione di df, tf se già fatte
 		return t;
 	}
 	
@@ -61,7 +65,7 @@ public class TrainingSetImpl implements TrainingSet {
 	}
 
 	public Map<String, Map<Theme, Integer>> createDF(){
-		if(df==null){
+//		if(df==null){
 			System.out.println(this.getClass().toString()+": creating df map");
 			df=new HashMap<String, Map<Theme, Integer>>();
 			for(ClassifiedEntry c:docMap.values()){
@@ -90,7 +94,7 @@ public class TrainingSetImpl implements TrainingSet {
 					}
 				}
 			}
-		}
+//		}
 		return df;
 	}
 	
@@ -165,10 +169,12 @@ public class TrainingSetImpl implements TrainingSet {
 	}
 	
 	public Map<String, Map<Theme, Integer>> getDf() {
+		if(this.df== null) this.createDF();
 		return df;
 	}
 	
 	public Map<String, Map<Theme, Integer>> getTf() {
+		if(this.tf== null) this.createTF();
 		return tf;
 	}
 	
@@ -181,10 +187,12 @@ public class TrainingSetImpl implements TrainingSet {
 	}
 	
 	public Map<Theme, Integer> getSumDF() {
+		if(this.sumDF==null) this.createSumDF();
 		return sumDF;
 	}
 	
 	public Map<Theme, Integer> getSumTF() {
+		if(this.sumTF==null) this.createSumTF();
 		return sumTF;
 	}
 
@@ -194,8 +202,9 @@ public class TrainingSetImpl implements TrainingSet {
 		
 		countTerm=new HashMap<String, Integer>();
 		for(ClassifiedEntry c:docMap.values()){
+			//levo i doppioni
 			List<String> fs =new ArrayList<>(new LinkedHashSet<>(c.featureSet));
-			for(String f:fs){
+			for(String f: fs){
 				if(countTerm.get(f)==null){
 					countTerm.put(f, 1);
 				}
@@ -212,11 +221,54 @@ public class TrainingSetImpl implements TrainingSet {
 	}
 
 	@Override
-	public void merge(TrainingSet t) {
+	public TrainingSet merge(TrainingSet t) {
+		
 		this.docMap.putAll(t.getDocMap());
 		
+		if(this.df!= null) this.createDF();
+		if(this.tf!= null) this.createTF();
+		if(this.sumDF!= null) this.createSumDF();
+		if(this.sumTF!= null) this.createSumTF();
+		
+		return this;
+	}
+	
+	public TrainingSet remove(TrainingSet ts){
+		Map<String, Map<Theme, Integer>> dfts=ts.getDf();
+		Set<String> stopfeatures=dfts.keySet();
+		return this.remove(stopfeatures);
 	}
 
+	public TrainingSet filter(GenericFeatureSelector fs){
+		Set<String> stopfeatures = fs.getFilteredFeatures(this);
+		return this.remove(stopfeatures);
+	}
+	
+	public TrainingSet remove(Set<String> stopfeatures){
+		Map<String, ClassifiedEntry> newdocmap=new HashMap<String, ClassifiedEntry>();
+		
+		for(String k:docMap.keySet()){
+			List<String> lista=new ArrayList<String>();
+			Map<Theme,Double> cats=docMap.get(k).getCategories();
+			for(String s:docMap.get(k).getFeatureSet()){
+				if(!stopfeatures.contains(s)) 
+					lista.add(s);
+			}
+			if(!lista.isEmpty()){
+				ClassifiedEntry cla=new ClassifiedEntry(lista, cats);
+				newdocmap.put(k,cla);
+			}
+		}
+		
+		this.docMap=newdocmap;
+		
+		if(this.df!= null) this.createDF();
+		if(this.tf!= null) this.createTF();
+		if(this.sumDF!= null) this.createSumDF();
+		if(this.sumTF!= null) this.createSumTF();
+		
+		return this;
+	}
 
 	
 }

@@ -1,6 +1,8 @@
 package com.sciamlab.it.cata.selector;
+import java.util.Set;
+
 import com.sciamlab.it.cata.training.TrainingSet;
 
 public interface FeatureSelector {
-	public void filter(TrainingSet ts);
+	public Set<String> getFilteredFeatures(TrainingSet ts);
 }

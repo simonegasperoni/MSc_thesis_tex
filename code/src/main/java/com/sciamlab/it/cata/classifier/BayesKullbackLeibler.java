@@ -10,7 +10,6 @@ import com.sciamlab.it.cata.training.TrainingSet;
 public class BayesKullbackLeibler extends Bayes{
 	
 	public BayesKullbackLeibler(TrainingSet trainingSet){
-		this.featureSelector.filter(trainingSet);
 
 		this.featureToCategoryCountMap=trainingSet.getDf();
 		System.out.println("df map size: "+featureToCategoryCountMap.size());

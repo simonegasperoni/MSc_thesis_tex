@@ -11,9 +11,7 @@ import com.sciamlab.it.cata.training.TrainingSet;
 public class BayesBernoulli extends Bayes{
 	
 	public BayesBernoulli(TrainingSet trainingSet){
-		
-		//feature selecting
-		this.featureSelector.filter(trainingSet);
+
 		
 		this.featureToCategoryCountMap=trainingSet.getDf();
 		System.out.println("df map size: "+featureToCategoryCountMap.size());
