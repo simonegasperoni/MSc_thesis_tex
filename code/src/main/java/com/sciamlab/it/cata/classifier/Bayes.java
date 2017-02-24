@@ -4,8 +4,6 @@ import java.util.List;
 import java.util.Map;
 import com.sciamlab.common.model.mdr.vocabulary.EUNamedAuthorityDataTheme.Theme;
 import com.sciamlab.it.cata.feature.FeatureExtractor;
-import com.sciamlab.it.cata.selector.ChiSquareSelector;
-import com.sciamlab.it.cata.selector.GenericFeatureSelector;
 import com.sciamlab.it.cata.threshold.MaxMinProportionalScore;
 import com.sciamlab.it.cata.threshold.Thresholder;
 import com.sciamlab.it.cata.training.TrainingSet;

@@ -60,8 +60,13 @@ public class OpenDataHubTest implements Evaluator {
 		int i=0;
 		for(OdhEntry odhe:this.odh){
 			//pl.printDataset(odhe);
+			
+			
 			Theme t=classifier.predictFirst(
-					new PredictionEntry(odhe.getTitle(), odhe.getDescription(), odhe.getTags()), new StemFeatureExtractor());
+					new PredictionEntry.Builder(odhe.getDescription())
+					.tag(odhe.getTags())
+					.title(odhe.getTitle())
+					.build(), new StemFeatureExtractor());
 			if(odhe.getCategories().contains(t)) i++;
 			//pl.printTheme(t);
 		}

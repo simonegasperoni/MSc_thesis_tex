@@ -95,14 +95,4 @@ public class DatasetTrainingSource implements TrainingSource {
 		return datasets;
 	}
 	
-	public static void main(String[] args) throws Exception{
-		DatasetTrainingSource data = new DatasetTrainingSource();
-		System.out.println(data.getDatasetByTag("ortofoto").size());
-		
-//		https://data.sciamlab.com/api/ckan/v3/action/tag_show?id=inps&key=76804e45-2d86-4ac9-8de4-4b5bc4b6b300
-//		for(PredictionEntry pe:data.getDatasetByTag("ortofoto")){
-//			System.out.println(pe);
-//		}
-	}
-	
 }
