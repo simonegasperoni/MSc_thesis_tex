@@ -20,41 +20,24 @@ import com.sciamlab.it.cata.feature.FeatureExtractor;
 import com.sciamlab.it.cata.feature.StemFeatureExtractor;
 
 public class DatasetTrainingSource implements TrainingSource {
-
-//	private Map<String, ClassifiedEntry> docMap;
 	private TrainingSet trainingSet;
-//	private String tag;
-//	private Theme t;
 	private FeatureExtractor fe;
-	
 	private CKANApiClient ckan;
 	
 	public DatasetTrainingSource() throws Exception{
 		this.fe = new StemFeatureExtractor();
-//		loadData();
-		
 		System.out.println("Connecting to Open data hub ...");
 		this.ckan = CKANApiClientBuilder
 			.init("https://data.sciamlab.com/api/ckan/v3")
-			.apiKey("76804e45-2d86-4ac9-8de4-4b5bc4b6b300")
+			.apiKey("")
 			.build();
 	}
 	
-//	public void setDocMap(Map<String, ClassifiedEntry> docMap) {
-//		this.docMap = docMap;
-//	}
-	
 	@Override
-	public void close() throws Exception {
-		// TODO Auto-generated method stub
-		
-	}
+	public void close() throws Exception {}
 
 	@Override
-	public void loadData() throws Exception {
-		
-		
-	}
+	public void loadData() throws Exception {}
 
 	public TrainingSet getTrainingSet(Object... objects) throws Exception {
 		String tag = (String) objects[0];

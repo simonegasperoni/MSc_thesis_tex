@@ -4,5 +4,4 @@ public interface TrainingSource extends AutoCloseable{
 	public void close() throws Exception;
 	public void loadData() throws Exception; 
 	public TrainingSet getTrainingSet(Object... args) throws Exception;
-	
 }

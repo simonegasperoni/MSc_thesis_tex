@@ -8,7 +8,7 @@ Open-CATA is optimized for the categorization of open-data using the data model 
 1. Multiclass task with Multinomial, Bernoulli (posteriori probability)
 2. Multilabel task with Kullback-Leibler divergence (posteriori probability)
 3. Chi-square, mutual information feature selection
-4. Outlier & incremental training with gain-information & 'CKAN-API' rules
+4. Outlier & incremental training with "CKAN-API (SOLr)" rules: <Publisher, set of tags> for retrieve datasets from ODHit, OPEN-CATA retrains with new features filtering by mutual-information and chisquare-value.
 
 ##UML class diagram & packages
 
@@ -35,3 +35,4 @@ evaluators and the training set model, CKAN-API, ...
 * JRC-ACQUIS Multilingual Parallel Corpus, Version 3.0, http://optima.jrc.it/Acquis/JRC-Acquis.3.0/corpus
 * stemming by Snowball, https://github.com/snowballstem
 * EuroVoc 4.5: the EU's multilingual thesaurus, http://eurovoc.europa.eu
+* IndicePA: http://www.indicepa.gov.it/documentale/n-opendata.php
