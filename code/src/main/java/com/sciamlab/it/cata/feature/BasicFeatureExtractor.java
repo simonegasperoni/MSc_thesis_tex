@@ -9,6 +9,16 @@ public abstract class BasicFeatureExtractor implements FeatureExtractor {
 	protected HashSet<String> stopwords;
 
 	protected void setStopwords(){
+		stopwords.add("tav");
+		stopwords.add("liv");
+		stopwords.add("sparql");
+		stopwords.add("rdf");
+		stopwords.add("com");
+		stopwords.add("art");
+		stopwords.add("allegato");
+		stopwords.add("legge");
+		stopwords.add("comma");
+		stopwords.add("articolo");
 		stopwords.add("gennaio");
 		stopwords.add("febbraio");
 		stopwords.add("marzo");

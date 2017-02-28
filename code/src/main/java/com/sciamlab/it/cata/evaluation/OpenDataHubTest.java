@@ -1,4 +1,5 @@
 package com.sciamlab.it.cata.evaluation;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -31,7 +32,7 @@ public class OpenDataHubTest implements Evaluator {
 	}
 
 	public void loadData() throws SQLException{
-		PreparedStatement stmt = psql.getC().prepareStatement("SELECT * from odh2lecce");
+		PreparedStatement stmt = psql.getC().prepareStatement("SELECT * from odh2lazio");
 		//logger.info(stmt.toString());
 		stmt.execute();
 		ResultSet rs = stmt.getResultSet();
@@ -39,6 +40,7 @@ public class OpenDataHubTest implements Evaluator {
 		while(rs.next()){
 			String id = rs.getString("id");
 			String title = rs.getString("title");
+			String publisher = rs.getString("publisher");
 			String description = rs.getString("description");
 			Set<Theme> categories = new HashSet<Theme>();
 			Set<String> tags = new HashSet<String>();
@@ -46,7 +48,7 @@ public class OpenDataHubTest implements Evaluator {
 				tags.add(tag);
 			for(String cat : Arrays.asList((String[])rs.getArray("category").getArray()))
 				categories.add(Theme.valueOf(cat));			
-			odh.add(new OdhEntry(id,title,description,tags,categories));	
+			odh.add(new OdhEntry(id,title,description,tags,categories, publisher));	
 		}
 
 	}
@@ -56,10 +58,12 @@ public class OpenDataHubTest implements Evaluator {
 	public void evaluate(Class<? extends Classifier> clazz) throws Exception {
 		this.classifier = Classifier.Factory.build(clazz, ts);
 		this.loadData();
-		//Printlog pl=new Printlog("C:/Users/simone/Desktop/validationlog80000");
+		Db db=new Db();
+		db.createOdhTable();
+		Printlog pl=new Printlog("C:/Users/simone/Desktop/validationLAZIO");
 		int i=0;
 		for(OdhEntry odhe:this.odh){
-			//pl.printDataset(odhe);
+			pl.printDataset(odhe);
 			
 			
 			Theme t=classifier.predictFirst(
@@ -68,10 +72,16 @@ public class OpenDataHubTest implements Evaluator {
 					.title(odhe.getTitle())
 					.build(), new StemFeatureExtractor());
 			if(odhe.getCategories().contains(t)) i++;
-			//pl.printTheme(t);
+
+			pl.printClassifiedEntry(classifier.predict(new PredictionEntry.Builder(odhe.getDescription()).tag(odhe.getTags())
+					.title(odhe.getTitle()).build(), new StemFeatureExtractor()));
+			pl.printTheme(t);
+			odhe.getCategories().add(t);
+			db.addEntry(odhe.getId(), odhe.getCategories(), odhe.getTitle(), odhe.getDescription(), odhe.getTags(), odhe.getPublisher());
 		}
 		System.out.println(new Double(i)/new Double(odh.size()));
-		//pl.close();
+		pl.close();
+		db.exBatch();
 
 	}
 
@@ -100,39 +110,42 @@ public class OpenDataHubTest implements Evaluator {
 	}
 }
 
-//class Db{
-//	Psql db=new Psql("indexdb","postgres","postgres");
-//	PreparedStatement insert;
-//	public Db() throws SQLException{
-//		Connection c=db.getC();
-//		insert = (c.prepareStatement("insert into odh2lecce values (?,?,?,?,?)"));
-//	}
-//	
-//	public Psql getPsql(){ return db; }
-//
-//	public void createOdhTable() throws SQLException{
-//		PreparedStatement ps = db.getC().prepareStatement(""
-//				+ "DROP TABLE IF EXISTS odh2lecce;"
-//				+ "CREATE TABLE odh2lecce"+
-//				"( id text not null,"+
-//				"category text[] not null,"+
-//				"title text not null,"+
-//				"description text,"+
-//				"tags text[] not null,"+
-//				"PRIMARY KEY(id));");
-//		ps.executeUpdate();
-//		ps.close();
-//	}
-//
-//	public void addEntry(String id, Array category, String title, String desc, Array tags) throws SQLException{
-//		insert.setString(1, id);
-//		insert.setArray(2, category);
-//		insert.setString(3, title);
-//		insert.setString(4, desc);
-//		insert.setArray(5, tags);
-//		insert.addBatch();
-//	}
-//	public void exBatch() throws SQLException{
-//		insert.executeBatch();
-//	}
-//}
+class Db{
+	Psql db=new Psql("indexdb","postgres","postgres");
+	PreparedStatement insert;
+	public Db() throws SQLException{
+		Connection c=db.getC();
+		insert = (c.prepareStatement("insert into odh22lazio values (?,?,?,?,?,?)"));
+	}
+	
+	public Psql getPsql(){ return db; }
+
+	public void createOdhTable() throws SQLException{
+		PreparedStatement ps = db.getC().prepareStatement(""
+				+ "DROP TABLE IF EXISTS odh22lazio;"
+				+ "CREATE TABLE odh22lazio"+
+				"( id text not null,"+
+				"category text[] not null,"+
+				"title text not null,"+
+				"description text,"+
+				"tags text[] not null,"+
+				"publisher text,"+
+				"PRIMARY KEY(id));");
+		ps.executeUpdate();
+		ps.close();
+	}
+
+	public void addEntry(String id, Set<Theme> set, String title, String desc, Set<String> set2, String publisher) throws SQLException{
+		insert.setString(1, id);
+		insert.setArray(2, db.getC().createArrayOf("text", set.toArray()));
+		insert.setString(3, title);
+		insert.setString(4, desc);
+		insert.setArray(5, db.getC().createArrayOf("text", set2.toArray()));
+		insert.setString(6, publisher);
+		
+		insert.addBatch();
+	}
+	public void exBatch() throws SQLException{
+		insert.executeBatch();
+	}
+}

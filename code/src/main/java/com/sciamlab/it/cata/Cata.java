@@ -1,13 +1,16 @@
 package com.sciamlab.it.cata;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Properties;
+import java.util.Set;
 import org.apache.log4j.Logger;
 import com.sciamlab.common.model.mdr.vocabulary.EUNamedAuthorityDataTheme.Theme;
 import com.sciamlab.common.util.SciamlabStreamUtils;
 import com.sciamlab.it.cata.classifier.Classifier;
 import com.sciamlab.it.cata.classifier.PredictionEntry;
+import com.sciamlab.it.cata.evaluation.OpenDataHubTest;
 import com.sciamlab.it.cata.feature.StemFeatureExtractor;
 import com.sciamlab.it.cata.selector.ChiSquareSelector;
 import com.sciamlab.it.cata.classifier.BayesMultinomialWF;
@@ -30,13 +33,37 @@ public class Cata {
 		}
 	}
 
-	public static void testLECCE() {
-		OpenDataHubTest test=new OpenDataHubTest(ts);
-		test.evaluate(BayesMultinomialWF.class);
+
+	
+	
+	public static void main(String[] args) throws Exception {
+		run();
+	}
+	
+	public static void test() throws ClassNotFoundException, SQLException, Exception {
+		try (TrainingSource acquisTrainingSource = new AcquisTrainingSource();) {
+			TrainingSet acquis = acquisTrainingSource.getTrainingSet();
+			acquis.filter(new ChiSquareSelector(2000));
+			System.out.println("acquis size: "+acquis.getDf().size());
+			OpenDataHubTest test=new OpenDataHubTest(acquis);
+			test.evaluate(BayesMultinomialWF.class);
+		}
 	}
 
-	public static void main(String[] args) throws Exception {
-
+	public static void run() throws ClassNotFoundException, SQLException, Exception{
+		
+		
+		List<String> tags=new ArrayList<String>();
+		tags.add("ptpr");
+		Set<Theme> categories=new HashSet<Theme>();
+		categories.add(Theme.ENVI);
+		SOLrQuery q=new SOLrQuery("r_lazio", tags, categories);
+		
+		List<SOLrQuery> queries=new ArrayList<SOLrQuery>();
+		
+		// entry query for retrain: <lazio, t:<ptpr>, c:<envi>>
+		queries.add(q);
+		
 		try (TrainingSource acquisTrainingSource = new AcquisTrainingSource();) {
 			
 			TrainingSet acquis = acquisTrainingSource.getTrainingSet();
@@ -46,15 +73,11 @@ public class Cata {
 			TrainingSet acquis500 = acquis.clone().filter(new ChiSquareSelector(500));
 			System.out.println("acquis500 size: "+acquis500.getDf().size());
 			
-			@SuppressWarnings("serial")
-			Map<String, Theme> ckan_queries = new HashMap<String, Theme>(){{
-				put("boschi", Theme.ENVI);
-				put("ortofoto", Theme.TECH);
-				
-			}};
+			
+			
 			try (DatasetTrainingSource ds = new DatasetTrainingSource();) {
-				for(Entry<String, Theme> query : ckan_queries.entrySet()){
-					TrainingSet ts_ckan_query = ds.getTrainingSet(query.getKey(), query.getValue());
+				for(SOLrQuery query : queries){
+					TrainingSet ts_ckan_query = ds.getTrainingSet(query.getPublisher(),query.getTags(),query.getCategories());
 					System.out.println("BEFORE ckan ts size: "+ts_ckan_query.getDf().size());
 					ts_ckan_query.remove(acquis500);
 					System.out.println("AFTER ckan ts size: "+ts_ckan_query.getDf().size());
@@ -69,25 +92,38 @@ public class Cata {
 			Class<BayesMultinomialWF> clazz = BayesMultinomialWF.class;
 			Classifier classifier = Classifier.Factory.build(clazz, acquis);
 
-			PredictionEntry pe = new PredictionEntry.Builder("Ambiti inedificabili art.33 - Boschi - Gaby Carta delle "
-					+ "aree boscate (ai sensi della L.R. n. 11 del 6 aprile 1998 art. 33). "
-					+ "Il dato e stato approvato con deliberazione della Giunta regionale n 3572 del 28 10 2005. "
-					+ "SCOPO: Individuare quelle aree in cui gli interventi edilizi o trasformativi sono vietati "
-					+ "o regolamentati, ai sensi delle norme contenute al Titolo V, Capo I della L.R. 11 98. art. 33 boschi ").build();
+			PredictionEntry pe = new PredictionEntry.Builder("PTPR - Tav. B - Rispetto centri storici"
+					+ "Beni paesaggistici (art. 134 com. 1 lett. c Dlvo 42 2004) - Immobili e le aree tipizzati, "
+					+ "individuati e sottoposti a tutela dal piano: fascia di rispetto degli insediamenti urbani storici e "
+					+ "citta di fondazione 150 ml. ptpr, storici, centri").build();
 
 			Theme ce1 = classifier.predictFirst(pe, new StemFeatureExtractor());
 			System.out.println(ce1);
-			
-			PredictionEntry pe2 = new PredictionEntry.Builder(" Ppr - Zona fluviale interna (tav. P4)"
-					+ "Il dato, areale, perimetra le zone fluviali interne, costituite dalle fasce A e B del PAI e "
-					+ "dalle sponde o piedi degli argini per una fascia di 150 m ciascuna di fiumi, torrenti, "
-					+ "corsi d'acqua iscritti negli elenchi previsti dal R.D. n. 1775 1933 fiumi fluviale "
-					+ "idrografia interna opendata ppr rete idrografica rndt zona ").build();
 
-			Theme ce2 = classifier.predictFirst(pe2, new StemFeatureExtractor());
-			System.out.println(ce2);
-		}
+		}	
+	}
+}
 
+class SOLrQuery{
+	private String publisher;
+	private List<String> tags;
+	private Set<Theme> categories;
+	
+	public SOLrQuery(String publisher, List<String> tags, Set<Theme> categories){
+		this.publisher=publisher;
+		this.tags=tags;
+		this.categories=categories;
 	}
 	
+	public Set<Theme> getCategories() {
+		return categories;
+	}
+	
+	public String getPublisher() {
+		return publisher;
+	}
+	
+	public List<String> getTags() {
+		return tags;
+	}
 }

@@ -25,8 +25,8 @@ public class Printlog{
 	}
 	
 	public void printClassifiedEntry(ClassifiedEntry pe) throws IOException{
-		fw.write("classified as:");
-		fw.write(pe.getCategories().toString());
+		fw.write("feature:");
+		fw.write(pe.getFeatureSet().toString());
 		fw.write("\n");
 		fw.write("-----------------------------------");
 		fw.write("\n");
