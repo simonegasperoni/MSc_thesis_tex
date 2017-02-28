@@ -1,5 +1,4 @@
 package com.sciamlab.it.cata;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -32,8 +31,8 @@ public class Cata {
 	}
 
 	public static void testLECCE() {
-		// OpenDataHubTest test=new OpenDataHubTest(ts);
-		// test.evaluate(BayesMultinomialWF.class);
+		OpenDataHubTest test=new OpenDataHubTest(ts);
+		test.evaluate(BayesMultinomialWF.class);
 	}
 
 	public static void main(String[] args) throws Exception {
