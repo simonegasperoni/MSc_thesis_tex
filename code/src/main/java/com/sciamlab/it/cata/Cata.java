@@ -1,10 +1,7 @@
 package com.sciamlab.it.cata;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Properties;
-import java.util.Set;
 import org.apache.log4j.Logger;
 import com.sciamlab.common.model.mdr.vocabulary.EUNamedAuthorityDataTheme.Theme;
 import com.sciamlab.common.util.SciamlabStreamUtils;
@@ -18,6 +15,8 @@ import com.sciamlab.it.cata.training.AcquisTrainingSource;
 import com.sciamlab.it.cata.training.DatasetTrainingSource;
 import com.sciamlab.it.cata.training.TrainingSet;
 import com.sciamlab.it.cata.training.TrainingSource;
+import com.sciamlab.it.cata.retraining.Retrainer;
+import com.sciamlab.it.cata.retraining.SOLrQuery;
 
 public class Cata {
 
@@ -32,12 +31,8 @@ public class Cata {
 			throw new RuntimeException(e);
 		}
 	}
-
-
-	
 	
 	public static void main(String[] args) throws Exception {
-		run();
 	}
 	
 	public static void test() throws ClassNotFoundException, SQLException, Exception {
@@ -51,18 +46,7 @@ public class Cata {
 	}
 
 	public static void run() throws ClassNotFoundException, SQLException, Exception{
-		
-		
-		List<String> tags=new ArrayList<String>();
-		tags.add("ptpr");
-		Set<Theme> categories=new HashSet<Theme>();
-		categories.add(Theme.ENVI);
-		SOLrQuery q=new SOLrQuery("r_lazio", tags, categories);
-		
-		List<SOLrQuery> queries=new ArrayList<SOLrQuery>();
-		
-		// entry query for retrain: <lazio, t:<ptpr>, c:<envi>>
-		queries.add(q);
+		List<SOLrQuery> queries=Retrainer.getQueries();
 		
 		try (TrainingSource acquisTrainingSource = new AcquisTrainingSource();) {
 			
@@ -101,29 +85,5 @@ public class Cata {
 			System.out.println(ce1);
 
 		}	
-	}
-}
-
-class SOLrQuery{
-	private String publisher;
-	private List<String> tags;
-	private Set<Theme> categories;
-	
-	public SOLrQuery(String publisher, List<String> tags, Set<Theme> categories){
-		this.publisher=publisher;
-		this.tags=tags;
-		this.categories=categories;
-	}
-	
-	public Set<Theme> getCategories() {
-		return categories;
-	}
-	
-	public String getPublisher() {
-		return publisher;
-	}
-	
-	public List<String> getTags() {
-		return tags;
 	}
 }

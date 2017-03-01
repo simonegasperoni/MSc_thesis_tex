@@ -1,0 +1,25 @@
+{
+  "retrains": 
+  [
+    {
+        "publisher": "r_lazio",
+        "tags": ["ptpr"],
+        "categories": ["ENVI"]
+    },
+    {
+        "publisher": null,
+        "tags": ["ortofoto"],
+        "categories": ["TECH"]
+    },
+    {
+        "publisher": null,
+        "tags": ["salute", "medicina", "sanita", "ricoveri", "farmacie", "farmacia", "ospedali", "ospedale", "pronto soccorso", "alzheimer", "diabete"],
+        "categories": ["HEAL"]
+    },
+    {
+        "publisher": "r_lombar",
+        "tags": ["e-government", "opendata"],
+        "categories": ["GOVE"]
+    }
+  ]
+}
