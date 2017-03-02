@@ -8,13 +8,13 @@
     },
     {
         "publisher": null,
-        "tags": ["ortofoto"],
-        "categories": ["TECH"]
+        "tags": ["medicina", "ricoveri", "farmacie", "farmacia", "ospedali", "ospedale", "pronto soccorso", "alzheimer", "diabete"],
+        "categories": ["HEAL"]
     },
     {
         "publisher": null,
-        "tags": ["salute", "medicina", "sanita", "ricoveri", "farmacie", "farmacia", "ospedali", "ospedale", "pronto soccorso", "alzheimer", "diabete"],
-        "categories": ["HEAL"]
+        "tags": ["ortofoto"],
+        "categories": ["TECH"]
     },
     {
         "publisher": "r_lombar",

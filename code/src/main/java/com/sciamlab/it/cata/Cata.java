@@ -3,12 +3,8 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Properties;
 import org.apache.log4j.Logger;
-import com.sciamlab.common.model.mdr.vocabulary.EUNamedAuthorityDataTheme.Theme;
 import com.sciamlab.common.util.SciamlabStreamUtils;
-import com.sciamlab.it.cata.classifier.Classifier;
-import com.sciamlab.it.cata.classifier.PredictionEntry;
 import com.sciamlab.it.cata.evaluation.OpenDataHubTest;
-import com.sciamlab.it.cata.feature.StemFeatureExtractor;
 import com.sciamlab.it.cata.selector.ChiSquareSelector;
 import com.sciamlab.it.cata.classifier.BayesMultinomialWF;
 import com.sciamlab.it.cata.training.AcquisTrainingSource;
@@ -33,24 +29,24 @@ public class Cata {
 	}
 	
 	public static void main(String[] args) throws Exception {
+		test(createTS(),"odh22lecce");
+
+		//Class<BayesMultinomialWF> clazz = BayesMultinomialWF.class;
+		//Classifier classifier = Classifier.Factory.build(clazz, acquis);
 	}
 	
-	public static void test() throws ClassNotFoundException, SQLException, Exception {
-		try (TrainingSource acquisTrainingSource = new AcquisTrainingSource();) {
-			TrainingSet acquis = acquisTrainingSource.getTrainingSet();
-			acquis.filter(new ChiSquareSelector(2000));
-			System.out.println("acquis size: "+acquis.getDf().size());
-			OpenDataHubTest test=new OpenDataHubTest(acquis);
-			test.evaluate(BayesMultinomialWF.class);
-		}
+	public static void test(TrainingSet set, String table) throws ClassNotFoundException, SQLException, Exception {
+		OpenDataHubTest test=new OpenDataHubTest(set, table);
+		test.evaluate(BayesMultinomialWF.class);
+		
 	}
 
-	public static void run() throws ClassNotFoundException, SQLException, Exception{
+	public static TrainingSet createTS() throws ClassNotFoundException, SQLException, Exception{
 		List<SOLrQuery> queries=Retrainer.getQueries();
-		
+		TrainingSet acquis;
 		try (TrainingSource acquisTrainingSource = new AcquisTrainingSource();) {
 			
-			TrainingSet acquis = acquisTrainingSource.getTrainingSet();
+			acquis = acquisTrainingSource.getTrainingSet();
 			System.out.println("acquis size: "+acquis.getDf().size());
 			
 			// filter top 500 features per category
@@ -70,20 +66,10 @@ public class Cata {
 			}
 			
 			// filter top 2000 features per category
-			acquis.filter(new ChiSquareSelector(2000));
+			acquis.filter(new ChiSquareSelector(2100));
 			System.out.println("acquis2000 size: "+acquis.getDf().size());
-			
-			Class<BayesMultinomialWF> clazz = BayesMultinomialWF.class;
-			Classifier classifier = Classifier.Factory.build(clazz, acquis);
 
-			PredictionEntry pe = new PredictionEntry.Builder("PTPR - Tav. B - Rispetto centri storici"
-					+ "Beni paesaggistici (art. 134 com. 1 lett. c Dlvo 42 2004) - Immobili e le aree tipizzati, "
-					+ "individuati e sottoposti a tutela dal piano: fascia di rispetto degli insediamenti urbani storici e "
-					+ "citta di fondazione 150 ml. ptpr, storici, centri").build();
-
-			Theme ce1 = classifier.predictFirst(pe, new StemFeatureExtractor());
-			System.out.println(ce1);
-
-		}	
+		}
+		return acquis;
 	}
 }

@@ -28,7 +28,6 @@ public class DatasetTrainingSource implements TrainingSource {
 		fe=new StemFeatureExtractor();
 	}
 	
-	
 	@Override
 	public void close() throws Exception {}
 
@@ -66,15 +65,18 @@ public class DatasetTrainingSource implements TrainingSource {
 		for(String tag:tagsq){
 			url=url+"tags%3A"+tag+"+OR+";
 		}
-		url=url.substring(0, url.length()-3);
+		url=url.substring(0, url.length()-4);
 		url=url+")";
 		if(publisherq!=null)
 			url=url+"+AND+extras_publisher%3A"+publisherq;
 		url=url+"&rows=2147483647&fl=name%2C+title%2Cnotes%2C+tags%2C+extras_publisher&wt=json&indent=true";
 		
+		//System.out.println(url);
 		List<PredictionEntry> resqsolr=new ArrayList<PredictionEntry>();
 		String json=new HTTPClient().doGET(new URL(url)).readEntity(String.class);
 		JSONObject res=new JSONObject(json);
+		
+		//System.out.println(json);
 		JSONArray response=res.getJSONObject("response").getJSONArray("docs");
 		
 		for(int i=0;i<response.length();i++){
@@ -86,9 +88,11 @@ public class DatasetTrainingSource implements TrainingSource {
 				tags.add(t.getString(k));
 			}
 			
+			String id=obj.getString("name");
+			//System.out.println(id);
 			String title=obj.getString("title");
 			String description=obj.getString("notes");
-			String id=obj.getString("name");
+			
 			String publisher=obj.getString("extras_publisher");
 
 			resqsolr.add(new PredictionEntry.Builder(description).title(title).tag(tags).id(id).publisher(publisher).build());

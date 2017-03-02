@@ -9,6 +9,7 @@ public abstract class BasicFeatureExtractor implements FeatureExtractor {
 	protected HashSet<String> stopwords;
 
 	protected void setStopwords(){
+		stopwords.add("ministero");
 		stopwords.add("dataset");
 		stopwords.add("tav");
 		stopwords.add("liv");

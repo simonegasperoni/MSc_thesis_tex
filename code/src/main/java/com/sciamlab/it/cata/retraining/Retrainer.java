@@ -34,7 +34,7 @@ public class Retrainer {
         	
         	JSONArray tags = (JSONArray) current.get("tags");
         	for(int i1=0; i1<tags.size(); i1++){
-        		t.add((String)tags.get(i1));
+        		t.add((String)tags.get(i1).toString().replaceAll(" ", "%20"));
         	}
         	
         	JSONArray categories = (JSONArray) current.get("categories");
