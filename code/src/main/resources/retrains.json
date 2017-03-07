@@ -8,18 +8,54 @@
     },
     {
         "publisher": null,
-        "tags": ["medicina", "ricoveri", "farmacie", "farmacia", "ospedali", "ospedale", "pronto soccorso", "alzheimer", "diabete"],
+        "tags": ["medicina", "ricoveri", "farmacie", "farmacia", "ospedali", "ospedale", "pronto soccorso"],
         "categories": ["HEAL"]
     },
     {
         "publisher": null,
-        "tags": ["ortofoto"],
+        "tags": ["ortofoto", "carte tecniche", "cartografia"],
         "categories": ["TECH"]
     },
     {
-        "publisher": "r_lombar",
-        "tags": ["e-government", "opendata"],
+        "publisher": null,
+        "tags": ["e-government", "opendata", "appalti", "appalto", "votazioni", "elezioni", "referendum"],
         "categories": ["GOVE"]
+    },
+    {
+        "publisher": null,
+        "tags": ["irpef"],
+        "categories": ["ECON"]
+    },
+    {
+        "publisher": null,
+        "tags": ["sport","palestre"],
+        "categories": ["EDUC"]
+    },
+    {
+        "publisher": null,
+        "tags": ["negozi", "rivendita"],
+        "categories": ["ECON"]
+    },
+    {
+        "publisher": null,
+        "tags": ["boschi", "climatologia", "neve", "rete meteo", "natural risk zones", "geologia", "suolo", "pai", "rischio naturale", "difesa del suolo", "hydrography", "idrogeologico"],
+        "categories": ["ENVI"]
+    },
+    {
+        "publisher": "r_lombar",
+        "tags": ["profili di consumo"],
+        "categories": ["HEAL"]
+    },
+
+    {
+        "publisher": null,
+        "tags": ["volontariato", "protezione civile", "demografia", "residente", "associazioni", "pari opporunita", "tossicodipendenze", "stranieri"],
+        "categories": ["SOCI"]
+    },
+    {
+        "publisher": null,
+        "tags": ["bus", "tpl", "incidenti stradali", "ztl"], 
+        "categories": ["TRAN"]
     }
   ]
 }

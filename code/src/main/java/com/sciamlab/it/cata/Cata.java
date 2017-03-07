@@ -29,7 +29,15 @@ public class Cata {
 	}
 	
 	public static void main(String[] args) throws Exception {
-		test(createTS(),"odh22lecce");
+		TrainingSet ts=createTS();
+		System.out.println("|||||||||||||||---------------------------lecce:");
+		test(ts,"odh22lecce");
+		System.out.println("|||||||||||||||---------------------------lazio:");
+		test(ts,"odh22lazio");
+		System.out.println("|||||||||||||||---------------------------infrastrutture:");
+		test(ts,"odh22infrastrutture");
+		System.out.println("|||||||||||||||---------------------------lombardia:");
+		test(ts,"odh22lombardia");
 
 		//Class<BayesMultinomialWF> clazz = BayesMultinomialWF.class;
 		//Classifier classifier = Classifier.Factory.build(clazz, acquis);
@@ -50,8 +58,8 @@ public class Cata {
 			System.out.println("acquis size: "+acquis.getDf().size());
 			
 			// filter top 500 features per category
-			TrainingSet acquis500 = acquis.clone().filter(new ChiSquareSelector(500));
-			System.out.println("acquis500 size: "+acquis500.getDf().size());
+//			TrainingSet acquis500 = acquis.clone().filter(new ChiSquareSelector(900));
+//			System.out.println("acquis500 size: "+acquis500.getDf().size());
 			
 			
 			
@@ -59,14 +67,14 @@ public class Cata {
 				for(SOLrQuery query : queries){
 					TrainingSet ts_ckan_query = ds.getTrainingSet(query.getPublisher(),query.getTags(),query.getCategories());
 					System.out.println("BEFORE ckan ts size: "+ts_ckan_query.getDf().size());
-					ts_ckan_query.remove(acquis500);
+//					ts_ckan_query.remove(acquis500);
 					System.out.println("AFTER ckan ts size: "+ts_ckan_query.getDf().size());
 					acquis.merge(ts_ckan_query);
 				}
 			}
 			
 			// filter top 2000 features per category
-			acquis.filter(new ChiSquareSelector(2100));
+			acquis.filter(new ChiSquareSelector(2000));
 			System.out.println("acquis2000 size: "+acquis.getDf().size());
 
 		}

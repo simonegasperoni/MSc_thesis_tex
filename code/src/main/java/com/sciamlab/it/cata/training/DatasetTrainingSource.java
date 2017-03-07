@@ -12,6 +12,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import com.sciamlab.common.model.mdr.vocabulary.EUNamedAuthorityDataTheme.Theme;
 import com.sciamlab.common.util.HTTPClient;
+import com.sciamlab.it.amministrazioni.IndicePA;
 import com.sciamlab.it.cata.classifier.ClassifiedEntry;
 import com.sciamlab.it.cata.classifier.PredictionEntry;
 import com.sciamlab.it.cata.feature.FeatureExtractor;
@@ -23,9 +24,17 @@ public class DatasetTrainingSource implements TrainingSource {
 	private String publisherq;
 	private List<String> tagsq;
 	private Map<Theme,Double> catmap;
+	private IndicePA index;
+	
+
+	public DatasetTrainingSource(String publisherq, List<String> tagsq) throws IOException{
+		this.publisherq=publisherq;
+		this.tagsq=tagsq;
+	}
 	
 	public DatasetTrainingSource() throws IOException{
 		fe=new StemFeatureExtractor();
+		index=new IndicePA();
 	}
 	
 	@Override
@@ -50,8 +59,7 @@ public class DatasetTrainingSource implements TrainingSource {
 		
 		List<PredictionEntry> dataset = this.getDatasetsBySOLr();
 		for(PredictionEntry pe : dataset){
-			//System.out.println(pe);
-			List<String> features = fe.extract(pe);
+			List<String> features = fe.extract(index.filterPA(pe));
 			docMap.put(pe.id,new ClassifiedEntry(features, catmap));
 		}
 		//System.out.println(docMap.size());
@@ -63,7 +71,7 @@ public class DatasetTrainingSource implements TrainingSource {
 	public List<PredictionEntry> getDatasetsBySOLr() throws MalformedURLException{
 		String url="http://www.sciamlab.com/solr/collection1/select?q=(";
 		for(String tag:tagsq){
-			url=url+"tags%3A"+tag+"+OR+";
+			url=url+"tags%3A%22"+tag+"%22+OR+";
 		}
 		url=url.substring(0, url.length()-4);
 		url=url+")";
@@ -71,7 +79,7 @@ public class DatasetTrainingSource implements TrainingSource {
 			url=url+"+AND+extras_publisher%3A"+publisherq;
 		url=url+"&rows=2147483647&fl=name%2C+title%2Cnotes%2C+tags%2C+extras_publisher&wt=json&indent=true";
 		
-		//System.out.println(url);
+		System.out.println(url);
 		List<PredictionEntry> resqsolr=new ArrayList<PredictionEntry>();
 		String json=new HTTPClient().doGET(new URL(url)).readEntity(String.class);
 		JSONObject res=new JSONObject(json);
@@ -91,7 +99,7 @@ public class DatasetTrainingSource implements TrainingSource {
 			String id=obj.getString("name");
 			//System.out.println(id);
 			String title=obj.getString("title");
-			String description=obj.getString("notes");
+			String description=obj.optString("notes", "");
 			
 			String publisher=obj.getString("extras_publisher");
 

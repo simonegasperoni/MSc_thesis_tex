@@ -40,7 +40,7 @@ public class OpenDataHubTest implements Evaluator {
 		while(rs.next()){
 			String id = rs.getString("id");
 			String title = rs.getString("title");
-			//String publisher = rs.getString("publisher");
+			String publisher = rs.getString("publisher");
 			String description = rs.getString("description");
 			Set<Theme> categories = new HashSet<Theme>();
 			Set<String> tags = new HashSet<String>();
@@ -48,7 +48,7 @@ public class OpenDataHubTest implements Evaluator {
 				tags.add(tag);
 			for(String cat : Arrays.asList((String[])rs.getArray("category").getArray()))
 				categories.add(Theme.valueOf(cat));			
-			odh.add(new OdhEntry(id,title,description,tags,categories, "lecce"));	
+			odh.add(new OdhEntry(id,title,description,tags,categories, publisher));	
 		}
 
 	}
@@ -76,7 +76,7 @@ public class OpenDataHubTest implements Evaluator {
 //			pl.printClassifiedEntry(classifier.predict(new PredictionEntry.Builder(odhe.getDescription()).tag(odhe.getTags())
 //					.title(odhe.getTitle()).build(), new StemFeatureExtractor()));
 //			pl.printTheme(t);
-//			odhe.getCategories().add(t);
+			odhe.getCategories().add(t);
 //			db.addEntry(odhe.getId(), odhe.getCategories(), odhe.getTitle(), odhe.getDescription(), odhe.getTags(), odhe.getPublisher());
 		}
 		System.out.println(new Double(i)/new Double(odh.size()));
@@ -115,15 +115,15 @@ public class OpenDataHubTest implements Evaluator {
 //	PreparedStatement insert;
 //	public Db() throws SQLException{
 //		Connection c=db.getC();
-//		insert = (c.prepareStatement("insert into odh22lazio values (?,?,?,?,?,?)"));
+//		insert = (c.prepareStatement("insert into odh22lombardia values (?,?,?,?,?,?)"));
 //	}
 //	
 //	public Psql getPsql(){ return db; }
 //
 //	public void createOdhTable() throws SQLException{
 //		PreparedStatement ps = db.getC().prepareStatement(""
-//				+ "DROP TABLE IF EXISTS odh22lazio;"
-//				+ "CREATE TABLE odh22lazio"+
+//				+ "DROP TABLE IF EXISTS odh22lombardia;"
+//				+ "CREATE TABLE odh22lombardia"+
 //				"( id text not null,"+
 //				"category text[] not null,"+
 //				"title text not null,"+

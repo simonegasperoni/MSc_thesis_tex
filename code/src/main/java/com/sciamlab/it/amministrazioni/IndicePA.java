@@ -6,6 +6,9 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.StringTokenizer;
+
+import com.sciamlab.it.cata.classifier.PredictionEntry;
+
 import au.com.bytecode.opencsv.CSVReader;
 
 // ammninistrazioni.txt @ 
@@ -69,7 +72,7 @@ public class IndicePA{
 	}
 	
 	//insiemi di comuni province e città metropolitane di una regione
-	public Set<RecordPA> getByRegione(String regione){
+	private Set<RecordPA> getByRegione(String regione){
 		Set<RecordPA> result=new HashSet<RecordPA>();
 		for(String i:comuni.keySet()){
 			RecordPA record=comuni.get(i);
@@ -87,7 +90,7 @@ public class IndicePA{
 	}
 	
 	//insiemi di comuni di una provincia
-	public Set<RecordPA> getByProvincia(String provincia){
+	private Set<RecordPA> getByProvincia(String provincia){
 		Set<RecordPA> result=new HashSet<RecordPA>();
 		for(String i:comuni.keySet()){
 			RecordPA record=comuni.get(i);
@@ -108,13 +111,61 @@ public class IndicePA{
 		return enti.get(id).getDescrizione();
 	}
 	
+	public PredictionEntry filterPA(PredictionEntry pe){
+		Set<RecordPA> recordpa=new HashSet<RecordPA>();
+		Set<String> stop=new HashSet<String>();
+		if(comuni.containsKey(pe.publisher)){
+			recordpa=new HashSet<RecordPA>();
+			recordpa.add(comuni.get(pe.publisher));
+		}
+		else if(regioni.containsKey(pe.publisher)){
+			recordpa=getByRegione(regioni.get(pe.publisher).getRegione());
+		}
+		else if(province.containsKey(pe.publisher)){
+			recordpa=getByProvincia(province.get(pe.publisher).getProvincia());
+		}
+		
+		//System.out.println(recordpa);
+		
+		for(RecordPA rpa:recordpa){
+			String c=rpa.getComune().toLowerCase();
+			stop.add(c);
+			stop.add(c.replaceAll(" ",""));
+			
+		}
+		//System.out.println(stop);
+		String ti="";
+		String de="";
+		Set<String> ta=new HashSet<String>();
+		if(pe.title!=null) ti=pe.title.replaceAll("\\P{L}+", " ").toLowerCase();
+		if(pe.description!=null) de=pe.description.replaceAll("\\P{L}+", " ").toLowerCase();
+		if(pe.tags!=null) ta=pe.tags;
+		
+		
+		for(String stopw:stop){
+			ti=ti.replaceAll(" "+stopw+" "," ");
+			de=de.replaceAll(" "+stopw+" "," ");
+			for(String t:ta){
+				t=t.replaceAll(stopw, "");
+			}
+		}
+		pe=new PredictionEntry.Builder(de).title(ti).tag(ta).publisher(pe.publisher).id(pe.id).build();
+		return pe;
+	}
+	
 //	public static void main(String[] args) throws IOException{
-//		IndicePA index=new IndicePA(); 
-//		String x="VT";
-//		Set<RecordPA> comuni=index.getByProvincia(x);
-//		for(RecordPA rpa:comuni){
-//			System.out.println(rpa);
-//		}		
+//		IndicePA index=new IndicePA();
+//		
+//		HashSet<String> tag=new HashSet<String>();
+//		tag.add("ciampino");
+//		tag.add("sanita");
+//		
+//		PredictionEntry pe=new PredictionEntry.Builder("  Punti di interesse nelle ANPIL - Citta Metropolitana di Firenze "
+//				+ "Punti di interesse nelle Aree Naturali Protette di Interesse Locale (ANPIL) della Citta Metropolitana di Firenze."
+//				+ "").publisher("cmfi").build();
+//		
+//		
+//		System.out.println(index.filterPA(pe));
 //	}
 }
 

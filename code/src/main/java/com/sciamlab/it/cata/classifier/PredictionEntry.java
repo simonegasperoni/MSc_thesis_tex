@@ -23,7 +23,7 @@ public class PredictionEntry {
 
 	@Override
 	public String toString() {
-		return "id=" + id + ", title=" + title + ", description=" + description + ", tags=" + tags;
+		return "publisher=" + publisher + ",id=" + id + ", title=" + title + ", description=" + description + ", tags=" + tags;
 	}
 
 	@Override
