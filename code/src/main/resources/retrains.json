@@ -28,7 +28,7 @@
     },
     {
         "publisher": null,
-        "tags": ["sport","palestre"],
+        "tags": ["sport", "palestre"],
         "categories": ["EDUC"]
     },
     {
@@ -46,15 +46,19 @@
         "tags": ["profili di consumo"],
         "categories": ["HEAL"]
     },
-
     {
         "publisher": null,
-        "tags": ["volontariato", "protezione civile", "demografia", "residente", "associazioni", "pari opporunita", "tossicodipendenze", "stranieri"],
+        "tags": ["volontariato", "protezione civile", "demografia", "residente", "associazioni", "pari opporunita", "tossicodipendenze"],
         "categories": ["SOCI"]
     },
     {
         "publisher": null,
-        "tags": ["bus", "tpl", "incidenti stradali", "ztl"], 
+        "tags": ["disciplinare", "avvisi", "moduli", "regolamenti", "decreti sindacali", "piani e progetti", "statuti", "albi ed elenchi"],
+        "categories": ["GOVE"]
+    },
+    {
+        "publisher": null,
+        "tags": ["bus", "tpl", "incidenti stradali", "ztl", "autostrada"], 
         "categories": ["TRAN"]
     }
   ]

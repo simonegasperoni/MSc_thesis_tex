@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Set;
 import com.sciamlab.common.model.mdr.vocabulary.EUNamedAuthorityDataTheme.Theme;
 import com.sciamlab.it.acquis.initdb.Psql;
+import com.sciamlab.it.cata.classifier.ClassifiedEntry;
 import com.sciamlab.it.cata.classifier.Classifier;
 import com.sciamlab.it.cata.classifier.PredictionEntry;
 import com.sciamlab.it.cata.feature.StemFeatureExtractor;
@@ -60,27 +61,24 @@ public class OpenDataHubTest implements Evaluator {
 		this.loadData();
 //		Db db=new Db();
 //		db.createOdhTable();
-//		Printlog pl=new Printlog("C:/Users/simone/Desktop/validationLAZIO");
+		Printlog pl=new Printlog("C:/Users/simone/Desktop/validationlog");
 		int i=0;
 		for(OdhEntry odhe:this.odh){
 //			pl.printDataset(odhe);
-			
-			
-			Theme t=classifier.predictFirst(
-					new PredictionEntry.Builder(odhe.getDescription())
-					.tag(odhe.getTags())
-					.title(odhe.getTitle())
-					.build(), new StemFeatureExtractor());
+			ClassifiedEntry c=classifier.predictFirst(new PredictionEntry.Builder(odhe.getDescription()).tag(odhe.getTags())
+					.title(odhe.getTitle()).publisher(odhe.getPublisher()).id(odhe.getId()).build(), new StemFeatureExtractor());
+			//System.out.println(c);
+			Theme t=(Theme) c.getCategories().keySet().toArray()[0];
 			if(odhe.getCategories().contains(t)) i++;
 
-//			pl.printClassifiedEntry(classifier.predict(new PredictionEntry.Builder(odhe.getDescription()).tag(odhe.getTags())
-//					.title(odhe.getTitle()).build(), new StemFeatureExtractor()));
+//			pl.printClassifiedEntry(c);
 //			pl.printTheme(t);
 			odhe.getCategories().add(t);
 //			db.addEntry(odhe.getId(), odhe.getCategories(), odhe.getTitle(), odhe.getDescription(), odhe.getTags(), odhe.getPublisher());
 		}
 		System.out.println(new Double(i)/new Double(odh.size()));
-//		pl.close();
+		pl.printvalue(0, new Double(i)/new Double(odh.size()));
+		pl.close();
 //		db.exBatch();
 
 	}

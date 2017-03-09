@@ -1,10 +1,12 @@
 package com.sciamlab.it.cata.classifier;
+import java.io.IOException;
+
 import com.sciamlab.it.cata.training.TrainingSet;
 
 public class BayesMultinomialWF extends BayesMultinomial{
 
-	public BayesMultinomialWF(TrainingSet trainingSet){
-		
+	public BayesMultinomialWF(TrainingSet trainingSet) throws IOException{
+		super();
 		this.featureToCategoryCountMap=trainingSet.getDf();
 		System.out.println("df map size: "+featureToCategoryCountMap.size());
 		trainingSet.createTF();

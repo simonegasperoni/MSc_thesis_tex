@@ -1,4 +1,5 @@
 package com.sciamlab.it.cata.classifier;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,8 +10,8 @@ import com.sciamlab.it.cata.training.TrainingSet;
 
 public class BayesKullbackLeibler extends Bayes{
 	
-	public BayesKullbackLeibler(TrainingSet trainingSet){
-
+	public BayesKullbackLeibler(TrainingSet trainingSet) throws IOException{
+		super();
 		this.featureToCategoryCountMap=trainingSet.getDf();
 		System.out.println("df map size: "+featureToCategoryCountMap.size());
 		trainingSet.createDoccounter();

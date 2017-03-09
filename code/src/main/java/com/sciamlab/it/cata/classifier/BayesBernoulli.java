@@ -1,4 +1,5 @@
 package com.sciamlab.it.cata.classifier;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -10,8 +11,8 @@ import com.sciamlab.it.cata.training.TrainingSet;
 
 public class BayesBernoulli extends Bayes{
 	
-	public BayesBernoulli(TrainingSet trainingSet){
-
+	public BayesBernoulli(TrainingSet trainingSet) throws IOException{
+		super();
 		
 		this.featureToCategoryCountMap=trainingSet.getDf();
 		System.out.println("df map size: "+featureToCategoryCountMap.size());

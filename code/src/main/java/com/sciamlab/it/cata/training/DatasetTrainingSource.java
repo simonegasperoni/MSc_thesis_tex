@@ -60,6 +60,7 @@ public class DatasetTrainingSource implements TrainingSource {
 		List<PredictionEntry> dataset = this.getDatasetsBySOLr();
 		for(PredictionEntry pe : dataset){
 			List<String> features = fe.extract(index.filterPA(pe));
+			//System.out.println("F::::::  "+features);
 			docMap.put(pe.id,new ClassifiedEntry(features, catmap));
 		}
 		//System.out.println(docMap.size());

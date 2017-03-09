@@ -46,7 +46,7 @@ public class IndicePA{
 	    	   enti.put(nextLine[0],new RecordPA(nextLine[0], firsttoken, nextLine[2], nextLine[6], nextLine[7]));
 	    	}
 	    }
-	    
+	    System.out.println("Loading IndicePA...");
 	    System.out.println("province: "+province.size()+" items");
 	    System.out.println("regioni: "+regioni.size()+" items");
 	    System.out.println("comuni: "+comuni.size()+" items");
@@ -125,15 +125,15 @@ public class IndicePA{
 			recordpa=getByProvincia(province.get(pe.publisher).getProvincia());
 		}
 		
-		//System.out.println(recordpa);
+
 		
 		for(RecordPA rpa:recordpa){
 			String c=rpa.getComune().toLowerCase();
 			stop.add(c);
 			stop.add(c.replaceAll(" ",""));
+			stop.add(c.replaceAll("\\P{L}+", ""));
 			
 		}
-		//System.out.println(stop);
 		String ti="";
 		String de="";
 		Set<String> ta=new HashSet<String>();
@@ -145,9 +145,11 @@ public class IndicePA{
 		for(String stopw:stop){
 			ti=ti.replaceAll(" "+stopw+" "," ");
 			de=de.replaceAll(" "+stopw+" "," ");
-			for(String t:ta){
-				t=t.replaceAll(stopw, "");
-			}
+			ti=ti.replaceAll(stopw+" "," ");
+			de=de.replaceAll(stopw+" "," ");
+			ti=ti.replaceAll(" "+stopw," ");
+			de=de.replaceAll(" "+stopw," ");
+
 		}
 		pe=new PredictionEntry.Builder(de).title(ti).tag(ta).publisher(pe.publisher).id(pe.id).build();
 		return pe;
@@ -159,12 +161,7 @@ public class IndicePA{
 //		HashSet<String> tag=new HashSet<String>();
 //		tag.add("ciampino");
 //		tag.add("sanita");
-//		
-//		PredictionEntry pe=new PredictionEntry.Builder("  Punti di interesse nelle ANPIL - Citta Metropolitana di Firenze "
-//				+ "Punti di interesse nelle Aree Naturali Protette di Interesse Locale (ANPIL) della Citta Metropolitana di Firenze."
-//				+ "").publisher("cmfi").build();
-//		
-//		
+//		PredictionEntry pe=new PredictionEntry.Builder("benvenuti nel bellissimo comune di fiave").publisher("c_d565").build();
 //		System.out.println(index.filterPA(pe));
 //	}
 }

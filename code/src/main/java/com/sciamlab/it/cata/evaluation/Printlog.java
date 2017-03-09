@@ -22,6 +22,8 @@ public class Printlog{
 		fw.write("\n");
 		fw.write(pe.getTags().toString());
 		fw.write("\n");
+		fw.write(pe.getPublisher().toString());
+		fw.write("\n");
 	}
 	
 	public void printClassifiedEntry(ClassifiedEntry pe) throws IOException{
@@ -36,13 +38,9 @@ public class Printlog{
 		fw.write(t.toString());
 		fw.write("\n");
 	}
-	
-	
-	public static void main(String[] args) throws IOException {
-		
-		Printlog pl=new Printlog("C:/Users/simone/Desktop/file");
-
-		pl.close();
-		
+	public void printvalue(double k, double a) throws IOException{
+		fw.write("k: "+k+" \n");
+		fw.write(""+a);
+		fw.write("---------------- \n");
 	}
 }

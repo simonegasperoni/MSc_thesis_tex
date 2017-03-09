@@ -1,4 +1,5 @@
 package com.sciamlab.it.cata.classifier;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,6 +8,10 @@ import com.sciamlab.it.cata.feature.FeatureExtractor;
 
 public abstract class BayesMultinomial extends Bayes{
 	
+	public BayesMultinomial() throws IOException {
+		super();
+	}
+
 	public ClassifiedEntry predict(PredictionEntry entry, FeatureExtractor fe) throws Exception {
 		List<String> featuresToPredict=fe.extract(entry);
 		return this.predict(featuresToPredict);

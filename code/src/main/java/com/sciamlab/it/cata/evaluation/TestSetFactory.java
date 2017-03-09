@@ -81,20 +81,22 @@ class Indexdb{
 }
 public class TestSetFactory {
 	
+	private static DatasetTrainingSource ex;
+
 	public static void main(String[] arg) throws IOException, SQLException{
 		
 		
 		List<String> t=new ArrayList<String>();
-		t.add("ortofoto");
-		DatasetTrainingSource ex=new DatasetTrainingSource(null, t);
+		t.add("scuole");
+		ex = new DatasetTrainingSource(null, t);
 		
 		List<PredictionEntry> l=ex.getDatasetsBySOLr();
-		Indexdb db=new Indexdb("odh22ortofoto");
+		Indexdb db=new Indexdb("odh22scuole");
 		db.createOdhTable();
 		
 		
 		Set<Theme> cats=new HashSet<Theme>();
-		cats.add(Theme.TECH);
+		cats.add(Theme.EDUC);
 		Array cs=db.getP().getC().createArrayOf("text", cats.toArray());
 		
 		
