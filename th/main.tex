@@ -83,6 +83,46 @@ Tim O'Reilly
 
 \newpage
 \section{Introduzione}
+Il lavoro che segue riguarda la realizzazione di un sistema automatico per l'assegnazione dei metadati di categoria ai dataset open-data del catalogo italiano mediante tecniche di machine learning.
+\\
+\\
+Sebbene sul profilo di applicazione DCAT-AP-it - che disciplina la formattazione dei dati aperti italiani - sia esplicitamente indicato di riportare il tema (categoria) per ciascun dataset, molti dataset non hanno questo metadato, altri dataset riportano metadati di categoria diversi da quelli indicati dalla documentazione europea (13 categorie utilizzate dallo European Data Portal), infine, in molti casi la categoria assegnata non è corretta perché chi ha compilato manualmente il dataset non era sufficientemente documentato. 
+\\
+\\
+Nel catalogo italiano molti dataset riguardanti
+il turismo vengono erroneamente classificati in \say{Educazione, sport e cultura} anziché in \say{Società}, molti dataset riguardanti la materia ortofotografica vengono erroneamente inseriti nella classe \say{Ambiente} anziché \say{Scienza e Tecnologia}, e così via...
+\\
+\\
+L'assegnazione manuale della categoria sul profilo dei metadati DCAT-AP richiede l'utilizzo del tesauro EuroVoc per capire come i concetti sono collegati e come categorizzare gli open-data; i concetti di più alto livello nella gerarchia (130 microtesauri) sono raggruppati nelle 13 categorie (questo bridge è documentato dal portale europeo) che si dovrebbero utilizzare nel categorizzare i dataset open-data, ad esempio l'ortofotografia fa parte di uno dei concetti di un microtesauro appartenente al gruppo \say{Scienza e Tecnologia}.
+\\
+\\
+L'idea di assegnare in modo automatico la categoria basandosi su sistemi di classificazione addestrati sulla base di corpus (basati su EuroVoc) manutenuti da esperti del dominio come JRC-Acquis è finalizzata a migliorare la qualità dei metadati di categoria del catalogo italiano.
+\\
+\\
+Un altro vantaggio importante della categorizzazione automatica è la possibilità di cambiare la categoria ad interi segmenti di dataset in un colpo solo al variare della documentazione europea, infatti un sistema di classificazione automatico ci permette di cambiare il bridge delle categorie con i microtesauri e di riclassificare tutto il catalogo in pochi secondi anziché leggere uno per uno ciascun dataset e riclassificarlo manualmente.
+\\
+\\
+La qualità dei dati e dei metadati è fondamentale per poter garantire un più facile riutilizzo delle informazioni che i dataset open-data contengono, in generale possiamo dire che un dato di qualità è machine-readable, mentre i metadati di qualità si hanno con la compatibilità sul profilo europeo dei metadati.
+\\
+\\
+Nel capitolo che segue vi è una panoramica su tutto il mondo open-data e le tecnologie che vi sono alla base, un particolare focus sul corpus JRC-Acquis 3.0 per comprendere le motivazioni per le quali utilizzarlo come training set in un sistema di machine learning per la categorizzazione degli open-data.
+\\
+\\
+Nel capitolo 3 vi è una panoramica sugli algoritmi e le tecnologie più diffuse per l'elaborazione dei testi, dove si riporta in sintesi l'adattamento dell'algoritmo di Porter per la lingua italiana implementato in Snowball.
+\\
+\\
+Nel capitolo 4 vi è uno studio sui classificatori bayesiani naïve e i modelli più utilizzati per la categorizzazione dei testi, in particolare è riportato un approfondimento sul modello di Bernoulli, il modello multinomiale e l'implementazione del classificatore calcolando la probabilità a posteriori mediante la divergenza di Kullback-Leibler, la quale fornisce un livello di confidenza del classificatore rispetto alla classificazione effettuata.
+\\
+\\
+Nel capitolo 5 si riportano in sintesi le tre principali tecniche di feature selection finalizzate alla rimozione delle noise-feature (rumore introdotto nella classificazione da termini che non contribuiscono fortemente alla classificazione): chi-square, mutual information e frequency based.
+\\
+\\
+Nel capitolo 7 sono illustrate le scelte relative all'implementazione di un sistema per la categorizzazione degli open-data sul profilo europeo dei metadati DCAT-AP basato sulle intuizioni descritte nei capitoli precedenti.
+\\
+\\
+Nel capitolo 8 vi è un breve studio su alcuni sistemi di catalogazione di successo, tra i quali il sistema JRC-JEX utilizzato dal parlamento europeo per classificare i documenti del parlamento europeo con le voci del tesauro EuroVoc.
+
+
 \newpage
 \section{Contesto}
 \subsection{Semantic web}
@@ -478,15 +518,14 @@ JRC-Acquis è un corpus multilingua, questo vuol dire che è disponibile una ver
 
 \newpage
 \subsubsection{Bridge dinamico tra EuroVoc e le categorie DCAT-AP}
+In appendice (\say{Associazione dei Temi DCAT-Microtesauri EuroVoc}) è possibile prendere nota delle corrispondenze tra i 13 temi definiti nell'ambito di DCAT-AP e i concetti (microtesauri) disponibili nel vocabolario EuroVoc (come indicato dal portale europeo https://www.europeandataportal.eu).
+\footnotetext{Profilo italiano di DCAT-AP (DCAT Application Profile for data portals in Europe), Versione 1.0, Agenzia per l'Italia digitale, 2006}
 \begin{figure}[htbp]
 \begin{center}
-\includegraphics[scale=0.30]{img/eurovocdcat.png}
+\includegraphics[scale=0.50]{img/eurovocdcat.png}
 \caption{Bridge tra le categorie DCAT-AP ed EUROVOC}
 \end{center}
 \end{figure}
-
-In appendice (\say{Associazione dei Temi DCAT-Microtesauri EuroVoc}) è possibile prendere nota delle corrispondenze tra i 13 temi definiti nell'ambito di DCAT-AP e i concetti (microtesauri) disponibili nel vocabolario EuroVoc (come indicato dal portale europeo https://www.europeandataportal.eu).
-\footnotetext{Profilo italiano di DCAT-AP (DCAT Application Profile for data portals in Europe), Versione 1.0, Agenzia per l'Italia digitale, 2006}
 \\
 \\
 JRC-Acquis è indicizzato con i concetti del vocabolario EuroVoc, pertanto è stato necessario sviluppare un modulo specializzato per la navigazione del tesauro al fine di ottenere i descrittori dei microtsauri associati ai descrittori dei concetti, per poi permutarli a loro volta nei rispettivi temi DCAT-AP.
@@ -499,8 +538,11 @@ Il seguente modulo java:
 \item Dato un concetto si ottengono i microtesauri associati
 \item Dato un microtesauro si ottiene il relativo tema DCAT-AP (EU Data Theme) 
 \end{enumerate}
-
+\phantom
+\\
 Un corpus etichettato con le voci di un tesauro come EuroVoc permette la realizzazione di associazioni tra concetti a vario livello di astrazione in modo dinamico, ad esempio qualora il microtesauro EuroVoc \say{2831 culture and religion} originariamente associato al tema Population \& Society (Popolazione e Società) dovesse passare in Education, culture and sport (Educazione, cultura e sport), basterebbe modificare il mapping tra i microtesauri e i temi all'interno del modulo specializzato.
+\\
+\\
 \begin{lstlisting}
 Map<String, EUNamedAuthorityDataTheme.Theme> EUROVOC_TO_DCAT_CATEGORIES = new HashMap<String, EUNamedAuthorityDataTheme.Theme>(){
 		{
@@ -512,7 +554,8 @@ Map<String, EUNamedAuthorityDataTheme.Theme> EUROVOC_TO_DCAT_CATEGORIES = new Ha
 		}
 };
 \end{lstlisting}
-
+\phantom
+\\
 Il tesauro (EuroVoc) e il corpus (JRC-Acquis) sono i due componenti fondamentali per la costruzione dei dati di addestramento del classificatore, essendo questi due componenti disaccoppiati è possibile pensare di aggiornare uno e mantenere immutato l'altro qualora siano disponibili versioni più aggiornate del corpus o del tesauro. Anche questa è una forma di flessibilità, anche se in realtà dall'aggiornamento del tesauro non si traggono benefici se i descrittori dei concetti aggiunti non compaiono anche nel corpus. 
 \newpage
 \subsection{JRC-JEX: il classificatore EuroVoc}
@@ -1114,7 +1157,7 @@ $E_{e_{t}e_{c}}$ sono le frequenze attese che il termine $t$ e la classe $c$ occ
 $$E_{e_{t}e_{c}} = N \cdot P(t) \cdot P(c)$$
 Come si può notare, il calcolo del $\chi^2$ rappresenta lo scarto del valore osservato rispetto all'assunzione di indipendenza delle feature e delle categorie. 
 \\
-Un alto valore di $\chi^2$ indica che l'ipotesi di indipendenza (la quale indica che il valore atteso ed il osservato devono essere simili) è sbagliata.
+Un alto valore di $\chi^2$ indica che l'ipotesi di indipendenza (la quale indica che il valore atteso ed il valore osservato devono essere simili) è sbagliata.
 \\
 \\
 I valori di criticità della distribuzione $\chi^2$ con un grado di libertà, ad esempio, se i due eventi sono indipendenti, allora $p$ ($\chi^2>6.63$) è minore di 0.01. Quindi per $\chi^2>6.63$ l'assunzione di indipendenza può essere scartata con una confidenza del 99% 
@@ -1147,8 +1190,8 @@ La frequenza può essere considerata come \say{Document frequency} (numero di do
 Sebbene questo metodo sia molto meno complesso rispetto agli altri due, questo approccio introduce una limitazione, nel selezionare le feature potrebbe includere feature trasversali alle classi, queste feaure non danno un contributo informativo circa il legame tra la feature e la classe.
 
 \newpage
-\section{Sperimentazioni e validazione}
-La validazione di un sistema di text categorization è basata sulla classificazione di un campione di esempi che sono stati categorizzati manualmente da esperti del dominio. Quando si vuole valutare un sistema di text categorization si devono confrontare le categorie assegnate manualmente con le categorie assegnate dal sistema di text categorization.
+\section{Metriche per l'evaluation}
+La validazione di un sistema di text categorization è basata sulla classificazione di un campione di esempi che sono stati categorizzati manualmente da esperti del dominio. Quando si vuole valutare un sistema di text categorization si devono confrontare le categorie assegnate manualmente con le categorie assegnate dal sistema.
 \\
 \\
 Consideriamo la seguente casistica, nella quale diamo una rappresentazione binaria alle varie possibilità di assegnazione di una determinata categoria ad un determinato documento, distinguendo l'assegnazione del sistema da quella dell'esperto del dominio.
@@ -1169,18 +1212,18 @@ Abbiamo TP: true positive, FP: false positive, FN: false negative e TN: true neg
 \item  \textbf{true negative:} la categoria non è assegnata né dal sistema né dall'esperto del dominio.
 \item \textbf{false negative:} la categoria è assegnata dall'esperto ma non dal sistema.
 \end{itemize}
-
-
-\subsection{Metriche per l'evaluation}
+\phantom
+\\
 Piuttosto che avere tutti questi valori binari per ciascuna coppia documento-categoria siamo interessati ad avere quattro valori che rappresentino ciascuna delle quattro tipologie (true positive, false positive, true negative, false negative), pertanto è necessario sommare questi quattro valori per tutte le coppie documento-categoria. Questi quattro valori sono le grandezze che stanno alla base di varie metriche utili per l'evaluation del sistema di classificazione.
 
 \[ Precision: \quad P= \frac{TP}{TP+FP} \]
 \\
-La Precision è una misura utile per quantificare la precisione del sistema sul campione di categorie selezionate a valle della classificazione, è il rapporto tra le categorie correttamente assegnate e tutte quelle assegnate.
+La precision è una misura utile per quantificare la precisione del sistema sul campione di categorie selezionate a valle della classificazione, è il rapporto tra le categorie correttamente assegnate e tutte quelle assegnate.
 \[ Recall: \quad R= \frac{TP}{TP+FN} \]
-La Recall (in italiano \say{recupero}) è utile per misurare la frazione di categorie assegnate dall'esperto a valle della classificazione del sistema. La recall è il rapporto tra categorie assegnate e tutte le categorie di appartenenza di un documento. 
+La recall (in italiano \say{recupero}) è utile per misurare la frazione di categorie assegnate dall'esperto a valle della classificazione del sistema. La recall è il rapporto tra categorie assegnate e tutte le categorie di appartenenza di un documento. 
 \\
-Recall e Precision sono due metriche basilari nei sistemi di information retrieval, trovare un equilibrio tra queste due grandezze non è facile, è necessario un compromesso, in quanto, incrementando la precision abbiamo il declino della recall e viceversa. In una categorizzazione multi-label nella quale restituiamo poche categorie per documento è verosimile avere precision alta e recall bassa, mentre invece, se assegniamo molte categorie sarà più probabile avere recall alta a scapito di precision.
+\\
+Recall e precision sono due metriche basilari nei sistemi di information retrieval, trovare un equilibrio tra queste due grandezze non è facile, è necessario un compromesso, in quanto, incrementando la precision abbiamo il declino della recall e viceversa. In una categorizzazione multi-label nella quale restituiamo poche categorie per documento è verosimile avere precision alta e recall bassa, mentre invece, se assegniamo molte categorie sarà più probabile avere recall alta a scapito di precision.
 
 
 \[ Fallout: \quad F= \frac{FP}{FP+TN} \]
@@ -1188,16 +1231,19 @@ Recall e Precision sono due metriche basilari nei sistemi di information retriev
 \[ Accuracy: \quad F= \frac{TP+TN}{TP+FP+FN+TN} \]
 Utile per quantificare l'accuratezza generale del sistema.
 \[ Error: \quad F= \frac{FP+FN}{TP+FP+FN+TN} \]
-F-measure e Interpolated-break-even sono due grandezze che sintetizzano in un solo valore la precision e la recall di un sistema di classificazione:
+F-measure e Interpolated-break-even sono due grandezze che sintetizzano in un solo valore la precision e la recall di un sistema di classificazione.
 \\
 La F-measure (anche nota come F1-score) è la media armonica 
 \[ F-measure: \quad F1= \frac{2PR}{P+R} \]
 \[ Interpolated-break-even: \quad IB= \frac{P+R}{2} \]
-
+\\
 Tra le due metriche è preferibile usare l'F1, in quanto più sensibile a valori di precision o recall molto bassi.
+\\
+\\
+Con il termine break even point spesso ci si riferisce anche al valore di compromesso tra recall e precision, cioè quando si stabilisce una politica di thresholding tale da raggiungere un situazione per cui la recall è uguale alla precision. 
 
 \subsection{K-fold-cross-validation}
-Gli algoritmi di apprendimento supervisionati per la categorizzazione dei testi (Bayesiani, margin-based, vettoriale, ...) hanno bisogno di un test-set ed un training-set per poter essere valutati. Questi due insiemi devono essere disgiunti per avere delle buone stime delle performance del sistema di classificazione.
+Gli algoritmi di apprendimento supervisionati per la categorizzazione dei testi (Bayesiani, margin-based, vettoriali, ...) hanno bisogno di un test-set ed un training-set per poter essere valutati. Questi due insiemi devono essere disgiunti per avere delle buone stime delle performance del sistema di classificazione.
 \\
 Training set: è un insieme di esempi usato per l'addestramento (apprendimento) del classificatore.
 \\
@@ -1218,6 +1264,56 @@ La k-fold-cross-validation (in italiano validazione incrociata) è una tecnica u
 Così, per ognuna delle k parti (di solito k=10, k=5) si allena il modello, evitando quindi problemi di overfitting, ma anche di campionamento asimmetrico (e quindi affetto da bias) del training dataset, tipico della suddivisione del dataset in due sole parti (ovvero training e test dataset). In altre parole, si suddivide il campione osservato in gruppi di uguale numerosità, si esclude iterativamente un gruppo alla volta e lo si cerca di predire con i gruppi non esclusi. Ciò al fine di verificare la bontà del modello di predizione utilizzato.
 
 \newpage
+\section{OPEN-CATA: categorizzazione open-data}
+OPEN-CATA è un sistema di categorizzazione che implementa gli algoritmi di classificazione testuale e di feature selection descritti nei capitoli precedenti.
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=1.00]{img/abstract.png}
+\caption{Organizzazione logica di OPEN-CATA}
+\end{center}
+\end{figure}
+\phantom
+\\
+\\
+I benefici che possiamo trarre nel basare il classificatore sul corpus JRC-Acquis sono già stati esposti nel paragrafo 2.9. Purtroppo le tematiche riguardanti i dati che andiamo a classificare sono talmente vaste che il solo utilizzo del corpus Acquis non sarebbe sufficiente per raggiungere un adeguato livello di accuratezza, è così necessario pensare ad una estensione della base di conoscenza del classificatore per gestire gli outlier.
+\\
+\\
+Tematiche specifiche come possono essere i nomi di enti locali, acronimi, termini molto tecnici possono essere introdotte mediante un modulo che combina la conoscenza di Acquis con i dataset open-data stessi del portale CKAN agganciati mediante un'interrogazione alle API Solr che CKAN espone, questi dataset che recuperiamo vengono associati ad una categoria e vanno a comporre insieme ad Acquis i dati di addestramento del nostro classificatore.
+\\
+\\
+A questo fine è stato predisposto un file JSON nel quale riportare tutti i contributi all'addestramento da parte di CKAN (vedi \say{esempio di file JSON per il riaddestramento} in appendice):
+
+\begin{verbatim}
+{
+  "retrains": 
+  [  
+  	{
+        "publisher": null,
+        "tags": ["irpef"],
+        "categories": ["ECON"]
+    },
+  	{
+        "publisher": "r_lombar",
+        "tags": ["e-government", "opendata"],
+        "categories": ["GOVE"]
+    },
+    {
+        "publisher": null,
+        "tags": ["tpl", "ztl"], 
+        "categories": ["TRAN"]
+    },
+    ...
+  ]  
+}
+\end{verbatim}
+Ad esempio termini come \say{ztl}, ma anche intere tematiche come \say{opendata} e \say{e-government} non sono trattate in Acquis.
+
+  
+\subsection{Sperimentazioni}
+\subsection{Aspetti software}
+
+\newpage
+
 \section{Sistemi di catalogazione}
 I sistemi di categorizzazione dei testi coprono differenti aeree di interesse. I sistemi di categorizzazione sono stati realizzati per rispondere alla necessità di catalogare ed indicizzare i documenti. 
 \\
@@ -1362,72 +1458,6 @@ MAI usa una grande knowledge base (manutenuta), oltre 170'000 termini e frasi, o
 \subsection{MeSH}
 MeSh (acronimo di Medical Subject Headings), è un indicizzatore automatico utilizzato dalla U.S National Library of Medicine, il quale utilizza un database di circa 18'000 termini del campo medico. Le tecniche adottate sono simili a quelle già descritte negli altri indexer keyword-based.
 \url{https://www.nlm.nih.gov/pubs/factsheets/mesh.html}
-
-
-\newpage
-\section{Aspetti software}
-\subsection{Architettura}
-\subsection{Deployment}
-
-\newpage
-\section{Bibliografia e risorse}
-\subsection{Bibliografia}
-\begin{itemize}
-\item Di Noia, De Virgilio, Di Sciascio, Donini, Semantic Web: Tra ontologie e Open Data, Apogeo, 2013
-\item Linee guida per i siti web della pubblica amministrazione, articolo 4 Direttiva 8/09, Ministero della pubblica amministrazione
-\item Steinberger, Ebrahim, Poulis, Carrasco-Benitez, Schlüter, Przybyszewski \& Gilbro. An overview of the European Union's highly multilingual parallel corpora. Language Resources and Evaluation Journal, JRC, 2014
-\item Steinberger, Ebrahim, Turchi. JRC EuroVoc Indexer JEX - A freely available multi-label categorisation tool. European Commission, JRC, 2014
-\item Profilo italiano di DCAT-AP (DCAT Application Profile for data portals in Europe), Versione 1.0, Agenzia per l'Italia digitale, 2006
-\item Busa, Fondamenti di informatica linguistica, Istituto Geografico De Agostini, 1987
-\item Chiari, Introduzione alla linguistica computazionale, Laterza, 2007
-\item Orsingher, Beghin, Introduzione alla probabilità, Carocci editore
-\item Porter, An algorithm for suffix stripping, Program: electronic library and information systems, vol. 14, no. 3, pp. 130–137, 1980
-\item Mitchell, Machine learning, Mc Graw Hill, 1997
-\item Shimodaira, Text classification using Naive Bayes, 2015
-\item Raschka, Naive Bayes and Text Classification, Introduction and Theory, 2014
-\item Rudner, Liang, Automated essay scoring using bayes theorem, The Journal of Technology, Learning and Assessment, vol. 1, no. 2, 2002
-\item McCallum, Nigam, et al, A comparison of event models for naive bayes text classification, in AAAI-98 workshop on learning for text categorization, vol. 752, pp. 41–48, Citeseer, 1998
-\item Domingos, Pazzani, On the optimality of the simple bayesian classifier under zero-one loss, Machine learning, vol. 29, no. 2-3, pp. 103–130, 1997
-\item Zhang, The optimality of naive bayes, AA, vol. 1, no. 2, p. 3, 2004
-\item Manning, Raghavan, Schütze, Introduction to Information Retrieval, Cambridge University Press, 2008
-\item Schneider, Techniques for Improving the Performance of Naive Bayes for Text Classification, University of Passau, Department of General Linguistics
-\item Craven, Di Pasquo, Freitag, McCallum, Mitchell, Nigam, Slattery, Learning to construct knowledgebases from the World Wide Web. Artificial Intelligence 118, pp. 69-113, 2000
-\item Gutierrez-Osuna, Introduction to Pattern Analysis, Texas A\&M University
-\item Pouliquen, Steinberger, Ignat, Automatic Annotation of Multilingual Text Collections with a Conceptual Thesaurus, JRC, 2003
-\item Kilgarriff, Which words are particularly  
-characteristic of a text? A survey of statistical approaches. Proceedings of the AISB Workshop on Language Engineering for Document Analysis and Recognition, pp. 33-40, 1996
-\item Salton, Automatic Text Processing: the Transformation, Analysis and Retrieval of Information by Computer, Addison-Wesley, 1989
-\item Robertson, Walker, Hancock-Beaulieu, Gatford, Okapi in TREC-3. Proceedings of Text Retrieval Conference  TREC-3, U.S. National Institute of Standards and Technology,   
-Gaithersburg, USA. NIST Special Publication 500-225, pp. 109-126, 1994
-\item Vleduts-Stokolov, Concept recognition in an automatic text-processing system for the life sciences, 1987
-\item Fumagalli, Trasparenza e Open Data: l'evoluzione del quadro normativo fino all'emanazione del neo D.Lgs. 33/2013. La Bussola della Trasparenza, 2014
-\end{itemize}
-
-\newpage
-\subsection{Link utili}
-\begin{itemize}
-\item \url{https://github.com/simonegasperoni/open-cata}
-\item \url{http://opendefinition.org/od/2.1/en}
-\item \url{http://opendatahandbook.org/guide/it/what-is-open-data}
-\item \url{http://dati.mit.gov.it/dcat/catalog.rdf}
-\item \url{https://www.w3.org/TR/vocab-dcat}
-\item \url{https://ckan.org}
-\item \url{https://github.com/ckan/ckan}
-\item \url{https://datahub.io}
-\item \url{https://europeandataportal.eu}
-\item \url{http://sciamlab.com/opendatahub/it}
-\item \url{http://dati.gov.it}
-\item \url{https://github.com/ckan/ckanext-dcat}
-\item \url{https://github.com/ckan/ckanext-dcat#rdf-dcat-to-ckan-dataset-mapping}
-\item \url{http://eurovoc.europa.eu}
-\item \url{https://ec.europa.eu/jrc/en/language-technologies/jrc-acquis}
-\item \url{https://ec.europa.eu/jrc/en/language-technologies/jrc-eurovoc-indexer}
-\item \url{http://tei-c.org}
-\item \url{http://snowballstem.org}
-\item \url{https://github.com/snowballstem/snowball}
-\item \url{https://www.nlm.nih.gov/pubs/factsheets/mesh.html}
-\item \url{www.cas.org/File%20Library/Training/STN/DBSS/biosis.pdf}
-\end{itemize}
 
 \newpage
 \section{Appendice}
@@ -1611,5 +1641,112 @@ Microtesauri EuroVoc associati al tema DCAT-AP (EU Data Themes): TECH (Science \
     6406 production 
     6411 technology and technical regulations
 \end{verbatim}
+\newpage
+\subsection{Esempio di file JSON per il riaddestramento}
+\begin{verbatim}
+{
+  "retrains": 
+  [{
+        "publisher": "r_lazio",
+        "tags": ["ptpr"],
+        "categories": ["ENVI"]
+    },
+    {
+        "publisher": null,
+        "tags": ["ortofoto"],
+        "categories": ["TECH"]
+    },
+    {
+        "publisher": null,
+        "tags": ["alzheimer", "diabete"],
+        "categories": ["HEAL"]
+    },
+    {
+        "publisher": "r_lombar",
+        "tags": ["e-government", "opendata"],
+        "categories": ["GOVE"]
+    },
+    {
+        "publisher": null,
+        "tags": ["bus", "tpl", "incidenti stradali", "ztl"], 
+        "categories": ["TRAN"]
+    },
+    {
+        "publisher": null,
+        "tags": ["irpef"],
+        "categories": ["ECON"]
+    },
+    {
+        "publisher": null,
+        "tags": ["sport", "palestre"],
+        "categories": ["EDUC"]
+    },
+    {
+        "publisher": null,
+        "tags": ["negozi", "rivendita"],
+        "categories": ["ECON"]
+    }]
+}
+\end{verbatim}
+
+\newpage
+\section{Bibliografia e risorse}
+\subsection{Bibliografia}
+\begin{itemize}
+\item Di Noia, De Virgilio, Di Sciascio, Donini, Semantic Web: Tra ontologie e Open Data, Apogeo, 2013
+\item Linee guida per i siti web della pubblica amministrazione, articolo 4 Direttiva 8/09, Ministero della pubblica amministrazione
+\item Steinberger, Ebrahim, Poulis, Carrasco-Benitez, Schlüter, Przybyszewski \& Gilbro. An overview of the European Union's highly multilingual parallel corpora. Language Resources and Evaluation Journal, JRC, 2014
+\item Steinberger, Ebrahim, Turchi. JRC EuroVoc Indexer JEX - A freely available multi-label categorisation tool. European Commission, JRC, 2014
+\item Profilo italiano di DCAT-AP (DCAT Application Profile for data portals in Europe), Versione 1.0, Agenzia per l'Italia digitale, 2006
+\item Busa, Fondamenti di informatica linguistica, Istituto Geografico De Agostini, 1987
+\item Chiari, Introduzione alla linguistica computazionale, Laterza, 2007
+\item Orsingher, Beghin, Introduzione alla probabilità, Carocci editore
+\item Porter, An algorithm for suffix stripping, Program: electronic library and information systems, vol. 14, no. 3, pp. 130–137, 1980
+\item Mitchell, Machine learning, Mc Graw Hill, 1997
+\item Shimodaira, Text classification using Naive Bayes, 2015
+\item Raschka, Naive Bayes and Text Classification, Introduction and Theory, 2014
+\item Rudner, Liang, Automated essay scoring using bayes theorem, The Journal of Technology, Learning and Assessment, vol. 1, no. 2, 2002
+\item McCallum, Nigam, et al, A comparison of event models for naive bayes text classification, in AAAI-98 workshop on learning for text categorization, vol. 752, pp. 41–48, Citeseer, 1998
+\item Domingos, Pazzani, On the optimality of the simple bayesian classifier under zero-one loss, Machine learning, vol. 29, no. 2-3, pp. 103–130, 1997
+\item Zhang, The optimality of naive bayes, AA, vol. 1, no. 2, p. 3, 2004
+\item Manning, Raghavan, Schütze, Introduction to Information Retrieval, Cambridge University Press, 2008
+\item Schneider, Techniques for Improving the Performance of Naive Bayes for Text Classification, University of Passau, Department of General Linguistics
+\item Craven, Di Pasquo, Freitag, McCallum, Mitchell, Nigam, Slattery, Learning to construct knowledgebases from the World Wide Web. Artificial Intelligence 118, pp. 69-113, 2000
+\item Gutierrez-Osuna, Introduction to Pattern Analysis, Texas A\&M University
+\item Pouliquen, Steinberger, Ignat, Automatic Annotation of Multilingual Text Collections with a Conceptual Thesaurus, JRC, 2003
+\item Kilgarriff, Which words are particularly  
+characteristic of a text? A survey of statistical approaches. Proceedings of the AISB Workshop on Language Engineering for Document Analysis and Recognition, pp. 33-40, 1996
+\item Salton, Automatic Text Processing: the Transformation, Analysis and Retrieval of Information by Computer, Addison-Wesley, 1989
+\item Robertson, Walker, Hancock-Beaulieu, Gatford, Okapi in TREC-3. Proceedings of Text Retrieval Conference  TREC-3, U.S. National Institute of Standards and Technology,   
+Gaithersburg, USA. NIST Special Publication 500-225, pp. 109-126, 1994
+\item Vleduts-Stokolov, Concept recognition in an automatic text-processing system for the life sciences, 1987
+\item Fumagalli, Trasparenza e Open Data: l'evoluzione del quadro normativo fino all'emanazione del neo D.Lgs. 33/2013. La Bussola della Trasparenza, 2014
+\end{itemize}
+
+\newpage
+\subsection{Link utili}
+\begin{itemize}
+\item \url{https://github.com/simonegasperoni/open-cata}
+\item \url{http://opendefinition.org/od/2.1/en}
+\item \url{http://opendatahandbook.org/guide/it/what-is-open-data}
+\item \url{http://dati.mit.gov.it/dcat/catalog.rdf}
+\item \url{https://www.w3.org/TR/vocab-dcat}
+\item \url{https://ckan.org}
+\item \url{https://github.com/ckan/ckan}
+\item \url{https://datahub.io}
+\item \url{https://europeandataportal.eu}
+\item \url{http://sciamlab.com/opendatahub/it}
+\item \url{http://dati.gov.it}
+\item \url{https://github.com/ckan/ckanext-dcat}
+\item \url{https://github.com/ckan/ckanext-dcat#rdf-dcat-to-ckan-dataset-mapping}
+\item \url{http://eurovoc.europa.eu}
+\item \url{https://ec.europa.eu/jrc/en/language-technologies/jrc-acquis}
+\item \url{https://ec.europa.eu/jrc/en/language-technologies/jrc-eurovoc-indexer}
+\item \url{http://tei-c.org}
+\item \url{http://snowballstem.org}
+\item \url{https://github.com/snowballstem/snowball}
+\item \url{https://www.nlm.nih.gov/pubs/factsheets/mesh.html}
+\item \url{www.cas.org/File%20Library/Training/STN/DBSS/biosis.pdf}
+\end{itemize}
 
 \end{document}
