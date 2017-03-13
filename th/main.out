@@ -45,20 +45,27 @@
 \BOOKMARK [1][-]{section.6}{Metriche per l'evaluation}{}% 45
 \BOOKMARK [2][-]{subsection.6.1}{K-fold-cross-validation}{section.6}% 46
 \BOOKMARK [1][-]{section.7}{OPEN-CATA: categorizzazione open-data}{}% 47
-\BOOKMARK [2][-]{subsection.7.1}{Sperimentazioni}{section.7}% 48
-\BOOKMARK [2][-]{subsection.7.2}{Aspetti software}{section.7}% 49
-\BOOKMARK [1][-]{section.8}{Sistemi di catalogazione}{}% 50
-\BOOKMARK [2][-]{subsection.8.1}{JRC-JEX \(JRC EuroVoc Indexer\)}{section.8}% 51
-\BOOKMARK [3][-]{subsubsection.8.1.1}{Pre-processamento corpus}{subsection.8.1}% 52
-\BOOKMARK [3][-]{subsubsection.8.1.2}{Vector space model}{subsection.8.1}% 53
-\BOOKMARK [3][-]{subsubsection.8.1.3}{Weighting dei vettori}{subsection.8.1}% 54
-\BOOKMARK [2][-]{subsection.8.2}{BIOSIS}{section.8}% 55
-\BOOKMARK [2][-]{subsection.8.3}{NASA MAI System}{section.8}% 56
-\BOOKMARK [2][-]{subsection.8.4}{MeSH}{section.8}% 57
-\BOOKMARK [1][-]{section.9}{Appendice}{}% 58
-\BOOKMARK [2][-]{subsection.9.1}{Qualit\340 dei dataset secondo il W3C}{section.9}% 59
-\BOOKMARK [2][-]{subsection.9.2}{Associazione Temi DCAT - Microtesauri EuroVoc}{section.9}% 60
-\BOOKMARK [2][-]{subsection.9.3}{Esempio di file JSON per il riaddestramento}{section.9}% 61
-\BOOKMARK [1][-]{section.10}{Bibliografia e risorse}{}% 62
-\BOOKMARK [2][-]{subsection.10.1}{Bibliografia}{section.10}% 63
-\BOOKMARK [2][-]{subsection.10.2}{Link utili}{section.10}% 64
+\BOOKMARK [2][-]{subsection.7.1}{Cablaggio della logica di addestramento}{section.7}% 48
+\BOOKMARK [2][-]{subsection.7.2}{Sperimentazioni}{section.7}% 49
+\BOOKMARK [3][-]{subsubsection.7.2.1}{Confronto degli approcci implementati}{subsection.7.2}% 50
+\BOOKMARK [3][-]{subsubsection.7.2.2}{Confronto tecniche di feature selection}{subsection.7.2}% 51
+\BOOKMARK [2][-]{subsection.7.3}{Aspetti software}{section.7}% 52
+\BOOKMARK [2][-]{subsection.7.4}{Possibili sviluppi}{section.7}% 53
+\BOOKMARK [3][-]{subsubsection.7.4.1}{Outlier detection}{subsection.7.4}% 54
+\BOOKMARK [3][-]{subsubsection.7.4.2}{Clustering}{subsection.7.4}% 55
+\BOOKMARK [3][-]{subsubsection.7.4.3}{Filtering}{subsection.7.4}% 56
+\BOOKMARK [1][-]{section.8}{Sistemi di catalogazione}{}% 57
+\BOOKMARK [2][-]{subsection.8.1}{JRC-JEX \(JRC EuroVoc Indexer\)}{section.8}% 58
+\BOOKMARK [3][-]{subsubsection.8.1.1}{Pre-processamento corpus}{subsection.8.1}% 59
+\BOOKMARK [3][-]{subsubsection.8.1.2}{Vector space model}{subsection.8.1}% 60
+\BOOKMARK [3][-]{subsubsection.8.1.3}{Weighting dei vettori}{subsection.8.1}% 61
+\BOOKMARK [2][-]{subsection.8.2}{BIOSIS}{section.8}% 62
+\BOOKMARK [2][-]{subsection.8.3}{NASA MAI System}{section.8}% 63
+\BOOKMARK [2][-]{subsection.8.4}{MeSH}{section.8}% 64
+\BOOKMARK [1][-]{section.9}{Appendice}{}% 65
+\BOOKMARK [2][-]{subsection.9.1}{Qualit\340 dei dataset secondo il W3C}{section.9}% 66
+\BOOKMARK [2][-]{subsection.9.2}{Associazione Temi DCAT - Microtesauri EuroVoc}{section.9}% 67
+\BOOKMARK [2][-]{subsection.9.3}{Esempio di file JSON per il riaddestramento}{section.9}% 68
+\BOOKMARK [1][-]{section.10}{Bibliografia e risorse}{}% 69
+\BOOKMARK [2][-]{subsection.10.1}{Bibliografia}{section.10}% 70
+\BOOKMARK [2][-]{subsection.10.2}{Link utili}{section.10}% 71

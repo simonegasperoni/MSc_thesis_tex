@@ -14,11 +14,12 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import com.sciamlab.common.model.mdr.vocabulary.EUNamedAuthorityDataTheme.Theme;
+import com.sciamlab.it.eurovoc.JEVoc;
 
 public class Retrainer {
 
 	public static List<SOLrQuery> getQueries() throws FileNotFoundException, IOException, ParseException {
-		// TODO Auto-generated method stub
+		JEVoc ev=new JEVoc();
 		List<SOLrQuery> queries=new ArrayList<SOLrQuery>();
 		JSONParser parser = new JSONParser();
 		Object obj = parser.parse(new FileReader("src/main/resources/retrains.json"));
@@ -29,7 +30,7 @@ public class Retrainer {
         	
         	JSONObject current=(JSONObject) a.get(i);
         	String p=(String)current.get("publisher");
-        	Set<Theme> c=new HashSet<Theme>();
+        	HashSet<String> c=new HashSet<String>();
         	List<String> t=new ArrayList<String>();
         	
         	JSONArray tags = (JSONArray) current.get("tags");
@@ -40,10 +41,10 @@ public class Retrainer {
         	JSONArray categories = (JSONArray) current.get("categories");
         	for(int i2=0; i2<categories.size(); i2++){
         		String v=(String)categories.get(i2);
-        		Theme t1=Theme.valueOf(v);
-        		c.add(t1);
+        		c.add(v);
         	}
-        	queries.add(new SOLrQuery(p,t,c));
+        	
+        	queries.add(new SOLrQuery(p,t,ev.returnsDCATCAT(c)));
         	
         }
         return queries;

@@ -86,7 +86,7 @@ Tim O'Reilly
 Il lavoro che segue riguarda la realizzazione di un sistema automatico per l'assegnazione dei metadati di categoria ai dataset open-data del catalogo italiano mediante tecniche di machine learning.
 \\
 \\
-Sebbene sul profilo di applicazione DCAT-AP-it - che disciplina la formattazione dei dati aperti italiani - sia esplicitamente indicato di riportare il tema (categoria) per ciascun dataset, molti dataset non hanno questo metadato, altri dataset riportano metadati di categoria diversi da quelli indicati dalla documentazione europea (13 categorie utilizzate dallo European Data Portal), infine, in molti casi la categoria assegnata non è corretta perché chi ha compilato manualmente il dataset non era sufficientemente documentato. 
+Sebbene sul profilo di applicazione DCAT-AP-it - che disciplina la formattazione dei dati aperti italiani - sia esplicitamente indicato di riportare il tema (categoria) per ciascun dataset, molti dataset non hanno questo metadato, altri dataset riportano metadati di categoria diversi da quelli indicati dalla documentazione europea (13 categorie utilizzate dallo European Data Portal), inoltre, in molti casi la categoria assegnata non è corretta perché chi ha compilato manualmente il dataset non era sufficientemente documentato. 
 \\
 \\
 Nel catalogo italiano molti dataset riguardanti
@@ -276,6 +276,48 @@ Pubblicare i dati sotto forma di cataloghi RDF DCAT garantisce l'interoperabilit
 \caption{Modello DCAT}
 \end{center}
 \end{figure}
+
+\newpage
+\begin{verbatim}
+<dcat:dataset>
+    ...
+    <dcat:keyword>
+        Incidentalità
+	</dcat:keyword>
+    <dcat:keyword>
+        veicoli circolanti
+    </dcat:keyword>
+    <dct:identifier>
+        50f3e81c-89e6-4c09-9ff3-5a92f5596fcc
+    </dct:identifier>
+    <dct:publisher rdf:resource="http://dati.mit.gov.it/dcat/agent/m_inf"/>
+    <dct:modified rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">
+        2016-1018T14:25:31.686274
+    </dct:modified>
+    <dct:spatial>
+        <dct:Location rdf:nodeID="N8a677f1ad3b947b0934b520dcf6efafe">
+            <locn:geometry rdf:datatype="http://www.opengis.net/ont/...>
+                    POLYGON ((6.2622 36.56....
+            </locn:geometry>
+            ...
+        </dct:Location>
+    </dct:spatial>
+    <dct:creator rdf:resource="http://dati.mit.gov.it/dcat/agent/m_inf"/>
+    <dcat:theme rdf:resource=".../authority/datatheme/TRAN"/>
+    <dcat:landingPage rdf:resource=".../5a92f5596fcc"/>
+    ...
+    <dcat:distribution rdf:Resource="http://dati.mit.gov.it/dcat/dataset/..."/>
+    ...	
+    <dct:description>
+         Il dataset contiene dati per il calcolo di diversi ...
+    </dct:description>
+    <dct:language rdf:
+        resource="http://publications.europa.eu/resource/authority/language/ITA"/>
+    <dct:accrualPeriodicity rdf:
+        resource="http://publications.europa.eu/resource/authority/frequency/IRREG"/>
+    ...
+</dcatapit:Dataset>
+\end{verbatim}
 
 \newpage
 \subsection{DCAT-AP e DCAT-AP-it}
@@ -1278,7 +1320,7 @@ OPEN-CATA è un sistema di categorizzazione che implementa gli algoritmi di clas
 I benefici che possiamo trarre nel basare il classificatore sul corpus JRC-Acquis sono già stati esposti nel paragrafo 2.9. Purtroppo le tematiche riguardanti i dati che andiamo a classificare sono talmente vaste che il solo utilizzo del corpus Acquis non sarebbe sufficiente per raggiungere un adeguato livello di accuratezza, è così necessario pensare ad una estensione della base di conoscenza del classificatore per gestire gli outlier.
 \\
 \\
-Tematiche specifiche come possono essere i nomi di enti locali, acronimi, termini molto tecnici possono essere introdotte mediante un modulo che combina la conoscenza di Acquis con i dataset open-data stessi del portale CKAN agganciati mediante un'interrogazione alle API Solr che CKAN espone, questi dataset che recuperiamo vengono associati ad una categoria e vanno a comporre insieme ad Acquis i dati di addestramento del nostro classificatore.
+Tematiche specifiche come possono essere i nomi di enti locali, acronimi, termini molto tecnici sono introdotte mediante un modulo che combina i termini di Acquis con i termini dei dataset open-data stessi del portale CKAN agganciati mediante un'interrogazione alle API Solr che CKAN espone, questi dataset che recuperiamo vengono associati ad una categoria e vanno a comporre insieme ad Acquis i dati di addestramento del nostro classificatore.
 \\
 \\
 A questo fine è stato predisposto un file JSON nel quale riportare tutti i contributi all'addestramento da parte di CKAN (vedi \say{esempio di file JSON per il riaddestramento} in appendice):
@@ -1307,12 +1349,148 @@ A questo fine è stato predisposto un file JSON nel quale riportare tutti i cont
 }
 \end{verbatim}
 Ad esempio termini come \say{ztl}, ma anche intere tematiche come \say{opendata} e \say{e-government} non sono trattate in Acquis.
-
-  
-\subsection{Sperimentazioni}
-\subsection{Aspetti software}
+\\
+\\
+Ogni entry dell'array \say{retrains} individua un gruppo di dataset di un \say{publisher} e aventi  determinati \say{tags}, ogni dataset diventa l'equivalente di un documento di Acquis nel quale le categorie DCAT sono riportate nel campo \say{categories}, i termini si estraggono dai metadati testuali disponibili, ovvero, titolo, tag e descrizione.
+\\
+\\
+Il vantaggio notevole nel seguire un approccio di questo tipo è il fatto che la logica di addestramento è totalmente cablata, pertanto, risulta molto facile, realizzare delle modifiche intervenendo solamente sul bridge delle categorie DCAT per Acquis e sul file JSON per la gestione degli outlier.
+\\
+Dopodiché si effettua una selezione delle feature per evitare fenomeni di overfitting che potrebbero essere presenti se si utilizzassero tutti i termini, inifine, si riaddestra il nostro classificatore e si procede alla predizione dell'intero catalogo. 
 
 \newpage
+\subsection{Cablaggio della logica di addestramento}
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.70]{img/td2.png}
+\caption{Cablaggio della logica di addestramento}
+\end{center}
+\end{figure}
+
+\newpage
+\subsection{Sperimentazioni}
+I test eseguiti sono stati effettuati su un campione del catalogo italiano contenente dataset di interi cataloghi come quelli della regione Trentino, della regione Lazio, della regione Lombardia, della provincia di Lecce, del ministero delle infrastrutture, e dei trasporti e dataset su tematiche specifiche trasversali ai singoli cataloghi come turismo, ortofotografia, trasporti, e scuole.
+\\
+\\
+I testset hanno i seguenti tagli:
+\begin{itemize}  
+\item Regione Lazio: 258 dataset
+\item Provincia di Lecce: 325 dataset
+\item Ministero delle infrastrutture e dei trasporti: 27 dataset
+\item Regione Trentino: 615 dataset
+\item Regione Lombardia: 1062 dataset
+\item materia ortofotografica: 247 dataset
+\item materia turistica: 133 dataset
+\item materia scolastica: 224 dataset
+\item trasporti ed autostrade: 42 dataset
+
+\end{itemize}
+\phantom
+\\
+Le sperimentazioni sono state effettuate incrociando tutti gli approcci di classificazione e di selezione delle feature al fine di stabilire la combinazione migliore. I risultati che riporto di seguito evidenziano come l'utilizzo combinato di una selezione Chi-Square e l'algoritmo di classificazione bayesiano multinomiale basato sulle frequenze dei termini porta ad una migliore accuratezza nella classificazione single-label.
+\\
+\\
+Per quanto il task di classificazione possa sembrare semplice, bisogna sempre considerare che i dati su cui si basa la classificazione sono i metadati dei dataset, e, a volte la descrizione delle risorse può essere minimale. 
+\\
+\\
+Questo complica particolarmente le cose nell'ambito di una classificazione multi-label, la quale, risulta molto difficoltosa, anche se l'approccio basato sulla divergenza migliora leggermente le prestazioni il livello di accuratezza non è accettabile. Questa tuttavia non è una grande limitazione considerando che quasi tutti i dataset sono correttamente categorizzati con una sola categoria.
+\newpage
+\subsubsection{Confronto degli approcci implementati}
+Gli approcci testati sul campione appena descritto utilizzando il file di riaddestramento JSON riportato in appendice (\say{Esempio di file JSON per il riaddestramento}) hanno dato luogo hai seguenti risultati (in rosso scuro sono riportati i livelli di accuratezza per i vari approcci di classificazione basati solo sul corpus Acquis):
+\\
+\\
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.70]{img/gr4.png}
+\caption{Confronto tecniche di feature selection}
+\end{center}
+\end{figure}
+\\
+\\
+\begin{tabular}{l*{6}{c}r}
+approccio & accuracy Acquis+retrains & accuracy Acquis\\
+\hline
+Multinomiale WO, MI	& 0,82 & 0,60 \\
+Multinomiale WF, MI & 0,84 & 0,66 \\
+Bernoulli, MI & 0,77 & 0,60 \\
+Multinomiale WO, CS & 0,81 & 0,66 \\
+Multinomiale WF, CS & 0,85 & 0,67 \\
+Bernoulli, CS & 0,77 & 0,58
+\end{tabular}
+
+
+
+\newpage
+\subsubsection{Confronto tecniche di feature selection}
+Sebbene non tutti i testset considerati presentino il fenomeno di overfitting, per recuperare l'accuratezza in alcuni cataloghi è bene limitare il numero di feature.
+Nella fattispecie il taglio ideale si è ottenuto con la tecnica Chi-Square, selezionando le 2500 feature più significative per categoria abbiamo un vocabolario di circa 13000 feature.
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.70]{img/gr1.png}
+\caption{Confronto tecniche di feature selection}
+\end{center}
+\end{figure}
+
+\begin{tabular}{l*{6}{c}r}
+size & k & Multin. WF, MI & Multin. WF, CS \\
+\hline
+Circa 500 feature & 50 & 0,60 & 0,62 \\
+Circa 800 feature & 100 & 0,59 & 0,66 \\
+Circa 1500 feature & 500 & 0,71 & 0,66 \\
+Circa 5300 feature & 1000 & 0,74 & 0,76 \\
+Circa 10000 feature & 2000 & 0,76 & 0,78 \\
+Circa 13000 feature & 2500 & 0,77 & 0,80 \\
+Circa 15000 feature & 3000 & 0,77 & 0,77 \\
+Circa 23000 feature & 5000 & 0,76 & 0,77 \\
+Circa 50000 feature & 10000 & 0,76 & 0,76 \\
+Circa 85000 feature & 20000 & 0,75 & 0,74 \\
+Tutte, circa 130000 feature & 70000 & 0,74 & 0,74 \\
+Tutte, circa 130000 feature & 80000 & 0,73 & 0,74 \\
+Tutte, circa 130000 feature & 100000 & 0,73 & 0,74 \\
+\end{tabular}
+\newpage
+Riporto di seguito altre sperimentazioni effettuate:
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.55]{img/gr2.png}
+\caption{Mutual information feature selection}
+\end{center}
+\end{figure}
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.55]{img/gr3.png}
+\caption{Chi-Square feature selection}
+\end{center}
+\end{figure}
+\newpage
+
+
+\subsection{Aspetti software}
+\newpage
+
+\subsection{Possibili sviluppi}
+\subsubsection{Outlier detection}
+Uno dei problemi inquadrati è la fase di outlier detection, ovvero, l'individuazione di quelle tematiche (interi gruppi di dataset) che non vengono correttamente categorizzate e necessitano il supporto di un riaddestramento. In sostanza sarebbe utile avere una linea guida per la compilazione del file JSON di riaddestramento.
+\\
+\\
+Una delle possibili soluzione potrebbe essere quella di utilizzare la misura della confidenza del classificatore (divergenza di Kullback-Leibler) e stabilire una soglia di confidenza sotto la quale è necessario specializzare il corpus Acquis con dei riaddestramenti.
+
+\subsubsection{Clustering}
+L'utilizzo di algoritmi di apprendimento non supervisionato potrebbero essere utilizzati al fine di individuare alcune regolarità e pattern da utilizzare per la compilazione del file JSON per i riaddestramenti.
+\\
+\\
+A questo fine sarebbe utile una clusterizzazione rispetto ai tag per prendere nota di quali tematiche descrivono ed associarli dunque alle nostre categorie di interesse.
+
+\subsubsection{Filtering}
+Sebbene nelle sperimentazioni non siano stati registrati peggioramenti nell'accuratezza in nessuno dei cataloghi testati, a valle dei riaddestramenti, c'è comunque la possibilità che a fronte di riaddestramenti molto corposi (che coinvolgono un gran numero di dataset e feature) si possa introdurre un del rumore informativo.
+\\
+Per fronteggiare una tale eventualità si può pensare di utilizzare un filtro con le tecniche di feature selection (Chi-square, Mutual Information) che va a scremare il set di feature dei riaddestramenti che hanno più alto valore di utilità negli algoritmi di feature selection.
+\\
+\\
+Così facendo è come se volessimo preservare l'integrità di Acquis entro certi limiti, questi limiti sono definiti dal numero di feature che verranno filtrate.
+\newpage
+
 
 \section{Sistemi di catalogazione}
 I sistemi di categorizzazione dei testi coprono differenti aeree di interesse. I sistemi di categorizzazione sono stati realizzati per rispondere alla necessità di catalogare ed indicizzare i documenti. 

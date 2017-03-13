@@ -6,7 +6,6 @@ import org.apache.log4j.Logger;
 import com.sciamlab.common.util.SciamlabStreamUtils;
 import com.sciamlab.it.cata.evaluation.OpenDataHubTest;
 import com.sciamlab.it.cata.selector.ChiSquareSelector;
-import com.sciamlab.it.cata.selector.MutualInformationSelector;
 import com.sciamlab.it.cata.classifier.BayesMultinomialWF;
 import com.sciamlab.it.cata.training.AcquisTrainingSource;
 import com.sciamlab.it.cata.training.DatasetTrainingSource;
@@ -30,62 +29,26 @@ public class Cata {
 	}
 	
 	public static void main(String[] args) throws Exception {
-		TrainingSet ts;
+		TrainingSet ts=createTS(2500);
 		
-		ts=createTS(50);
-		test(ts,"db2");
-		
-		ts=createTS(100);
-		test(ts,"db2");
-		
-		ts=createTS(500);
-		test(ts,"db2");
-		
-		ts=createTS(1000);
-		test(ts,"db2");
-		
-		ts=createTS(2000);
-		test(ts,"db2");
-		
-		ts=createTS(2500);
-		test(ts,"db2");
-		
-		ts=createTS(3000);
-		test(ts,"db2");
-		
-		ts=createTS(5000);
-		test(ts,"db2");
-		
-		ts=createTS(10000);
-		test(ts,"db2");
-		
-		ts=createTS(20000);
-		test(ts,"db2");
-		
-		ts=createTS(70000);
-		test(ts,"db2");
-		
-		ts=createTS(80000);
-		test(ts,"db2");
-		
-//		System.out.println("|||||||||||||||---------------------------lecce:");
-//		test(ts,"odh22lecce");
-//		System.out.println("|||||||||||||||---------------------------lazio:");
-//		test(ts,"odh22lazio");
-//		System.out.println("|||||||||||||||---------------------------infrastrutture:");
-//		test(ts,"odh22infrastrutture");
-//		System.out.println("|||||||||||||||---------------------------lombardia:");
-//		test(ts,"odh22lombardia");
-//		System.out.println("|||||||||||||||---------------------------ortofoto:");
-//		test(ts,"odh22ortofoto");
-//		System.out.println("|||||||||||||||---------------------------ricettivita:");
-//		test(ts,"odh22ricettivita");
-//		System.out.println("|||||||||||||||---------------------------autostrada:");
-//		test(ts,"odh22autostrada");
-//		System.out.println("|||||||||||||||---------------------------scuole:");
-//		test(ts,"odh22scuole");
-//		System.out.println("|||||||||||||||---------------------------trentino:");
-//		test(ts,"odh22trentino");
+		System.out.println("|||||||||||||||---------------------------lecce:");
+		test(ts,"odh22lecce");
+		System.out.println("|||||||||||||||---------------------------lazio:");
+		test(ts,"odh22lazio");
+		System.out.println("|||||||||||||||---------------------------infrastrutture:");
+		test(ts,"odh22infrastrutture");
+		System.out.println("|||||||||||||||---------------------------lombardia:");
+		test(ts,"odh22lombardia");
+		System.out.println("|||||||||||||||---------------------------ortofoto:");
+		test(ts,"odh22ortofoto");
+		System.out.println("|||||||||||||||---------------------------ricettivita:");
+		test(ts,"odh22ricettivita");
+		System.out.println("|||||||||||||||---------------------------autostrada:");
+		test(ts,"odh22autostrada");
+		System.out.println("|||||||||||||||---------------------------scuole:");
+		test(ts,"odh22scuole");
+		System.out.println("|||||||||||||||---------------------------trentino:");
+		test(ts,"odh22trentino");
 		
 	}
 	
@@ -120,7 +83,7 @@ public class Cata {
 			}
 			
 			// filter top 2000 features per category
-			acquis.filter(new MutualInformationSelector(k));
+			acquis.filter(new ChiSquareSelector(k));
 			System.out.println("acquis2000 size: "+acquis.getDf().size());
 
 		}
