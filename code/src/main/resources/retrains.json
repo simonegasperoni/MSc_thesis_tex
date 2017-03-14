@@ -4,62 +4,72 @@
     {
         "publisher": "r_lazio",
         "tags": ["ptpr"],
-        "categories": ["ENVI"]
+        "categories": ["2470", "2825"]
     },
     {
         "publisher": null,
-        "tags": ["medicina", "ricoveri", "farmacie", "farmacia", "ospedali", "ospedale", "pronto soccorso"],
-        "categories": ["HEAL"]
+        "tags": ["medicina", "ricoveri", "ospedali", "ospedale", "pronto soccorso"],
+        "categories": ["2479"]
+    },
+    {
+    	"publisher": null,
+    	"tags": ["farmacie", "farmacia"],
+    	"categories": ["1415"]
     },
     {
         "publisher": null,
         "tags": ["ortofoto", "carte tecniche", "cartografia"],
-        "categories": ["TECH"]
+        "categories": ["5269"]
     },
     {
         "publisher": null,
         "tags": ["e-government", "opendata", "appalti", "appalto", "votazioni", "elezioni", "referendum"],
-        "categories": ["GOVE"]
+        "categories": ["695"]
     },
     {
         "publisher": null,
         "tags": ["irpef"],
-        "categories": ["ECON"]
+        "categories": ["2504"]
     },
     {
         "publisher": null,
         "tags": ["sport", "palestre"],
-        "categories": ["EDUC"]
+        "categories": ["2175"]
     },
     {
         "publisher": null,
         "tags": ["negozi", "rivendita"],
-        "categories": ["ECON"]
+        "categories": ["1732"]
     },
     {
         "publisher": null,
-        "tags": ["boschi", "climatologia", "neve", "rete meteo", "natural risk zones", "geologia", "suolo", "pai", "rischio naturale", "difesa del suolo", "hydrography", "idrogeologico"],
-        "categories": ["ENVI"]
+        "tags": ["boschi", "neve", "natural risk zones", "geologia", "suolo", "pai", "rischio naturale", "difesa del suolo", "hydrography", "idrogeologico"],
+        "categories": ["2470"]
+    },
+    {
+    	"publisher": null,
+    	"tags": ["climatologia", "rete meteo"],
+    	"categories": ["6011"]
     },
     {
         "publisher": "r_lombar",
         "tags": ["profili di consumo"],
-        "categories": ["HEAL"]
+        "categories": ["2479"]
     },
     {
         "publisher": null,
         "tags": ["volontariato", "protezione civile", "demografia", "residente", "associazioni", "pari opporunita", "tossicodipendenze"],
-        "categories": ["SOCI"]
+        "categories": ["1820"]
     },
     {
         "publisher": null,
         "tags": ["disciplinare", "avvisi", "moduli", "regolamenti", "decreti sindacali", "piani e progetti", "statuti", "albi ed elenchi"],
-        "categories": ["GOVE"]
+        "categories": ["2166"]
     },
     {
         "publisher": null,
         "tags": ["bus", "tpl", "incidenti stradali", "ztl", "autostrada"], 
-        "categories": ["TRAN"]
+        "categories": ["4539"]
     }
   ]
 }

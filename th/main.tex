@@ -83,23 +83,67 @@ Tim O'Reilly
 
 \newpage
 \section{Introduzione}
-Il lavoro che segue riguarda la realizzazione di un sistema automatico per l'assegnazione dei metadati di categoria ai dataset open-data del catalogo italiano mediante tecniche di machine learning.
+Gli open-data sono i dati delle pubbliche amministrazioni e dei privati che intendono renderli disponibili per diversi scopi, gli aspetti più importanti della filosofia open-data sono:
+\begin{itemize}
+\item Disponibilità e accesso (al fine di garantire la giusta trasparenza).
+\item Riutilizzo e ridistribuzione: i dati devono essere forniti a condizioni tali da permetterne il riutilizzo e la ridistribuzione. Ciò comprende la possibilità di combinarli con altre basi di dati.
+\item Partecipazione universale: tutti devono essere in grado di usare, riutilizzare e ridistribuire i dati.
+\end{itemize}
+\phantom
+\\
+Nella terminologia open-data ci si riferisce al termine \say{dataset} quando si vuole indicare una o più risorse (file) arricchite da metadati che ne descrivono il contenuto, in generale è preferibile che queste risorse siano machine-readable (ad esempio file CSV, XML, JSON, ...) al fine di garantire la fruizione dei dati da parte di macchine e quindi facilitarne il riuso.
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.50]{img/datasetesempio.png}
+\caption{Esempio di dataset, tratto dal portale open-data della Regione Lazio}
+\end{center}
+\end{figure}
 \\
 \\
-Sebbene sul profilo di applicazione DCAT-AP-it - che disciplina la formattazione dei dati aperti italiani - sia esplicitamente indicato di riportare il tema (categoria) per ciascun dataset, molti dataset non hanno questo metadato, altri dataset riportano metadati di categoria diversi da quelli indicati dalla documentazione europea (13 categorie utilizzate dallo European Data Portal), inoltre, in molti casi la categoria assegnata non è corretta perché chi ha compilato manualmente il dataset non era sufficientemente documentato. 
 \\
+\\
+Il modello dati dei dataset open-data è definito a livello europeo (DCAT-AP), in Italia il profilo di applicazione dei metadati si chiama DCAT-AP-it ed è un'estensione del modello europeo DCAT-AP. Il modello dati dei dataset disciplina le modalità con le quali i dati devono essere arricchiti con dei metadati e quindi pubblicati.
+\\
+\\
+Nel profilo di applicazione DCAT-AP-it è esplicitamente indicato di riportare la categoria, nella fattispecie si richiede di utilizzare le categorie definite dal Portale Europeo dei dati (\url{https://www.europeandataportal.eu/}) per ciascun dataset.  Tuttavia molti dataset del catalogo italiano non hanno questo metadato, altri dataset riportano metadati di categoria diversi da quelli indicati dal portale europeo, inoltre, in molti casi, la categoria assegnata non è corretta perché chi ha compilato manualmente il dataset non era sufficientemente documentato sulle tematiche coperte da ciascuna categoria. 
+\\
+\\
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.50]{img/cat2.png}
+\caption{Le categorie del portale della regione Trentino sono 18, mentre le categorie del portale europeo sono 13, inoltre, alcune categorie definite dal portale del Trentino non sono riconducibili a quelle europee}
+\end{center}
+\end{figure}
+\\
+\\
+L'assegnazione manuale della categoria sul profilo dei metadati DCAT-AP richiede una conoscenza approfondita del tesauro concettuale EuroVoc.
+Infatti le indicazioni sulla categorizzazione dei dataset nella documentazione europea vengono fornite tramite bridge tra i concetti di alto livello del vocabolario EuroVoc (127 microtesauri) e le categorie DCAT-AP. 
 \\
 Nel catalogo italiano molti dataset riguardanti
 il turismo vengono erroneamente classificati in \say{Educazione, sport e cultura} anziché in \say{Società}, molti dataset riguardanti la materia ortofotografica vengono erroneamente inseriti nella classe \say{Ambiente} anziché \say{Scienza e Tecnologia}, e così via...
 \\
 \\
-L'assegnazione manuale della categoria sul profilo dei metadati DCAT-AP richiede l'utilizzo del tesauro EuroVoc per capire come i concetti sono collegati e come categorizzare gli open-data; i concetti di più alto livello nella gerarchia (130 microtesauri) sono raggruppati nelle 13 categorie (questo bridge è documentato dal portale europeo) che si dovrebbero utilizzare nel categorizzare i dataset open-data, ad esempio l'ortofotografia fa parte di uno dei concetti di un microtesauro appartenente al gruppo \say{Scienza e Tecnologia}.
+Questo è dovuto al fatto che chi ha categorizzato manualmente non ha verificato che il concetto \say{ortofotografia} facesse parte del microtesauro \say{3606 - natural and applied sciences}, e quindi, essendo 3606 un microtesauro collegato alla categoria \say{Scienza e Tecnologia} secondo la documentazione europea, il dataset sarebbe dovuto essere categorizzato in \say{Scienza e Tecnologia}. 
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.45]{img/eurovocdcat.png}
+\caption{Struttura di EuroVoc e bridge, EuroVoc è un  tesauro concettuale multilingua che contiene le tematiche di interesse per l'UE}
+\end{center}
+\end{figure}
 \\
 \\
-L'idea di assegnare in modo automatico la categoria basandosi su sistemi di classificazione addestrati sulla base di corpus (basati su EuroVoc) manutenuti da esperti del dominio come JRC-Acquis è finalizzata a migliorare la qualità dei metadati di categoria del catalogo italiano.
 \\
 \\
-Un altro vantaggio importante della categorizzazione automatica è la possibilità di cambiare la categoria ad interi segmenti di dataset in un colpo solo al variare della documentazione europea, infatti un sistema di classificazione automatico ci permette di cambiare il bridge delle categorie con i microtesauri e di riclassificare tutto il catalogo in pochi secondi anziché leggere uno per uno ciascun dataset e riclassificarlo manualmente.
+Il lavoro che segue riguarda la realizzazione di un sistema automatico per l'assegnazione della categoria DCAT-AP ai dataset open-data del catalogo italiano.
+\\
+\\
+L'idea di assegnare in modo automatico la categoria basandosi su sistemi di classificazione addestrati sulla base di corpus basati su EuroVoc manutenuti da esperti del dominio come JRC-Acquis è finalizzata a migliorare la qualità dei metadati di categoria del catalogo open-data italiano.
+\\
+\\
+Un altro vantaggio importante della categorizzazione automatica è la possibilità di cambiare la categoria ad interi gruppi di dataset al variare della documentazione europea o al rilascio di una nuova versione del tesauro EuroVoc.
+\\
+\\
+Infatti un sistema di classificazione automatico ci consentirebbe di cambiare il bridge delle categorie con i microtesauri e di riclassificare tutto il catalogo in pochi secondi anziché leggere uno per uno ciascun dataset e riclassificarli manualmente.
 \\
 \\
 La qualità dei dati e dei metadati è fondamentale per poter garantire un più facile riutilizzo delle informazioni che i dataset open-data contengono, in generale possiamo dire che un dato di qualità è machine-readable, mentre i metadati di qualità si hanno con la compatibilità sul profilo europeo dei metadati.
@@ -428,12 +472,12 @@ Il portale Dati.gov.it (\url{http://dati.gov.it}) è il portale ufficiale dei da
 EuroVoc è un tesauro multilingue e pluridisciplinare che comprende la terminologia dei settori d'attività dell'Unione europea. Contiene termini in 23 lingue dell'UE. EuroVoc è in linea con le raccomandazioni del W3C e con gli ultimi sviluppi negli standard di classificazione. 
 \\
 \\
-Il thesaurus EuroVoc viene utilizzato dalle istituzioni dell'Unione europea, dall'Ufficio delle pubblicazioni dell'UE, da parlamenti nazionali e regionali in Europa, come pure da amministrazioni nazionali e utenti privati di tutto il mondo.
+Il tesauro EuroVoc viene utilizzato dalle istituzioni dell'Unione europea, dall'Ufficio delle pubblicazioni dell'UE, da parlamenti nazionali e regionali in Europa, come pure da amministrazioni nazionali e utenti privati di tutto il mondo.
 \footnotemark
 \footnotetext{http://eurovoc.europa.eu}
 \\
 \\
-I descrittori del thesaurus multilingua EuroVoc sono usati da molti parlamentari europei e centri di documentazione per indicizzare manualmente le loro collezioni di documenti, i descrittori assegnati ai documenti sono utilizzati per cercare ed individuare documenti in una gerarchia semantica divisa in 21 domini, 127 sottodomini (microtesauri) e circa 7000 descrittori (concetti).
+I descrittori del tesauro multilingua EuroVoc sono usati da molti parlamentari europei e centri di documentazione per indicizzare manualmente le loro collezioni di documenti, i descrittori assegnati ai documenti sono utilizzati per cercare ed individuare documenti in una gerarchia semantica divisa in 21 domini, 127 sottodomini (microtesauri) e circa 7000 descrittori (concetti).
 \\
 \\
 I 127 microtesauri di EuroVoc sono riconducibili alle 13 categorie DCAT-AP attraverso un mapping (più dettagli al paragrafo 2.7.4)
@@ -617,7 +661,7 @@ Riporto di seguito le performance registrate sulle lingue coperte dal classifica
 \end{figure}
 \newpage
 \section{Elaborazione del corpus}
-Una fase preliminare in qualsiasi ambito di classificazione di documenti è l'elaborazione dei corpi testuali, si tratta di scegliere le modalità con le quali estrarre le \say{feature} dai testi - in base alla loro formattazione, al fine di rendere le \say{feature} fruibili al sistema di classificazione in modo opportuno.
+Una fase preliminare in qualsiasi ambito di classificazione dei testi è l'elaborazione dei corpi testuali, si tratta di scegliere le modalità con le quali estrarre le \say{feature} dai testi - in base alla loro formattazione, al fine di rendere le \say{feature} fruibili al sistema di classificazione in modo opportuno.
 \\
 \\
 Nel contesto di un sistema di categorizzazione dei testi vogliamo ottenere delle \say{feature} ben rappresentative del contenuto semantico dei documenti dai quali sono estratte. Le tappe che dobbiamo percorrere sono essenzialmente due: innanzitutto è necessario utilizzare degli algoritmi per l'estrazione di \say{feature}, dopodiché queste \say{feature} potranno essere stemmerizzate o rielaborate in vario modo, ad esempio utilizzando n-grammi di parole. 
@@ -639,6 +683,7 @@ Una tecnica di elaborazione delle \say{feature} è la lemmatizzazione, vale a di
 \\
 \\
 Esistono delle convenzioni di lemmatizzazione proprie di ciascuna lingua: ad esempio in italiano è uso convenzionale che il lemma verbale sia la forma coniugata all'infinito presente attivo.
+\\
 \\
 La lemmatizzazione è, dunque, una pratica apparentemente facile, se non, addirittura, ovvia ed intuitiva: più, o meno tutti, infatti, esercitiamo quotidianamente la conoscenza della differenza tra lemma e forma. Tuttavia, alla prova dei fatti, la lemmatizzazione rivela una serie di problemi, il più delle volte non immaginabili prima di averne fatto esperienza diretta: queste difficoltà rendono il lemmatizzare un esercizio interessante, in quanto costringe chi lo esercita a riflettere su:
 
@@ -681,6 +726,7 @@ Lo stemming è il processo usato per ridurre parole flesse al loro tema, il tema
 \\
 In questo campo è stato fondamentale il contributo di Martin Porter, inventore dello \say{stemmer di Porter}, uno dei più comuni algoritmi per la stemmerizzazione in lingua inglese, e inventore del framework Snowball:
 \\
+\\
 \url{http://snowballstem.org}
 \\
 \\
@@ -696,11 +742,12 @@ Martin Porter
 \\
 Il progetto Snowball è un progetto open source:
 \\
+\\
 \url{https://github.com/snowballstem/snowball}
 \\
-Il progetto Snowball raccoglie le implementazioni di vari algoritmi di stemming (per più lingue e in più linguaggi di programmazione). Snowball è utilizzato in diversi progetti Apache Software Foundation, tra i quali abbiamo Apache Solr e Apache Lucene.
 \\
-Le stopword della lingua italiana sono riportate in formato txt al seguente indirizzo:
+Il progetto Snowball raccoglie le implementazioni di vari algoritmi di stemming (per più lingue e in più linguaggi di programmazione). Snowball è utilizzato in diversi progetti Apache Software Foundation, tra i quali abbiamo Apache Solr e Apache Lucene. Le stopword della lingua italiana sono riportate in formato \say{txt} al seguente indirizzo:
+\\
 \\
 \url{http://snowballstem.org/algorithms/italian/stop.txt}
 \\
@@ -725,7 +772,7 @@ Nell'algoritmo di stemming della lingua italiana - ma non solo - si utilizzano l
 \begin{itemize}
 \item \textbf{R1}: è la regione che segue la prima non vocale seguita da una vocale, potrebbe essere nulla qualora non ci fosse una non vocale.
 \item \textbf{R2}: è la regione che segue la prima non vocale seguita da una vocale nella regione R1, anche questa potrebbe essere una regione nulla.
-\item \textbf{RV}: Se la seconda lettera è una consonante, RV è la regione che segue la prossima vocale, oppure se le prime due lettere sono vocali, RV è la regione che segue la prossima consonante; altrimenti (nel caso consonante-vocale) RV è la regione dopo la terza lettera.
+\item \textbf{RV}: se la seconda lettera è una consonante, RV è la regione che segue la prossima vocale, oppure se le prime due lettere sono vocali, RV è la regione che segue la prossima consonante; altrimenti (nel caso consonante-vocale) RV è la regione dopo la terza lettera.
 \end{itemize}
 Riporto di seguito i passi dell'algoritmo:
 \begin{enumerate}
@@ -814,24 +861,7 @@ Sostituire infine \textit{ch, gh} con \textit{c, g} se in RV
 \\
 \\
 crocch → crocc 
-
 \end{enumerate}
-
-\begin{verbatim}
-public List<String> execute(String text){
-    String resultString = text.replaceAll("\\P{L}+", " ").toLowerCase();
-    List<String> result=new ArrayList<String>();
-    StringTokenizer tk=new StringTokenizer(resultString);
-    while(tk.hasMoreTokens()){
-        String s=tk.nextToken(); 
-        if(!stopwords.contains(s)){
-            result.add(this.stems(s));
-        }
-    }
-    return result;
-}
-\end{verbatim}
-
 
 \newpage
 \section{Algoritmi di classificazione}
@@ -1283,7 +1313,7 @@ Tra le due metriche è preferibile usare l'F1, in quanto più sensibile a valori
 \\
 \\
 Con il termine break even point spesso ci si riferisce anche al valore di compromesso tra recall e precision, cioè quando si stabilisce una politica di thresholding tale da raggiungere un situazione per cui la recall è uguale alla precision. 
-
+\newpage
 \subsection{K-fold-cross-validation}
 Gli algoritmi di apprendimento supervisionati per la categorizzazione dei testi (Bayesiani, margin-based, vettoriali, ...) hanno bisogno di un test-set ed un training-set per poter essere valutati. Questi due insiemi devono essere disgiunti per avere delle buone stime delle performance del sistema di classificazione.
 \\
@@ -1824,45 +1854,45 @@ Microtesauri EuroVoc associati al tema DCAT-AP (EU Data Themes): TECH (Science \
 \begin{verbatim}
 {
   "retrains": 
-  [{
+   [{
         "publisher": "r_lazio",
         "tags": ["ptpr"],
-        "categories": ["ENVI"]
-    },
-    {
-        "publisher": null,
-        "tags": ["ortofoto"],
-        "categories": ["TECH"]
-    },
-    {
-        "publisher": null,
-        "tags": ["alzheimer", "diabete"],
-        "categories": ["HEAL"]
+        "categories": ["2470", "2825"]
     },
     {
         "publisher": "r_lombar",
+        "tags": ["diabete","alzheimer"],
+        "categories": ["2479"]
+    },
+    {
+        "publisher": null,
+        "tags": ["farmacie", "farmacia"],
+        "categories": ["1415"]
+    },
+    {
+        "publisher": null,
+        "tags": ["ortofoto", "carte tecniche"],
+        "categories": ["5269"]
+    },
+    {
+        "publisher": null,
         "tags": ["e-government", "opendata"],
-        "categories": ["GOVE"]
+        "categories": ["695"]
     },
     {
-        "publisher": null,
-        "tags": ["bus", "tpl", "incidenti stradali", "ztl"], 
-        "categories": ["TRAN"]
-    },
-    {
-        "publisher": null,
+        "publisher": "r_lazio",
         "tags": ["irpef"],
-        "categories": ["ECON"]
+        "categories": ["2504"]
     },
     {
         "publisher": null,
         "tags": ["sport", "palestre"],
-        "categories": ["EDUC"]
+        "categories": ["2175"]
     },
     {
         "publisher": null,
-        "tags": ["negozi", "rivendita"],
-        "categories": ["ECON"]
+        "tags": ["tpl", "ztl"], 
+        "categories": ["4539"]
     }]
 }
 \end{verbatim}

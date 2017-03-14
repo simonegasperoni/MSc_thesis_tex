@@ -49,5 +49,7 @@ public class Retrainer {
         }
         return queries;
 	}
-
+	public static void main(String[] args) throws FileNotFoundException, IOException, ParseException{
+		System.out.println(Retrainer.getQueries());
+	}
 }
