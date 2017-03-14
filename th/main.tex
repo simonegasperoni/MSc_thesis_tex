@@ -83,7 +83,7 @@ Tim O'Reilly
 
 \newpage
 \section{Introduzione}
-Gli open-data sono i dati delle pubbliche amministrazioni e dei privati che intendono renderli disponibili per diversi scopi, gli aspetti più importanti della filosofia open-data sono:
+Gli open-data sono i dati aperti delle pubbliche amministrazioni e dei privati, gli aspetti più importanti della filosofia open-data sono:
 \begin{itemize}
 \item Disponibilità e accesso (al fine di garantire la giusta trasparenza).
 \item Riutilizzo e ridistribuzione: i dati devono essere forniti a condizioni tali da permetterne il riutilizzo e la ridistribuzione. Ciò comprende la possibilità di combinarli con altre basi di dati.
@@ -322,6 +322,7 @@ Pubblicare i dati sotto forma di cataloghi RDF DCAT garantisce l'interoperabilit
 \end{figure}
 
 \newpage
+\subsubsection{Esempio di dataset}
 \begin{verbatim}
 <dcat:dataset>
     ...
@@ -660,7 +661,7 @@ Riporto di seguito le performance registrate sulle lingue coperte dal classifica
 \end{center}
 \end{figure}
 \newpage
-\section{Elaborazione del corpus}
+\section{Elaborazione dei corpi testuali}
 Una fase preliminare in qualsiasi ambito di classificazione dei testi è l'elaborazione dei corpi testuali, si tratta di scegliere le modalità con le quali estrarre le \say{feature} dai testi - in base alla loro formattazione, al fine di rendere le \say{feature} fruibili al sistema di classificazione in modo opportuno.
 \\
 \\
@@ -691,7 +692,6 @@ La lemmatizzazione è, dunque, una pratica apparentemente facile, se non, addiri
 \item Quanti e quali automatismi l'uomo metta inconsciamente in atto ogni volta che parla, o scrive.
 \item Quanto sia difficile formalizzare questi automatismi.
 \end{itemize}
-
 Esistono due tipi di lemmatizzazione: la lemmatizzazione morfologica analizza le forme di parole in isolamento, ovvero fuori dal contesto sintattico, fornendone tutti i valori che sono possibili in un dato sistema linguistico. 
 \\
 \\
@@ -1018,12 +1018,13 @@ dove le categorie sono due: $$C_1:like, C_2:dislike$$
 avremo dunque $$P(C_1)=\frac{300}{1000},\,\,\, P(C_2)=\frac{700}{1000}$$
 
 \subsubsection{Pseudocodice per la text categorization}
-In sintesi l'algoritmo di classificazione dei testi usa un classificatore bayesiano naïve con l'assunzione che la probabilità di occorrenza della parola è indipendente dalla posizione dentro i documenti.
+In sintesi l'algoritmo di classificazione dei testi usa un classificatore bayesiano naïve con l'assunzione che la probabilità di occorrenza della parola sia indipendente dalla posizione dentro i documenti.
 \\
 \\
 Segue lo psudocodice di un approccio minimale:
 \begin{lstlisting}
 #pseudo codice classificatore naif per la categorizzazione testi
+
 #vettore dei target v[j]
 def v[]
 
@@ -1126,6 +1127,80 @@ Dobbiamo tuttavia considerare che le performance degli algoritmi di machine lear
 \\
 \\
 In finale, la scelta tra i vari modelli di classificazione e le tecniche di processamento dei corpi testuali vanno considerate contestualmente al task di classificazione specifico, non esistono soluzioni sempre valide.
+\newpage
+\subsection{Metriche per l'evaluation}
+La validazione di un sistema di text categorization è basata sulla classificazione di un campione di esempi che sono stati categorizzati manualmente da esperti del dominio. Quando si vuole valutare un sistema di text categorization si devono confrontare le categorie assegnate manualmente con le categorie assegnate dal sistema.
+\\
+\\
+Consideriamo la seguente casistica, nella quale diamo una rappresentazione binaria alle varie possibilità di assegnazione di una determinata categoria ad un determinato documento, distinguendo l'assegnazione del sistema da quella dell'esperto del dominio.
+\\
+\\
+\begin{tabular}{l*{6}{c}r}
+classe assegnata dall'esperto del dominio:  & SI & NO \\
+\hline
+classe assegnata dal classificatore: SI & TP & FP \\
+classe assegnata dal classificatore: NO & FN & TN \\
+\end{tabular}
+\\
+\\
+Abbiamo TP: true positive, FP: false positive, FN: false negative e TN: true negative; questi valori vanno interpretati nel seguente modo:
+\begin{itemize}
+\item \textbf{true positive:} il sistema e l'esperto del dominio sono coerenti nell'assegnazione della categoria.
+\item \textbf{false positive:} la categoria è assegnata dal sistema ma non dall'esperto del dominio.
+\item  \textbf{true negative:} la categoria non è assegnata né dal sistema né dall'esperto del dominio.
+\item \textbf{false negative:} la categoria è assegnata dall'esperto ma non dal sistema.
+\end{itemize}
+\phantom
+\\
+Piuttosto che avere tutti questi valori binari per ciascuna coppia documento-categoria siamo interessati ad avere quattro valori che rappresentino ciascuna delle quattro tipologie (true positive, false positive, true negative, false negative), pertanto è necessario sommare questi quattro valori per tutte le coppie documento-categoria. Questi quattro valori sono le grandezze che stanno alla base di varie metriche utili per l'evaluation del sistema di classificazione.
+
+\[ Precision: \quad P= \frac{TP}{TP+FP} \]
+\\
+La precision è una misura utile per quantificare la precisione del sistema sul campione di categorie selezionate a valle della classificazione, è il rapporto tra le categorie correttamente assegnate e tutte quelle assegnate.
+\[ Recall: \quad R= \frac{TP}{TP+FN} \]
+La recall (in italiano \say{recupero}) è utile per misurare la frazione di categorie assegnate dall'esperto a valle della classificazione del sistema. La recall è il rapporto tra categorie assegnate e tutte le categorie di appartenenza di un documento. 
+\\
+\\
+Recall e precision sono due metriche basilari nei sistemi di information retrieval, trovare un equilibrio tra queste due grandezze non è facile, è necessario un compromesso, in quanto, incrementando la precision abbiamo il declino della recall e viceversa. In una categorizzazione multi-label nella quale restituiamo poche categorie per documento è verosimile avere precision alta e recall bassa, mentre invece, se assegniamo molte categorie sarà più probabile avere recall alta a scapito di precision.
+
+
+\[ Fallout: \quad F= \frac{FP}{FP+TN} \]
+
+\[ Accuracy: \quad F= \frac{TP+TN}{TP+FP+FN+TN} \]
+Utile per quantificare l'accuratezza generale del sistema.
+\[ Error: \quad F= \frac{FP+FN}{TP+FP+FN+TN} \]
+F-measure e Interpolated-break-even sono due grandezze che sintetizzano in un solo valore la precision e la recall di un sistema di classificazione.
+\\
+La F-measure (anche nota come F1-score) è la media armonica 
+\[ F-measure: \quad F1= \frac{2PR}{P+R} \]
+\[ Interpolated-break-even: \quad IB= \frac{P+R}{2} \]
+\\
+Tra le due metriche è preferibile usare l'F1, in quanto più sensibile a valori di precision o recall molto bassi.
+\\
+\\
+Con il termine break even point spesso ci si riferisce anche al valore di compromesso tra recall e precision, cioè quando si stabilisce una politica di thresholding tale da raggiungere un situazione per cui la recall è uguale alla precision. 
+\newpage
+\subsubsection{K-fold-cross-validation}
+Gli algoritmi di apprendimento supervisionati per la categorizzazione dei testi (Bayesiani, margin-based, vettoriali, ...) hanno bisogno di un test-set ed un training-set per poter essere valutati. Questi due insiemi devono essere disgiunti per avere delle buone stime delle performance del sistema di classificazione.
+\\
+Training set: è un insieme di esempi usato per l'addestramento (apprendimento) del classificatore.
+\\
+\\
+Validation set: è un insieme di esempi usato per regolare i parametri del classificatore.
+\\
+\\
+Test set: è uni insieme di esempi usato per assegnare le performance di un classificatore addestrato.
+\\
+\\
+Se non separassimo gli insiemi di test e di validation la stima di errore di un modello sulla validazione sarà parziale (inferiore) in quanto il validation set è utilizzato per selezionare il modello finale, infine si può procedere alla valutazione del modello finale sul test set.
+\footnotetext{Gutierrez-Osuna, Introduction to Pattern Analysis, Texas A\&M University}
+\\
+\\
+La k-fold-cross-validation (in italiano validazione incrociata) è una tecnica utilizzabile in presenza di un training set abbastanza grande. In particolare la k-fold cross-validation consiste nella suddivisione del dataset totale in k parti di uguale numerosità e, ad ogni passo, la k-esima parte del dataset viene ad essere il test dataset, mentre la restante parte costituisce il training dataset.
+\\
+\\
+Così, per ognuna delle k parti (di solito k=10, k=5) si allena il modello, evitando quindi problemi di overfitting, ma anche di campionamento asimmetrico (e quindi affetto da bias) del training dataset, tipico della suddivisione del dataset in due sole parti (ovvero training e test dataset). In altre parole, si suddivide il campione osservato in gruppi di uguale numerosità, si esclude iterativamente un gruppo alla volta e lo si cerca di predire con i gruppi non esclusi. Ciò al fine di verificare la bontà del modello di predizione utilizzato.
+
 \newpage
 \section{Algoritmi di feature selection}
 La selezione delle feature è una tecnica di riduzione di dimensionalità di feature che fornisce miglior potere predittivo nella modellazione dei dati. È utile quando si lavora con dati di ampie dimensioni oppure quando la raccolta di dati per tutte le feature è proibitiva dal punto di vista dei costi.
@@ -1262,82 +1337,8 @@ La frequenza può essere considerata come \say{Document frequency} (numero di do
 Sebbene questo metodo sia molto meno complesso rispetto agli altri due, questo approccio introduce una limitazione, nel selezionare le feature potrebbe includere feature trasversali alle classi, queste feaure non danno un contributo informativo circa il legame tra la feature e la classe.
 
 \newpage
-\section{Metriche per l'evaluation}
-La validazione di un sistema di text categorization è basata sulla classificazione di un campione di esempi che sono stati categorizzati manualmente da esperti del dominio. Quando si vuole valutare un sistema di text categorization si devono confrontare le categorie assegnate manualmente con le categorie assegnate dal sistema.
-\\
-\\
-Consideriamo la seguente casistica, nella quale diamo una rappresentazione binaria alle varie possibilità di assegnazione di una determinata categoria ad un determinato documento, distinguendo l'assegnazione del sistema da quella dell'esperto del dominio.
-\\
-\\
-\begin{tabular}{l*{6}{c}r}
-classe assegnata dall'esperto del dominio:  & SI & NO \\
-\hline
-classe assegnata dal classificatore: SI & TP & FP \\
-classe assegnata dal classificatore: NO & FN & TN \\
-\end{tabular}
-\\
-\\
-Abbiamo TP: true positive, FP: false positive, FN: false negative e TN: true negative; questi valori vanno interpretati nel seguente modo:
-\begin{itemize}
-\item \textbf{true positive:} il sistema e l'esperto del dominio sono coerenti nell'assegnazione della categoria.
-\item \textbf{false positive:} la categoria è assegnata dal sistema ma non dall'esperto del dominio.
-\item  \textbf{true negative:} la categoria non è assegnata né dal sistema né dall'esperto del dominio.
-\item \textbf{false negative:} la categoria è assegnata dall'esperto ma non dal sistema.
-\end{itemize}
-\phantom
-\\
-Piuttosto che avere tutti questi valori binari per ciascuna coppia documento-categoria siamo interessati ad avere quattro valori che rappresentino ciascuna delle quattro tipologie (true positive, false positive, true negative, false negative), pertanto è necessario sommare questi quattro valori per tutte le coppie documento-categoria. Questi quattro valori sono le grandezze che stanno alla base di varie metriche utili per l'evaluation del sistema di classificazione.
-
-\[ Precision: \quad P= \frac{TP}{TP+FP} \]
-\\
-La precision è una misura utile per quantificare la precisione del sistema sul campione di categorie selezionate a valle della classificazione, è il rapporto tra le categorie correttamente assegnate e tutte quelle assegnate.
-\[ Recall: \quad R= \frac{TP}{TP+FN} \]
-La recall (in italiano \say{recupero}) è utile per misurare la frazione di categorie assegnate dall'esperto a valle della classificazione del sistema. La recall è il rapporto tra categorie assegnate e tutte le categorie di appartenenza di un documento. 
-\\
-\\
-Recall e precision sono due metriche basilari nei sistemi di information retrieval, trovare un equilibrio tra queste due grandezze non è facile, è necessario un compromesso, in quanto, incrementando la precision abbiamo il declino della recall e viceversa. In una categorizzazione multi-label nella quale restituiamo poche categorie per documento è verosimile avere precision alta e recall bassa, mentre invece, se assegniamo molte categorie sarà più probabile avere recall alta a scapito di precision.
-
-
-\[ Fallout: \quad F= \frac{FP}{FP+TN} \]
-
-\[ Accuracy: \quad F= \frac{TP+TN}{TP+FP+FN+TN} \]
-Utile per quantificare l'accuratezza generale del sistema.
-\[ Error: \quad F= \frac{FP+FN}{TP+FP+FN+TN} \]
-F-measure e Interpolated-break-even sono due grandezze che sintetizzano in un solo valore la precision e la recall di un sistema di classificazione.
-\\
-La F-measure (anche nota come F1-score) è la media armonica 
-\[ F-measure: \quad F1= \frac{2PR}{P+R} \]
-\[ Interpolated-break-even: \quad IB= \frac{P+R}{2} \]
-\\
-Tra le due metriche è preferibile usare l'F1, in quanto più sensibile a valori di precision o recall molto bassi.
-\\
-\\
-Con il termine break even point spesso ci si riferisce anche al valore di compromesso tra recall e precision, cioè quando si stabilisce una politica di thresholding tale da raggiungere un situazione per cui la recall è uguale alla precision. 
-\newpage
-\subsection{K-fold-cross-validation}
-Gli algoritmi di apprendimento supervisionati per la categorizzazione dei testi (Bayesiani, margin-based, vettoriali, ...) hanno bisogno di un test-set ed un training-set per poter essere valutati. Questi due insiemi devono essere disgiunti per avere delle buone stime delle performance del sistema di classificazione.
-\\
-Training set: è un insieme di esempi usato per l'addestramento (apprendimento) del classificatore.
-\\
-\\
-Validation set: è un insieme di esempi usato per regolare i parametri del classificatore.
-\\
-\\
-Test set: è uni insieme di esempi usato per assegnare le performance di un classificatore addestrato.
-\\
-\\
-Se non separassimo gli insiemi di test e di validation la stima di errore di un modello sulla validazione sarà parziale (inferiore) in quanto il validation set è utilizzato per selezionare il modello finale, infine si può procedere alla valutazione del modello finale sul test set.
-\footnotetext{Gutierrez-Osuna, Introduction to Pattern Analysis, Texas A\&M University}
-\\
-\\
-La k-fold-cross-validation (in italiano validazione incrociata) è una tecnica utilizzabile in presenza di un training set abbastanza grande. In particolare la k-fold cross-validation consiste nella suddivisione del dataset totale in k parti di uguale numerosità e, ad ogni passo, la k-esima parte del dataset viene ad essere il test dataset, mentre la restante parte costituisce il training dataset.
-\\
-\\
-Così, per ognuna delle k parti (di solito k=10, k=5) si allena il modello, evitando quindi problemi di overfitting, ma anche di campionamento asimmetrico (e quindi affetto da bias) del training dataset, tipico della suddivisione del dataset in due sole parti (ovvero training e test dataset). In altre parole, si suddivide il campione osservato in gruppi di uguale numerosità, si esclude iterativamente un gruppo alla volta e lo si cerca di predire con i gruppi non esclusi. Ciò al fine di verificare la bontà del modello di predizione utilizzato.
-
-\newpage
 \section{OPEN-CATA: categorizzazione open-data}
-OPEN-CATA è un sistema di categorizzazione che implementa gli algoritmi di classificazione testuale e di feature selection descritti nei capitoli precedenti.
+OPEN-CATA è un sistema di categorizzazione che implementa gli algoritmi di classificazione dei testi e di feature selection descritti nei capitoli precedenti.
 \begin{figure}[htbp]
 \begin{center}
 \includegraphics[scale=1.00]{img/abstract.png}
@@ -1347,13 +1348,13 @@ OPEN-CATA è un sistema di categorizzazione che implementa gli algoritmi di clas
 \phantom
 \\
 \\
-I benefici che possiamo trarre nel basare il classificatore sul corpus JRC-Acquis sono già stati esposti nel paragrafo 2.9. Purtroppo le tematiche riguardanti i dati che andiamo a classificare sono talmente vaste che il solo utilizzo del corpus Acquis non sarebbe sufficiente per raggiungere un adeguato livello di accuratezza, è così necessario pensare ad una estensione della base di conoscenza del classificatore per gestire gli outlier.
+I benefici che possiamo trarre nel basare il classificatore sul corpus JRC-Acquis sono già stati esposti nella sezione 2.9. Purtroppo le tematiche riguardanti i dati che andiamo a classificare sono talmente vaste che il solo utilizzo del corpus Acquis non sarebbe sufficiente per raggiungere un adeguato livello di accuratezza, è così necessario pensare ad una estensione del set di addestramento del classificatore per gestire gli outlier.
 \\
 \\
-Tematiche specifiche come possono essere i nomi di enti locali, acronimi, termini molto tecnici sono introdotte mediante un modulo che combina i termini di Acquis con i termini dei dataset open-data stessi del portale CKAN agganciati mediante un'interrogazione alle API Solr che CKAN espone, questi dataset che recuperiamo vengono associati ad una categoria e vanno a comporre insieme ad Acquis i dati di addestramento del nostro classificatore.
+Tematiche specifiche come possono essere i nomi di enti locali, acronimi, termini molto tecnici sono introdotte nel set di addestramento del classificatore attraverso un modulo che combina i documenti di Acquis con i dataset open-data del portale CKAN Open-data-HUB (il quale raccoglie quasi tutti gli open-data italiani) selezionati mediante un'interrogazione alle API Solr che CKAN espone. I dataset che recuperiamo vengono associati ad una categoria e vanno a comporre insieme ad Acquis i dati di addestramento del nostro classificatore.
 \\
 \\
-A questo fine è stato predisposto un file JSON nel quale riportare tutti i contributi all'addestramento da parte di CKAN (vedi \say{esempio di file JSON per il riaddestramento} in appendice):
+A questo fine è stato predisposto un file JSON nel quale riportare tutti i contributi all'addestramento da parte dei dataset (vedi \say{esempio di file JSON per il riaddestramento} in appendice):
 
 \begin{verbatim}
 {
@@ -1362,17 +1363,17 @@ A questo fine è stato predisposto un file JSON nel quale riportare tutti i cont
   	{
         "publisher": null,
         "tags": ["irpef"],
-        "categories": ["ECON"]
+        "categories": ["2504"]
     },
   	{
         "publisher": "r_lombar",
         "tags": ["e-government", "opendata"],
-        "categories": ["GOVE"]
+        "categories": ["695"]
     },
     {
         "publisher": null,
         "tags": ["tpl", "ztl"], 
-        "categories": ["TRAN"]
+        "categories": ["4539"]
     },
     ...
   ]  
@@ -1381,12 +1382,35 @@ A questo fine è stato predisposto un file JSON nel quale riportare tutti i cont
 Ad esempio termini come \say{ztl}, ma anche intere tematiche come \say{opendata} e \say{e-government} non sono trattate in Acquis.
 \\
 \\
-Ogni entry dell'array \say{retrains} individua un gruppo di dataset di un \say{publisher} e aventi  determinati \say{tags}, ogni dataset diventa l'equivalente di un documento di Acquis nel quale le categorie DCAT sono riportate nel campo \say{categories}, i termini si estraggono dai metadati testuali disponibili, ovvero, titolo, tag e descrizione.
+Ogni entry dell'array \say{retrains} individua un gruppo di dataset di un \say{publisher} e aventi  determinati \say{tags}, ogni dataset diventa l'equivalente di un documento di Acquis nel quale le categorie DCAT sono ottenute a valle del bridge sui descrittori EuroVoc contenuti nel campo \say{categories}.
 \\
 \\
-Il vantaggio notevole nel seguire un approccio di questo tipo è il fatto che la logica di addestramento è totalmente cablata, pertanto, risulta molto facile, realizzare delle modifiche intervenendo solamente sul bridge delle categorie DCAT per Acquis e sul file JSON per la gestione degli outlier.
+In fase di predizione i termini si estraggono dai metadati testuali disponibili, ovvero, titolo, tag e descrizione.
 \\
-Dopodiché si effettua una selezione delle feature per evitare fenomeni di overfitting che potrebbero essere presenti se si utilizzassero tutti i termini, inifine, si riaddestra il nostro classificatore e si procede alla predizione dell'intero catalogo. 
+\\
+Il vantaggio notevole nel seguire un approccio di questo tipo è il fatto che la logica di addestramento è totalmente cablata, pertanto, risulta molto facile, realizzare delle modifiche intervenendo solamente sul bridge delle categorie DCAT per Acquis e sul file JSON per la gestione degli outlier. Inoltre è possibile aggiornare il tesauro e il corpus Acquis all'ultima versione molto rapidamente.
+\\
+\\
+Una volta acquisiti i dati di addestramento si effettua una selezione delle feature per evitare fenomeni di overfitting che potrebbero essere presenti se si utilizzassero tutti i termini, infine, si addestra il nostro classificatore e si procede alla predizione dell'intero catalogo italiano o solamente dei cataloghi che si reputano meno accurati.
+\subsection{Elaborazione dei corpi testuali}
+Tutti i corpi testuali sono stemmerizzati con Snowball, al fine di ridurre la dimensionalità delle feature si riducono tutti i termini alle radici morfologiche secondo l'algoritmo di Porter adattato alla lingua italiana descritto nella sezione 3.4.
+\\
+\\
+Oltre alle stopword si filtrano anche i nomi dei \say{publisher} se sono amministrazioni locali (comuni, regioni, province) i quali non hanno rilevanza semantica e potrebbero introdurre un errore considerevole in addestramento o in predizione quando si hanno poche feature a disposizione. I nomi dei \say{publisher} si ottengono dall'\say{Indice PA}:
+\\
+\\
+\url{http://www.indicepa.gov.it/documentale/n-opendata.php}
+\\
+\\
+L'indice è un database (csv) contenente il codice dell'amministrazione, il nome e altre informazioni utili:
+\begin{verbatim}
+codice, amministrazione, luogo, cap, responsabile, ...
+c_b171, Comune, Bricherasio, ...
+\end{verbatim}
+Nel campo \say{publisher} dei dataset è riportato il codice della PA (ad esempio \say{b171} è il codice del comune di Bricherasio), da questo valore sarà possibile capire se il \say{publisher} è un comune, una regione, un ente... e, una volta verificato che è un comune si può inserire il nome tra le stopword.
+\\
+\\
+Relativamente alle province e alle regioni, si filtrano tutti i nomi dei comuni appartenenti a queste amministrazioni. 
 
 \newpage
 \subsection{Cablaggio della logica di addestramento}
@@ -1494,31 +1518,59 @@ Riporto di seguito altre sperimentazioni effettuate:
 \end{center}
 \end{figure}
 \newpage
-
-
 \subsection{Aspetti software}
+\subsection{Scelte implementative}
+Le entità riportate sono le interfacce, le classi che implementano tali interfacce sono gli approcci diversi che sono stati implementati.
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=1.00]{img/entita.png}
+\caption{Principali entità implementate}
+\end{center}
+\end{figure}
+\\
+Il disaccoppiamento tra queste entità permette una facile fruizione e manutenzione del codice, oltre a rendere più semplici ed intuitivi i test dei vari approcci.
+\\
+\\
+\begin{itemize}
+\item Training source: le sorgenti possono essere diverse, Acquis, CKAN, vocabolari specializzati...
+\item Feature selector: gli approcci implementati sono Chi-square, e Mutual information.
+\item Classifier: I classificatori implementati sono le quattro varianti del classificatore bayesiano già discusse in precedenza.
+\item Thresholder: I risultati restituiti dal classificatore sono manipolabili in modi diversi, varie politiche di thresholding sono state implementate.
+\end{itemize}
+\phantom
+\\
+Sebbene il sistema sviluppato sia pensato per il portale Open-data-HUB è possibile riutilizzarlo su qualsiasi portale open-data che esponga un'interfaccia per interrogare i dati (come Solr su CKAN).
+\\
+Il sistema gestisce un file di properties nel quale sono riportati tutti i dati di configurazione come le credenziali di accesso al database, la directory dell'indice delle PA, la directory della stopwords-list, e così via...
 \newpage
-
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[scale=0.70]{img/UMLclassi.png}
+\caption{Diagramma UML}
+\end{center}
+\end{figure}
 \subsection{Possibili sviluppi}
 \subsubsection{Outlier detection}
 Uno dei problemi inquadrati è la fase di outlier detection, ovvero, l'individuazione di quelle tematiche (interi gruppi di dataset) che non vengono correttamente categorizzate e necessitano il supporto di un riaddestramento. In sostanza sarebbe utile avere una linea guida per la compilazione del file JSON di riaddestramento.
 \\
 \\
-Una delle possibili soluzione potrebbe essere quella di utilizzare la misura della confidenza del classificatore (divergenza di Kullback-Leibler) e stabilire una soglia di confidenza sotto la quale è necessario specializzare il corpus Acquis con dei riaddestramenti.
+Una delle possibili soluzione potrebbe essere quella di utilizzare la misura di confidenza del classificatore (divergenza di Kullback-Leibler) e stabilire una soglia di confidenza sotto la quale è necessario specializzare il corpus Acquis con dei riaddestramenti.
 
 \subsubsection{Clustering}
-L'utilizzo di algoritmi di apprendimento non supervisionato potrebbero essere utilizzati al fine di individuare alcune regolarità e pattern da utilizzare per la compilazione del file JSON per i riaddestramenti.
+L'utilizzo di algoritmi di apprendimento non supervisionati potrebbero essere utilizzati al fine di individuare alcune regolarità e pattern da utilizzare per la compilazione del file JSON per i riaddestramenti.
 \\
 \\
-A questo fine sarebbe utile una clusterizzazione rispetto ai tag per prendere nota di quali tematiche descrivono ed associarli dunque alle nostre categorie di interesse.
+A questo fine sarebbe utile una clusterizzazione rispetto ai tag per prendere nota di quali tematiche descrivono ed associarli dunque ai descrittori EuroVoc.
 
 \subsubsection{Filtering}
-Sebbene nelle sperimentazioni non siano stati registrati peggioramenti nell'accuratezza in nessuno dei cataloghi testati, a valle dei riaddestramenti, c'è comunque la possibilità che a fronte di riaddestramenti molto corposi (che coinvolgono un gran numero di dataset e feature) si possa introdurre un del rumore informativo.
+Sebbene nelle sperimentazioni non siano stati registrati peggioramenti nell'accuratezza in nessuno dei cataloghi testati, a valle dei riaddestramenti, c'è comunque la possibilità che a fronte di riaddestramenti molto corposi (che coinvolgono un gran numero di dataset e feature) si possa introdurre del rumore informativo.
 \\
 Per fronteggiare una tale eventualità si può pensare di utilizzare un filtro con le tecniche di feature selection (Chi-square, Mutual Information) che va a scremare il set di feature dei riaddestramenti che hanno più alto valore di utilità negli algoritmi di feature selection.
-\\
-\\
-Così facendo è come se volessimo preservare l'integrità di Acquis entro certi limiti, questi limiti sono definiti dal numero di feature che verranno filtrate.
+\subsubsection{Entity recognition}
+Lo strato software che riguarda la fase di elaborazione dei corpi testuali può essere totalmente sostituita da strumenti che realizzano in modo automatico l'entity recognition come ad esempio Dbpedia Spotlight o OpenNLP. Tuttavia, approcci di questo tipo risulterebbero molto pesanti dal punto di vista computazionale
+\subsubsection{API REST}
+Il rilascio di API REST è ipotizzabile calibrando adeguatamente il classificatore su tutte le tematiche di interesse del catalogo italiano, è necessario tuttavia migliorare ulteriormente l'accuratezza.
+
 \newpage
 
 
@@ -1671,18 +1723,39 @@ MeSh (acronimo di Medical Subject Headings), è un indicizzatore automatico util
 \section{Appendice}
 
 \subsection{Qualità dei dataset secondo il W3C}
-Per distinguere i diversi formati utilizzabili nella codifica dei set di dati o dataset (insieme di dati pubblicati), è stato proposto in seno al W3C (World Wide Web Consortium, un Consorzio internazionale fondato nel 1994 con l'obiettivo di potenziare e diffondere il WWW) dal suo Presidente ed ideatore, Tim Berners-Lee, un modello di catalogazione che li classifica in base alle loro caratteristiche su una scala di valori da 1 (una stella) a 5 (cinque stelle):
+Per distinguere i diversi formati utilizzabili nella codifica dei dataset, è stato proposto in seno al W3C da Tim Berners-Lee, un modello di catalogazione che li classifica in base alle loro caratteristiche su una scala di valori da 1 (una stella) a 5 (cinque stelle):
 \\
 \begin{itemize}
-\item \textbf{1 stella:} Dati grezzi. Sono dati raccolti che non sono stati soggetti a nessun processo, aggregazione o manipolazione, che sono disponibili in quei formati che – seppure disponibili su supporto informatico – non consentono un'estrapolazione immediata degli stessi. Rappresentano, cioè, il livello base costituito da file non strutturati: ad esempio immagini nei diversi formati grafici bitmap (.gif, .Jpg, .bmp, .png, ecc…), documenti in formato Microsoft Word, file in formato Adobe Pdf. Una sola stella indica la semplice disponibilità di un'informazione e di un dato on line, in un formato qualsiasi, purché distribuito con licenza aperta. I dati distribuiti in questo formato sono leggibili e stampabili dagli utenti, possono essere conservati localmente su un PC e sono semplici da pubblicare. Tuttavia non sono un formato aperto in quanto non è possibile effettuare su di essi alcuna elaborazione.
+\item \textbf{1 stella:} Dati grezzi. 
+\\
+Sono dati raccolti che non sono stati soggetti a nessun processo, aggregazione o manipolazione, che sono disponibili in quei formati che - seppure disponibili su supporto informatico – non consentono un'estrapolazione immediata degli stessi. Rappresentano, cioè, il livello base costituito da file non strutturati: ad esempio immagini nei diversi formati grafici bitmap (.gif, .jpg, .bmp, .png, ...), documenti in formato Microsoft Word, file in formato Adobe Pdf. 
+\\
+Una sola stella indica la semplice disponibilità di un'informazione e di un dato on line, in un formato qualsiasi, purché distribuito con licenza aperta. I dati distribuiti in questo formato sono leggibili e stampabili dagli utenti, possono essere conservati localmente su un PC e sono semplici da pubblicare. Tuttavia non sono un formato aperto in quanto non è possibile effettuare su di essi alcuna elaborazione.
+\item \textbf{2 stelle:} Dati strutturati. 
+\\
+Questo livello indica dati strutturati ma codificati con un formato proprietario (ad esempio documenti realizzati con fogli di calcolo come Microsoft Excel salvati in formato .xls, ecc…). 
+\\
+Due stelle indicano, oltre alle possibilità offerte dai dati contraddistinti da una sola stella, la possibilità di effettuare elaborazioni e sistematizzazioni in forma strutturata sui dati, a patto di disporre del software necessario a gestire un file codificato con un formato proprietario. 
+\\
+I dati caratterizzati dalle due stelle non sono un formato aperto in quanto per elaborarli è necessario un software proprietario, tuttavia di norma possono essere convertiti – essendo dati strutturati – in dati aperti.
 
-\item \textbf{2 stelle:} Dati strutturati. Questo livello indica dati strutturati ma codificati con un formato proprietario (ad esempio documenti realizzati con fogli di calcolo come Microsoft Excel salvati in formato .xls, ecc…). Due stelle indicano, oltre alle possibilità offerte dai dati contraddistinti da una sola stella, la possibilità di effettuare elaborazioni e sistematizzazioni in forma strutturata sui dati, a patto di disporre del software necessario a gestire un file codificato con un formato proprietario. I dati caratterizzati dalle due stelle non sono un formato aperto in quanto per elaborarli è necessario un software proprietario, tuttavia di norma possono essere convertiti – essendo dati strutturati – in dati aperti.
+\item \textbf{3 stelle:} Dati strutturati. 
+\\
+Questo livello indica dati strutturati e codificati in un formato non proprietario. Ad esempio documenti realizzati con fogli di calcolo come OpenOffice Calc salvati in formati come .csv (Comma Separated Values), .sxc, al posto – ad esempio – del formato Microsoft Excel. 
+\\
+Tre stelle indicano, oltre alle possibilità offerte dai dati contraddistinti da due sole stelle, la possibilità di effettuare elaborazioni e sistematizzazioni in forma strutturata sui dati senza essere costretti ad utilizzare software proprietario. Quello caratterizzato dalle tre stelle è il formato più semplice di dati aperti.
 
-\item \textbf{3 stelle:} Dati strutturati. Questo livello indica dati strutturati e codificati in un formato non proprietario. Ad esempio documenti realizzati con fogli di calcolo come OpenOffice Calc salvati in formati come .csv (Comma Separated Values), .sxc, al posto – ad esempio – del formato Microsoft Excel. Tre stelle indicano, oltre alle possibilità offerte dai dati contraddistinti da due sole stelle, la possibilità di effettuare elaborazioni e sistematizzazioni in forma strutturata sui dati senza essere costretti ad utilizzare software proprietario. Quello caratterizzato dalle tre stelle è il formato più semplice di dati aperti.
+\item \textbf{4 stelle:} Dati presenti in database.
+\\
+Questo livello indica dati strutturati e codificati in un formato non proprietario che sono dotati di un URI (Uniform Resource Identifier – Identificatore Univoco di Risorsa, ossia di norma un indirizzo internet nel formato http://www.nomedominio.it/) che li rende indirizzabili sulla rete e quindi utilizzabili direttamente on line attraverso l'inclusione in una struttura basata sul modello RDF (Resource Description Framework). 
+\\
+Quattro stelle indicano quindi il fatto che il singolo dato di un dataset, disponibile on line in un formato aperto (tipicamente XML/RDF) può essere richiamato attraverso un URL (Uniform Resource Locator, indirizzo Web che identifica univocamente una risorsa su internet ed è la tipologia più frequente e riconosciuta di URI) specifico. Ciò consente di puntare al dato o ad un insieme di dati da una applicazione o accedervi dall'interno di un programma che può poi elaborarlo in vari modi.
 
-\item \textbf{4 stelle:} Dati presenti in database. Questo livello indica dati strutturati e codificati in un formato non proprietario che sono dotati di un URI (Uniform Resource Identifier – Identificatore Univoco di Risorsa, ossia di norma un indirizzo internet nel formato http://www.nomedominio.it/) che li rende indirizzabili sulla rete e quindi utilizzabili direttamente on line attraverso l'inclusione in una struttura basata sul modello RDF (Resource Description Framework). Quattro stelle indicano quindi il fatto che il singolo dato di un dataset, disponibile on line in un formato aperto (tipicamente XML/RDF) può essere richiamato attraverso un URL (Uniform Resource Locator, indirizzo Web che identifica univocamente una risorsa su internet ed è la tipologia più frequente e riconosciuta di URI) specifico. Ciò consente di puntare al dato o ad un insieme di dati da una applicazione o accedervi dall'interno di un programma che può poi elaborarlo in vari modi.
-
-\item \textbf{5 stelle:} Dati presenti in database. Questo livello indica quelli che vengono definiti Linked Open Data (LOD), dati aperti, cioè, che – dal punto di vista del formato – oltre a rispondere alle caratteristiche della classificazione a quattro stelle presentano anche, nella struttura del dataset, collegamenti ad altri dataset. In altri termini, grazie al ricorso al modello di descrizione dei dati RDF, è possibile collegare dinamicamente tra loro più dataset, incrociando così informazioni provenienti da fonti diverse, eventualmente gestite da diverse Amministrazioni.
+\item \textbf{5 stelle:} Dati presenti in database. 
+\\
+Questo livello indica quelli che vengono definiti Linked Open Data (LOD), dati aperti, cioè, che – dal punto di vista del formato – oltre a rispondere alle caratteristiche della classificazione a quattro stelle presentano anche, nella struttura del dataset, collegamenti ad altri dataset. 
+\\
+In altri termini, grazie al ricorso al modello di descrizione dei dati RDF, è possibile collegare dinamicamente tra loro più dataset, incrociando così informazioni provenienti da fonti diverse, eventualmente gestite da diverse Amministrazioni.
 \end{itemize}
 \phantom
 \\
@@ -1942,6 +2015,7 @@ Gaithersburg, USA. NIST Special Publication 500-225, pp. 109-126, 1994
 \item \url{https://ckan.org}
 \item \url{https://github.com/ckan/ckan}
 \item \url{https://datahub.io}
+\item \url{http://www.indicepa.gov.it/documentale/n-opendata.php}
 \item \url{https://europeandataportal.eu}
 \item \url{http://sciamlab.com/opendatahub/it}
 \item \url{http://dati.gov.it}

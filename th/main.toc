@@ -5,6 +5,7 @@
 \contentsline {subsection}{\numberline {2.3}Open-data \& PA}{11}{subsection.2.3}
 \contentsline {subsection}{\numberline {2.4}Open-government}{12}{subsection.2.4}
 \contentsline {subsection}{\numberline {2.5}Interoperabilit\IeC {\`a} dei dati \& DCAT}{13}{subsection.2.5}
+\contentsline {subsubsection}{\numberline {2.5.1}Esempio di dataset}{16}{subsubsection.2.5.1}
 \contentsline {subsection}{\numberline {2.6}DCAT-AP e DCAT-AP-it}{17}{subsection.2.6}
 \contentsline {subsection}{\numberline {2.7}CKAN}{19}{subsection.2.7}
 \contentsline {subsubsection}{\numberline {2.7.1}European Data Portal}{20}{subsubsection.2.7.1}
@@ -17,7 +18,7 @@
 \contentsline {subsubsection}{\numberline {2.9.3}Corpus parallelo multilingua}{25}{subsubsection.2.9.3}
 \contentsline {subsubsection}{\numberline {2.9.4}Bridge dinamico tra EuroVoc e le categorie DCAT-AP}{26}{subsubsection.2.9.4}
 \contentsline {subsection}{\numberline {2.10}JRC-JEX: il classificatore EuroVoc}{28}{subsection.2.10}
-\contentsline {section}{\numberline {3}Elaborazione del corpus}{29}{section.3}
+\contentsline {section}{\numberline {3}Elaborazione dei corpi testuali}{29}{section.3}
 \contentsline {subsection}{\numberline {3.1}Lemmatizzazione}{29}{subsection.3.1}
 \contentsline {subsection}{\numberline {3.2}Disambiguazione}{30}{subsection.3.2}
 \contentsline {subsection}{\numberline {3.3}Stemming}{31}{subsection.3.3}
@@ -37,35 +38,39 @@
 \contentsline {subsubsection}{\numberline {4.6.6}Divergenza di Kullback-Leibler}{42}{subsubsection.4.6.6}
 \contentsline {subsubsection}{\numberline {4.6.7}Approcci ad-hoc}{43}{subsubsection.4.6.7}
 \contentsline {subsubsection}{\numberline {4.6.8}Performance}{44}{subsubsection.4.6.8}
-\contentsline {section}{\numberline {5}Algoritmi di feature selection}{45}{section.5}
-\contentsline {subsection}{\numberline {5.1}Benefici della feature selection}{47}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Mutual information feature selection}{48}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}$\chi ^2$ feature selection}{48}{subsection.5.3}
-\contentsline {subsection}{\numberline {5.4}Frequency-based feature selection}{49}{subsection.5.4}
-\contentsline {section}{\numberline {6}Metriche per l'evaluation}{51}{section.6}
-\contentsline {subsection}{\numberline {6.1}K-fold-cross-validation}{53}{subsection.6.1}
-\contentsline {section}{\numberline {7}OPEN-CATA: categorizzazione open-data}{54}{section.7}
-\contentsline {subsection}{\numberline {7.1}Cablaggio della logica di addestramento}{56}{subsection.7.1}
-\contentsline {subsection}{\numberline {7.2}Sperimentazioni}{57}{subsection.7.2}
-\contentsline {subsubsection}{\numberline {7.2.1}Confronto degli approcci implementati}{58}{subsubsection.7.2.1}
-\contentsline {subsubsection}{\numberline {7.2.2}Confronto tecniche di feature selection}{59}{subsubsection.7.2.2}
-\contentsline {subsection}{\numberline {7.3}Aspetti software}{61}{subsection.7.3}
-\contentsline {subsection}{\numberline {7.4}Possibili sviluppi}{62}{subsection.7.4}
-\contentsline {subsubsection}{\numberline {7.4.1}Outlier detection}{62}{subsubsection.7.4.1}
-\contentsline {subsubsection}{\numberline {7.4.2}Clustering}{62}{subsubsection.7.4.2}
-\contentsline {subsubsection}{\numberline {7.4.3}Filtering}{62}{subsubsection.7.4.3}
-\contentsline {section}{\numberline {8}Sistemi di catalogazione}{63}{section.8}
-\contentsline {subsection}{\numberline {8.1}JRC-JEX (JRC EuroVoc Indexer)}{63}{subsection.8.1}
-\contentsline {subsubsection}{\numberline {8.1.1}Pre-processamento corpus}{64}{subsubsection.8.1.1}
-\contentsline {subsubsection}{\numberline {8.1.2}Vector space model}{65}{subsubsection.8.1.2}
-\contentsline {subsubsection}{\numberline {8.1.3}Weighting dei vettori}{66}{subsubsection.8.1.3}
-\contentsline {subsection}{\numberline {8.2}BIOSIS}{68}{subsection.8.2}
-\contentsline {subsection}{\numberline {8.3}NASA MAI System}{68}{subsection.8.3}
-\contentsline {subsection}{\numberline {8.4}MeSH}{69}{subsection.8.4}
-\contentsline {section}{\numberline {9}Appendice}{70}{section.9}
-\contentsline {subsection}{\numberline {9.1}Qualit\IeC {\`a} dei dataset secondo il W3C}{70}{subsection.9.1}
-\contentsline {subsection}{\numberline {9.2}Associazione Temi DCAT - Microtesauri EuroVoc}{72}{subsection.9.2}
-\contentsline {subsection}{\numberline {9.3}Esempio di file JSON per il riaddestramento}{76}{subsection.9.3}
-\contentsline {section}{\numberline {10}Bibliografia e risorse}{77}{section.10}
-\contentsline {subsection}{\numberline {10.1}Bibliografia}{77}{subsection.10.1}
-\contentsline {subsection}{\numberline {10.2}Link utili}{79}{subsection.10.2}
+\contentsline {subsection}{\numberline {4.7}Metriche per l'evaluation}{45}{subsection.4.7}
+\contentsline {subsubsection}{\numberline {4.7.1}K-fold-cross-validation}{47}{subsubsection.4.7.1}
+\contentsline {section}{\numberline {5}Algoritmi di feature selection}{48}{section.5}
+\contentsline {subsection}{\numberline {5.1}Benefici della feature selection}{50}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Mutual information feature selection}{51}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}$\chi ^2$ feature selection}{51}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}Frequency-based feature selection}{52}{subsection.5.4}
+\contentsline {section}{\numberline {6}OPEN-CATA: categorizzazione open-data}{54}{section.6}
+\contentsline {subsection}{\numberline {6.1}Elaborazione dei corpi testuali}{56}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Cablaggio della logica di addestramento}{57}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}Sperimentazioni}{58}{subsection.6.3}
+\contentsline {subsubsection}{\numberline {6.3.1}Confronto degli approcci implementati}{59}{subsubsection.6.3.1}
+\contentsline {subsubsection}{\numberline {6.3.2}Confronto tecniche di feature selection}{60}{subsubsection.6.3.2}
+\contentsline {subsection}{\numberline {6.4}Aspetti software}{62}{subsection.6.4}
+\contentsline {subsection}{\numberline {6.5}Scelte implementative}{62}{subsection.6.5}
+\contentsline {subsection}{\numberline {6.6}Possibili sviluppi}{63}{subsection.6.6}
+\contentsline {subsubsection}{\numberline {6.6.1}Outlier detection}{63}{subsubsection.6.6.1}
+\contentsline {subsubsection}{\numberline {6.6.2}Clustering}{63}{subsubsection.6.6.2}
+\contentsline {subsubsection}{\numberline {6.6.3}Filtering}{63}{subsubsection.6.6.3}
+\contentsline {subsubsection}{\numberline {6.6.4}Entity recognition}{63}{subsubsection.6.6.4}
+\contentsline {subsubsection}{\numberline {6.6.5}API REST}{63}{subsubsection.6.6.5}
+\contentsline {section}{\numberline {7}Sistemi di catalogazione}{65}{section.7}
+\contentsline {subsection}{\numberline {7.1}JRC-JEX (JRC EuroVoc Indexer)}{65}{subsection.7.1}
+\contentsline {subsubsection}{\numberline {7.1.1}Pre-processamento corpus}{66}{subsubsection.7.1.1}
+\contentsline {subsubsection}{\numberline {7.1.2}Vector space model}{67}{subsubsection.7.1.2}
+\contentsline {subsubsection}{\numberline {7.1.3}Weighting dei vettori}{68}{subsubsection.7.1.3}
+\contentsline {subsection}{\numberline {7.2}BIOSIS}{70}{subsection.7.2}
+\contentsline {subsection}{\numberline {7.3}NASA MAI System}{70}{subsection.7.3}
+\contentsline {subsection}{\numberline {7.4}MeSH}{71}{subsection.7.4}
+\contentsline {section}{\numberline {8}Appendice}{72}{section.8}
+\contentsline {subsection}{\numberline {8.1}Qualit\IeC {\`a} dei dataset secondo il W3C}{72}{subsection.8.1}
+\contentsline {subsection}{\numberline {8.2}Associazione Temi DCAT - Microtesauri EuroVoc}{74}{subsection.8.2}
+\contentsline {subsection}{\numberline {8.3}Esempio di file JSON per il riaddestramento}{78}{subsection.8.3}
+\contentsline {section}{\numberline {9}Bibliografia e risorse}{79}{section.9}
+\contentsline {subsection}{\numberline {9.1}Bibliografia}{79}{subsection.9.1}
+\contentsline {subsection}{\numberline {9.2}Link utili}{81}{subsection.9.2}
