@@ -120,10 +120,10 @@ L'assegnazione manuale della categoria sul profilo dei metadati DCAT-AP richiede
 Infatti le indicazioni sulla categorizzazione dei dataset nella documentazione europea vengono fornite tramite bridge tra i concetti di alto livello del vocabolario EuroVoc (127 microtesauri) e le categorie DCAT-AP. 
 \\
 Nel catalogo italiano molti dataset riguardanti
-il turismo vengono erroneamente classificati in \say{Educazione, sport e cultura} anziché in \say{Società}, molti dataset riguardanti la materia ortofotografica vengono erroneamente inseriti nella classe \say{Ambiente} anziché \say{Scienza e Tecnologia}, e così via...
+il turismo vengono erroneamente classificati in \say{Education, Culture \& Sport} anziché in \say{Population \& Society}, molti dataset riguardanti la materia ortofotografica vengono erroneamente inseriti nella classe \say{Environment} anziché \say{Science \& Technology}, e così via...
 \\
 \\
-Questo è dovuto al fatto che chi ha categorizzato manualmente non ha verificato che il concetto \say{ortofotografia} facesse parte del microtesauro \say{3606 - natural and applied sciences}, e quindi, essendo 3606 un microtesauro collegato alla categoria \say{Scienza e Tecnologia} secondo la documentazione europea, il dataset sarebbe dovuto essere categorizzato in \say{Scienza e Tecnologia}. 
+Questo è dovuto al fatto che chi ha categorizzato manualmente non ha verificato che il concetto \say{ortofotografia} facesse parte del microtesauro \say{3606 - natural and applied sciences}, e quindi, essendo 3606 un microtesauro collegato alla categoria \say{Science \& Technology} secondo la documentazione europea, il dataset sarebbe dovuto essere categorizzato in \say{Science \& Technology}. 
 \begin{figure}[htbp]
 \begin{center}
 \includegraphics[scale=0.45]{img/eurovocdcat.png}
@@ -158,7 +158,7 @@ Nel capitolo 3 vi è una panoramica sugli algoritmi e le tecnologie più diffuse
 Nel capitolo 4 vi è uno studio sui classificatori bayesiani naïve e i modelli più utilizzati per la categorizzazione dei testi, in particolare è riportato un approfondimento sul modello di Bernoulli, il modello multinomiale e l'implementazione del classificatore calcolando la probabilità a posteriori mediante la divergenza di Kullback-Leibler, la quale fornisce un livello di confidenza del classificatore rispetto alla classificazione effettuata.
 \\
 \\
-Nel capitolo 5 si riportano in sintesi le tre principali tecniche di feature selection finalizzate alla rimozione delle noise-feature (rumore introdotto nella classificazione da termini che non contribuiscono fortemente alla classificazione): chi-square, mutual information e frequency based.
+Nel capitolo 5 si riportano in sintesi le tre principali tecniche di feature selection finalizzate alla rimozione delle noise-feature (rumore introdotto nella classificazione da termini che non contribuiscono fortemente alla classificazione): Chi-square, Mutual Information e frequency based.
 \\
 \\
 Nel capitolo 7 sono illustrate le scelte relative all'implementazione di un sistema per la categorizzazione degli open-data sul profilo europeo dei metadati DCAT-AP basato sulle intuizioni descritte nei capitoli precedenti.
@@ -246,7 +246,7 @@ Il movimento open-data si diffuse per la prima volta a seguito della promulgazio
 \textit{Fin dove possibile e sottostando alle sole restrizioni valide, le agenzie devono pubblicare le informazioni on line utilizzando un formato aperto (open) che possa cioè essere recuperato, soggetto ad azioni di download, indicizzato e ricercato attraverso le applicazioni di ricerca web più comunemente utilizzate. Per formato open si intende un formato indipendente rispetto alla piattaforma, leggibile dall'elaboratore e reso disponibile al pubblico senza che sia impedito il riuso dell'informazione veicolata.}
 \\
 \\
-In questo contesto è nato il portale Data.gov, creato con l'obiettivo di raccogliere in un unico portale tutte le informazioni rese disponibili dagli enti statunitensi in formato aperto. In Italia il portale che raccoglie i dati aperti delle pubbliche amministrazione è Dati.gov.it
+In questo contesto è nato il portale Data.gov, creato con l'obiettivo di raccogliere in un unico portale tutte le informazioni rese disponibili dagli enti statunitensi in formato aperto. In Italia il portale che raccoglie i dati aperti delle pubbliche amministrazione è Dati.gov.it.
 
 \subsection{Open-government} 
 Il rapporto tra pubbliche amministrazioni e cittadino viene ridefinito dalla dottrina open-government in quanto quest'ultimo non è più solo fruitore di servizi forniti dalle pubbliche amministrazioni, ma bensì partecipante alle scelte di governo.
@@ -258,7 +258,7 @@ L'open-government, dunque, rappresenta un modello di amministrazione che chiama 
 In una logica di open-government le amministrazioni mettono al centro la comunicazione e la collaborazione con i cittadini, sono aperte al dialogo e al confronto diretto e partecipato con i privati e quindi focalizzano i processi decisionali sulle effettive esigenze e necessità delle comunità locali. 
 \\
 \\
-Centralità del cittadino, amministrazione partecipata e collaborativa, insieme a trasparenza, apertura dei dati e delle informazioni e alla loro condivisione attraverso le nuove tecnologie digitali ( Internet e il Web in primo piano) quindi, sono i tratti distintivi dell'open-government. 
+Centralità del cittadino, amministrazione partecipata e collaborativa, insieme a trasparenza, apertura dei dati e delle informazioni e alla loro condivisione attraverso le nuove tecnologie digitali (Internet e il Web in primo piano) quindi, sono i tratti distintivi dell'open-government. 
  
 \subsection{Interoperabilità dei dati \& DCAT}
 Tra le ragioni più importanti della filosofia open-data abbiamo l'interoperabilità, vale a dire, la capacità di diversi sistemi e organizzazioni di lavorare insieme. 
@@ -328,7 +328,7 @@ Pubblicare i dati sotto forma di cataloghi RDF DCAT garantisce l'interoperabilit
     ...
     <dcat:keyword>
         Incidentalità
-	</dcat:keyword>
+    </dcat:keyword>
     <dcat:keyword>
         veicoli circolanti
     </dcat:keyword>
@@ -361,7 +361,7 @@ Pubblicare i dati sotto forma di cataloghi RDF DCAT garantisce l'interoperabilit
     <dct:accrualPeriodicity rdf:
         resource="http://publications.europa.eu/resource/authority/frequency/IRREG"/>
     ...
-</dcatapit:Dataset>
+</dcat:dataset>
 \end{verbatim}
 
 \newpage
@@ -420,7 +420,7 @@ Molte pubbliche amministrazioni europee utilizzano CKAN (standard de facto) per 
 \item \url{http://dati.trentino.it}
 \item \url{http://dati.comune.lecce.it}
 \end{itemize}
-Oltre alle amministrazioni esiste un portale europeo (anch'esso basato su CKAN):
+Oltre alle amministrazioni anche il portale europeo dei dati è basato su CKAN:
 \\
 \\
 \url{https://europeandataportal.eu}
@@ -442,12 +442,11 @@ Il plugin è pensato per abilitare l'esportazione dei metadati in formato DCAT. 
 il quale prende i valori dai campi CKAN e li mappa in quelli DCAT.
 
 \subsubsection{European Data Portal}
-European Data Portal (\url{https://europeandataportal.eu}) è il portale europeo degli open-data dataset di tutta europa.
-Il portale europeo oltre a raccogliere i metadati europei produce delle analisi riguardanti la fornitura di dati e i vantaggi del loro riutilizzo. In tutta Europa, i dati sono sempre più aperti e disponibile per il riutilizzo. 
+European Data Portal (\url{https://europeandataportal.eu}) è il portale europeo che raccoglie i dataset open-data di tutta europa.
+Il portale europeo oltre a raccogliere i metadati europei produce delle analisi riguardanti la fornitura di dati e i vantaggi del loro riutilizzo. In tutta Europa, i dati sono sempre più aperti e disponibili per il riutilizzo. 
 \\
 \\
-Un certo numero di studi ha incrementato le aspettative per quanto riguarda i benefici finanziari dei dati aperti, la strada da percorrere per sfruttare pienamente i dati aperti è ancora lunga. Il portale europeo esplora approfonditamente il tema del riutilizzo dei dati aperti, al fine di sostenere la trasformazione dei dati in valore (economico, sociale e politico). 
-
+Un certo numero di studi ha incrementato le aspettative per quanto riguarda i benefici finanziari dei dati aperti, la strada da percorrere per sfruttare pienamente i dati aperti è ancora lunga. Il portale europeo esplora approfonditamente il tema del riutilizzo dei dati aperti, al fine di sostenere la trasformazione dei dati in valore (economico, sociale e politico).
 \begin{figure}[htbp]
 \begin{center}
 \includegraphics[scale=0.50]{img/eustat.png}
@@ -473,15 +472,12 @@ Il portale Dati.gov.it (\url{http://dati.gov.it}) è il portale ufficiale dei da
 EuroVoc è un tesauro multilingue e pluridisciplinare che comprende la terminologia dei settori d'attività dell'Unione europea. Contiene termini in 23 lingue dell'UE. EuroVoc è in linea con le raccomandazioni del W3C e con gli ultimi sviluppi negli standard di classificazione. 
 \\
 \\
-Il tesauro EuroVoc viene utilizzato dalle istituzioni dell'Unione europea, dall'Ufficio delle pubblicazioni dell'UE, da parlamenti nazionali e regionali in Europa, come pure da amministrazioni nazionali e utenti privati di tutto il mondo.
+Il tesauro EuroVoc viene utilizzato dalle istituzioni dell'UE, dall'Ufficio delle pubblicazioni dell'UE, da parlamenti nazionali e regionali in Europa, come pure da amministrazioni nazionali e utenti privati di tutto il mondo.
 \footnotemark
 \footnotetext{http://eurovoc.europa.eu}
 \\
 \\
 I descrittori del tesauro multilingua EuroVoc sono usati da molti parlamentari europei e centri di documentazione per indicizzare manualmente le loro collezioni di documenti, i descrittori assegnati ai documenti sono utilizzati per cercare ed individuare documenti in una gerarchia semantica divisa in 21 domini, 127 sottodomini (microtesauri) e circa 7000 descrittori (concetti).
-\\
-\\
-I 127 microtesauri di EuroVoc sono riconducibili alle 13 categorie DCAT-AP attraverso un mapping (più dettagli al paragrafo 2.7.4)
 \newpage
 \subsection{JRC-Acquis 3.0}
 JRC-Acquis è un corpus parallelo multilingua che contiene documenti di natura governativa (riguardanti varie tematiche) utilizzati/prodotti dalle istituzioni europee.  
@@ -502,7 +498,7 @@ JRC-Acquis può essere usato per addestrare e/o testare sistemi di classificazio
 \end{figure}
 \phantom
 \\
-Alcuni descrittori sono utilizzati molto di più rispetto ad altri all'interno del corpus Acquis, 1733 descrittori sono utilizzati 5 volte o meno di 5 volte nei documenti, 355 descrittori sono utilizzati tra le 50 e le 100 volte, 420 descrittori sono utilizzati tra il centinaio e il migliaio di documenti. Questo sbilanciamento nell'utilizzo dei descrittori rappresenta una grande sfida nel contesto della classificazione basata sui descrittori del tesauro EuroVoc (vedi classificatore JRC-JEX)
+Alcuni descrittori sono utilizzati molto di più rispetto ad altri all'interno del corpus Acquis, 1733 descrittori sono utilizzati 5 volte o meno di 5 volte nei documenti, 355 descrittori sono utilizzati tra le 50 e le 100 volte, 420 descrittori sono utilizzati tra il centinaio e il migliaio di documenti. Questo sbilanciamento nell'utilizzo dei descrittori rappresenta una grande sfida nel contesto della classificazione basata sui descrittori del tesauro EuroVoc (vedi classificatore JRC-JEX).
 \begin{figure}[htbp]
 \begin{center}
 \includegraphics[scale=1.00]{img/evocdistribution.png}
@@ -514,10 +510,10 @@ Ciascun documento di Acquis è etichettato con 5.43 (in media) descrittori EuroV
 \footnotetext{Steinberger, Ebrahim, Turchi. JRC EuroVoc Indexer JEX - A freely available multi-label categorisation tool. European Commission, JRC, 2014}
 \\
 \\
-Come anticipato nel paragrafo 2.6 e dettagliato nel paragrafo 2.7.4 i descrittori di EuroVoc sono riconducibili alle 12 categorie Eu-Data-Themes (DCAT-AP), così facendo il corpus JRC-Acquis può essere utilizzato per il task di classificazione su DCAT-AP (12 categorie), il corpus che si ottiene è sempre multi-label (ogni documento ha 3.47 categorie DCAT-AP).
+Come già anticipato i descrittori di EuroVoc sono riconducibili alle 13 categorie DCAT-AP, così facendo il corpus JRC-Acquis può essere utilizzato per il task di classificazione su DCAT-AP (12 categorie), il corpus che si ottiene è sempre multi-label (ogni documento ha 3.47 categorie DCAT-AP).
 \\
 \\
-Riporto di seguito il numero di volte che occorrono le varie categorie Eu-Data-Themes (DCAT-AP) tra i circa 23'000 documenti etichettati con i descrittori EuroVoc:
+Riporto di seguito il numero di volte che occorrono le varie categorie DCAT-AP tra i circa 23'000 documenti etichettati con i descrittori EuroVoc:
 
 \begin{figure}[htbp]
 \begin{center}
@@ -597,7 +593,7 @@ e la sorgente:
 </div>
 \end{verbatim}
 
-\subsubsection{Corpus aggiornato e manutenuto}
+\subsubsection{Corpus manutenuto}
 JRC-Acquis è un corpus manutenuto e aggiornato manualmente, decine di migliaia di documenti riguardanti politiche europee su tematiche trasversali sono arricchiti da descrittori EuroVoc da specialisti del dominio. JRC-Acquis viene manutenuto perché utilizzato da diversi sistemi basati su tecnologie semantiche, nell'ambito della classificazione è utilizzato come corpo di addestramento del classificatore JRC-JEX, sistema ufficiale di classificazione dei documenti utilizzato dal parlamento europeo.
 
 \subsubsection{Corpus parallelo multilingua}
@@ -615,19 +611,16 @@ In appendice (\say{Associazione dei Temi DCAT-Microtesauri EuroVoc}) è possibil
 \end{figure}
 \\
 \\
-JRC-Acquis è indicizzato con i concetti del vocabolario EuroVoc, pertanto è stato necessario sviluppare un modulo specializzato per la navigazione del tesauro al fine di ottenere i descrittori dei microtsauri associati ai descrittori dei concetti, per poi permutarli a loro volta nei rispettivi temi DCAT-AP.
+JRC-Acquis è indicizzato con i concetti del vocabolario EuroVoc, pertanto è stato necessario sviluppare un modulo specializzato per la navigazione del tesauro al fine di ottenere i descrittori dei microtsauri associati ai descrittori dei concetti, per poi permutarli a loro volta nei rispettivi temi DCAT-AP. 
 \\
-Il seguente modulo java:
-\url{https://github.com/simonegasperoni/cata/blob/master/code/src/main/java/com/sciamlab/it/eurovoc/EVoc.java}
-\\
-è dedicato alla gestione di EuroVoc, fornisce funzionalità di base per interrogare il tesauro:
+Il seguente modulo java: \url{https://github.com/simonegasperoni/open-cata/blob/master/code/src/main/java/com/sciamlab/it/eurovoc/EVoc.java} è dedicato alla gestione di EuroVoc, fornisce funzionalità di base per interrogare il tesauro:
 \begin{enumerate}
 \item Dato un concetto si ottengono i microtesauri associati
 \item Dato un microtesauro si ottiene il relativo tema DCAT-AP (EU Data Theme) 
 \end{enumerate}
 \phantom
 \\
-Un corpus etichettato con le voci di un tesauro come EuroVoc permette la realizzazione di associazioni tra concetti a vario livello di astrazione in modo dinamico, ad esempio qualora il microtesauro EuroVoc \say{2831 culture and religion} originariamente associato al tema Population \& Society (Popolazione e Società) dovesse passare in Education, culture and sport (Educazione, cultura e sport), basterebbe modificare il mapping tra i microtesauri e i temi all'interno del modulo specializzato.
+Un corpus etichettato con le voci di un tesauro come EuroVoc permette la realizzazione di associazioni tra concetti a vario livello di astrazione in modo dinamico, ad esempio qualora il microtesauro EuroVoc \say{2831 culture and religion} originariamente associato al tema \say{Population \& Society} (Popolazione e Società) dovesse passare in \say{Education, Culture \& Sport} (Educazione, cultura e sport), basterebbe modificare il mapping tra i microtesauri e i temi all'interno del modulo specializzato.
 \\
 \\
 \begin{lstlisting}
@@ -643,17 +636,13 @@ Map<String, EUNamedAuthorityDataTheme.Theme> EUROVOC_TO_DCAT_CATEGORIES = new Ha
 \end{lstlisting}
 \phantom
 \\
-Il tesauro (EuroVoc) e il corpus (JRC-Acquis) sono i due componenti fondamentali per la costruzione dei dati di addestramento del classificatore, essendo questi due componenti disaccoppiati è possibile pensare di aggiornare uno e mantenere immutato l'altro qualora siano disponibili versioni più aggiornate del corpus o del tesauro. Anche questa è una forma di flessibilità, anche se in realtà dall'aggiornamento del tesauro non si traggono benefici se i descrittori dei concetti aggiunti non compaiono anche nel corpus. 
 \newpage
 \subsection{JRC-JEX: il classificatore EuroVoc}
 Il classificatore JEX, sviluppato presso i laboratori JRC (Joint Research Centre) è stato presentato nell'ambito del workshop \say{Ontologies and Information Extraction at EUROLAN 2003: The Semantic Web and Language Technology – Its Potential and Practicalities}. 
 \\
 \\
-JEX è un classificatore multi-label, addestrato con il corpus JRC-Acquis (training set), categorizza con i descrittori (concetti) del tesauro EuroVoc con tecniche basate sull'approccio \say{VSM} (vector space model).
-La scelta di basare il classificatore su EuroVoc e JRC-Acquis rende il sistema multilingua e garantisce la copertura di tutte le tematiche di interesse della politica europea.
-\\
-\\
-Riporto di seguito le performance registrate sulle lingue coperte dal classificatore, le metriche sono descritte in dettaglio nel capitolo 6.
+JEX è un classificatore multi-label, addestrato con il corpus JRC-Acquis (training set), categorizza i documenti del parlamento europeo con i descrittori (concetti) del tesauro EuroVoc con tecniche basate sull'approccio \say{VSM} (vector space model).
+La scelta di basare il classificatore su EuroVoc e JRC-Acquis rende il sistema multilingua e garantisce la copertura di tutte le tematiche di interesse della politica europea. Riporto di seguito le performance registrate sulle lingue coperte dal classificatore, le metriche sono descritte in dettaglio nella sezione 4.7.
 \begin{figure}[htbp]
 \begin{center}
 \includegraphics[scale=0.70]{img/statjex.png}
@@ -665,10 +654,7 @@ Riporto di seguito le performance registrate sulle lingue coperte dal classifica
 Una fase preliminare in qualsiasi ambito di classificazione dei testi è l'elaborazione dei corpi testuali, si tratta di scegliere le modalità con le quali estrarre le \say{feature} dai testi - in base alla loro formattazione, al fine di rendere le \say{feature} fruibili al sistema di classificazione in modo opportuno.
 \\
 \\
-Nel contesto di un sistema di categorizzazione dei testi vogliamo ottenere delle \say{feature} ben rappresentative del contenuto semantico dei documenti dai quali sono estratte. Le tappe che dobbiamo percorrere sono essenzialmente due: innanzitutto è necessario utilizzare degli algoritmi per l'estrazione di \say{feature}, dopodiché queste \say{feature} potranno essere stemmerizzate o rielaborate in vario modo, ad esempio utilizzando n-grammi di parole. 
-\\
-\\
-Il processo di elaborazione viene suddiviso in fasi diverse, tuttavia simili a quelle che si possono incontrare nel processo di elaborazione di un linguaggio di programmazione, i seguenti passi rappresentano un possibile canovaccio da seguire per l'elaborazione dei testi:
+Nel contesto di un sistema di categorizzazione dei testi vogliamo ottenere delle \say{feature} ben rappresentative del contenuto semantico dei documenti dai quali sono estratte. Le tappe che dobbiamo percorrere sono essenzialmente due: innanzitutto è necessario utilizzare degli algoritmi per l'estrazione di \say{feature}, dopodiché queste \say{feature} potranno essere stemmerizzate o rielaborate in vario modo, ad esempio utilizzando n-grammi di parole. Il processo di elaborazione viene suddiviso in fasi diverse, tuttavia simili a quelle che si possono incontrare nel processo di elaborazione di un linguaggio di programmazione, i seguenti passi rappresentano un possibile canovaccio da seguire per l'elaborazione dei testi:
 
 \begin{itemize}
 \item \textbf{Analisi lessicale:} scomposizione di un'espressione linguistica in token (in questo caso le parole).
@@ -926,10 +912,10 @@ si definiscono:
 La formula di Bayes collega la probabilità a priori delle cause con le probabilità a posteriori attraverso le verosimiglianze.
 \\
 \\
-Ipotizziamo che sia $X$ un'istanza da classificare, e $C1,...,Cn$ le possibili classi. I classificatori Bayesiani naïve calcolano $$P(C_i|X)$$ sfruttando la formula di Bayes: $$P(C_i|X)=\frac{P(X|C_i)P(C_i)}{P(X)}$$
+Ipotizziamo che sia $X$ un'istanza da classificare, e $C_1,...,C_n$ le possibili classi. I classificatori Bayesiani naïve calcolano $$P(C_i|X)$$ sfruttando la formula di Bayes: $$P(C_i|X)=\frac{P(X|C_i)P(C_i)}{P(X)}$$
 Dato che - al fine della classificazione - si vuole cercare la classe $C$ con la probabilità più alta, andiamo a cercare l'indice $i$ per massimizzare la probabilità condizionata, ottenendo: 
 $$Max_i [P(C_i|X)]$$
-$P(X)$ è uguale per tutte le classi per cui non occorre calcolarla, $P(Ci)$ si può calcolare facilmente sull'insieme dei dati di addestramento, si conta la percentuale di istanze di classe $Ci$ sul totale.
+$P(X)$ è uguale per tutte le classi per cui non occorre calcolarla, $P(C_i)$ si può calcolare facilmente sull'insieme dei dati di addestramento, si conta la percentuale di istanze di classe $C_i$ sul totale.
 \\
 \\
 Se $X$ è composta dagli attributi $a_j$ con indice da 1 a m, otteniamo:
@@ -1002,7 +988,7 @@ Il classificatore bayesiano sopradescritto trova applicazione nel campo della ca
 \footnotetext{Mitchell, Machine learning, Mc Graw Hill, 1997}
 \\
 \\
-Le istanze X che abbiamo considerato fin'ora possono ora essere considerati documenti testuali. Il training set da considerare è una collezione di documenti etichettati (classificati), su questa base di conoscenza si dovrà costruire un sistema di predizione per le entry dello spazio X.
+Le istanze X che abbiamo considerato fin'ora possono ora essere considerate documenti testuali. Il training set da considerare è una collezione di documenti etichettati (classificati), su questa base di conoscenza si dovrà costruire un sistema di predizione per le entry dello spazio X.
 \\
 \\
 Prendiamo in considerazione una collezione di testi, ad esempio 1000, dei quali 300 interessano ad una certa persone, mentre invece, gli altri 700 sono considerati non interessanti, questo può essere considerato un training set per addestrare il nostro classificatore dove le categorie sono \say{like} e \say{dislike}.
@@ -1221,7 +1207,7 @@ La feature selection talvolta è realizzata in modo totalmente randomica, vale a
 \end{figure}
 Approcci di questo tipo sono molto dispendiosi, solitamente si procede con tecniche più deterministiche basate sulla teoria dell'informazione e della probabilità. Introduction to Information Retrieval\footnotemark descrive tre procedure per la selezione di feature (funzioni di utilità delle feature):
 \begin{itemize}  
-\item Mutual information
+\item Mutual Information
 \item Chi square
 \item Frequency based
 \end{itemize}
@@ -1255,10 +1241,10 @@ FEATURE_SELECTION(DOCs, CATs, k)
 In \say{Introduction to Information Retrieval (Manning, Raghavan, Schütze)}\footnotetext{Manning, Raghavan, Schütze, Introduction to Information Retrieval, Cambridge University Press, 2008} è presente uno studio sui benefici delle tecniche di feature selection. Il grafico che segue evidenzia i benefici prodotti su alcuni corpora REUTERS, in particolare gli algoritmi di feature selection sono applicati in modo combinato con diversi algoritmi (Naïve Bayes) di classificazione:
 
 \begin{itemize}  
-\item Mutual information feature selection - Bayes multinomiale
+\item Mutual Information feature selection - Bayes multinomiale
 \item Chi square feature selection - Bayes multinomiale
 \item Frequency based feature selection - Bayes multinomiale
-\item Mutual information feature selection - Bayes binomiale
+\item Mutual Information feature selection - Bayes binomiale
 \end{itemize}
 \begin{figure}[htbp]
 \begin{center}
@@ -1270,8 +1256,8 @@ Come si può notare, tramite la limitazione del numero di feature si raggiunge u
 
 
 \newpage
-\subsection{Mutual information feature selection}
-Mutual information è una misura di utilità delle feature che sfrutta l'intuizione della teoria dell'informazione. L'informazione mutua di un termine $t$ (feature) e una classe $c$ è la misura di quanto la presenza o assenza della feature contribuisce a determinare la corretta classificazione sulla classe $c$.
+\subsection{Mutual Information feature selection}
+Mutual Information è una misura di utilità delle feature che sfrutta l'intuizione della teoria dell'informazione. L'informazione mutua di un termine $t$ (feature) e una classe $c$ è la misura di quanto la presenza o assenza della feature contribuisce a determinare la corretta classificazione sulla classe $c$.
 \\
 \\
 Formalmente:
@@ -1307,7 +1293,7 @@ Come si può notare, il calcolo del $\chi^2$ rappresenta lo scarto del valore os
 Un alto valore di $\chi^2$ indica che l'ipotesi di indipendenza (la quale indica che il valore atteso ed il valore osservato devono essere simili) è sbagliata.
 \\
 \\
-I valori di criticità della distribuzione $\chi^2$ con un grado di libertà, ad esempio, se i due eventi sono indipendenti, allora $p$ ($\chi^2>6.63$) è minore di 0.01. Quindi per $\chi^2>6.63$ l'assunzione di indipendenza può essere scartata con una confidenza del 99% 
+I valori di criticità della distribuzione $\chi^2$ con un grado di libertà, ad esempio, se i due eventi sono indipendenti, allora $p$ ($\chi^2>6.63$) è minore di 0.01. Quindi per $\chi^2>6.63$ l'assunzione di indipendenza può essere scartata con una confidenza del 99\%.
 \\
 \\
 \begin{tabular}{l*{6}{c}r}
@@ -1388,7 +1374,7 @@ Ogni entry dell'array \say{retrains} individua un gruppo di dataset di un \say{p
 In fase di predizione i termini si estraggono dai metadati testuali disponibili, ovvero, titolo, tag e descrizione.
 \\
 \\
-Il vantaggio notevole nel seguire un approccio di questo tipo è il fatto che la logica di addestramento è totalmente cablata, pertanto, risulta molto facile, realizzare delle modifiche intervenendo solamente sul bridge delle categorie DCAT per Acquis e sul file JSON per la gestione degli outlier. Inoltre è possibile aggiornare il tesauro e il corpus Acquis all'ultima versione molto rapidamente.
+Il vantaggio notevole nel seguire un approccio di questo tipo è il fatto che la logica di addestramento è totalmente cablata, pertanto, risulta molto facile, realizzare delle modifiche intervenendo solamente sul bridge delle categorie DCAT per Acquis e sul file JSON per la gestione degli outlier. Inoltre è possibile aggiornare il tesauro EuroVoc e il corpus Acquis all'ultima versione molto rapidamente.
 \\
 \\
 Una volta acquisiti i dati di addestramento si effettua una selezione delle feature per evitare fenomeni di overfitting che potrebbero essere presenti se si utilizzassero tutti i termini, infine, si addestra il nostro classificatore e si procede alla predizione dell'intero catalogo italiano o solamente dei cataloghi che si reputano meno accurati.
@@ -1447,7 +1433,7 @@ Le sperimentazioni sono state effettuate incrociando tutti gli approcci di class
 Per quanto il task di classificazione possa sembrare semplice, bisogna sempre considerare che i dati su cui si basa la classificazione sono i metadati dei dataset, e, a volte la descrizione delle risorse può essere minimale. 
 \\
 \\
-Questo complica particolarmente le cose nell'ambito di una classificazione multi-label, la quale, risulta molto difficoltosa, anche se l'approccio basato sulla divergenza migliora leggermente le prestazioni il livello di accuratezza non è accettabile. Questa tuttavia non è una grande limitazione considerando che quasi tutti i dataset sono correttamente categorizzati con una sola categoria.
+Questo complica particolarmente le cose nell'ambito di una classificazione multi-label, la quale, risulta molto difficoltosa, anche se l'approccio basato sulla divergenza di Kullback-Leibler migliora leggermente le prestazioni il livello di accuratezza non è accettabile. Questa tuttavia non è una grande limitazione considerando che quasi tutti i dataset sono correttamente categorizzati con una sola categoria.
 \newpage
 \subsubsection{Confronto degli approcci implementati}
 Gli approcci testati sul campione appena descritto utilizzando il file di riaddestramento JSON riportato in appendice (\say{Esempio di file JSON per il riaddestramento}) hanno dato luogo hai seguenti risultati (in rosso scuro sono riportati i livelli di accuratezza per i vari approcci di classificazione basati solo sul corpus Acquis):
@@ -1508,7 +1494,7 @@ Riporto di seguito altre sperimentazioni effettuate:
 \begin{figure}[htbp]
 \begin{center}
 \includegraphics[scale=0.55]{img/gr2.png}
-\caption{Mutual information feature selection}
+\caption{Mutual Information feature selection}
 \end{center}
 \end{figure}
 \begin{figure}[htbp]
@@ -1533,7 +1519,7 @@ Il disaccoppiamento tra queste entità permette una facile fruizione e manutenzi
 \\
 \begin{itemize}
 \item Training source: le sorgenti possono essere diverse, Acquis, CKAN, vocabolari specializzati...
-\item Feature selector: gli approcci implementati sono Chi-square, e Mutual information.
+\item Feature selector: gli approcci implementati sono Chi-square, e Mutual Information.
 \item Classifier: I classificatori implementati sono le quattro varianti del classificatore bayesiano già discusse in precedenza.
 \item Thresholder: I risultati restituiti dal classificatore sono manipolabili in modi diversi, varie politiche di thresholding sono state implementate.
 \end{itemize}
@@ -1567,9 +1553,9 @@ Sebbene nelle sperimentazioni non siano stati registrati peggioramenti nell'accu
 \\
 Per fronteggiare una tale eventualità si può pensare di utilizzare un filtro con le tecniche di feature selection (Chi-square, Mutual Information) che va a scremare il set di feature dei riaddestramenti che hanno più alto valore di utilità negli algoritmi di feature selection.
 \subsubsection{Entity recognition}
-Lo strato software che riguarda la fase di elaborazione dei corpi testuali può essere totalmente sostituita da strumenti che realizzano in modo automatico l'entity recognition come ad esempio Dbpedia Spotlight o OpenNLP. Tuttavia, approcci di questo tipo risulterebbero molto pesanti dal punto di vista computazionale
+Lo strato software che riguarda la fase di elaborazione dei corpi testuali può essere totalmente sostituito da strumenti che realizzano in modo automatico l'entity recognition come ad esempio Dbpedia Spotlight o OpenNLP. Tuttavia, approcci di questo tipo risulterebbero molto pesanti dal punto di vista computazionale.
 \subsubsection{API REST}
-Il rilascio di API REST è ipotizzabile calibrando adeguatamente il classificatore su tutte le tematiche di interesse del catalogo italiano, è necessario tuttavia migliorare ulteriormente l'accuratezza.
+Il rilascio di API REST è ipotizzabile, è necessario tuttavia migliorare ulteriormente l'accuratezza gestendo meglio gli outlier.
 
 \newpage
 
@@ -1635,7 +1621,7 @@ Vector space model or term vector model is an algebraic model for representing t
 }
 \\
 \\
-Vector Space Model (VSM) sfrutta un'intuizione geometrica nella rappresentazione dei documenti, ogni documento è un vettore le cui componenti sono i termini che lo compongono e il valore assunto dalle componenti può essere associato a diverse misure: term frequency, term frequency normalizzata, tf-idf, document frequency, chi-square, log-likelihood.
+Vector Space Model (VSM) sfrutta un'intuizione geometrica nella rappresentazione dei documenti, ogni documento è un vettore le cui componenti sono i termini che lo compongono e il valore assunto dalle componenti può essere associato a diverse misure: term frequency, term frequency normalizzata, tf-idf, document frequency, Chi-square, log-likelihood.
 \\
 \\  
 VSM nella categorizzazione dei testi è essenzialmente applicata seguendo due tecniche: k-nearest-neighbor (kNN) e Rocchio.\footnotemark

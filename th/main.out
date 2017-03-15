@@ -14,7 +14,7 @@
 \BOOKMARK [2][-]{subsection.2.8}{EuroVoc}{section.2}% 14
 \BOOKMARK [2][-]{subsection.2.9}{JRC-Acquis 3.0}{section.2}% 15
 \BOOKMARK [3][-]{subsubsection.2.9.1}{Standard TEI}{subsection.2.9}% 16
-\BOOKMARK [3][-]{subsubsection.2.9.2}{Corpus aggiornato e manutenuto}{subsection.2.9}% 17
+\BOOKMARK [3][-]{subsubsection.2.9.2}{Corpus manutenuto}{subsection.2.9}% 17
 \BOOKMARK [3][-]{subsubsection.2.9.3}{Corpus parallelo multilingua}{subsection.2.9}% 18
 \BOOKMARK [3][-]{subsubsection.2.9.4}{Bridge dinamico tra EuroVoc e le categorie DCAT-AP}{subsection.2.9}% 19
 \BOOKMARK [2][-]{subsection.2.10}{JRC-JEX: il classificatore EuroVoc}{section.2}% 20
@@ -42,7 +42,7 @@
 \BOOKMARK [3][-]{subsubsection.4.7.1}{K-fold-cross-validation}{subsection.4.7}% 42
 \BOOKMARK [1][-]{section.5}{Algoritmi di feature selection}{}% 43
 \BOOKMARK [2][-]{subsection.5.1}{Benefici della feature selection}{section.5}% 44
-\BOOKMARK [2][-]{subsection.5.2}{Mutual information feature selection}{section.5}% 45
+\BOOKMARK [2][-]{subsection.5.2}{Mutual Information feature selection}{section.5}% 45
 \BOOKMARK [2][-]{subsection.5.3}{2 feature selection}{section.5}% 46
 \BOOKMARK [2][-]{subsection.5.4}{Frequency-based feature selection}{section.5}% 47
 \BOOKMARK [1][-]{section.6}{OPEN-CATA: categorizzazione open-data}{}% 48

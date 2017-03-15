@@ -14,7 +14,7 @@
 \contentsline {subsection}{\numberline {2.8}EuroVoc}{21}{subsection.2.8}
 \contentsline {subsection}{\numberline {2.9}JRC-Acquis 3.0}{22}{subsection.2.9}
 \contentsline {subsubsection}{\numberline {2.9.1}Standard TEI}{24}{subsubsection.2.9.1}
-\contentsline {subsubsection}{\numberline {2.9.2}Corpus aggiornato e manutenuto}{25}{subsubsection.2.9.2}
+\contentsline {subsubsection}{\numberline {2.9.2}Corpus manutenuto}{25}{subsubsection.2.9.2}
 \contentsline {subsubsection}{\numberline {2.9.3}Corpus parallelo multilingua}{25}{subsubsection.2.9.3}
 \contentsline {subsubsection}{\numberline {2.9.4}Bridge dinamico tra EuroVoc e le categorie DCAT-AP}{26}{subsubsection.2.9.4}
 \contentsline {subsection}{\numberline {2.10}JRC-JEX: il classificatore EuroVoc}{28}{subsection.2.10}
@@ -42,7 +42,7 @@
 \contentsline {subsubsection}{\numberline {4.7.1}K-fold-cross-validation}{47}{subsubsection.4.7.1}
 \contentsline {section}{\numberline {5}Algoritmi di feature selection}{48}{section.5}
 \contentsline {subsection}{\numberline {5.1}Benefici della feature selection}{50}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Mutual information feature selection}{51}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.2}Mutual Information feature selection}{51}{subsection.5.2}
 \contentsline {subsection}{\numberline {5.3}$\chi ^2$ feature selection}{51}{subsection.5.3}
 \contentsline {subsection}{\numberline {5.4}Frequency-based feature selection}{52}{subsection.5.4}
 \contentsline {section}{\numberline {6}OPEN-CATA: categorizzazione open-data}{54}{section.6}
